@@ -1,0 +1,33 @@
+NOTICE: 
+Unless otherwise noted, all images here distributed are the property of DigitalGlobe, Inc. and are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+ (see http://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+We all strive for new benchmarks. So we managed, thanks to some great guy working at DigitalGlobe, to obtain a permissive licensing for some chips of a large QuickBird scene of the city of Zurich acquired in 2002. 
+ 
+The "Zurich Summer v1.0" dataset is a collection of 20 chips (crops), taken from a QuickBird acquisition of the city of Zurich (Switzerland) in August 2002. QuickBird images are composed by 4 channels (NIR-R-G-B) and were pansharpened to the PAN resolution of about 0.62 cm GSD. We manually annotated 8 different urban and periurban classes : Roads, Buildings, Trees, Grass, Bare Soil, Water, Railways and Swimming pools. The cumulative number of class samples is highly unbalanced, to reflect real world situations. Note that annotations are not perfect, are not ultradense (not every pixel is annotated) and there might be some errors as well. We performed annotations by jointly selecting superpixels (SLIC) and drawing (freehand) over regions which we could confidently assign an object class. 
+
+We provide a rough and dirty MATLAB script (preprocess.m) to: 
+i) extract basic statistics from images (min, max, mean and average std) which should be used to globally normalize the data (note that class distribution of the chips is highly uneven, so single-frame normalization would shift distribution of classes).
+ii) Visualize raw DN images (with unsaturated values) and a corresponding stretched version (good for illustration purposes). It also saves a raw and adjusted image version in MATLAB format (.mat) in a local subfolder.
+iii) Convert RGB annotations to index mask (CLASS \in {1,...,C}) (via rgb2label.m provided).  
+iv) Convert index mask to georeferenced RGB annotations (via rgb2label.m provided). Useful if you want to see the final maps of the tiles in some GIS software (coordinate system copied from original geotiffs).
+
+
+We encourage researchers to evaluate generalization accuracy in a leave-one-out setting, that is training on 19 images and evaluating on the held-out one, iterating over the 20 combinations and reporting error measures over the accumulated error matrix (more details in the paper below). Otherwise, if using training / (validation) / test splits, we encourage authors to report EXACTLY the ID of each image in each split, so that experiments will be reproducible (e.g. train: zh1 to zh7, validation zh8 to zh12 and test zh13 to zh20). The purpose of distributing datasets is to encourage reproducibility of experiments. 
+
+We release this data after a kind agreement obtained with DigitalGlobe, co. This dataset can be redistributed freely for research purposes, provided that this document and corresponding license are part of the distribution. Ideally, since the dataset could be updated over the time, I suggest to distribute the dataset by the official link from which this archive has been downloaded. 
+
+We would like to thank (a lot) Nathan Longbotham @ DigitalGlobe and the whole DG team for his / their help for granting the distribution of the dataset. 
+We release this dataset hoping that will help researchers working in semantic classification / segmentation of remote sensing data in comparing to other state-of-the-art methods using this dataset as well in testing models on a larger and more complete set of images (with respect to most benchmarks available in our community). As you can imagine, it has been a tedious work in preparing everything. Just for you. 
+So, if you are using the data please cite the following work : 
+
+Volpi, M. & Ferrari, V.; Semantic segmentation of urban scenes by learning local class interactions, In IEEE CVPR 2015 Workshop "Looking from above: when Earth observation meets vision" (EARTHVISION), Boston, USA, 2015. 
+
+For any question, suggestion, critic contact me at mitch.volpi@gmail.com. 
+
+Have fun with the Zurich summer! 
+
+Michele Volpi
+CALVIN, University of Edinburgh
+
+
