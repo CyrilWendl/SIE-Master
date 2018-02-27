@@ -4,7 +4,7 @@ from .density_tree import DensityNode
 from .helpers import entropy_gaussian, get_best_split, split
 
 
-def create_density_tree(dataset, dimensions, clusters, parentnode=None, side_label=None):
+def create_density_tree(dataset, dimensions, clusters, parentnode=None, side_label=None, verbose=False):
     """create decision tree be performing initial split,
     then recursively splitting until all labels are in unique bins
     init: flag for first iteration
@@ -12,10 +12,12 @@ def create_density_tree(dataset, dimensions, clusters, parentnode=None, side_lab
     As long as total number of splits < nclusters - 1, perform another split on the side having the higher entropy
     Or, if there are parent nodes: perform a split on the side of the node that has the highest entropy on a side
     """
-
+    # verbose
+    if verbose:
+        print("Creating node (%i remaining)" % (clusters-1))
+    
     # split
-
-    dim_max, val_dim_max, _, _ = get_best_split(dataset, labelled=False)
+    dim_max, val_dim_max, _, _ = get_best_split(dataset, labelled=False, verbose=verbose)
     left, right, e_left, e_right = split(dataset, dim_max, val_dim_max,
                                          get_entropy=True)  #  split along best dimension
 
@@ -65,6 +67,6 @@ def create_density_tree(dataset, dimensions, clusters, parentnode=None, side_lab
             side_label = 'right'
 
         create_density_tree(dataset, dimensions, clusters=clusters_left,
-                            parentnode=node_e, side_label=side_label)  # iterate
+                            parentnode=node_e, side_label=side_label, verbose=verbose)  # iterate
 
     return treenode

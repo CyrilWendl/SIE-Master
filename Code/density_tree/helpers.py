@@ -1,5 +1,5 @@
 import numpy as np
-
+from tqdm import tqdm
 
 def entropy(labels, base=np.e):  # [1]
     """
@@ -124,7 +124,7 @@ def print_decision_tree_latex(node, tree_string):
     return tree_string
 
 
-def get_best_split(dataset, labelled=False):
+def get_best_split(dataset, labelled=False, verbose=False):
     """
     for a given dimension, get best split based on information gain
     for labelled and unlabelled data
@@ -149,7 +149,7 @@ def get_best_split(dataset, labelled=False):
         entropy_f = entropy_gaussian
         dimensions = range(dataset.shape[1])
 
-    for dim in dimensions:  # loop all dimensions
+    for dim in (tqdm(dimensions) if verbose else dimensions):  # loop all dimensions
         ig_vals, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f)
         ig_dims_vals.append(ig_vals)
         split_dims_vals.append(split_vals)
