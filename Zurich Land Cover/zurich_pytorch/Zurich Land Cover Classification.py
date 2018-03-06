@@ -233,9 +233,9 @@ def train(epochs=args.epochs):
     for batch_idx, (im_data, labels) in enumerate(train_loader):
         # print("Shape batch:"+str(np.shape(Variable(im_data).data.numpy())))
         # print("Batch id: %i"%batch_idx)
+        im_data, labels = Variable(im_data), Variable(labels)
         if args.cuda:
             im_data, labels = im_data.cuda(), labels.cuda()
-        im_data, labels = Variable(im_data), Variable(labels)
         # class_weights = class_weight.compute_class_weight('balanced', np.unique(labels.data.numpy().flatten()),
         #                                                np.arange(10))
         # class_weights=Variable(torch.from_numpy(class_weights).type(torch.FloatTensor))
@@ -259,7 +259,7 @@ def test():
             im_data, target = im_data.cuda(), target.cuda()
         im_data, target = Variable(im_data, volatile=True), Variable(target)
         output = model(im_data)
-        test_loss += functional.cross_entropy(output, target, size_average=False).data[0]  # sum up batch loss
+        test_loss += functional.nll_loss(output, target, size_average=False).data[0]  # sum up batch loss
         pred = output.data.max(1, keepdim=True)[1]  # get the index of the max log-probability
         correct += pred.eq(target.data.view_as(pred)).cpu().sum()
 
@@ -294,7 +294,7 @@ def test_show_some_images():
 if __name__ == '__main__':
 
     for epoch in range(1, args.epochs + 1):
-        #train(epoch)
-        #test()
-        test_show_some_images()
-        break
+        train(epoch)
+        test()
+        #test_show_some_images()
+        #break

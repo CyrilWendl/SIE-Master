@@ -45,14 +45,12 @@ class ZurichLoader(data.Dataset):
         gt = self.gt_patches[idx]
 
         # convert image
-        #img = Image.fromarray((img*255).astype(np.uint8))
-        #gt = Image.fromarray(gt.astype(np.uint8)).convert('L')
+        # img = Image.fromarray((img*255).astype(np.uint8))
+        # gt = Image.fromarray(gt.astype(np.uint8)).convert('L')
         # apply transformations
-
 
         if self.data_augmentation:
             img, gt = augment_images_and_gt(img, gt)
-
 
         # If you want to do special transforms like rotation, do them here.
         # Don't forget to apply the same transforms to both the data and label tensors.
@@ -61,8 +59,8 @@ class ZurichLoader(data.Dataset):
 
         # TODO transformations using torchsample
         img = np.asarray(img).transpose((2,0,1)).astype(np.float64)
-        img = torch.from_numpy(img)
-        gt = torch.from_numpy(gt)  # .astype(np.double))
+        img = torch.from_numpy(img).type(torch.FloatTensor)
+        gt = torch.from_numpy(gt).type(torch.LongTensor)  # .astype(np.double))
 
         return img, gt
 
