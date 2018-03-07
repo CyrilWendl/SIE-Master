@@ -87,15 +87,16 @@ if args.cuda:
 
 kwargs = {'num_workers': 1, 'pin_memory': True} if args.cuda else {}
 
-
 # define transforms
 
 
-def im_load(path, max_size=512):  # for now, only return highest [max_size] pixels, multiple of patch_size
+def im_load(path, max_size=512, offset=2):  # for now, only return highest [max_size] pixels, multiple of patch_size
     """load a TIF image"""
     image = np.asarray(imread(path)).astype(float)
-    image = image[:max_size, :max_size, :]
+    image = image[offset:max_size+offset, offset:max_size+offset,:]
     return image
+
+# TODO load images 2 * max_size separately
 
 
 def imgs_stretch_eq(im):
@@ -113,7 +114,6 @@ def imgs_stretch_eq(im):
         img_stretch[:, :, band] = exposure.rescale_intensity(im[:, :, band], in_range=(p2, p98))
         img_eq[:, :, band] = exposure.equalize_hist(img_stretch[:, :, band])
     return img_stretch, img_eq
-
 
 legend = OrderedDict((('Background', [255, 255, 255]),
                       ('Roads', [0, 0, 0]),
@@ -186,20 +186,20 @@ def load_data(max_size=512, patch_size=64):
     # image stretching
     imgs =[imgs_stretch_eq(img)[1] for img in imgs]
 
-
-
     # convert gt colors to labels
     gt_maj_label = gt_color_to_label(gt)
     gt = gt_maj_label
 
     # get patches
-    im_patches = get_padded_patches(imgs, patch_size=patch_size, window_size=patch_size)
-    gt_patches = get_gt_patches(gt, patch_size=patch_size)
+    im_p= get_padded_patches(imgs, patch_size=patch_size, window_size=patch_size)
+    gt_p = get_gt_patches(gt, patch_size=patch_size)
 
-    return im_patches, gt_patches
+    return im_p, gt_p
 
 
 im_patches, gt_patches = load_data(max_size=512, patch_size=64)
+
+"""
 
 transform_data = transforms.Compose([
     transforms.ToTensor()])
@@ -208,14 +208,15 @@ transform_both = transforms.Compose([
     transforms.RandomHorizontalFlip(),
     transforms.RandomVerticalFlip(),
     transforms.ToTensor()])
+"""
 
 # create datasets
 train_loader = data.DataLoader(
-    ZurichLoader(im_patches, gt_patches, 'train'),
+    ZurichLoader(im_patches, gt_patches, 'train', data_augmentation=True),
     batch_size=args.batch_size, shuffle=True)
 
 test_loader = data.DataLoader(
-    ZurichLoader(im_patches, gt_patches, 'test'),
+    ZurichLoader(im_patches, gt_patches, 'val'),
     batch_size=args.test_batch_size, shuffle=True)
 
 n_classes = 8  # TODO parse
@@ -241,7 +242,7 @@ def train(epochs=args.epochs):
         # class_weights=Variable(torch.from_numpy(class_weights).type(torch.FloatTensor))
         optimizer.zero_grad()
         output = model(im_data)
-        loss = functional.nll_loss(output, labels)
+        loss = functional.cross_entropy(output, labels, ignore_index=-1)
         loss.backward()
         optimizer.step()
         if batch_idx % args.log_interval == 0:
@@ -254,14 +255,14 @@ def test():
     model.eval()
     test_loss = 0
     correct = 0
-    for im_data, target in test_loader:
+    for im_data, labels in test_loader:
+        im_data, labels = Variable(im_data, volatile=True), Variable(labels)
         if args.cuda:
-            im_data, target = im_data.cuda(), target.cuda()
-        im_data, target = Variable(im_data, volatile=True), Variable(target)
+            im_data, labels = im_data.cuda(), labels.cuda()
         output = model(im_data)
-        test_loss += functional.nll_loss(output, target, size_average=False).data[0]  # sum up batch loss
+        test_loss += functional.cross_entropy(output, labels, ignore_index=-1).data[0]  # sum up batch loss
         pred = output.data.max(1, keepdim=True)[1]  # get the index of the max log-probability
-        correct += pred.eq(target.data.view_as(pred)).cpu().sum()
+        correct += pred.eq(labels.data.view_as(pred)).cpu().sum()
 
     test_loss /= len(test_loader.dataset)
     print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
@@ -270,21 +271,16 @@ def test():
 
 
 def test_show_some_images():
-    test_im = test_loader.dataset[11]
+    # get data
+    test_im = train_loader.dataset[8]
     im_test = Variable(test_im[0]).data.numpy()
     im_test_l = Variable(test_im[1]).data.numpy()
-
-    print(im_test.shape, im_test_l.shape)
-
-    im_test = im_test * 1.
     im_test = np.transpose(im_test, (1, 2, 0))
-    im_test_l = im_test_l * 1.
-    #print(np.shape(im_test_l))
 
+    # show figures
     plt.figure()
     plt.imshow(im_test[:, :, :3])
     plt.show()
-
 
     plt.figure()
     plt.imshow(im_test_l)
@@ -292,9 +288,8 @@ def test_show_some_images():
 
 
 if __name__ == '__main__':
-
     for epoch in range(1, args.epochs + 1):
         train(epoch)
         test()
         #test_show_some_images()
-        #break
+        # break

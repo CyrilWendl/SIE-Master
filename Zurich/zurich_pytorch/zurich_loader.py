@@ -22,11 +22,11 @@ class ZurichLoader(data.Dataset):
 
         # Load image indexes, depending on set:
         if split == 'train':
-            self.img_idx = np.arange(1, int(len(im_patches)*.6))
-        elif split == 'val':
-            self.img_idx = np.arange(int(len(im_patches)*.6)+1, int(len(im_patches)*.8))
-        else:
+            self.img_idx = np.arange(1, int(len(im_patches)*.8))
+        else:  # elif split == 'val':
             self.img_idx = np.arange(int(len(im_patches)*.8)+1, int(len(im_patches)))
+        #else:
+            #self.img_idx = np.arange(int(len(im_patches)*.8)+1, int(len(im_patches)))
 
         self.im_patches = [im_patches[i] for i in self.img_idx]
         self.gt_patches= [gt_patches[i] for i in self.img_idx]
@@ -58,9 +58,10 @@ class ZurichLoader(data.Dataset):
         # and then load it again into a torch tensor (img = torch.from_numpy(img)).
 
         # TODO transformations using torchsample
-        img = np.asarray(img).transpose((2,0,1)).astype(np.float64)
-        img = torch.from_numpy(img).type(torch.FloatTensor)
-        gt = torch.from_numpy(gt).type(torch.LongTensor)  # .astype(np.double))
+        img = np.asarray(img).transpose((2, 0, 1)).astype(np.float64)
+        img = torch.from_numpy(img.copy()).type(torch.FloatTensor)
+        gt[gt == 0] = -1
+        gt = torch.from_numpy(gt.copy()).type(torch.LongTensor)  # .astype(np.double))
 
         return img, gt
 
