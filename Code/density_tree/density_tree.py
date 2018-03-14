@@ -14,7 +14,7 @@ class DensityNode:
         self.split_value = None  # the split value
         self.split_dimension = None  # the split dimension
         self.dataset = None
-
+        self.dataset_len = None
 
         # unlabelled data
         self.entropy = None  # entropy, for unlabelled nodes
@@ -27,12 +27,15 @@ class DensityNode:
         self.left_cov = None
         self.left_mean = None
         self.left_dataset = None
+        self.left_dataset_len = None
 
         self.right = None
         self.right_entropy = None
         self.right_cov = None
         self.right_mean = None
         self.right_dataset = None
+        self.right_dataset_len = None
+        self.right_dataset_pct = None
 
     def get_root(self):
         if self.parent is not None:
