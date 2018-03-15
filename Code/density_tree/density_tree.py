@@ -1,7 +1,7 @@
 """
 Density Tree Data Structure
 """
-
+import numpy as np
 
 class DensityNode:
     """
@@ -13,8 +13,6 @@ class DensityNode:
         self.parent = None  # parent node
         self.split_value = None  # the split value
         self.split_dimension = None  # the split dimension
-        self.dataset = None
-        self.dataset_len = None
 
         # unlabelled data
         self.entropy = None  # entropy, for unlabelled nodes
@@ -26,17 +24,51 @@ class DensityNode:
         self.left_entropy = None
         self.left_cov = None
         self.left_mean = None
-        self.left_dataset = None
-        self.left_dataset_len = None
+        self.left_dataset_pct = None
 
         self.right = None
         self.right_entropy = None
         self.right_cov = None
         self.right_mean = None
-        self.right_dataset = None
-        self.right_dataset_len = None
         self.right_dataset_pct = None
 
+        
+    def get_dataset(self, side, dataset):
+        """
+        get left or right dataset at this level by applying all splits at higher levels of the tree to the dataset. 
+        Used in creating the tree.
+        """
+        parents, parents_side = [], []
+        node_parent = self.parent
+        node_current = self
+        while node_parent is not None:
+            parents.append(node_parent)
+            if node_parent.left == node_current:
+                parents_side.append('l')
+            else:
+                parents_side.append('r')
+                
+            node_current = node_current.parent
+            node_parent = node_parent.parent
+            
+        dataset_split = dataset.copy()
+        
+        for i in range(len(parents)):
+            parent = parents.pop()
+            split = parents_side.pop()
+            if split == 'l':
+                dataset_split = dataset_split[dataset_split[:, parent.split_dimension] < parent.split_value]
+            else:
+                dataset_split = dataset_split[dataset_split[:, parent.split_dimension] > parent.split_value]
+                
+        if side == 'left':
+            return dataset_split[dataset_split[:, self.split_dimension] < self.split_value]
+        elif side == 'right':
+            return dataset_split[dataset_split[:, self.split_dimension] > self.split_value]
+        else:
+            return dataset_split
+        
+            
     def get_root(self):
         if self.parent is not None:
             return self.parent.get_root()
@@ -58,7 +90,8 @@ class DensityNode:
     def highest_entropy(self, node, e, side):
         """get the node in tree which has the highest entropy,
         searching from the root node to the bottom
-        for every node, check the entropies left and right after splitting
+        for every node, check the entropies left and right after 
+        ting
         if the node is not split yet to one of the sides and the entropy on the unsplit side
         exceeds the  maximum entropy, return the node.
         """
@@ -87,12 +120,10 @@ class DensityNode:
 
     def __format__(self, **kwargs):
         print('-' * 15 + '\nDensity Tree Node: \n' + '-' * 15 + '\n split dimension: ' + str(self.split_dimension))
-        print("split value: " + str(self.split_value))
-
+        print('split value' + str(self.split_value))
         print('entropy: ' + str(self.entropy))
         print('mean: ' + str(self.mean))
         print('cov: ' + str(self.cov))
         print('left entropy: ' + str(self.left_entropy))
         print('right entropy:' + str(self.right_entropy))
-
-        print("node height: %i " % (self.get_root().depth() - self.depth()))
+        print('node height: %i' % (self.get_root().depth() - self.depth()))

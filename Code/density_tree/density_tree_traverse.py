@@ -5,12 +5,12 @@ def descend_density_tree(data_point, node):
         if node.left is not None: # no leaf node
             return descend_density_tree(data_point, node.left)
         else:
-            return node.left_mean, node.left_cov, node.left_dataset_len/len(node.get_root().dataset_len)
+            return node.left_mean, node.left_cov, node.left_dataset_pct
     else:
         if node.right is not None: # no leaf node
             return descend_density_tree(data_point, node.right)
         else:
-            return node.right_mean, node.right_cov, node.right_dataset_len/len(node.get_root().dataset_len)
+            return node.right_mean, node.right_cov, node.right_dataset_pct
 
 
 def get_clusters(node, covs, means):
@@ -21,6 +21,7 @@ def get_clusters(node, covs, means):
     else:
         covs.append(node.left_cov)
         means.append(node.left_mean)
+        
     if node.right is not None:
         get_clusters(node.right, covs, means)
     else:
