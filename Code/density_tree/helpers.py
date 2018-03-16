@@ -167,7 +167,7 @@ def get_best_split(dataset, labelled=False, verbose=False):
     return dim_max, val_dim_max, ig_dims_vals, split_dims_vals
 
 
-def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, base=2):
+def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, n_grid = 50, base=2):
     """
     for one dimension, get information gain
     for labelled and unlabelled data
@@ -176,6 +176,7 @@ def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, base=2):
     :param dim: dimension for which all cut values are to be calculated
     :param entropy_f: entropy function to be used (labelled / unlabelled)
     :param base: base to use for entropy calculation
+    :param n_grid: resolution at which to search for optimal split value
     """
     ig_vals = []
     split_vals = []
@@ -183,7 +184,7 @@ def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, base=2):
     # loop over all possible cut values
     dataset_dim_min = np.min(dataset[:, dim])
     dataset_dim_max = np.max(dataset[:, dim])
-    iter_set = np.linspace(dataset_dim_min, dataset_dim_max, 100)
+    iter_set = np.linspace(dataset_dim_min, dataset_dim_max, n_grid)
 
     for split_val in iter_set:
         # split values
