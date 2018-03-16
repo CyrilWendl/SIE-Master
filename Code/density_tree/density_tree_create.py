@@ -63,7 +63,6 @@ def create_density_tree(dataset, clusters, parentnode=None, side_label=None, ver
         node_e, e, side = treenode.get_root().highest_entropy(None, 0, 'None')
         
         # recursively continue splitting
-        create_density_tree(dataset
-                            , clusters=clusters_left,
+        create_density_tree(dataset, clusters=clusters_left,
                             parentnode=node_e, side_label=side, verbose=verbose)  
     return treenode

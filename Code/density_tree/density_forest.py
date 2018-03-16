@@ -30,8 +30,29 @@ def density_forest_create(dataset, n_clusters, n_trees, subsample_pct, n_jobs, v
     return root_nodes
 
 
+def density_forest_traverse(dataset, root_nodes, thresh=.1):
+    """traverse random forest and get labels"""
 
-def density_forest_traverse(dataset, root_nodes, thresh=.1, verbose=False):
+    # get probability
+    probas = []
+    # traverse all points
+    for d in tqdm(dataset):
+        # traverse all trees
+        d_probas = []
+        for tree in root_nodes:
+            d_mean, d_cov, d_pct = descend_density_tree(d, tree)
+            if d_pct > thresh:
+                d_proba = multivariate_normal.pdf(d, d_mean, d_cov)#*d_pct
+                d_probas.append(d_proba)
+
+        d_proba = np.mean(d_probas)
+        probas.append(d_proba)
+
+    probas = np.asarray(probas)
+    return probas
+
+
+def density_forest_traverse_x(dataset, root_nodes, thresh=.1, verbose=False):
     """
     traverse random forest and get labels
     TO DO don't traverse all points individually!
@@ -48,7 +69,7 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, verbose=False):
     # get all clusters for all points in all trees
     if verbose:
         print("getting clusters for all points")
-    for d_idx, d in enumerate(dataset): 
+    for d_idx, d in enumerate(tqdm(dataset)): 
         # traverse all trees
         for tree in root_nodes:
             d_mean, d_cov, d_pct = descend_density_tree(d, tree) #  TODO consider using only majority cluster?
@@ -63,7 +84,7 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, verbose=False):
     # loop over every tree + cluster
     if verbose:
         print("getting probabilities")
-    for t in root_nodes:
+    for t in tqdm(root_nodes):
         covs, means = get_clusters(t,[],[])
         # loop over clusters
         for c, m in zip(covs, means):
@@ -78,7 +99,7 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, verbose=False):
     # loop over every point
     if verbose:
         print("getting mean probabilities") 
-    for d_idx, d in enumerate(dataset): 
+    for d_idx, d in enumerate(tqdm(dataset)): 
         d_mean_proba = np.nanmean(pairs_proba[np.equal(pairs_points,d_idx)])
         d_proba_mean.append(d_mean_proba)
    
