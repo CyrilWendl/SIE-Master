@@ -39,7 +39,7 @@ class PlotLosses(keras.callbacks.Callback):
         self.losses.append(logs.get('loss'))
         self.val_losses.append(logs.get('val_loss'))
         self.epoch += 1
-        fig, axes = plt.subplots(1, 3, sharex='True')
+        fig, axes = plt.subplots(1, 3, sharex=True)
         fig.set_size_inches((20, 6))
 
         clear_output()
