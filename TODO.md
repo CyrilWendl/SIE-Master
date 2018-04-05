@@ -1,10 +1,20 @@
 # To Do
-## Zurich Dataset
-- Leave out one class and compare accuracies in
-- Save Zurich helper functions as Python files
+
+## Code
 - Change code to PyTorch
 - Implement OA / AA accuracy
 
-## Decision Forests
-- Optimize multivariate pdf function
+## Ideas
+- Retrieve activation weights of all up-sampling layers
+- Apply to active learning
+
+## Report
+- Literature Review
+
+## Report Struture
+1. Literature Review
+2. Methodology
+3. Results
+4. Conclusion
+
 
