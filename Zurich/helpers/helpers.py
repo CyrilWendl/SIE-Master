@@ -28,8 +28,8 @@ def imgs_stretch_eq(imgs):
         p2 = np.percentile(im, 2)
         p98 = np.percentile(im, 98)
         for band in range(im.shape[-1]):
-            imgs_eq[idx_im][:, :, band] = exposure.rescale_intensity(im[:, :, band], in_range=(p2, p98))  # stretch
-            imgs_eq[idx_im][:, :, band] = exposure.equalize_hist(imgs_eq[idx_im][:, :, band])  # equalize
+            imgs_eq[idx_im][..., band] = exposure.rescale_intensity(im[..., band], in_range=(p2, p98))  # stretch
+            imgs_eq[idx_im][..., band] = exposure.equalize_hist(imgs_eq[idx_im][..., band])  # equalize
 
     # convert to np arrays
     imgs_eq = np.asarray(imgs_eq)
@@ -48,9 +48,9 @@ def gt_color_to_label(gt, colors, maj=False):
     # replace colors by new values
     for i in tqdm(range(len(colors))):
         for j in range(np.shape(gt)[0]):  # loop over images
-            gt_new[j][:, :, 0][np.all(gt[j] == colors[i], axis=-1)] = i  # np.argsort(colors)[i]
+            gt_new[j][..., 0][np.all(gt[j] == colors[i], axis=-1)] = i  # np.argsort(colors)[i]
 
-    gt_new = np.asarray([gt_new[j][:, :, 0] for j in range(np.shape(gt)[0])])  # only keep first band = label
+    gt_new = np.asarray([gt_new[j][..., 0] for j in range(np.shape(gt)[0])])  # only keep first band = label
 
     if maj:
         # return only majority label for each patch
@@ -92,10 +92,10 @@ def get_padded_patches(images, patch_size=64, stride=64):
             [int((im.shape[0]) / stride), int((im.shape[1]) / stride), patch_size, patch_size, im.shape[-1]])
         for i in range(np.shape(im)[-1]):  # loop bands
             # pad original image
-            padded = np.lib.pad(im[:, :, i], n_pad, 'reflect')
+            padded = np.lib.pad(im[..., i], n_pad, 'reflect')
 
             # extract patches
-            patches_im[:, :, :, :, i] = view_as_windows(padded, patch_size, step=stride)
+            patches_im[..., i] = view_as_windows(padded, patch_size, step=stride)
 
         patches_im = np.reshape(patches_im, (patches_im.shape[0] * patches_im.shape[1],
                                              patch_size, patch_size, im.shape[-1]))
@@ -130,7 +130,7 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
         if central_label:
             central_labels = []
             for patch_im_gt in patches_im_gt:
-                central_labels.append(patch_im_gt[int(patch_im_gt.shape[0]/2),int(patch_im_gt.shape[1]/2)])
+                central_labels.append(patch_im_gt[int(patch_im_gt.shape[0]/2), int(patch_im_gt.shape[1]/2)])
 
             patches_im_gt = np.asarray(central_labels)
 
@@ -162,8 +162,8 @@ def get_accuracy_probas(y_pred):
     :return: margin between highest and second highest class probabilities for every pixel
     """
     y_pred_rank = np.sort(y_pred, axis=-1)  # for every pixel, get the rank
-    y_pred_max1 = y_pred_rank[:, :, :, -1]  # highest proba
-    y_pred_max2 = y_pred_rank[:, :, :, -2]  # second highest proba
+    y_pred_max1 = y_pred_rank[..., -1]  # highest proba
+    y_pred_max2 = y_pred_rank[..., -2]  # second highest proba
     y_pred_acc = y_pred_max1 - y_pred_max2
     return y_pred_acc
 
@@ -236,7 +236,7 @@ def get_fig_overlay(im_1, im_2, thresh=.5, opacity=.3):
     :return: image with overlay
     """
     red_mask = im_1.copy() * 0
-    red_mask[:, :, 0] = 1
+    red_mask[..., 0] = 1
     im_overlay = im_1.copy()
     mask_vals = im_2 < thresh
     im_overlay[mask_vals] = im_overlay[mask_vals] * opacity + red_mask[mask_vals] * (1 - opacity)
