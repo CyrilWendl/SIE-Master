@@ -5,13 +5,15 @@
 - Implement OA / AA accuracy
 
 ## Ideas
-- Retrieve activation weights of all up-sampling layers
-- Apply to active learning
-- Harness variance of clusters in pixel values? 
-    - Make several predictions for same network / train several networks 
-    - weight accuracy by variance
-- Adapt loss function? Cf. https://arxiv.org/abs/1709.09844
+- Test on all layers
 - Test method on patch classification task?
+- Retrieve activation weights of all up-sampling layers
+- Adapt loss function? Cf. https://arxiv.org/abs/1709.09844
+- Apply to active learning (seen classes)
+
+## Baseline Methods
+- Confidence from Invariance to Image Transformations: https://arxiv.org/abs/1804.00657
+- Dropout as a Bayesian Approximation: https://arxiv.org/abs/1506.02142
 
 ## Report
 - Literature Review

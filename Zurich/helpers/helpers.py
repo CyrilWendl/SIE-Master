@@ -28,8 +28,8 @@ def imgs_stretch_eq(imgs):
         p2 = np.percentile(im, 2)
         p98 = np.percentile(im, 98)
         for band in range(im.shape[-1]):
-            imgs_eq[idx_im, :, :, band] = exposure.rescale_intensity(im[:, :, band], in_range=(p2, p98))  # stretch
-            imgs_eq[idx_im, :, :, band] = exposure.equalize_hist(imgs_eq[idx_im, :, :, band])  # equalize
+            imgs_eq[idx_im][:, :, band] = exposure.rescale_intensity(im[:, :, band], in_range=(p2, p98))  # stretch
+            imgs_eq[idx_im][:, :, band] = exposure.equalize_hist(imgs_eq[idx_im][:, :, band])  # equalize
 
     # convert to np arrays
     imgs_eq = np.asarray(imgs_eq)
@@ -105,9 +105,10 @@ def get_padded_patches(images, patch_size=64, stride=64):
     return patches
 
 
-def get_gt_patches(images_gt, patch_size=64, stride=64):
+def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
     """
     get ground truth patches for all images
+    :param central_label: whether to return only the central label or the entire patch
     :param images_gt: set of gt images for which to extract patches (n_images, width, height, n_channels)
     :param patch_size: size of each patch
     :param stride: horizontal and vertical stride between each patch
@@ -119,11 +120,19 @@ def get_gt_patches(images_gt, patch_size=64, stride=64):
         max_y = np.mod(im.shape[1], patch_size)
 
         im = im[:-max_x, :-max_y]  # image range divisible by patch_size
+
         padded = np.lib.pad(im, n_pad, 'reflect')
         patches_im_gt = view_as_windows(padded, patch_size, step=stride)
 
         patches_im_gt = np.reshape(patches_im_gt, (patches_im_gt.shape[0] * patches_im_gt.shape[1],
                                                    patch_size, patch_size)).astype('int')
+
+        if central_label:
+            central_labels = []
+            for patch_im_gt in patches_im_gt:
+                central_labels.append(patch_im_gt[int(patch_im_gt.shape[0]/2),int(patch_im_gt.shape[1]/2)])
+
+            patches_im_gt = np.asarray(central_labels)
 
         gt_patches.append(patches_im_gt)
     gt_patches = np.array(gt_patches)
