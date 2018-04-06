@@ -16,26 +16,24 @@ def im_load(path, offset=2):
 
 
 def imgs_stretch_eq(imgs):
-    """perform histogram stretching"""
-    imgs_stretch, imgs_eq = [], []
-    for im in imgs:
+    """
+    perform histogram stretching and equalization
+    :param imgs: images to stretch and equalize
+    :return imgs_eq: equalized images
+    """
+
+    imgs_eq = imgs.copy()
+    for idx_im, im in enumerate(imgs):
         # Contrast stretching
         p2 = np.percentile(im, 2)
         p98 = np.percentile(im, 98)
-        img_stretch = im.copy()
-        img_eq = im.copy()
         for band in range(im.shape[-1]):
-            img_stretch[:, :, band] = exposure.rescale_intensity(im[:, :, band], in_range=(p2, p98))
-            img_eq[:, :, band] = exposure.equalize_hist(img_stretch[:, :, band])
-
-        # append images
-        imgs_stretch.append(img_stretch)
-        imgs_eq.append(img_eq)
+            imgs_eq[idx_im, :, :, band] = exposure.rescale_intensity(im[:, :, band], in_range=(p2, p98))  # stretch
+            imgs_eq[idx_im, :, :, band] = exposure.equalize_hist(imgs_eq[idx_im, :, :, band])  # equalize
 
     # convert to np arrays
-    imgs_stretch = np.asarray(imgs_stretch)
     imgs_eq = np.asarray(imgs_eq)
-    return imgs_stretch, imgs_eq
+    return imgs_eq
 
 
 def gt_color_to_label(gt, colors, maj=False):

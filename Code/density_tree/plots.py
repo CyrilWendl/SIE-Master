@@ -71,9 +71,9 @@ def plot_data(data, title, ax, n_clusters=None, save=False, lines_x=None, lines_
 
     #  covariance
     def eigsorted(cov):
-        vals, vecs = np.linalg.eigh(cov)
-        order = vals.argsort()[::-1]
-        return vals[order], vecs[:, order]
+        _vals, _vecs = np.linalg.eigh(cov)
+        order = _vals.argsort()[::-1]
+        return _vals[order], _vecs[:, order]
 
     nstd = 2
     if covs is not None:

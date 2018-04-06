@@ -3,11 +3,12 @@ import numpy as np
 from .density_tree import DensityNode
 from .helpers import entropy_gaussian, get_best_split, split
 
+
 def create_density_tree(dataset, clusters, parentnode=None, side_label=None, verbose=False):
     """
     create decision tree be performing initial split, then recursively splitting until all labels are in unique bins
     Principle:
-    - Create an initial split, saves split dimension and value as well as associated entropies on nodeand on both split sides
+    - Create an initial split, saves split dimension and value as well as associated entropies on both sides
     - At each node, save the percentage of the data as len(right)/len(dataset) and len(left)/len(dataset). 
     - Find the node which has the highest entropy to either of the right or left split side. 
     - At each new node, get the corresponding datasets from the previously created nodes and find best split value
@@ -25,7 +26,7 @@ def create_density_tree(dataset, clusters, parentnode=None, side_label=None, ver
     dataset_node = dataset
     
     # split
-    if parentnode is not None: # if we are not at the first split
+    if parentnode is not None:  # if we are not at the first split
         # link parent node to new node
         treenode.parent = parentnode
         if side_label == 'left':

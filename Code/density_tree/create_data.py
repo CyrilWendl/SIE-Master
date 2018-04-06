@@ -85,10 +85,10 @@ def create_data(n_clusters, dimensions, covariance, npoints, minrange=1, maxrang
 
     labels = np.asarray(labels).flatten()
 
-    dataset = np.concatenate(dataset, axis=1) # merge all clusters to one big matrix [(n_pts*ncluster) * n_dims]
+    dataset = np.concatenate(dataset, axis=1)  # merge all clusters to one big matrix [(n_pts*ncluster) * n_dims]
 
-    if labelled: # add label on top, return clusters
-        dataset = np.concatenate((dataset,[labels]))
+    if labelled:  # add label on top, return clusters
+        dataset = np.concatenate((dataset, [labels]))
 
     return dataset.T
 

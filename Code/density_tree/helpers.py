@@ -129,9 +129,9 @@ def get_best_split(dataset, labelled=False, verbose=False):
     for a given dimension, get best split based on information gain
     for labelled and unlabelled data
 
+    :param verbose: print verbose messages for debugging
     :param dataset: dataset for which to find the best split
     :param labelled: indicator whether dataset contains labels or not
-
     :return dim_max: best split dimension
     :return val_dim_max: value at best split dimensions
     :return ig_dims_vals: information gains for all split values in all possible split dimensions
@@ -167,7 +167,7 @@ def get_best_split(dataset, labelled=False, verbose=False):
     return dim_max, val_dim_max, ig_dims_vals, split_dims_vals
 
 
-def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, n_grid = 50, base=2):
+def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
     """
     for one dimension, get information gain
     for labelled and unlabelled data

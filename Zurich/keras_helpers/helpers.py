@@ -1,5 +1,6 @@
-from keras import backend as K
+from keras import backend as k
 import numpy as np
+
 
 def get_activations(model, layer, im_batch):
     """
@@ -9,7 +10,6 @@ def get_activations(model, layer, im_batch):
     :param im_batch: image batch
     :return: activations for every batch
     """
-    get_activations = K.function([model.layers[0].input, K.learning_phase()], [model.layers[layer].output,])
-    activations = get_activations([im_batch, 0])
+    get_activations_keras = k.function([model.layers[0].input, k.learning_phase()], [model.layers[layer].output, ])
+    activations = get_activations_keras([im_batch, 0])
     return np.asarray(activations[0])
-

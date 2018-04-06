@@ -1,7 +1,5 @@
-"""
-Density Tree Data Structure
-"""
-import numpy as np
+""" Density Tree Data Structure """
+
 
 class DensityNode:
     """
@@ -32,7 +30,6 @@ class DensityNode:
         self.right_mean = None
         self.right_dataset_pct = None
 
-        
     def get_dataset(self, side, dataset):
         """
         get left or right dataset at this level by applying all splits at higher levels of the tree to the dataset. 
@@ -68,7 +65,6 @@ class DensityNode:
         else:
             return dataset_split
         
-            
     def get_root(self):
         if self.parent is not None:
             return self.parent.get_root()

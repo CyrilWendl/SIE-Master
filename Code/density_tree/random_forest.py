@@ -45,7 +45,7 @@ def random_forest_build(dataset, ntrees, subsample_pct, n_jobs):
         n_jobs = multiprocessing.cpu_count()
 
     root_nodes = Parallel(n_jobs=n_jobs, verbose=1)(
-        delayed(create_decision_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct)) for i in range(ntrees))
+        delayed(create_decision_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct)) for _ in range(ntrees))
     return root_nodes
 
 

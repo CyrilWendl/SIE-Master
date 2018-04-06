@@ -7,56 +7,13 @@ import torch.optim as optim
 from torch.utils import data
 from unet import UNet
 from zurich_loader import ZurichLoader
-from torchvision import transforms
 from torch.autograd import Variable
 from skimage import exposure
 from skimage.io import imread
-from skimage.util import *
 import matplotlib.pyplot as plt
 import natsort as ns
 import os
-from tqdm import tqdm
 from collections import OrderedDict
-
-
-def get_gt_patches(images_gt, patch_size=64):
-    """
-    get ground truth patches for all images
-    """
-    patches = []
-    for im in tqdm(images_gt):
-        patches_im_gt = view_as_blocks(im, block_shape=(patch_size, patch_size))
-        n_patches = int((im.shape[0] / patch_size) ** 2)  # 25*25 = 625 per image
-        patches_im_gt = np.reshape(patches_im_gt, (n_patches, patch_size, patch_size))
-
-        patches.append(patches_im_gt)
-    patches = np.array(patches)
-    patches = np.asarray([patches[i][j] for i in range(len(patches)) for j in range(len(patches[i]))])
-    # patches = np.concatenate(patches, axis = 0)
-    return np.asarray(patches)
-
-
-def get_padded_patches(images, patch_size=16, window_size=64):
-    """
-    get padded (mirror) patches for all images
-    """
-    patches = []
-    for im in tqdm(images):
-        patches_im = np.zeros(
-            [int(im.shape[0] / patch_size), int(im.shape[0] / patch_size), window_size, window_size, im.shape[-1]])
-        for i in range(im.shape[-1]):
-            padded = np.lib.pad(im[:, :, i], int(np.floor((window_size - patch_size) / 2)), 'reflect')
-            patches_im[:, :, :, :, i] = view_as_windows(padded, window_size, step=patch_size)
-
-        n_patches = int((im.shape[0] / patch_size) ** 2)  # 25*25 = 625 per image
-        patches_im = np.reshape(patches_im, (n_patches, window_size, window_size, im.shape[2]))
-
-        patches.append(patches_im)
-    patches = np.array(patches)
-    patches = np.asarray([patches[i][j] for i in range(len(patches)) for j in range(len(patches[i]))])
-    # patches = np.concatenate(patches, axis = 0)
-    return patches
-
 
 # Training settings
 parser = argparse.ArgumentParser(description='PyTorch UNet Land Cover Classification')
@@ -95,8 +52,6 @@ def im_load(path, max_size=512, offset=2):  # for now, only return highest [max_
     image = np.asarray(imread(path)).astype(float)
     image = image[offset:max_size+offset, offset:max_size+offset,:]
     return image
-
-# TODO load images 2 * max_size separately
 
 
 def imgs_stretch_eq(im):

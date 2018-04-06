@@ -25,7 +25,7 @@ def density_forest_create(dataset, n_clusters, n_trees, subsample_pct, n_jobs, v
 
     root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
         delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), n_clusters)
-        for i in range(n_trees))
+        for _ in range(n_trees))
 
     return root_nodes
 
@@ -42,7 +42,7 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1):
         for tree in root_nodes:
             d_mean, d_cov, d_pct = descend_density_tree(d, tree)
             if d_pct > thresh:
-                d_proba = multivariate_normal.pdf(d, d_mean, d_cov)#*d_pct
+                d_proba = multivariate_normal.pdf(d, d_mean, d_cov)
                 d_probas.append(d_proba)
 
         d_proba = np.mean(d_probas)
@@ -62,9 +62,9 @@ def density_forest_traverse_x(dataset, root_nodes, thresh=.1, verbose=False):
     """
     
     # set up variables
-    pairs_points = [] # indexes of data points
-    pairs_mean = [] # mean of mean of clusters belonging to datapoints
-    pairs_pct = [] # percentage of data points in cluster
+    pairs_points = []  # indexes of data points
+    pairs_mean = []  # mean of mean of clusters belonging to datapoints
+    pairs_pct = []  # percentage of data points in cluster
     
     # get all clusters for all points in all trees
     if verbose:
@@ -72,35 +72,34 @@ def density_forest_traverse_x(dataset, root_nodes, thresh=.1, verbose=False):
     for d_idx, d in enumerate(tqdm(dataset)): 
         # traverse all trees
         for tree in root_nodes:
-            d_mean, d_cov, d_pct = descend_density_tree(d, tree) #  TODO consider using only majority cluster?
+            d_mean, d_cov, d_pct = descend_density_tree(d, tree)
             if d_pct > thresh:
                 pairs_points.append(d_idx)
-                pairs_mean.append(np.mean(d_mean,-1))
+                pairs_mean.append(np.mean(d_mean, -1))
                 pairs_pct.append(d_pct)
      
-    pairs_proba = np.zeros(len(pairs_points)) # for every point + tree there will be one probability if d_pct > thresh    
+    pairs_proba = np.zeros(len(pairs_points))  # for every point + tree there will be one probability if d_pct > thresh
     pairs_points = np.asarray(pairs_points)
     
     # loop over every tree + cluster
     if verbose:
         print("getting probabilities")
     for t in tqdm(root_nodes):
-        covs, means = get_clusters(t,[],[])
+        covs, means = get_clusters(t, [], [])
         # loop over clusters
         for c, m in zip(covs, means):
-            indexes = (np.equal(pairs_mean,np.mean(m,-1)))
+            indexes = (np.equal(pairs_mean, np.mean(m, -1)))
             if sum(indexes * 1):
-                sub_pairs_points = dataset[pairs_points[indexes],:]
+                sub_pairs_points = dataset[pairs_points[indexes], :]
                 pairs_probas = multivariate_normal.pdf(sub_pairs_points, m, c)
                 pairs_proba[indexes] = pairs_probas
-            
             
     d_proba_mean = []
     # loop over every point
     if verbose:
         print("getting mean probabilities") 
     for d_idx, d in enumerate(tqdm(dataset)): 
-        d_mean_proba = np.nanmean(pairs_proba[np.equal(pairs_points,d_idx)])
+        d_mean_proba = np.nanmean(pairs_proba[np.equal(pairs_points, d_idx)])
         d_proba_mean.append(d_mean_proba)
    
     d_proba_mean = np.asarray(d_proba_mean)

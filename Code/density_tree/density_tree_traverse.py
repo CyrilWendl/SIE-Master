@@ -2,12 +2,12 @@ def descend_density_tree(data_point, node):
     """given some test data and decision tree, assign the correct label using a decision tree"""
 
     if data_point[node.split_dimension] < node.split_value:
-        if node.left is not None: # no leaf node
+        if node.left is not None:  # no leaf node
             return descend_density_tree(data_point, node.left)
         else:
             return node.left_mean, node.left_cov, node.left_dataset_pct
     else:
-        if node.right is not None: # no leaf node
+        if node.right is not None:  # no leaf node
             return descend_density_tree(data_point, node.right)
         else:
             return node.right_mean, node.right_cov, node.right_dataset_pct
