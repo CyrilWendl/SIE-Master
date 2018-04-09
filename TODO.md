@@ -2,14 +2,14 @@
 
 ## Code
 - Change code to PyTorch
+- Write .py files for notebooks
 - Implement OA / AA accuracy
 
 ## Ideas
-- Test on all layers
-- Test method on patch classification task?
-- Retrieve activation weights of all up-sampling layers
-- Adapt loss function? Cf. https://arxiv.org/abs/1709.09844
+- Patches: test all classes
+- Adapt loss function? https://arxiv.org/abs/1709.09844
 - Apply to active learning (seen classes)
+- Take into account density forest prediction variability
 
 ## Baseline Methods
 - Confidence from Invariance to Image Transformations: https://arxiv.org/abs/1804.00657
@@ -18,10 +18,12 @@
 ## Report
 - Literature Review
 
-## Report Struture
+## Report Structure
 1. Literature Review
 2. Methodology
 3. Results
+    - MNIST 
+    - Zurich Dataset
 4. Conclusion
 
 
