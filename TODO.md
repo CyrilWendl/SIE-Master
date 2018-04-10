@@ -2,7 +2,6 @@
 
 ## Code
 - Change code to PyTorch
-- Write .py files for notebooks
 - Implement OA / AA accuracy
 
 ## Ideas
