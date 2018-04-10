@@ -66,19 +66,22 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=True, rf
                 im = np.rot90(im, k)
                 gt = np.rot90(gt, k)
 
+        # Scale image between [0, 1]
+        im -= np.min(im)
+        im /= np.max(im)
+
         # noise injection (jittering), only for image
         if jitter:
             if np.random.randint(2):
                 noise = np.random.normal(0, .01, np.shape(im))
                 im += noise
 
-        # Scale image between [0, 1]
-        im -= np.min(im)
-        im /= np.max(im)
-
         im_patches_t.append(im)
         gt_patches_t.append(gt)
 
+    im_patches_t = np.asarray(im_patches_t)
+    gt_patches_t = np.asarray(gt_patches_t)
+    
     if flag_singleimg:
         return im_patches_t[0], gt_patches_t[0]
     else:
