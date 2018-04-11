@@ -241,3 +241,22 @@ def get_fig_overlay(im_1, im_2, thresh=.5, opacity=.3):
     mask_vals = im_2 < thresh
     im_overlay[mask_vals] = im_overlay[mask_vals] * opacity + red_mask[mask_vals] * (1 - opacity)
     return im_overlay
+
+
+def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
+    """
+    create non-overlapping patches from overlapping patches in prediction
+    :param imgs: original images
+    :param patches: overlapping patches in shape (n_images, n_patches, patch_size, patch_size)
+    :param idx_imgs: indexes of corresponding images
+    :param patch_size: size of patches
+    :param stride: central overlap between patches
+    :return patches_wo_overlap: new patches without overlap
+    """
+    patches_wo_overlap = []
+    for idx, idx_im in enumerate(idx_imgs):
+        act_im = convert_patches_to_image(imgs, patches, img_idx=idx_im,
+                                          img_start=idx_imgs[0], patch_size=patch_size, stride=stride)
+        patches_wo_overlap.append(get_padded_patches(act_im[np.newaxis], patch_size, patch_size))
+
+    return np.asarray(patches_wo_overlap)
