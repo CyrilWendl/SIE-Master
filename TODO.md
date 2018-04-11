@@ -3,6 +3,7 @@
 ## Code
 - Change code to PyTorch
 - Implement OA / AA accuracy
+- Test with Euclidian Distance to Cluster Centers
 
 ## Ideas
 - Patches: test all classes

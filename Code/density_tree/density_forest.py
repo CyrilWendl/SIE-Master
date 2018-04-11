@@ -75,7 +75,7 @@ def density_forest_traverse_x(dataset, root_nodes, thresh=.1, verbose=False):
             d_mean, d_cov, d_pct = descend_density_tree(d, tree)
             if d_pct > thresh:
                 pairs_points.append(d_idx)
-                pairs_mean.append(np.mean(d_mean, -1))
+                pairs_mean.append(np.mean(d_mean, -1)) # TODO replace by cluster id (reduce computations) -> leaf nodes
                 pairs_pct.append(d_pct)
      
     pairs_proba = np.zeros(len(pairs_points))  # for every point + tree there will be one probability if d_pct > thresh
