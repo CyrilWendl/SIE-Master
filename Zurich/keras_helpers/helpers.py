@@ -5,7 +5,7 @@ from helpers.helpers import get_offset
 
 
 def get_activations(imgs, model, layer_idx, img_patches, img_ids, batch_size=20,
-                    patch_size=64, stride=64, n_filters=32):
+                    patch_size=64, stride=64):
     """
     get activations for a set of patches
     :param imgs: set of original images
@@ -16,8 +16,8 @@ def get_activations(imgs, model, layer_idx, img_patches, img_ids, batch_size=20,
     :param batch_size: number of patches for which to get activations (chose proportional to available memory)
     :param patch_size: size of the patches
     :param stride: number of overlapping pixels between patches
-    :param n_filters: number of filters in the model layer to extract
     """
+    n_filters = model.layers[layer_idx].filters
     act_imgs = []
     get_activations_keras = k.function([model.layers[0].input, k.learning_phase()], [model.layers[layer_idx].output, ])
     for img_idx in img_ids:
