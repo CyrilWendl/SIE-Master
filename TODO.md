@@ -1,7 +1,7 @@
 # To Do
-## Code 
+## General
 - Patches: test all classes, compare euclidean to PDF
-- PyTorch Code
+- Change code to PyTorch 
 - Adapt loss function, https://arxiv.org/abs/1709.09844
 - Apply to active learning (seen classes)
 - Take into account density forest prediction variability
