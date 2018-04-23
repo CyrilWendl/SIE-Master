@@ -36,7 +36,7 @@ def density_forest_create(dataset, n_clusters, n_trees, subsample_pct, n_jobs, v
     return root_nodes
 
 
-def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal'):
+def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal', mode_mean='mean'):
     """
     traverse density forest and get mean probability for point to belong to the leaf clusters of each tree
     """
@@ -56,4 +56,8 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal'):
             else:
                 pairs_proba[d_idx, t_idx] = np.nan
 
-    return np.nanmean(pairs_proba, axis=-1)
+    if mode_mean=='mean':
+        return np.nanmean(pairs_proba, axis=-1)
+    else:
+        return np.nanmedian(pairs_proba, axis=-1)
+    # TODO try with mode instead of mean
