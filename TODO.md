@@ -1,7 +1,5 @@
 # To Do
-## General
-- Patches: test all classes, compare euclidean to PDF
-- Change code to PyTorch 
+## General 
 - Adapt loss function, https://arxiv.org/abs/1709.09844
 - Apply to active learning (seen classes)
 - Take into account density forest prediction variability
@@ -10,6 +8,8 @@
     - Dropout as a Bayesian Approximation: https://arxiv.org/abs/1506.02142
 - Split Criterion: Nb. points > dimensions, tree height
 
+## Ideas 
+- Change Code to PyTorch
 
 ## Report
 - Literature Review
