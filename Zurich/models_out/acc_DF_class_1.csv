@@ -1,0 +1,16 @@
+\begin{tabular}{lrr}
+\toprule
+{} &  Average Certainty &  Nans \\
+Class          &                    &       \\
+\midrule
+Roads          &       3.897807e-08 &   0.0 \\
+Buildings      &       5.905540e-08 &   0.0 \\
+Trees          &       2.347513e-06 &   0.0 \\
+Grass          &       8.151542e-05 &   0.0 \\
+Bare Soil      &       1.810636e-07 &   0.0 \\
+Water          &       2.604485e-09 &   0.0 \\
+Railways       &       1.994043e-08 &   0.0 \\
+Swimming Pools &       7.791330e-14 &   0.0 \\
+\bottomrule
+\end{tabular}
+
