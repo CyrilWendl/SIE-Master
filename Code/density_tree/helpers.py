@@ -1,6 +1,7 @@
 import numpy as np
 from tqdm import tqdm
 
+
 def entropy(labels, base=np.e):  # [1]
     """
     Calculate the entropy for a set of labels.
@@ -204,3 +205,17 @@ def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
         ig_vals.append(ig)
 
     return np.array(ig_vals), np.array(split_vals)
+
+
+def rotate(origin, point, angle):
+    """
+    Rotate a point counterclockwise by a given angle around a given origin.
+
+    The angle should be given in radians.
+    """
+    ox, oy = origin
+    px, py = point
+
+    qx = ox + np.cos(angle) * (px - ox) - np.sin(angle) * (py - oy)
+    qy = oy + np.sin(angle) * (px - ox) + np.cos(angle) * (py - oy)
+    return qx, qy
