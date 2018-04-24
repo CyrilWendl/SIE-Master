@@ -6,11 +6,11 @@ from .helpers import entropy_gaussian, get_best_split, split
 
 def create_density_tree(dataset, clusters, parentnode=None, side_label=None, verbose=False):
     """
-    create decision tree be performing initial split, then recursively splitting until all labels are in unique bins
+    create decision tree be performing initial split, then recursively splitting until all points are assigned a cluster
     Principle:
     - Create an initial split, saves split dimension and value as well as associated entropies on both sides
     - At each node, save the percentage of the data as len(right)/len(dataset) and len(left)/len(dataset). 
-    - Find the node which has the highest entropy to either of the right or left split side. 
+    - Find the node which has the highest entropy to either of both sides of all nodes of the current tree.
     - At each new node, get the corresponding datasets from the previously created nodes and find best split value
     :param dataset: the dataset for which to create a tree (usually a subsample of the total dataset)
     :param clusters: remaining number of clusters to create

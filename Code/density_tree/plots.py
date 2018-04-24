@@ -7,7 +7,7 @@ import numpy as np
 
 
 def plot_data(data, title, ax, n_clusters=None, save=False, lines_x=None, lines_y=None,
-              labels=True, minrange=1, maxrange=100, covariance=2, grid_eval=None, show_data=True, means=None,
+              labels=True, minrange=1, maxrange=100, margin=2, grid_eval=None, show_data=True, means=None,
               covs=None):
     """
     Generic function to plot randomly generated labelled or unlabelled data.
@@ -21,7 +21,7 @@ def plot_data(data, title, ax, n_clusters=None, save=False, lines_x=None, lines_
     :param labels: [True | False] indicator whether data contains labels
     :param minrange: data parameters for setting axis limits
     :param maxrange: data parameters for setting axis limits
-    :param covariance: data parameters for setting axis limits
+    :param margin: data parameters for setting axis limits
     :param grid_eval: whether to show evaluation on regular grid
     :param show_data: whether to show evaluation on regular grid
     :param means: parameters to show covariance ellipse with unlabelled data
@@ -66,10 +66,10 @@ def plot_data(data, title, ax, n_clusters=None, save=False, lines_x=None, lines_
         ax.pcolormesh(xx, yy, grid, alpha=0.2, cmap='rainbow')
         # ax.set_clim(y.min(), y.max())
 
-    ax.set_xlim([minrange - 4 * np.mean(covariance), maxrange + 4 * np.mean(covariance)])
-    ax.set_ylim([minrange - 4 * np.mean(covariance), maxrange + 4 * np.mean(covariance)])
+    ax.set_xlim([minrange - margin, maxrange + margin])
+    ax.set_ylim([minrange - margin, maxrange + margin])
 
-    #  covariance
+    #  covariance ellipses
     def eigsorted(cov):
         _vals, _vecs = np.linalg.eigh(cov)
         order = _vals.argsort()[::-1]
@@ -103,10 +103,10 @@ def visualize_decision_boundaries(dataset, rootnode, minrange, maxrange, rf=Fals
 
     fig.set_size_inches((15, 6))
     plot_data(clusters, "Training Data and Splits", axes[0], n_clusters=len(clusters), minrange=minrange,
-              maxrange=maxrange, covariance=0, grid_eval=dataset_grid_eval, show_data=True)
+              maxrange=maxrange, margin=0, grid_eval=dataset_grid_eval, show_data=True)
 
     plot_data(clusters, "Splits", axes[1], n_clusters=len(clusters), minrange=minrange,
-              maxrange=maxrange, covariance=0, grid_eval=dataset_grid_eval, show_data=False)
+              maxrange=maxrange, margin=0, grid_eval=dataset_grid_eval, show_data=False)
 
     if save:
         plt.savefig(savename, bbox_inches='tight', pad_inches=0)
