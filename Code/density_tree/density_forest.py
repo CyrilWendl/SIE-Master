@@ -16,11 +16,11 @@ def my_normal(x, mu, cov):
     return 1/a*np.exp(b)
 
 
-def density_forest_create(dataset, n_clusters, n_trees, subsample_pct, n_jobs, verbose=1):
+def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_jobs, verbose=1):
     """
     Create random forest trees
     :param dataset: entire dataset on which to create trees
-    :param n_clusters: number of clusters in which to partition each data subset
+    :param max_depth: maximum depth for each tree
     :param n_trees: number of trees to create
     :param subsample_pct: percentage of original dataset on which to create trees
     :param n_jobs: number of processors to use for parallel processing. If -1, all processors are used
@@ -30,13 +30,13 @@ def density_forest_create(dataset, n_clusters, n_trees, subsample_pct, n_jobs, v
         n_jobs = multiprocessing.cpu_count()
 
     root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
-        delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), n_clusters)
+        delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), max_depth, min_subset=min_subset)
         for _ in range(n_trees))
 
     return root_nodes
 
 
-def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal', mode_mean='mean'):
+def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal'):
     """
     traverse density forest and get mean probability for point to belong to the leaf clusters of each tree
     """
@@ -56,8 +56,6 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal', mod
             else:
                 pairs_proba[d_idx, t_idx] = np.nan
 
-    if mode_mean=='mean':
-        return np.nanmean(pairs_proba, axis=-1)
-    else:
-        return np.nanmedian(pairs_proba, axis=-1)
-    # TODO try with mode instead of mean
+    return np.nanmean(pairs_proba, axis=-1)
+
+

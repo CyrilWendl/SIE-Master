@@ -78,10 +78,11 @@ class DensityNode:
         return False
 
     def depth(self):
-        """get tree depth"""
-        left_depth = self.left.depth() if self.left else 0
-        right_depth = self.right.depth() if self.right else 0
-        return max(left_depth, right_depth) + 1
+        """get node depth"""
+        if self.parent is not None:
+            return 1 + self.parent.depth()
+        else:
+            return 0
 
     def highest_entropy(self, node, e, side):
         """get the node in tree which has the highest entropy,
