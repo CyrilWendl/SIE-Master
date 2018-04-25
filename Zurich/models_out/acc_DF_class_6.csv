@@ -3,14 +3,14 @@
 {} &  Average Certainty &  Nans \\
 Class          &                    &       \\
 \midrule
-Roads          &              0.001 & 0.802 \\
-Buildings      &              0.005 & 0.702 \\
-Trees          &              0.001 & 0.992 \\
-Grass          &              0.000 & 0.997 \\
-Bare Soil      &              0.001 & 0.982 \\
-Water          &              0.000 & 0.799 \\
-Railways       &              0.005 & 0.713 \\
-Swimming Pools &              0.002 & 0.997 \\
+Roads          &       2.429536e-06 &   0.0 \\
+Buildings      &       7.463786e-06 &   0.0 \\
+Trees          &       3.135891e-04 &   0.0 \\
+Grass          &       5.665228e-04 &   0.0 \\
+Bare Soil      &       2.042098e-12 &   0.0 \\
+Water          &       5.338679e-08 &   0.0 \\
+Railways       &       7.359483e-06 &   0.0 \\
+Swimming Pools &       3.595867e-16 &   0.0 \\
 \bottomrule
 \end{tabular}
 
