@@ -4,27 +4,25 @@ from .density_tree import DensityNode
 from .helpers import entropy_gaussian, get_best_split, split
 
 
-def create_density_tree(dataset, clusters, parentnode=None, side_label=None, verbose=False):
+def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None, verbose=False, n_max_dim=0):
     """
-    create decision tree be performing initial split, then recursively splitting until all points are assigned a cluster
+    create decision tree, using as a stopping criterion a maximum tree depth criterion
     Principle:
-    - Create an initial split, saves split dimension and value as well as associated entropies on both sides
-    - At each node, save the percentage of the data as len(right)/len(dataset) and len(left)/len(dataset). 
-    - Find the node which has the highest entropy to either of both sides of all nodes of the current tree.
-    - At each new node, get the corresponding datasets from the previously created nodes and find best split value
-    :param dataset: the dataset for which to create a tree (usually a subsample of the total dataset)
-    :param clusters: remaining number of clusters to create
+    - Create an initial split
+    - Continue splitting on both sides as long as current depth is not maximum tree depth
+    :param dataset: the entire dataset to split
+    :param max_depth: maximum depth of tree to create
+    :param min_subset: minimum subset of data required to do further split
     :param parentnode: parent node
     :param side_label: side of the node with respect to the parent node
     :param verbose: whether to output debugging information
+    :param n_max_dim: maximum number of dimensions within which to search for best split
     """
-    # verbose
     if verbose:
-        print("Creating node (%i remaining)" % (clusters-1))
-    
+        print("new node")
     treenode = DensityNode()
     dataset_node = dataset
-    
+
     # split
     if parentnode is not None:  # if we are not at the first split
         # link parent node to new node
@@ -33,12 +31,12 @@ def create_density_tree(dataset, clusters, parentnode=None, side_label=None, ver
             treenode.parent.left = treenode
         else:
             treenode.parent.right = treenode
-        
+
         # get subset of data at this level of the tree
         dataset_node = treenode.get_dataset(None, dataset)
        
     dim_max, val_dim_max, _, _ = get_best_split(
-        dataset_node, labelled=False, verbose=verbose)
+        dataset_node, labelled=False, n_max_dim=n_max_dim)
     left, right, e_left, e_right = split(
         dataset_node, dim_max, val_dim_max, get_entropy=True)
     
@@ -58,12 +56,22 @@ def create_density_tree(dataset, clusters, parentnode=None, side_label=None, ver
     treenode.left_entropy = e_left
     treenode.right_entropy = e_right
 
-    clusters_left = clusters - 1
-    if clusters_left > 1:
-        # find node where left or right entropy is highest and left or right node is not split yet
-        node_e, e, side = treenode.get_root().highest_entropy(None, 0, 'None')
-        
-        # recursively continue splitting
-        create_density_tree(dataset, clusters=clusters_left,
-                            parentnode=node_e, side_label=side, verbose=verbose)  
+    if verbose:
+        print("node depth: %i, max depth:%i" % (treenode.depth(),max_depth))
+
+    # recursively continue splitting
+    if treenode.depth() < max_depth:
+        if verbose:
+            print("Left:" + str(entropy_gaussian(dataset_node) - e_left))
+            print("Right:" + str(entropy_gaussian(dataset_node) - e_right))
+            print(len(left),len(right))
+            print(len(right) > min_subset * len(dataset))
+            print((entropy_gaussian(dataset_node) - e_right) > 1 )
+        if len(left) > min_subset*len(dataset):
+            create_density_tree(dataset, max_depth, min_subset=min_subset,
+                                parentnode=treenode, side_label='left', n_max_dim=n_max_dim,verbose=verbose)
+        if len(right) > min_subset * len(dataset):
+            create_density_tree(dataset, max_depth, min_subset=min_subset,
+                                parentnode=treenode, side_label='right', n_max_dim=n_max_dim, verbose=verbose)
+
     return treenode
