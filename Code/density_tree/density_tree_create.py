@@ -4,7 +4,7 @@ from .density_tree import DensityNode
 from .helpers import entropy_gaussian, get_best_split, split
 
 
-def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None, verbose=False):
+def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None, verbose=False, n_max_dim=0):
     """
     create decision tree, using as a stopping criterion a maximum tree depth criterion
     Principle:
@@ -16,6 +16,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
     :param parentnode: parent node
     :param side_label: side of the node with respect to the parent node
     :param verbose: whether to output debugging information
+    :param n_max_dim: maximum number of dimensions within which to search for best split
     """
     if verbose:
         print("new node")
@@ -35,7 +36,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
         dataset_node = treenode.get_dataset(None, dataset)
        
     dim_max, val_dim_max, _, _ = get_best_split(
-        dataset_node, labelled=False, verbose=verbose)
+        dataset_node, labelled=False, n_max_dim=n_max_dim)
     left, right, e_left, e_right = split(
         dataset_node, dim_max, val_dim_max, get_entropy=True)
     
@@ -68,9 +69,9 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
             print((entropy_gaussian(dataset_node) - e_right) > 1 )
         if len(left) > min_subset*len(dataset):
             create_density_tree(dataset, max_depth, min_subset=min_subset,
-                                parentnode=treenode, side_label='left', verbose=verbose)
+                                parentnode=treenode, side_label='left', n_max_dim=n_max_dim,verbose=verbose)
         if len(right) > min_subset * len(dataset):
             create_density_tree(dataset, max_depth, min_subset=min_subset,
-                                parentnode=treenode, side_label='right', verbose=verbose)
+                                parentnode=treenode, side_label='right', n_max_dim=n_max_dim, verbose=verbose)
 
     return treenode

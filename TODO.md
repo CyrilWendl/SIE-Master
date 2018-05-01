@@ -1,12 +1,10 @@
 # To Do
 
 ## General 
-- Split Criterion: Entropy reduction on either side
 - Take into account density forest prediction variability
 - Baseline Methods
     - Confidence from Invariance to Image Transformations: https://arxiv.org/abs/1804.00657
     - Dropout as a Bayesian Approximation: https://arxiv.org/abs/1506.02142
-
 
 ## Ideas 
 - Change Code to PyTorch

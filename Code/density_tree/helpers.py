@@ -125,7 +125,7 @@ def print_decision_tree_latex(node, tree_string):
     return tree_string
 
 
-def get_best_split(dataset, labelled=False, verbose=False):
+def get_best_split(dataset, labelled=False, n_max_dim=0):
     """
     for a given dimension, get best split based on information gain
     for labelled and unlabelled data
@@ -133,13 +133,14 @@ def get_best_split(dataset, labelled=False, verbose=False):
     :param verbose: print verbose messages for debugging
     :param dataset: dataset for which to find the best split
     :param labelled: indicator whether dataset contains labels or not
+    :param n_max_dim: maximum number of dimensions within which to search for best split
     :return dim_max: best split dimension
     :return val_dim_max: value at best split dimensions
     :return ig_dims_vals: information gains for all split values in all possible split dimensions
     :return split_dims_vals: split values corresponding to ig_dims_vals
     """
 
-    # get all information gains on all dimensions
+    # get information gains on dimensions
     ig_dims_vals, split_dims_vals = [], []
 
     if labelled:
@@ -150,22 +151,26 @@ def get_best_split(dataset, labelled=False, verbose=False):
         entropy_f = entropy_gaussian
         dimensions = range(dataset.shape[1])
 
-    for dim in (tqdm(dimensions) if verbose else dimensions):  # loop all dimensions
+    # subsample dimensions
+    if n_max_dim > 0:
+        dimensions = np.random.choice(dimensions, n_max_dim, replace=False)
+
+    for dim in dimensions:  # loop all dimensions
         ig_vals, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f)
         ig_dims_vals.append(ig_vals)
         split_dims_vals.append(split_vals)
 
     # split dimension of maximum gain
-    dim_max = int(np.argmax(np.max(ig_dims_vals, axis=1)))
+    idx_dim_max = int(np.argmax(np.max(ig_dims_vals, axis=1)))
 
     # maximum ig split indexes
-    max_ind = np.where(np.equal(ig_dims_vals[dim_max], np.max(ig_dims_vals[dim_max])))
+    max_ind = np.where(np.equal(ig_dims_vals[idx_dim_max], np.max(ig_dims_vals[idx_dim_max])))
     # split value of maximum gain
     # get all maximum values and take the middle if there are several possible maximum values
     max_ind = int(np.floor(np.mean(max_ind)))
-    val_dim_max = split_dims_vals[dim_max][max_ind]
+    val_dim_max = split_dims_vals[idx_dim_max][max_ind]
 
-    return dim_max, val_dim_max, ig_dims_vals, split_dims_vals
+    return dimensions[idx_dim_max], val_dim_max, ig_dims_vals, split_dims_vals
 
 
 def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
@@ -185,7 +190,7 @@ def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
     # loop over all possible cut values
     dataset_dim_min = np.min(dataset[:, dim])
     dataset_dim_max = np.max(dataset[:, dim])
-    iter_set = np.linspace(dataset_dim_min, dataset_dim_max, n_grid)
+    iter_set = np.random.uniform(dataset_dim_min, dataset_dim_max, n_grid)
 
     for split_val in iter_set:
         # split values

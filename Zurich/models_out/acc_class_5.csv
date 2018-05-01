@@ -1,0 +1,15 @@
+\begin{tabular}{lrrrr}
+\toprule
+{} &  Precision &  Recall &  f1-score &  support \\
+Class          &            &         &           &          \\
+\midrule
+Roads          &      0.775 &   0.834 &     0.803 &   520742 \\
+Buildings      &      0.694 &   0.854 &     0.766 &   470587 \\
+Trees          &      0.848 &   0.820 &     0.834 &   545015 \\
+Grass          &      0.963 &   0.787 &     0.866 &   612397 \\
+Water          &      0.883 &   0.533 &     0.665 &    18705 \\
+Railways       &      0.000 &   0.000 &     0.000 &    18526 \\
+Swimming Pools &      0.992 &   0.895 &     0.941 &    10386 \\
+\bottomrule
+\end{tabular}
+
