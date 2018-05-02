@@ -35,35 +35,31 @@ class DensityNode:
         get left or right dataset at this level by applying all splits at higher levels of the tree to the dataset. 
         Used in creating the tree.
         """
-        parents, parents_side = [], []
-        node_parent = self.parent
+        # get list of all parents and their sides
+        nodes, sides = [self], [side]
         node_current = self
+        node_parent = self.parent
         while node_parent is not None:
-            parents.append(node_parent)
+            nodes.append(node_parent)
             if node_parent.left == node_current:
-                parents_side.append('l')
+                sides.append('l')
             else:
-                parents_side.append('r')
-                
+                sides.append('r')
             node_current = node_current.parent
             node_parent = node_parent.parent
-            
+
+        # find dataset
         dataset_split = dataset.copy()
-        
-        for i in range(len(parents)):
-            parent = parents.pop()
-            split = parents_side.pop()
-            if split == 'l':
-                dataset_split = dataset_split[dataset_split[:, parent.split_dimension] < parent.split_value]
+        for i in range(len(nodes)):
+            node = nodes.pop()
+            side = sides.pop()
+            if side == 'l':
+                dataset_split = dataset_split[dataset_split[:, node.split_dimension] < node.split_value]
             else:
-                dataset_split = dataset_split[dataset_split[:, parent.split_dimension] > parent.split_value]
-                
-        if side == 'left':
-            return dataset_split[dataset_split[:, self.split_dimension] < self.split_value]
-        elif side == 'right':
-            return dataset_split[dataset_split[:, self.split_dimension] > self.split_value]
-        else:
-            return dataset_split
+                dataset_split = dataset_split[dataset_split[:, node.split_dimension] > node.split_value]
+
+        return dataset_split
+
         
     def get_root(self):
         if self.parent is not None:
@@ -96,13 +92,13 @@ class DensityNode:
             if self.left_entropy > e:
                 node = self
                 e = self.left_entropy
-                side = 'left'
+                side = 'l'
 
         if self.right_entropy is not None and self.right is None:
             if self.right_entropy > e:
                 node = self
                 e = self.right_entropy
-                side = 'right'
+                side = 'r'
 
         if self.left is not None:
             node_lower_l, e_lower_l, side_lower_l = self.left.highest_entropy(node, e, side)

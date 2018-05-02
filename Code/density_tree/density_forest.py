@@ -16,7 +16,8 @@ def my_normal(x, mu, cov):
     return 1/a*np.exp(b)
 
 
-def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=0, n_jobs=-1, verbose=1):
+def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=0, n_jobs=-1,
+                          verbose=1, fact_improvement=1.5):
     """
     Create random forest trees
     :param dataset: entire dataset on which to create trees
@@ -33,7 +34,7 @@ def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct
 
     root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
         delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), max_depth,
-                                     min_subset=min_subset, n_max_dim=n_max_dim)
+                                     min_subset=min_subset, n_max_dim=n_max_dim, fact_improvement=fact_improvement)
         for _ in range(n_trees))
 
     return root_nodes
