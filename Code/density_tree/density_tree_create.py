@@ -3,7 +3,8 @@ import numpy as np
 from .density_tree import DensityNode
 from .helpers import entropy_gaussian, get_best_split, split, my_normal
 
-def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None, verbose=False, n_max_dim=0, fact_improvement=1.5):
+def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None,
+                        verbose=False, n_max_dim=0, fact_improvement=1.5, plot=False):
     """
     create decision tree, using as a stopping criterion a maximum tree depth criterion
     Principle:
@@ -36,8 +37,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
     # Gaussianity can also be negative!
 
     # TODO n_points > n_dims
-    improvement_entropy = e_node - np.mean([e_left*len(left), e_right*len(right)])/len(dataset_node)
-    #improvement_entropy = e_node - np.mean([e_left, e_right])
+    improvement_entropy = e_node - np.dot([e_left,e_right],[len(left), len(right)])/len(dataset_node)
     if verbose:
         print("improvement:%.3f"%improvement_entropy)
         print("g: %.3f, g_l: %.3f, g_r:%.3f" % (e_node, e_left, e_right))
@@ -72,25 +72,31 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
         treenode.left_mean = np.mean(left, axis=0)
         treenode.left_pdf_mean = my_normal(treenode.left_mean, treenode.left_mean, treenode.left_cov_det,
                                            treenode.left_cov_inv)
+        treenode.left_entropy = e_left
 
         # right side of split
         treenode.right_cov = np.cov(right.T)
         treenode.right_cov_det = np.linalg.det(treenode.right_cov)
         treenode.right_cov_inv = np.linalg.inv(treenode.right_cov)
         treenode.right_mean = np.mean(right, axis=0)
-        treenode.left_entropy = e_left
         treenode.right_entropy = e_right
         treenode.right_pdf_mean = my_normal(treenode.right_mean, treenode.right_mean, treenode.right_cov_det,
                                             treenode.right_cov_inv)
+
+        # plot stage
+        if plot:
+            plot_ellipses(dataset, treenode.get_root)
 
         # recursively continue splitting
         if treenode.depth() < max_depth:
             if len(left) > min_subset*len(dataset):
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parentnode=treenode,
-                                    side_label='l', n_max_dim=n_max_dim, verbose=verbose, fact_improvement=fact_improvement)
+                                    side_label='l', n_max_dim=n_max_dim, verbose=verbose,
+                                    fact_improvement=fact_improvement, plot=plot)
             if len(right) > min_subset * len(dataset):
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parentnode=treenode,
-                                    side_label='r', n_max_dim=n_max_dim, verbose=verbose, fact_improvement=fact_improvement)
+                                    side_label='r', n_max_dim=n_max_dim, verbose=verbose,
+                                    fact_improvement=fact_improvement, plot=plot)
 
         return treenode
     else:
