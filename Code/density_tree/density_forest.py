@@ -42,13 +42,13 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal', sta
     pairs_proba = np.empty((len(dataset), len(root_nodes)), float)  # indexes of data points
 
     # get all clusters for all points in all trees
-    for d_idx, d in enumerate(tqdm(dataset)):
+    for d_idx, d in enumerate(dataset):
         # traverse all trees
         for t_idx, tree in enumerate(root_nodes):
-            d_mean, d_cov, d_pct, d_pdf_mean = descend_density_tree(d, tree)
+            d_mean, d_pct, d_pdf_mean, d_cov_det, d_cov_inv = descend_density_tree(d, tree)
             if d_pct > thresh:
                 if method == 'normal':
-                    pairs_proba[d_idx, t_idx] = my_normal(d, d_mean, d_cov)
+                    pairs_proba[d_idx, t_idx] = my_normal(d, d_mean, d_cov_det, d_cov_inv)
                     if standardize:
                         pairs_proba[d_idx, t_idx] /= d_pdf_mean   # standardize by max. probability
                 else:

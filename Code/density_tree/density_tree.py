@@ -21,6 +21,8 @@ class DensityNode:
         self.left = None
         self.left_entropy = None
         self.left_cov = None
+        self.left_cov_det = None  # pre-calculated determinant and inverse for speed reasons during traversal
+        self.left_cov_inv = None
         self.left_mean = None
         self.left_dataset_pct = None
         self.left_pdf_mean = None  # normality value at center of left cluster
@@ -28,6 +30,8 @@ class DensityNode:
         self.right = None
         self.right_entropy = None
         self.right_cov = None
+        self.right_cov_det = None  # pre-calculated determinant and inverse for speed reasons during traversal
+        self.right_cov_inv = None
         self.right_mean = None
         self.right_dataset_pct = None
         self.right_pdf_mean = None  # normality value at center of right cluster
@@ -61,7 +65,6 @@ class DensityNode:
                 dataset_split = dataset_split[dataset_split[:, node.split_dimension] > node.split_value]
 
         return dataset_split
-
         
     def get_root(self):
         if self.parent is not None:

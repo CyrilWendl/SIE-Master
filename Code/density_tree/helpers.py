@@ -1,10 +1,16 @@
 import numpy as np
 from tqdm import tqdm
 
-def my_normal(x, mu, cov):
-    """Custom function for calculating the PDF probability of a multivariate normal distribution"""
-    a = np.sqrt((2*np.pi) ** x.shape[-1] * np.linalg.det(cov))
-    b = -1/2*np.dot(np.dot((x - mu), np.linalg.inv(cov)), (x - mu).T)
+def my_normal(x, mu, cov_det, cov_inv):
+    """
+    Custom function for calculating the PDF probability of a multivariate normal distribution
+    :param x: data point
+    :param mu: mean of cluster
+    :param cov_det: precalculated determinant of covariance of cluster (for speed reasons during traversal)
+    :param cov_inv: precalculated inverse of covariance of cluster (for speed reasons during traversal)
+    """
+    a = np.sqrt((2*np.pi) ** x.shape[-1] * cov_det)
+    b = -1/2*np.dot(np.dot((x - mu), cov_inv), (x - mu).T)
     return 1/a*np.exp(b)
 
 

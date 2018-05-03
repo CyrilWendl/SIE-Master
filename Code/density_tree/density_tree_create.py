@@ -34,7 +34,10 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
     # check if Gaussianity can be improved
     e_node = entropy_gaussian(dataset_node)
     # Gaussianity can also be negative!
-    improvement_entropy = e_node - np.mean([e_left, e_right])
+
+    # TODO n_points > n_dims
+    improvement_entropy = e_node - np.mean([e_left*len(left), e_right*len(right)])/len(dataset_node)
+    #improvement_entropy = e_node - np.mean([e_left, e_right])
     if verbose:
         print("improvement:%.3f"%improvement_entropy)
         print("g: %.3f, g_l: %.3f, g_r:%.3f" % (e_node, e_left, e_right))
@@ -53,23 +56,32 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
             # link new node to parent node
             treenode.parent = parentnode
 
-
+        # split information
         treenode.split_dimension = dim_max
         treenode.split_value = val_dim_max
         treenode.left_dataset_pct = len(left) / len(dataset)
         treenode.right_dataset_pct = len(right) / len(dataset)
         treenode.entropy = e_node
         treenode.cov = np.cov(dataset_node.T)
-
         treenode.mean = np.mean(dataset_node, axis=0)
+
+        # left side of split
         treenode.left_cov = np.cov(left.T)
+        treenode.left_cov_det = np.linalg.det(treenode.left_cov)
+        treenode.left_cov_inv = np.linalg.inv(treenode.left_cov)
         treenode.left_mean = np.mean(left, axis=0)
-        treenode.left_pdf_mean = my_normal(treenode.left_mean, treenode.left_mean, treenode.left_cov)
+        treenode.left_pdf_mean = my_normal(treenode.left_mean, treenode.left_mean, treenode.left_cov_det,
+                                           treenode.left_cov_inv)
+
+        # right side of split
         treenode.right_cov = np.cov(right.T)
+        treenode.right_cov_det = np.linalg.det(treenode.right_cov)
+        treenode.right_cov_inv = np.linalg.inv(treenode.right_cov)
         treenode.right_mean = np.mean(right, axis=0)
         treenode.left_entropy = e_left
         treenode.right_entropy = e_right
-        treenode.right_pdf_mean = my_normal(treenode.right_mean, treenode.right_mean, treenode.right_cov)
+        treenode.right_pdf_mean = my_normal(treenode.right_mean, treenode.right_mean, treenode.right_cov_det,
+                                            treenode.right_cov_inv)
 
         # recursively continue splitting
         if treenode.depth() < max_depth:
