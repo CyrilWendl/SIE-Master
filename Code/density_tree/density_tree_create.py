@@ -1,8 +1,7 @@
 """Density Tree Creation"""
 import numpy as np
 from .density_tree import DensityNode
-from .helpers import entropy_gaussian, get_best_split, split
-
+from .helpers import entropy_gaussian, get_best_split, split, my_normal
 
 def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None, verbose=False, n_max_dim=0, fact_improvement=1.5):
     """
@@ -65,10 +64,12 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
         treenode.mean = np.mean(dataset_node, axis=0)
         treenode.left_cov = np.cov(left.T)
         treenode.left_mean = np.mean(left, axis=0)
+        treenode.left_pdf_mean = my_normal(treenode.left_mean, treenode.left_mean, treenode.left_cov)
         treenode.right_cov = np.cov(right.T)
         treenode.right_mean = np.mean(right, axis=0)
         treenode.left_entropy = e_left
         treenode.right_entropy = e_right
+        treenode.right_pdf_mean = my_normal(treenode.right_mean, treenode.right_mean, treenode.right_cov)
 
         # recursively continue splitting
         if treenode.depth() < max_depth:

@@ -1,6 +1,12 @@
 import numpy as np
 from tqdm import tqdm
 
+def my_normal(x, mu, cov):
+    """Custom function for calculating the PDF probability of a multivariate normal distribution"""
+    a = np.sqrt((2*np.pi) ** x.shape[-1] * np.linalg.det(cov))
+    b = -1/2*np.dot(np.dot((x - mu), np.linalg.inv(cov)), (x - mu).T)
+    return 1/a*np.exp(b)
+
 
 def entropy(labels, base=np.e):  # [1]
     """

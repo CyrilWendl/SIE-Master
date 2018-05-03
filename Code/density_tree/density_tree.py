@@ -23,12 +23,14 @@ class DensityNode:
         self.left_cov = None
         self.left_mean = None
         self.left_dataset_pct = None
+        self.left_pdf_mean = None  # normality value at center of left cluster
 
         self.right = None
         self.right_entropy = None
         self.right_cov = None
         self.right_mean = None
         self.right_dataset_pct = None
+        self.right_pdf_mean = None  # normality value at center of right cluster
 
     def get_dataset(self, side, dataset):
         """

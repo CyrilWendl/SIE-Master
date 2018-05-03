@@ -7,13 +7,7 @@ from tqdm import tqdm
 from .density_tree_create import create_density_tree
 from .random_forest import draw_subsamples
 from .density_tree_traverse import *
-
-
-def my_normal(x, mu, cov):
-    """Custom function for calculating the PDF probability of a multivariate normal distribution"""
-    a = np.sqrt((2*np.pi) ** x.shape[-1] * np.linalg.det(cov))
-    b = -1/2*np.dot(np.dot((x - mu), np.linalg.inv(cov)), (x - mu).T)
-    return 1/a*np.exp(b)
+from .helpers import my_normal
 
 
 def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=0, n_jobs=-1,
@@ -51,16 +45,16 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal', sta
     for d_idx, d in enumerate(tqdm(dataset)):
         # traverse all trees
         for t_idx, tree in enumerate(root_nodes):
-            d_mean, d_cov, d_pct = descend_density_tree(d, tree)
+            d_mean, d_cov, d_pct, d_pdf_mean = descend_density_tree(d, tree)
             if d_pct > thresh:
                 if method == 'normal':
                     pairs_proba[d_idx, t_idx] = my_normal(d, d_mean, d_cov)
                     if standardize:
-                        pairs_proba[d_idx, t_idx] /= my_normal(d_mean, d_mean, d_cov)  # standardize by max. probability
+                        pairs_proba[d_idx, t_idx] /= d_pdf_mean   # standardize by max. probability
                 else:
                     pairs_proba[d_idx, t_idx] = euclidean(d_mean, d)
                     if standardize:
-                        pairs_proba[d_idx, t_idx] /= euclidean(d_mean, d_mean, d_cov)  # standardize by max. probability
+                        pairs_proba[d_idx, t_idx] /= d_pdf_mean   # standardize by max. probability
             else:
                 pairs_proba[d_idx, t_idx] = np.nan
 
