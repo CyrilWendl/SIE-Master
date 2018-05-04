@@ -3,7 +3,6 @@ import numpy as np
 import multiprocessing
 from scipy.spatial.distance import euclidean
 from joblib import Parallel, delayed
-from tqdm import tqdm
 from .density_tree_create import create_density_tree
 from .random_forest import draw_subsamples
 from .density_tree_traverse import *
@@ -22,6 +21,7 @@ def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct
     :param n_max_dim: maximum number of dimensions within which to search for best split
     :param n_jobs: number of processors to use for parallel processing. If -1, all processors are used
     :param verbose: verbosity level of parallel processing
+    :param fact_improvement: minimum improvement factor needed to continue splitting tree
     """
     if n_jobs == -1:
         n_jobs = multiprocessing.cpu_count()

@@ -1,5 +1,5 @@
 import numpy as np
-from tqdm import tqdm
+
 
 def my_normal(x, mu, cov_det, cov_inv):
     """
@@ -142,7 +142,6 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
     for a given dimension, get best split based on information gain
     for labelled and unlabelled data
 
-    :param verbose: print verbose messages for debugging
     :param dataset: dataset for which to find the best split
     :param labelled: indicator whether dataset contains labels or not
     :param n_max_dim: maximum number of dimensions within which to search for best split
@@ -236,5 +235,3 @@ def rotate(origin, point, angle):
     qx = ox + np.cos(angle) * (px - ox) - np.sin(angle) * (py - oy)
     qy = oy + np.sin(angle) * (px - ox) + np.cos(angle) * (py - oy)
     return qx, qy
-
-
