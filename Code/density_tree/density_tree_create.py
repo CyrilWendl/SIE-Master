@@ -1,7 +1,7 @@
 """Density Tree Creation"""
 import numpy as np
 from .density_tree import DensityNode
-from .helpers import entropy_gaussian, get_best_split, split, my_normal
+from .helpers import entropy_gaussian, get_best_split, my_normal
 
 
 def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None,
@@ -22,24 +22,22 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
 
     """
     dataset_node = dataset
+    dim = dataset.shape[-1]
 
     if parentnode is not None:
         # get subset of data at this level of the tree
         dataset_node = parentnode.get_dataset(side_label, dataset)
 
-    dim_max, val_dim_max, _, _ = get_best_split(
-        dataset_node, labelled=False, n_max_dim=n_max_dim)
-    left, right, e_left, e_right = split(
-        dataset_node, dim_max, val_dim_max, get_entropy=True)
+    dim_max, val_dim_max = get_best_split(dataset_node, labelled=False, n_max_dim=n_max_dim)
+    left = dataset_node[dataset_node[..., dim_max] < val_dim_max]
+    right = dataset_node[dataset_node[..., dim_max] >= val_dim_max]
 
     # check if Gaussianity can be improved
     e_node = entropy_gaussian(dataset_node)
-    # Gaussianity can also be negative!
+    e_left = entropy_gaussian(left)
+    e_right = entropy_gaussian(right)
 
     improvement_entropy = e_node - np.dot([e_left, e_right], [len(left), len(right)]) / len(dataset_node)
-    if verbose:
-        print("improvement:%.3f" % improvement_entropy)
-        print("g: %.3f, g_l: %.3f, g_r:%.3f" % (e_node, e_left, e_right))
 
     if (improvement_entropy > fact_improvement) or (fact_improvement == -1):
         if verbose:
@@ -85,11 +83,11 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
         # recursively continue splitting
         if treenode.depth() < max_depth:
             # only continue splitting if len(left) greater than twice the number of dimensions
-            if (len(left) > min_subset * len(dataset)) and (len(left) > (dataset.shape[-1] * 2)):
+            if (len(left) > min_subset * len(dataset)) and (len(left) > (dim * 2)):
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parentnode=treenode,
                                     side_label='l', n_max_dim=n_max_dim, verbose=verbose,
                                     fact_improvement=fact_improvement)
-            if (len(right) > min_subset * len(dataset)) and (len(right) > (dataset.shape[-1] * 2)):
+            if (len(right) > min_subset * len(dataset)) and (len(right) > (dim * 2)):
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parentnode=treenode,
                                     side_label='r', n_max_dim=n_max_dim, verbose=verbose,
                                     fact_improvement=fact_improvement)

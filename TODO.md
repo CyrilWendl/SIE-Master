@@ -1,5 +1,9 @@
 # To Do
 
+## DF
+- Reduce maximum depth, Reduce number of dimensions, increase number of trees
+
+
 ## General 
 - Take into account density forest prediction variability
 - Baseline Methods

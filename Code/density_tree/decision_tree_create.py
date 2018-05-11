@@ -2,7 +2,6 @@
 """Functions for entropy and splitting with labelled data"""
 import numpy as np
 from .decision_tree import DecisionNode
-from .density_tree_create import split
 from .helpers import get_best_split
 
 
@@ -27,7 +26,7 @@ def create_decision_tree(dataset, parent_node=None, side_label=None, max_depth=n
     :param side_label: indicator of which side of parent node to create a new node
     :param max_depth: maximum depth of decision tree
     """
-    dim_max, val_dim_max, ig_dims_vals, split_dims_vals = get_best_split(dataset, labelled=True)
+    dim_max, val_dim_max = get_best_split(dataset, labelled=True)
     
     # create binary tree node
     treenode = DecisionNode()
@@ -42,7 +41,8 @@ def create_decision_tree(dataset, parent_node=None, side_label=None, max_depth=n
             parent_node.right = treenode
     
     # recursively continue splitting
-    left, right = split(dataset, dim_max, val_dim_max)  # split along best split dimension
+    left = dataset[dataset[..., dim_max] < val_dim_max]
+    right = dataset[dataset[..., dim_max] >= val_dim_max]
     treenode.left_labels = np.unique(left[:, -1])
     treenode.right_labels = np.unique(right[:, -1])
     

@@ -33,9 +33,16 @@ def entropy_gaussian(dataset, base=2):
     :param base: base of entropy
     :return: entropy
     """
-    k = np.linalg.det(np.cov(dataset.T))
-    d = dataset.shape[1]
+    # check if there are more dimensions
+    if dataset.shape[-1]>dataset.shape[0]:
+        raise ValueError('More dimensions than data points, shape dataset:'+str(dataset.shape))
 
+    try:
+        k = np.linalg.det(np.cov(dataset.T))
+    except:
+        raise ValueError('More dimensions than data points, shape dataset:'+str(dataset.shape))
+
+    d = dataset.shape[-1]
     ent = np.multiply(np.power(2 * np.pi * np.exp(1), d), k)
     if ent <= 0:
         return 0
@@ -43,34 +50,6 @@ def entropy_gaussian(dataset, base=2):
     if np.isnan(ent):
         ent = 0
     return ent
-
-
-def split(dataset, index, split_value, get_entropy=False):  # [2]
-    """
-    split a dataset (columns: variables, rows: data) in two according to some column (index) value.
-    :param dataset: input dataset
-    :param index: index of dimension to split values on
-    :param split_value: value of the dimension where the dataset is split
-    :param get_entropy: optional indicator whether to return entropy
-    :return: left and right split datasets
-    """
-    left, right = [], []
-    for row in dataset:
-        if row[index] < split_value:
-            left.append(row)
-        else:
-            right.append(row)
-
-    left = np.asarray(left)
-    right = np.asarray(right)
-
-    if get_entropy:
-        e_left = entropy_gaussian(left)
-        e_right = entropy_gaussian(right)
-        return left, right, e_left, e_right
-    else:
-        return left, right
-
 
 def print_rule(node):
     """Helper function to print the split decision of a given node"""
@@ -153,74 +132,80 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
 
     # get information gains on dimensions
     ig_dims_vals, split_dims_vals = [], []
+    ig_dims_len = []
 
     if labelled:
         entropy_f = entropy
-        dimensions = range(dataset.shape[1] - 1)
+        dimensions = np.arange(dataset.shape[-1] - 1)
 
     else:
         entropy_f = entropy_gaussian
-        dimensions = range(dataset.shape[1])
+        dimensions = np.arange(dataset.shape[-1])
 
     # subsample dimensions
     if n_max_dim > 0:
         dimensions = np.random.choice(dimensions, n_max_dim, replace=False)
 
     for dim in dimensions:  # loop all dimensions
-        ig_vals, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f)
-        ig_dims_vals.append(ig_vals)
-        split_dims_vals.append(split_vals)
+        ig_dim, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f)
+        ig_dims_len = np.append(ig_dims_len, len(ig_dim))
+        ig_dims_vals = np.append(ig_dims_vals, ig_dim)
+        split_dims_vals = np.append(split_dims_vals, split_vals)
+
+
+    # get all maximum ig indexes and take a random one if there are several
+    max_ind = np.where(ig_dims_vals == np.max(ig_dims_vals))[0]
+    max_ind = [max_ind] if not len(np.shape(max_ind)) else max_ind  # numpy compatibility
+    max_ind = np.random.choice(max_ind)
 
     # split dimension of maximum gain
-    idx_dim_max = int(np.argmax(np.max(ig_dims_vals, axis=1)))
+    idx_dim_max = np.sum((max_ind >= np.cumsum(ig_dims_len)) * 1)
 
-    # maximum ig split indexes
-    max_ind = np.where(np.equal(ig_dims_vals[idx_dim_max], np.max(ig_dims_vals[idx_dim_max])))
-    # split value of maximum gain
-    # get all maximum values and take the middle if there are several possible maximum values
-    max_ind = int(np.floor(np.mean(max_ind)))
-    val_dim_max = split_dims_vals[idx_dim_max][max_ind]
-
-    return dimensions[idx_dim_max], val_dim_max, ig_dims_vals, split_dims_vals
+    return dimensions[idx_dim_max], split_dims_vals[max_ind]
 
 
-def get_ig_dim(dataset, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
+def get_ig_dim(data, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
     """
     for one dimension, get information gain
     for labelled and unlabelled data
 
-    :param dataset: dataset without labels (X)
+    :param data: dataset without labels (X)
     :param dim: dimension for which all cut values are to be calculated
     :param entropy_f: entropy function to be used (labelled / unlabelled)
     :param base: base to use for entropy calculation
     :param n_grid: resolution at which to search for optimal split value
     """
-    ig_vals = []
-    split_vals = []
+    ig_dim, split_vals = [], []
+    dims = np.shape(data)[-1]
 
     # loop over all possible cut values
-    dataset_dim_min = np.min(dataset[:, dim])
-    dataset_dim_max = np.max(dataset[:, dim])
-    iter_set = np.random.uniform(dataset_dim_min, dataset_dim_max, n_grid)
+    dataset_dim_min = np.min(data[:, dim])
+    dataset_dim_max = np.max(data[:, dim])
 
-    for split_val in iter_set:
-        # split values
-        split_l = dataset[dataset[:, dim] < split_val]
-        split_r = dataset[dataset[:, dim] >= split_val]
+    # ensure that at least for one split value, we have n_points >= n_dims on both sides
+    while len(ig_dim) < dims:
+        iter_set = np.random.uniform(dataset_dim_min, dataset_dim_max, n_grid)
 
-        # entropy
-        entropy_l = entropy_f(split_l, base=base)
-        entropy_r = entropy_f(split_r, base=base)
-        entropy_tot = entropy_f(dataset, base=base)
+        for split_val in iter_set:
+            # split values
+            left = data[data[:, dim] < split_val]
+            right = data[data[:, dim] >= split_val]
 
-        # information gain
-        ig = entropy_tot - (entropy_l * len(split_l) / len(dataset) + entropy_r * len(split_r) / len(dataset))
+            # check that there are more values on each side than dimensions in the dataset
+            if (len(left) > dims) and (len(right) > dims):
+                # entropy
+                entropy_l = entropy_f(left, base=base)
+                entropy_r = entropy_f(right, base=base)
+                entropy_tot = entropy_f(data, base=base)
 
-        # append split value and information gain
-        split_vals.append(split_val)
-        ig_vals.append(ig)
+                # information gain
+                ig = entropy_tot - (entropy_l * len(left) / len(data) + entropy_r * len(right) / len(data))
 
-    return np.array(ig_vals), np.array(split_vals)
+                # append split value and information gain
+                ig_dim = np.append(ig_dim, ig)
+                split_vals = np.append(split_vals, split_val)
+
+    return ig_dim, split_vals
 
 
 def rotate(origin, point, angle):
