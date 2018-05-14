@@ -7,7 +7,7 @@ from helpers.helpers import get_offset
 def get_activations(imgs, model, layer_idx, img_patches, img_ids, batch_size=20,
                     patch_size=64, stride=64):
     """
-    get activations for a set of patches
+    get activations for a set of patches, used for semantic segmentation
     :param imgs: set of original images
     :param model: model for which to extract activations
     :param layer_idx: layer index for which to extract activations

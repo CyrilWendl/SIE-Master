@@ -4,10 +4,10 @@
 Class          &                    &       \\
 \midrule
 Roads          &              0.000 &   0.0 \\
-Buildings      &              0.001 &   0.0 \\
-Trees          &              0.001 &   0.0 \\
-Grass          &              0.019 &   0.0 \\
-Bare Soil      &              0.011 &   0.0 \\
+Buildings      &              0.000 &   0.0 \\
+Trees          &              0.000 &   0.0 \\
+Grass          &              0.002 &   0.0 \\
+Bare Soil      &              0.000 &   0.0 \\
 Water          &              0.000 &   0.0 \\
 Railways       &              0.000 &   0.0 \\
 Swimming Pools &              0.000 &   0.0 \\

@@ -1,4 +1,5 @@
 import numpy as np
+from keras import backend as k_b
 
 
 def my_normal(x, mu, cov_det, cov_inv):
@@ -9,9 +10,9 @@ def my_normal(x, mu, cov_det, cov_inv):
     :param cov_det: precalculated determinant of covariance of cluster (for speed reasons during traversal)
     :param cov_inv: precalculated inverse of covariance of cluster (for speed reasons during traversal)
     """
-    a = np.sqrt((2*np.pi) ** x.shape[-1] * cov_det)
-    b = -1/2*np.dot(np.dot((x - mu), cov_inv), (x - mu).T)
-    return 1/a*np.exp(b)
+    a = np.sqrt((2 * np.pi) ** x.shape[-1] * cov_det)
+    b = -1 / 2 * np.dot(np.dot((x - mu), cov_inv), (x - mu).T)
+    return 1 / a * np.exp(b)
 
 
 def entropy(labels, base=np.e):  # [1]
@@ -34,14 +35,10 @@ def entropy_gaussian(dataset, base=2):
     :return: entropy
     """
     # check if there are more dimensions
-    if dataset.shape[-1]>dataset.shape[0]:
-        raise ValueError('More dimensions than data points, shape dataset:'+str(dataset.shape))
+    if dataset.shape[-1] > dataset.shape[0]:
+        raise ValueError('More dimensions than data points, shape dataset:' + str(dataset.shape))
 
-    try:
-        k = np.linalg.det(np.cov(dataset.T))
-    except:
-        raise ValueError('More dimensions than data points, shape dataset:'+str(dataset.shape))
-
+    k = np.linalg.det(np.cov(dataset.T))
     d = dataset.shape[-1]
     ent = np.multiply(np.power(2 * np.pi * np.exp(1), d), k)
     if ent <= 0:
@@ -50,6 +47,7 @@ def entropy_gaussian(dataset, base=2):
     if np.isnan(ent):
         ent = 0
     return ent
+
 
 def print_rule(node):
     """Helper function to print the split decision of a given node"""
@@ -152,7 +150,6 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
         ig_dims_vals = np.append(ig_dims_vals, ig_dim)
         split_dims_vals = np.append(split_dims_vals, split_vals)
 
-
     # get all maximum ig indexes and take a random one if there are several
     max_ind = np.where(ig_dims_vals == np.max(ig_dims_vals))[0]
     max_ind = [max_ind] if not len(np.shape(max_ind)) else max_ind  # numpy compatibility
@@ -164,13 +161,13 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
     return dimensions[idx_dim_max], split_dims_vals[max_ind]
 
 
-def get_ig_dim(data, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
+def get_ig_dim(data, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
     """
     for one dimension, get information gain
     for labelled and unlabelled data
 
     :param data: dataset without labels (X)
-    :param dim: dimension for which all cut values are to be calculated
+    :param dim_cut: dimension for which all cut values are to be calculated
     :param entropy_f: entropy function to be used (labelled / unlabelled)
     :param base: base to use for entropy calculation
     :param n_grid: resolution at which to search for optimal split value
@@ -178,41 +175,38 @@ def get_ig_dim(data, dim, entropy_f=entropy_gaussian, n_grid=50, base=2):
     ig_dim, split_vals = [], []
     dims = np.shape(data)[-1]
 
-    # loop over all possible cut values
-    dataset_dim_min = np.min(data[:, dim])
-    dataset_dim_max = np.max(data[:, dim])
+    # min split has to > dim-smallest element of array (to have at least dims points to either side)
+    dataset_dim_min = np.partition(data[:, dim_cut], dims)[dims]
+    dataset_dim_max = np.partition(data[:, dim_cut], -dims)[-dims]
 
     # ensure that at least for one split value, we have n_points >= n_dims on both sides
-    while len(ig_dim) < dims:
-        iter_set = np.random.uniform(dataset_dim_min, dataset_dim_max, n_grid)
+    iter_set = np.random.uniform(dataset_dim_min, dataset_dim_max, n_grid)
 
-        for split_val in iter_set:
-            # split values
-            left = data[data[:, dim] < split_val]
-            right = data[data[:, dim] >= split_val]
+    for split_val in iter_set:
+        # split values
+        left = data[data[:, dim_cut] < split_val]
+        right = data[data[:, dim_cut] >= split_val]
 
-            # check that there are more values on each side than dimensions in the dataset
-            if (len(left) > dims) and (len(right) > dims):
-                # entropy
-                entropy_l = entropy_f(left, base=base)
-                entropy_r = entropy_f(right, base=base)
-                entropy_tot = entropy_f(data, base=base)
+        # check that there are more values on each side than dimensions in the dataset
+        if (len(left) > dims) and (len(right) > dims):
+            # entropy
+            entropy_l = entropy_f(left, base=base)
+            entropy_r = entropy_f(right, base=base)
+            entropy_tot = entropy_f(data, base=base)
 
-                # information gain
-                ig = entropy_tot - (entropy_l * len(left) / len(data) + entropy_r * len(right) / len(data))
+            # information gain
+            ig = entropy_tot - (entropy_l * len(left) / len(data) + entropy_r * len(right) / len(data))
 
-                # append split value and information gain
-                ig_dim = np.append(ig_dim, ig)
-                split_vals = np.append(split_vals, split_val)
+            # append split value and information gain
+            ig_dim = np.append(ig_dim, ig)
+            split_vals = np.append(split_vals, split_val)
 
     return ig_dim, split_vals
 
 
 def rotate(origin, point, angle):
     """
-    Rotate a point counterclockwise by a given angle around a given origin.
-
-    The angle should be given in radians.
+    Rotate a point counterclockwise by a given angle around a given origin. The angle should be given in radians.
     """
     ox, oy = origin
     px, py = point
@@ -220,3 +214,12 @@ def rotate(origin, point, angle):
     qx = ox + np.cos(angle) * (px - ox) - np.sin(angle) * (py - oy)
     qy = oy + np.sin(angle) * (px - ox) + np.cos(angle) * (py - oy)
     return qx, qy
+
+
+def get_activations(model, layer, x_batch):
+    """
+    get activations for patchwise classification
+    """
+    get_k_activations = k_b.function([model.layers[0].input, k_b.learning_phase()], [model.layers[layer].output, ])
+    activations = get_k_activations([x_batch, 0])
+    return activations

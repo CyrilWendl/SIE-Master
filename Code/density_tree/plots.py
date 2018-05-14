@@ -6,14 +6,14 @@ import matplotlib.pylab as plt
 import numpy as np
 
 
-def plot_data(data, title, ax, n_clusters=None, save=False, lines_x=None, lines_y=None,
+def plot_data(data, ax, title=None, n_clusters=None, save=False, lines_x=None, lines_y=None,
               labels=True, minrange=1, maxrange=100, margin=2, grid_eval=None, show_data=True, means=None,
               covs=None):
     """
     Generic function to plot randomly generated labelled or unlabelled data.
     :param data: the data to plot
-    :param title: the title of the plot
     :param ax: axis where to draw the plot
+    :param title: the title of the plot
     :param n_clusters: number of clusters in data
     :param lines_x: x splitting lines to plot
     :param lines_y: y splitting lines to plot
@@ -42,7 +42,8 @@ def plot_data(data, title, ax, n_clusters=None, save=False, lines_x=None, lines_
                     ax.annotate(txt, (x[j], y[j]))
         else:
             ax.plot(data[:, 0], data[:, 1], '.')
-    ax.set_title(title)
+    if title is not None:
+        ax.set_title(title)
 
     # draw split lines after partitioning
     ax.grid()
@@ -102,10 +103,10 @@ def visualize_decision_boundaries(dataset, rootnode, minrange, maxrange, rf=Fals
     fig.set_size_inches((12, 8))
 
     fig.set_size_inches((15, 6))
-    plot_data(clusters, "Training Data and Splits", axes[0], n_clusters=len(clusters), minrange=minrange,
+    plot_data(clusters, axes[0], "Training Data and Splits", n_clusters=len(clusters), minrange=minrange,
               maxrange=maxrange, margin=0, grid_eval=dataset_grid_eval, show_data=True)
 
-    plot_data(clusters, "Splits", axes[1], n_clusters=len(clusters), minrange=minrange,
+    plot_data(clusters, axes[1], "Splits", n_clusters=len(clusters), minrange=minrange,
               maxrange=maxrange, margin=0, grid_eval=dataset_grid_eval, show_data=False)
 
     if save:
