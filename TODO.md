@@ -11,12 +11,15 @@
 - Apply to active learning (seen classes)
 
 ### Report Structure
-1. Literature Review
-2. Methodology
-3. Results: Density Forests
+1. Introduction
+2. Literature Review
+3. Methodology
+   1. Random Forest
+   1. Density Forests
+4. Results: Density Forests
    1. Dummy Data
-   2. MNIST 
+   2. MNIST
    3. Zurich Dataset
    4. _Baseline Methods_
-4. Discussion
-5. Conclusion
+5. Discussion
+6. Conclusion

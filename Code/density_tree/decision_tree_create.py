@@ -47,7 +47,7 @@ def create_decision_tree(dataset, parent_node=None, side_label=None, max_depth=n
     treenode.right_labels = np.unique(right[:, -1])
     
     # check if current tree depth > max tree depth
-    current_tree_depth = treenode.get_root().depth()
+    current_tree_depth = treenode.get_root().get_depth()
     
     # continue splitting only if there are several distinct labels
     # to a side and the maximum tree depth has not been reached yet.

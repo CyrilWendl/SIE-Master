@@ -4,20 +4,20 @@ from keras import backend as k_b
 
 def my_normal(x, mu, cov_det, cov_inv):
     """
-    Custom function for calculating the PDF probability of a multivariate normal distribution
+    Calculate the PDF probability of a multivariate normal distribution
     :param x: data point
     :param mu: mean of cluster
-    :param cov_det: precalculated determinant of covariance of cluster (for speed reasons during traversal)
-    :param cov_inv: precalculated inverse of covariance of cluster (for speed reasons during traversal)
+    :param cov_det: pre-calculated determinant of covariance of cluster (for speed reasons during traversal)
+    :param cov_inv: pre-calculated inverse of covariance of cluster (for speed reasons during traversal)
     """
     a = np.sqrt((2 * np.pi) ** x.shape[-1] * cov_det)
     b = -1 / 2 * np.dot(np.dot((x - mu), cov_inv), (x - mu).T)
     return 1 / a * np.exp(b)
 
 
-def entropy(labels, base=np.e):  # [1]
+def entropy(labels, base=np.e):
     """
-    Calculate the entropy for a set of labels.
+    Calculate the Shannon entropy for a set of labels.
     :param labels: an array of labels
     :param base: base of entropy, by default e
     :return: entropy
@@ -50,7 +50,9 @@ def entropy_gaussian(dataset, base=2):
 
 
 def print_rule(node):
-    """Helper function to print the split decision of a given node"""
+    """
+    Helper function to print the split decision of a given node
+    """
     rule_string = str(node.split_dimension) + "$<$" + str(np.round(node.split_value, 1))
     return rule_string
 
@@ -88,7 +90,7 @@ def print_decision_tree_latex(node, tree_string):
     """print decision tree in a LaTeX syntax for visualizing the decision tree
     To be called as:
     tree_string = ""
-    tree_string = printstuff(root,tree_string)
+    tree_string = print_decision_tree_latex(root,tree_string)
     """
     tree_string += "["
 
@@ -124,12 +126,12 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
     :param n_max_dim: maximum number of dimensions within which to search for best split
     :return dim_max: best split dimension
     :return val_dim_max: value at best split dimensions
-    :return ig_dims_vals: information gains for all split values in all possible split dimensions
-    :return split_dims_vals: split values corresponding to ig_dims_vals
+    :return ig_dims: information gains for all split values in all possible split dimensions
+    :return split_dims: split values corresponding to ig_dims
     """
 
     # get information gains on dimensions
-    ig_dims_vals, split_dims_vals = [], []
+    ig_dims, split_dims = [], []
     ig_dims_len = []
 
     if labelled:
@@ -147,25 +149,24 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
     for dim in dimensions:  # loop all dimensions
         ig_dim, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f)
         ig_dims_len = np.append(ig_dims_len, len(ig_dim))
-        ig_dims_vals = np.append(ig_dims_vals, ig_dim)
-        split_dims_vals = np.append(split_dims_vals, split_vals)
+        ig_dims = np.append(ig_dims, ig_dim)
+        split_dims = np.append(split_dims, split_vals)
 
     # get all maximum ig indexes and take a random one if there are several
-    max_ind = np.where(ig_dims_vals == np.max(ig_dims_vals))[0]
+    max_ind = np.where(ig_dims == np.max(ig_dims))[0]
     max_ind = [max_ind] if not len(np.shape(max_ind)) else max_ind  # numpy compatibility
     max_ind = np.random.choice(max_ind)
 
     # split dimension of maximum gain
     idx_dim_max = np.sum((max_ind >= np.cumsum(ig_dims_len)) * 1)
 
-    return dimensions[idx_dim_max], split_dims_vals[max_ind]
+    return dimensions[idx_dim_max], split_dims[max_ind]
 
 
 def get_ig_dim(data, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
     """
-    for one dimension, get information gain
-    for labelled and unlabelled data
-
+    get information gain for one dimension
+    working with labelled and unlabelled data
     :param data: dataset without labels (X)
     :param dim_cut: dimension for which all cut values are to be calculated
     :param entropy_f: entropy function to be used (labelled / unlabelled)
@@ -218,7 +219,7 @@ def rotate(origin, point, angle):
 
 def get_activations(model, layer, x_batch):
     """
-    get activations for patchwise classification
+    get activations for patch-wise classification
     """
     get_k_activations = k_b.function([model.layers[0].input, k_b.learning_phase()], [model.layers[layer].output, ])
     activations = get_k_activations([x_batch, 0])

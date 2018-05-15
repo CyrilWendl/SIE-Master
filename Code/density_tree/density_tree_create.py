@@ -81,7 +81,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
                                             treenode.right_cov_inv)
 
         # recursively continue splitting
-        if treenode.depth() < max_depth:
+        if treenode.get_depth() < max_depth:
             # only continue splitting if len(left) greater than twice the number of dimensions
             if (len(left) > min_subset * len(dataset)) and (len(left) > (dim * 2)):
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parentnode=treenode,

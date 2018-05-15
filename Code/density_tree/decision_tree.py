@@ -36,8 +36,8 @@ class DecisionNode:
 
     def depth(self):
         """get tree depth"""
-        left_depth = self.left.depth() if self.left else 0
-        right_depth = self.right.depth() if self.right else 0
+        left_depth = self.left.get_depth() if self.left else 0
+        right_depth = self.right.get_depth() if self.right else 0
         return max(left_depth, right_depth) + 1
 
     def __format__(self, **kwargs):
