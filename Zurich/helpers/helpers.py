@@ -118,8 +118,8 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
     for im in tqdm(images_gt):
         max_x = np.mod(im.shape[0], patch_size)
         max_y = np.mod(im.shape[1], patch_size)
-
-        im = im[:-max_x, :-max_y]  # image range divisible by patch_size
+        if max_x & max_y:
+            im = im[:-max_x, :-max_y]  # image range divisible by patch_size
 
         padded = np.lib.pad(im, n_pad, 'reflect')
         patches_im_gt = view_as_windows(padded, patch_size, step=stride)
