@@ -1,4 +1,5 @@
 import numpy as np
+from PIL import Image, ImageEnhance, ImageFilter
 
 
 # custom data generator
@@ -22,7 +23,8 @@ def batch_generator(patches_im, patches_gt, batch_size, data_augmentation=False)
         yield im_patches, gt_patches
 
 
-def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=True, rf_v=True, rot=True, jitter=False):
+def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=False, rf_v=False, rot=False, jitter=False,
+                          gamma=0, brightness=0, contrast=0, blur=False, force=False):
     """
     :param im_patches: Image to transform
     :param gt_patches: Ground truth to transform
@@ -32,6 +34,11 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=True, rf
     :param rf_v: Random vertical flipping (default: True)
     :param rot: Randomly rotate image by 0, 90, 180 or 270 degrees (default: True)
     :param jitter: Add random noise in N(0,0.01) to image
+    :param gamma: Put every pixel to the power of 0.85
+    :param brightness: Increase brightness of picture by a factor 3
+    :param contrast: Increase contrast by factor 1.3
+    :param blur: Add horizontal Gaussian blur (5*5 kernel)
+    :param force: Apply transformations to all images
     :return: augmented image and ground truth
     """
 
@@ -46,16 +53,20 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=True, rf
         flag_singleimg = False
 
     for (im, gt) in zip(im_patches, gt_patches):
+        # Scale image between [0, 1]
+        im -= np.min(im)
+        im /= np.max(im)
+
         if normalize:
             im /= np.max(im)
 
         # random flipping
         if rf_h:
-            if np.random.randint(2):
+            if np.random.randint(2) or force:
                 im = np.fliplr(im)
                 gt = np.fliplr(gt)
         if rf_v:
-            if np.random.randint(2):
+            if np.random.randint(2) or force:
                 im = np.flipud(im)
                 gt = np.flipud(gt)
 
@@ -66,22 +77,53 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=True, rf
                 im = np.rot90(im, k)
                 gt = np.rot90(gt, k)
 
-        # Scale image between [0, 1]
-        im -= np.min(im)
-        im /= np.max(im)
-
         # noise injection (jittering), only for image
         if jitter:
             if np.random.randint(2):
                 noise = np.random.normal(0, .01, np.shape(im))
                 im += noise
 
+        if gamma:
+            if np.random.randint(2) or force:
+                im = im ** gamma
+
+        # PIL transformations
+        if len(im.shape) == 2:
+            im_pil = Image.fromarray((im * 255).astype('uint8'))
+        else:
+            im_pil = Image.fromarray((im[..., 0] * 255).astype('uint8'))
+
+        if brightness:
+            if np.random.randint(2) or force:
+                im_pil = ImageEnhance.Brightness(im_pil).enhance(brightness)
+        if contrast:
+            if np.random.randint(2) or force:
+                im_pil = ImageEnhance.Contrast(im_pil).enhance(contrast)
+        if blur:
+            # not really working with semantic segmentation!
+            if np.random.randint(2) or force:
+                size = 5
+                kernel_motion_blur = np.zeros((size, size))
+                kernel_motion_blur[int((size - 1) / 2), :] = np.ones(size)
+                kernel_motion_blur = kernel_motion_blur / size
+                kernel_motion_blur = kernel_motion_blur.flatten()
+                im_pil = im_pil.filter(ImageFilter.Kernel((size, size), kernel_motion_blur))
+
+        im = np.asarray(im_pil) / 255
+        # Scale image between [0, 1]
+        im -= np.min(im)
+        im /= np.max(im)
+
+        if len(im.shape) == 2:
+            im = im[..., np.newaxis]
+
         im_patches_t.append(im)
+
         gt_patches_t.append(gt)
 
     im_patches_t = np.asarray(im_patches_t)
     gt_patches_t = np.asarray(gt_patches_t)
-    
+
     if flag_singleimg:
         return im_patches_t[0], gt_patches_t[0]
     else:
