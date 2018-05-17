@@ -1,12 +1,10 @@
 """
 Set of preprocessing and helper functions
 """
-
 import numpy as np
 from skimage.io import imread
 from skimage import exposure
 from skimage.util import view_as_windows
-from tqdm import tqdm
 
 
 def im_load(path, offset=2):
@@ -46,7 +44,7 @@ def gt_color_to_label(gt, colors, maj=False):
     gt_new = gt.copy()
 
     # replace colors by new values
-    for i in tqdm(range(len(colors))):
+    for i in range(len(colors)):
         for j in range(np.shape(gt)[0]):  # loop over images
             gt_new[j][..., 0][np.all(gt[j] == colors[i], axis=-1)] = i  # np.argsort(colors)[i]
 
@@ -83,7 +81,7 @@ def get_padded_patches(images, patch_size=64, stride=64):
     """
     patches = []
     n_pad = int((patch_size - stride) / 2)  # number of pixels to pad on each side
-    for im in tqdm(images):  # loop over images
+    for im in images:  # loop over images
         max_x = np.mod(im.shape[0], patch_size)
         max_y = np.mod(im.shape[1], patch_size)
         if max_x & max_y:
@@ -115,7 +113,7 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
     """
     gt_patches = []
     n_pad = int((patch_size - stride) / 2)  # number of pixels to pad on each side
-    for im in tqdm(images_gt):
+    for im in images_gt:
         max_x = np.mod(im.shape[0], patch_size)
         max_y = np.mod(im.shape[1], patch_size)
         if max_x & max_y:
