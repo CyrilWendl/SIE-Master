@@ -88,7 +88,10 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=False, r
                 im = im ** gamma
 
         # PIL transformations
-        im_pil = Image.fromarray((im * 255).astype('uint8'))
+        if im.shape[-1] == 1:
+            im_pil = Image.fromarray((im[..., 0] * 255).astype('uint8'))
+        else:
+            im_pil = Image.fromarray((im * 255).astype('uint8'))
 
         if brightness:
             if np.random.randint(2) or force:
