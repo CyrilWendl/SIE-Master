@@ -5,6 +5,8 @@ import numpy as np
 from skimage.io import imread
 from skimage import exposure
 from skimage.util import view_as_windows
+from sklearn import metrics
+import matplotlib.pyplot as plt
 
 
 def im_load(path, offset=2):
@@ -46,7 +48,7 @@ def gt_color_to_label(gt, colors, maj=False):
     # replace colors by new values
     for i in range(len(colors)):
         for j in range(np.shape(gt)[0]):  # loop over images
-            gt_new[j][..., 0][np.all(gt[j] == colors[i], axis=-1)] = i  # np.argsort(colors)[i]
+            gt_new[j][..., 0][np.all(gt[j] == colors[i], axis=-1)] = i
 
     gt_new = np.asarray([gt_new[j][..., 0] for j in range(np.shape(gt)[0])])  # only keep first band = label
 
@@ -128,7 +130,7 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
         if central_label:
             central_labels = []
             for patch_im_gt in patches_im_gt:
-                central_labels.append(patch_im_gt[int(patch_im_gt.shape[0]/2), int(patch_im_gt.shape[1]/2)])
+                central_labels.append(patch_im_gt[int(patch_im_gt.shape[0] / 2), int(patch_im_gt.shape[1] / 2)])
 
             patches_im_gt = np.asarray(central_labels)
 
@@ -138,18 +140,22 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
     return np.asarray(gt_patches)
 
 
-def get_y_pred_labels(y_pred_onehot, class_to_remove=None):
+def get_y_pred_labels(y_pred_onehot, class_to_remove=None, background=False):
     """
     get predicted labels from one hot result of model.predict()
     :param y_pred_onehot: one-hot labels
     :param class_to_remove: label of class which was removed during training
+    :param whether there is a background to remove. In this case, all labels are increased by +1
     :return: predicted y labels
     """
     n_classes = y_pred_onehot.shape[-1]
-    y_pred_label = np.argmax(y_pred_onehot, axis=-1) + 1
-    if class_to_remove:
-        for i in range(class_to_remove, n_classes + 1)[::-1]:
+    y_pred_label = np.argmax(y_pred_onehot, axis=-1)
+    if class_to_remove is not None:
+        for i in range(class_to_remove, n_classes)[::-1]:
             y_pred_label[y_pred_label == i] = i + 1
+
+    if background:
+        y_pred_label=y_pred_label+1
     return y_pred_label
 
 
@@ -258,3 +264,30 @@ def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
         patches_wo_overlap.append(get_padded_patches(act_im[np.newaxis], patch_size, patch_size))
 
     return np.asarray(patches_wo_overlap)
+
+
+def get_auroc_curve(y_test, y_pred, savename=None):
+    """
+    Plot an auroc curve
+    :param y_test: binary true y labels
+    :param y_pred: binary predicted y labels
+    :param savename: optional file name where to save plot
+    :return: fpr, tpr, rates
+    """
+    fpr, tpr, rates = metrics.roc_curve(y_test, y_pred)
+    roc_auc = metrics.auc(fpr, tpr)
+
+    lw = 2
+    plt.plot(fpr, tpr, color='darkorange',
+             lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
+    plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver operating characteristic example')
+    plt.legend(loc="lower right")
+    if savename is not None:
+        plt.savefig(savename, bbox_inches='tight', pad_inches=0)
+    return fpr, tpr, rates
+    # TODO plot also for multiclass problem?

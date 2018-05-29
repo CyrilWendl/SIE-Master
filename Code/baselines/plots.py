@@ -58,7 +58,7 @@ def show_softmax(idx, y_preds, y_true=None, legend=None):
         print("True label: %i" % y_true[idx])
 
 
-def plot_probas(probas, class_to_remove, labels=None):
+def plot_probas(probas, class_to_remove, labels=None, title=None):
     # plot average probabilities as bar chart
     colors = ['b' for _ in range(len(probas) + 1)]
     colors[class_to_remove - 1] = 'r'
@@ -68,4 +68,5 @@ def plot_probas(probas, class_to_remove, labels=None):
         plt.xticks(range(len(probas)), labels, rotation=30)
     else:
         plt.xticks(range(len(probas)))
-    plt.title("Mean probability to have a correct prediction in class")
+    if title is not None:
+        plt.title(title)

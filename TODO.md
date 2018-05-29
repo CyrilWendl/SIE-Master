@@ -1,8 +1,10 @@
 # To Do
 
 ### Baseline Methods 
-- Confidence from Invariance to Image Transformations: https://arxiv.org/abs/1804.00657
+- Implement 3b - Confidence estimation in Neural Networks.pdf
 - Dropout as a Bayesian Approximation: https://arxiv.org/abs/1506.02142
+- Entropy: https://arxiv.org/pdf/1709.09844.pdf
+
 
 ### Ideas 
 - Change Code to PyTorch

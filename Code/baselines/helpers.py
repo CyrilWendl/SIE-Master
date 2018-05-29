@@ -2,6 +2,7 @@ from copy import deepcopy
 import numpy as np
 from tqdm import tqdm
 import keras.backend as k
+from keras.models import load_model , clone_model
 from helpers.helpers import remove_overlap
 
 
@@ -17,6 +18,7 @@ def keras_predict_with_dropout(model, x, n_iter=10):
     return pred
 
 
+
 def predict_with_dropouts_batch(model, x, batch_size=300, n_iter=10):
     """
     make _n_iter_ predictions for _x_ in batches of _batch_size_ using _model_ as a model
@@ -27,6 +29,7 @@ def predict_with_dropouts_batch(model, x, batch_size=300, n_iter=10):
     """
     n_steps = int(np.ceil(len(x) / batch_size))
     preds = []
+
     for i in tqdm(range(n_steps)):
         idx_start = i * batch_size
         idx_end = (i + 1) * batch_size
@@ -70,7 +73,6 @@ def predict_with_dropout_imgs(model, x, imgs, ids, batch_size=300, n_iter=10):
     return preds_it
 
 
-# loop all data points
 def reorder_truncate_concatenate(y_preds, n_components):
     """
     reorder, truncate, concatenate softmax prediction vectors
