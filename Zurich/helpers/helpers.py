@@ -5,9 +5,8 @@ import numpy as np
 from skimage.io import imread
 from skimage import exposure
 from skimage.util import view_as_windows
-from sklearn import metrics
-import matplotlib.pyplot as plt
-
+import natsort as ns
+import os
 
 def im_load(path, offset=2):
     """load a TIF image"""
@@ -140,22 +139,24 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
     return np.asarray(gt_patches)
 
 
-def get_y_pred_labels(y_pred_onehot, class_to_remove=None, background=False):
+def get_y_pred_labels(y_pred_onehot, class_to_remove=None, background=True):
     """
     get predicted labels from one hot result of model.predict()
     :param y_pred_onehot: one-hot labels
     :param class_to_remove: label of class which was removed during training
-    :param whether there is a background to remove. In this case, all labels are increased by +1
+    :param background: whether there is a background to remove. In this case, all labels are increased by +1
     :return: predicted y labels
     """
     n_classes = y_pred_onehot.shape[-1]
     y_pred_label = np.argmax(y_pred_onehot, axis=-1)
+
+    if background:
+        y_pred_label = y_pred_label+1
+
     if class_to_remove is not None:
         for i in range(class_to_remove, n_classes)[::-1]:
             y_pred_label[y_pred_label == i] = i + 1
 
-    if background:
-        y_pred_label=y_pred_label+1
     return y_pred_label
 
 
@@ -197,7 +198,28 @@ def get_offset(images, patch_size, stride, begin_idx, end_idx):
     return n_patches
 
 
-# convert patches to input image
+def load_data(path):
+    """
+    Zurich dataset data loader
+    :param path: path in which Zurich_dataset/ is saved
+    :return: imgs, gt
+    """
+    im_dir = r'' + path + '/Zurich_dataset/images_tif/'
+    gt_dir = r'' + path + '/Zurich_dataset/groundtruth/'
+
+    im_names = ns.natsorted(os.listdir(im_dir))
+    gt_names = ns.natsorted(os.listdir(gt_dir))
+    print("images: %i " % len(im_names))
+    print("ground truth images: %i " % len(gt_names))
+
+    imgs = np.asarray([im_load(im_dir + im_name) for im_name in im_names])
+    gt = np.asarray([im_load(gt_dir + gt_name) for gt_name in gt_names])
+
+    # histogram stretching
+    imgs = imgs_stretch_eq(imgs)
+    return imgs, gt
+
+
 def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32, img_start=16):
     """
     Merge patches to image (only for test set)
@@ -230,23 +252,6 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     return image_out
 
 
-def get_fig_overlay(im_1, im_2, thresh=.5, opacity=.3):
-    """
-    get an overlay of two images im_1 and im_2 a threshold value for im_2 and an opacity.
-    :param im_1: original image
-    :param im_2: binary image to overlay over first image
-    :param thresh: threshold from which to overlay im_2
-    :param opacity: opacity for the original image
-    :return: image with overlay
-    """
-    red_mask = im_1.copy() * 0
-    red_mask[..., 0] = 1
-    im_overlay = im_1.copy()
-    mask_vals = im_2 < thresh
-    im_overlay[mask_vals] = im_overlay[mask_vals] * opacity + red_mask[mask_vals] * (1 - opacity)
-    return im_overlay
-
-
 def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
     """
     create non-overlapping patches from overlapping patches in prediction
@@ -266,28 +271,3 @@ def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
     return np.asarray(patches_wo_overlap)
 
 
-def get_auroc_curve(y_test, y_pred, savename=None):
-    """
-    Plot an auroc curve
-    :param y_test: binary true y labels
-    :param y_pred: binary predicted y labels
-    :param savename: optional file name where to save plot
-    :return: fpr, tpr, rates
-    """
-    fpr, tpr, rates = metrics.roc_curve(y_test, y_pred)
-    roc_auc = metrics.auc(fpr, tpr)
-
-    lw = 2
-    plt.plot(fpr, tpr, color='darkorange',
-             lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver operating characteristic example')
-    plt.legend(loc="lower right")
-    if savename is not None:
-        plt.savefig(savename, bbox_inches='tight', pad_inches=0)
-    return fpr, tpr, rates
-    # TODO plot also for multiclass problem?

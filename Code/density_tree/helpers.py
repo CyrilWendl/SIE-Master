@@ -207,7 +207,11 @@ def get_ig_dim(data, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
 
 def rotate(origin, point, angle):
     """
-    Rotate a point counterclockwise by a given angle around a given origin. The angle should be given in radians.
+    Rotate a point counterclockwise by a given angle around a given origin.
+    :param origin: Origin around which to rotate
+    :param point: data point
+    :param angle: angle, should be given in radians
+    :return: rotated x, y point coordinates
     """
     ox, oy = origin
     px, py = point
@@ -219,8 +223,30 @@ def rotate(origin, point, angle):
 
 def get_activations(model, layer, x_batch):
     """
-    get activations for patch-wise classification
+    get activations for patch-wise classification (MNIST)
+    :param model: model for which to get activations
+    :param layer: layer index, normally -2 (FC layer before softmax)
+    :param x_batch: batch of data points for which to get activations
+    :return: activations
     """
     get_k_activations = k_b.function([model.layers[0].input, k_b.learning_phase()], [model.layers[layer].output, ])
     activations = get_k_activations([x_batch, 0])
     return activations
+
+
+def get_balanced_subset_indices(gt, classes, pts_per_class=100):
+    """
+    Get indices of balanced subset of data where every class has pts_per_class points
+    helper function of t-SNE plot in density_tree/plots.py
+    :param gt: ground truth corresponding to dataset to be indexed
+    :param array of possible classes in gt.
+    :param pts_per_class: points per class
+    :return: dataset_subset_indices
+    """
+    dataset_subset_indices = []
+
+    for class_label in classes:
+        ds_subset_ind = np.where(gt[gt < np.infty] == class_label)[0]
+        dataset_subset_indices.append(np.random.choice(ds_subset_ind, size=pts_per_class, replace=False))
+
+    return dataset_subset_indices

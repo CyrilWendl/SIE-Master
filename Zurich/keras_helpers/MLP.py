@@ -4,7 +4,7 @@ from keras.models import Sequential
 from keras.optimizers import Adam
 
 
-def get_MLP(n_classes, input_shape, n_filt=70):
+def get_mlp(n_classes, input_shape, n_filt=70):
     """
     get an MLP model instance
     :param n_classes: number of classes

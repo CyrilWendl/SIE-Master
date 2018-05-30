@@ -4,6 +4,7 @@ from matplotlib.pyplot import cm
 from matplotlib.patches import Ellipse
 import matplotlib.pylab as plt
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
 
 
 def plot_data(data, ax, title=None, n_clusters=None, save=False, lines_x=None, lines_y=None,
@@ -114,6 +115,68 @@ def visualize_decision_boundaries(dataset, rootnode, minrange, maxrange, rf=Fals
 
     plt.show()
 
-    # Detail view of the problematic region
-    # plotData(clusters_eval, "Test Data and Splits of Training Data", x_split, y_split, clusters = clusters_eval,
-    #         minrange = 20, maxrange = 40)
+
+def plot_tsne(tsne_all, class_to_remove, classes_to_keep, pts_per_class, colors, names, s_name=None):
+    """
+    Show t-SNE plot for points in high-dimensional space
+    :param tsne_all: all tsne points with pts_per_class points per class
+    :param class_to_remove: index of removed class in classification
+    :param classes_to_keep: classes which were kept
+    :param colors: class colors
+    :param names: class names
+    :param pts_per_class: number of points per class to plot
+    :param s_name: optional name where to save figure
+    """
+    names_keep = np.asarray(names)[classes_to_keep]
+    names_keep = names_keep.tolist()
+    plt.figure(figsize=(8, 8))
+    for i, class_label in enumerate(classes_to_keep):
+        ind_data = np.arange(pts_per_class * (class_label - 1), pts_per_class * class_label)
+        plt.scatter(tsne_all[ind_data, 0], tsne_all[ind_data, 1],
+                    c=np.asarray(colors)[class_label] / 255, marker='o', alpha=.7)
+
+    ind_data = np.arange(pts_per_class * (class_to_remove - 1), pts_per_class * class_to_remove)
+    plt.scatter(tsne_all[ind_data, 0], tsne_all[ind_data, 1],
+                c=np.asarray(colors)[class_to_remove] / 255, marker='x', alpha=.7)
+    names_legend = names_keep.copy()
+    names_legend.append('unseen class (' + names[class_to_remove] + ')')
+    plt.legend(names_legend, framealpha=1)
+    plt.axis('off')
+    if s_name is not None:
+        plt.savefig(s_name, bbox_inches='tight', pad_inches=0)
+
+
+def plot_pca(pca_data, class_to_remove, classes_to_keep, names, dataset_subset_indices, colors):
+    """
+    Plot first two PCA components of data in 3D
+    :param pca_data: PCA data to plot
+    :param class_to_remove: class number removed in classification
+    :param classes_to_keep: array of classes to keep
+    :param names: class names
+    :param dataset_subset_indices: indices of dataset for which to draw data, obtained using get_balanced_subset_indices
+    :param colors: colors corresponding to classes
+    """
+    names_keep = np.asarray(names)[classes_to_keep]
+    names_keep = names_keep.tolist()
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection=Axes3D.name)
+
+    # points corresponding to seen classes
+    for i, class_keep in enumerate(classes_to_keep):
+        ind_data = dataset_subset_indices[class_keep - 1]
+        data_plt = pca_data[ind_data]
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], zs=data_plt[:, 2],
+                   c=np.asarray(colors)[class_keep] / 255, s=15, depthshade=True, marker='o', alpha=.7)
+
+    # points corresponding to unseen class
+    ind_data = dataset_subset_indices[class_to_remove - 1]
+    ax.scatter(pca_data[ind_data, 0], pca_data[ind_data, 1], zs=pca_data[ind_data, 2],
+               c=np.asarray(colors)[class_to_remove] / 255, s=25, marker='x', depthshade=True, alpha=.7)
+
+    # add legend
+    names_legend = names_keep.copy()
+    names_legend.append('unseen class (' + names[class_to_remove] + ')')
+    ax.legend(names_legend, framealpha=1)
+    plt.savefig("../Figures/PCA/pca_components_3d_" + names[class_to_remove] + ".pdf", bbox_inches='tight',
+                pad_inches=0)
+    plt.show()

@@ -2,7 +2,6 @@ from copy import deepcopy
 import numpy as np
 from tqdm import tqdm
 import keras.backend as k
-from keras.models import load_model , clone_model
 from helpers.helpers import remove_overlap
 
 
@@ -16,7 +15,6 @@ def keras_predict_with_dropout(model, x, n_iter=10):
     f = k.function([model.layers[0].input, k.learning_phase()], [model.layers[-1].output])
     pred = np.concatenate([f([x, 1]) for _ in range(n_iter)])
     return pred
-
 
 
 def predict_with_dropouts_batch(model, x, batch_size=300, n_iter=10):
