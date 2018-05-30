@@ -9,8 +9,8 @@ from .density_tree_traverse import *
 from .helpers import my_normal
 
 
-def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=0, n_jobs=-1,
-                          verbose=1, fact_improvement=.9):
+def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=0, n_jobs=-1,
+              verbose=1, fact_improvement=.9):
     """
     Create Density Forest
     :param dataset: entire dataset on which to create trees
@@ -49,7 +49,7 @@ def density_forest_create(dataset, max_depth, min_subset, n_trees, subsample_pct
     return root_nodes
 
 
-def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal', standardize=False):
+def df_traverse(dataset, root_nodes, thresh=.1, method='normal', standardize=False):
     """
     traverse density forest and get mean probability for point to belong to the leaf clusters of each tree
     """
@@ -65,12 +65,44 @@ def density_forest_traverse(dataset, root_nodes, thresh=.1, method='normal', sta
                 if method == 'normal':
                     pairs_proba[d_idx, t_idx] = my_normal(d, d_mean, d_cov_det, d_cov_inv)
                     if standardize:
-                        pairs_proba[d_idx, t_idx] /= d_pdf_mean   # standardize by max. probability
+                        pairs_proba[d_idx, t_idx] /= d_pdf_mean  # standardize by max. probability
                 else:
                     pairs_proba[d_idx, t_idx] = euclidean(d_mean, d)
                     if standardize:
-                        pairs_proba[d_idx, t_idx] /= d_pdf_mean   # standardize by max. probability
+                        pairs_proba[d_idx, t_idx] /= d_pdf_mean  # standardize by max. probability
             else:
                 pairs_proba[d_idx, t_idx] = np.nan
 
     return np.nanmean(pairs_proba, axis=-1)
+
+
+def df_traverse_batch(activations, root_nodes_seen, method='normal', n_jobs=-1,
+                      batch_size=10000, verbosity=2, thresh=.0001, standardize=False):
+    """
+    Traverse a Density forest in batches
+    :param activations: activations for which to traverse trees
+    :param root_nodes_seen: array of root nodes from df_create
+    :param method: method for traversal (normal / euclid )
+    :param n_jobs: number of concurrent jobs for traversal (if n_jobs=-1, n_jobs=cpu_count())
+    :param batch_size: batch size of activations for which to do df_traverse at a time
+    :param verbosity: output verbose messages
+    :param thresh: threshold min number of pts per cluster for traversing trees
+    :param standardize: whether to standardize each output by the maximum value in the cluster
+    :return: Gaussian probabilities for activations
+    """
+    steps = np.linspace(0, len(activations), len(activations) / batch_size, dtype='int')
+    print("Total steps: %i" % len(steps))
+    if n_jobs == -1:
+        n_jobs = multiprocessing.cpu_count()
+    print("Number of jobs: %i " % n_jobs)
+
+    probas = Parallel(n_jobs=n_jobs, verbose=verbosity)(
+        delayed(df_traverse)(activations[steps[i]:steps[i + 1], :], root_nodes_seen, thresh=thresh,
+                             method=method, standardize=standardize)
+        for i in range(len(steps) - 1))
+
+    probas = np.concatenate(probas)
+    if method == 'euclid':
+        probas = 1 - probas
+
+    return probas
