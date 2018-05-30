@@ -1,5 +1,6 @@
 """Functions to generate test data"""
 import numpy as np
+from density_tree.helpers import rotate
 
 
 def gaussian(x, mu, sig):
@@ -91,6 +92,57 @@ def create_data(n_clusters, dimensions, covariance, npoints, minrange=1, maxrang
         dataset = np.concatenate((dataset, [labels]))
 
     return dataset.T
+
+
+def create_spirals(n_points_arm=1000, radius_min=np.pi / 50, radius_max=7 * np.pi / 16, divergence=0.05, n_arms=4):
+    """
+    Create data according to a spiral distribution
+    :param n_points_arm: number of points per arm
+    :param radius_min: minimum radius from to which to create data
+    :param radius_max: maximum radius up to which to create data
+    :param divergence: scattering factor of points along the sprial arms
+    :param n_arms: number of arms to create
+    :return:
+    """
+    theta = np.linspace(radius_min, radius_max, n_points_arm)
+    a = np.random.uniform(1 - divergence, 1 + divergence, n_points_arm)
+
+    x = a * np.sqrt(theta) * np.cos(theta)
+    y = a * np.sqrt(theta) * np.sin(theta)
+
+    for i in range(1, 5):
+        x_, y_ = rotate([0, 0], [x, y], i * 2 * np.pi / n_arms)
+        x = np.concatenate((x, x_))
+        y = np.concatenate((y, y_))
+
+    # save as new dataset
+    dataset = np.asarray([x, y]).T
+    minRange = np.min(x)
+    maxRange = np.max(x)
+    return dataset, minRange, maxRange
+
+
+def create_S_shape(n_points_arm=300, radius_min=np.pi / 4, radius_max=6 * np.pi / 4, divergence=0.05):
+    """
+    Create data according to a S shape
+    :param n_points_arm: number of points per arm
+    :param radius_min: minimum radius from to which to create data
+    :param radius_max: maximum radius up to which to create data
+    :param divergence: scattering factor of points along the sprial arms
+    :param n_arms: number of arms to create
+    :return:
+    """
+    theta = np.linspace(radius_min, radius_max, n_points_arm)
+    a = np.random.uniform(1 - divergence, 1 + divergence, n_points_arm)
+
+    x = a * np.sqrt(theta) * np.sin(theta)
+    y = a * np.sqrt(theta) * np.cos(theta) * x
+
+    # save as new dataset
+    dataset = np.asarray([x, y]).T
+    minRange = np.min([np.min(x),np.min(y)])
+    maxRange = np.max([np.max(x),np.max(y)])
+    return dataset, minRange, maxRange
 
 
 def data_to_clusters(dataset):
