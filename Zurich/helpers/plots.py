@@ -54,7 +54,7 @@ def plot_precision_recall(precision, recall, s_name=None):
     plt.ylabel('Precision')
     plt.ylim([0.0, 1.05])
     plt.xlim([0.0, 1.0])
-    plt.title('2-class Precision-Recall curve: AUC={0:0.2f}'.format(
+    plt.title('2-class Precision-Recall curve: AUC={0:0.3f}'.format(
         metrics.auc(recall, precision)))
     if s_name is not None:
         plt.savefig(s_name, bbox_inches='tight', pad_inches=0)

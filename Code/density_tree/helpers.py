@@ -176,11 +176,19 @@ def get_ig_dim(data, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
     ig_dim, split_vals = [], []
     dims = np.shape(data)[-1]
 
-    # min split has to > dim-smallest element of array (to have at least dims points to either side)
-    dataset_dim_min = np.partition(data[:, dim_cut], dims)[dims]
-    dataset_dim_max = np.partition(data[:, dim_cut], -dims)[-dims]
+    # for labelled data, we effectively have one less dimension
+    if entropy_f != entropy_gaussian:
+        dims = dims - 1
 
-    # ensure that at least for one split value, we have n_points >= n_dims on both sides
+    # min split has to > dim-smallest element of array (to have at least dims points to either side)
+    if entropy_f==entropy_gaussian:
+        dataset_dim_min = np.partition(data[:, dim_cut], dims)[dims]
+        dataset_dim_max = np.partition(data[:, dim_cut], -dims)[-dims]
+    else:
+        dataset_dim_min = np.min(data[:, dim_cut])
+        dataset_dim_max = np.max(data[:, dim_cut])
+
+        # ensure that at least for one split value, we have n_points >= n_dims on both sides
     iter_set = np.random.uniform(dataset_dim_min, dataset_dim_max, n_grid)
 
     for split_val in iter_set:
@@ -189,7 +197,7 @@ def get_ig_dim(data, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
         right = data[data[:, dim_cut] >= split_val]
 
         # check that there are more values on each side than dimensions in the dataset
-        if (len(left) > dims) and (len(right) > dims):
+        if (len(left) >= dims) and (len(right) >= dims) or ((entropy_f!=entropy_gaussian) and len(right) and len(left)):
             # entropy
             entropy_l = entropy_f(left, base=base)
             entropy_r = entropy_f(right, base=base)
@@ -239,7 +247,7 @@ def get_balanced_subset_indices(gt, classes, pts_per_class=100):
     Get indices of balanced subset of data where every class has pts_per_class points
     helper function of t-SNE plot in density_tree/plots.py
     :param gt: ground truth corresponding to dataset to be indexed
-    :param array of possible classes in gt.
+    :param classes: array of possible classes in gt.
     :param pts_per_class: points per class
     :return: dataset_subset_indices
     """
