@@ -46,7 +46,6 @@ def plot_precision_recall(precision, recall, s_name=None):
     :param recall: recall
     :param s_name: optional name of file to save figure
     """
-
     plt.step(recall, precision, color='b', alpha=0.2,
              where='post')
 

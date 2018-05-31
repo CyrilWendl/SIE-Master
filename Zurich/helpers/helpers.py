@@ -1,12 +1,13 @@
-"""
-Set of preprocessing and helper functions
-"""
+"""Set of preprocessing and helper functions"""
+
 import numpy as np
 from skimage.io import imread
 from skimage import exposure
 from skimage.util import view_as_windows
 import natsort as ns
 import os
+from scipy.stats import entropy as e
+
 
 def im_load(path, offset=2):
     """load a TIF image"""
@@ -151,26 +152,13 @@ def get_y_pred_labels(y_pred_onehot, class_to_remove=None, background=True):
     y_pred_label = np.argmax(y_pred_onehot, axis=-1)
 
     if background:
-        y_pred_label = y_pred_label+1
+        y_pred_label = y_pred_label + 1
 
     if class_to_remove is not None:
         for i in range(class_to_remove, n_classes)[::-1]:
             y_pred_label[y_pred_label == i] = i + 1
 
     return y_pred_label
-
-
-def get_accuracy_probas(y_pred):
-    """
-    Get accuracy as margin between highest and second highest class
-    :param y_pred: one-hot of predicted probabilities from CNN
-    :return: margin between highest and second highest class probabilities for every pixel
-    """
-    y_pred_rank = np.sort(y_pred, axis=-1)  # for every pixel, get the rank
-    y_pred_max1 = y_pred_rank[..., -1]  # highest proba
-    y_pred_max2 = y_pred_rank[..., -2]  # second highest proba
-    y_pred_acc = y_pred_max1 - y_pred_max2
-    return y_pred_acc
 
 
 def get_offset(images, patch_size, stride, begin_idx, end_idx):
@@ -271,3 +259,32 @@ def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
     return np.asarray(patches_wo_overlap)
 
 
+def get_acc_net_msr(y_pred):
+    """
+    Get accuracy as maximum softmax response (MSR)
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as MSR
+    """
+    return np.argmax(y_pred, -1)
+
+
+def get_acc_net_max_margin(y_pred):
+    """
+    Get accuracy as softmax activation margin between highest and second highest class
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as margin between highest and second highest class activations
+    """
+    y_pred_rank = np.sort(y_pred, axis=-1)  # for every pixel, get the rank
+    y_pred_max1 = y_pred_rank[..., -1]  # highest proba
+    y_pred_max2 = y_pred_rank[..., -2]  # second highest proba
+    y_pred_acc = y_pred_max1 - y_pred_max2
+    return y_pred_acc
+
+
+def get_acc_net_entropy(y_pred):
+    """
+    Get accuracy as negative entropy of softmax activations
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as negative entropy of activations
+    """
+    return np.transpose(-e(np.transpose(y_pred)))
