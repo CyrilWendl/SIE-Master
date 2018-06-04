@@ -258,3 +258,34 @@ def get_balanced_subset_indices(gt, classes, pts_per_class=100):
         dataset_subset_indices.append(np.random.choice(ds_subset_ind, size=pts_per_class, replace=False))
 
     return dataset_subset_indices
+
+def get_values_preorder(node, split_dims, split_vals):
+    """
+    Get cut values and dimensions of a density tree by preorder traversal
+    :param node: root node
+    :param split_vals: array of split values, call with []
+    :param split_dims: array of split dimensions, call with []
+    :return: split_vals, split_dims
+    """
+    split_dims.append(node.split_dimension)
+    split_vals.append(node.split_value)
+    if node.left is not None:
+        get_values_preorder(node.left, split_dims, split_vals)
+    if node.right is not None:
+        get_values_preorder(node.right, split_dims, split_vals)
+    return split_vals, split_dims
+
+
+def draw_subsamples(dataset, subsample_pct=.8, replace=False):
+    """draw random subsamples with or without replacement from a dataset
+    :param dataset: the dataset from which to chose subsamples from
+    :param subsample_pct: the size of the subsample dataset to create in percentage of the original dataset
+    :param replace: subsampling with or without replacement
+    """
+    subsample_size = int(np.round(len(dataset) * subsample_pct))  # subsample size
+    dataset_indices = np.arange(len(dataset))
+
+    #  draw random samples with replacement
+    dataset_subset_indices = np.random.choice(dataset_indices, size=subsample_size, replace=replace)
+    dataset_subset = dataset[dataset_subset_indices, :]
+    return dataset_subset

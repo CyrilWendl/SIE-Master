@@ -80,6 +80,41 @@ class DensityNode:
         else:
             return 0
 
+    def highest_entropy(self, node, e, side):
+        """
+        get the node in tree which has the highest entropy,
+        searching from the root node to the bottom
+        for every node, check the entropies left and right after splitting
+        if the node is not split yet to one of the sides and the entropy on the unsplit side
+        exceeds the  maximum entropy, return the node.
+        :param node: root node
+        :param e: currently highest entropy (call with 0)
+        :param side: current side (call with 'None'
+        :return: node with highest remaining entropy, entropy and split side
+        """
+        if self.left_entropy is not None and self.left is None:
+            if self.left_entropy > e:
+                node = self
+                e = self.left_entropy
+                side = 'left'
+
+        if self.right_entropy is not None and self.right is None:
+            if self.right_entropy > e:
+                node = self
+                e = self.right_entropy
+                side = 'right'
+
+        if self.left is not None:
+            node_lower_l, e_lower_l, side_lower_l = self.left.highest_entropy(node, e, side)
+            if e_lower_l > e:
+                node, e, side = node_lower_l, e_lower_l, side_lower_l
+        if self.right is not None:
+            node_lower_r, e_lower_r, side_lower_r = self.right.highest_entropy(node, e, side)
+            if e_lower_r > e:
+                node, e, side = node_lower_r, e_lower_r, side_lower_r
+
+        return node, e, side
+
     def __format__(self, **kwargs):
         print('-' * 15 + '\nDensity Tree Node: \n' + '-' * 15 + '\n split dimension: ' + str(self.split_dimension))
         print('split value' + str(self.split_value))

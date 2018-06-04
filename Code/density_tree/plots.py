@@ -1,5 +1,7 @@
+# TODO make all plots modular (take ax as input add to it)
 from .random_forest import get_grid_labels
 from .create_data import data_to_clusters
+from .helpers import get_values_preorder, draw_subsamples
 from matplotlib.pyplot import cm
 from matplotlib.patches import Ellipse
 import matplotlib.pylab as plt
@@ -116,32 +118,34 @@ def visualize_decision_boundaries(dataset, rootnode, minrange, maxrange, rf=Fals
     plt.show()
 
 
-def plot_tsne(tsne_all, class_to_remove, classes_to_keep, pts_per_class, colors, names, s_name=None):
+def plot_tsne(tsne_all, tsne_y, ax, classes_to_keep, colors, names, class_to_remove=None, s_name=None):
     """
     Show t-SNE plot for points in high-dimensional space
     :param tsne_all: all tsne points with pts_per_class points per class
+    :param tsne_y: corresponding y label for each tsne point, needs to be in same classes as classes_to_keep
+    :param ax: ax on which to plot the tsne visualization
     :param class_to_remove: index of removed class in classification
     :param classes_to_keep: classes which were kept
     :param colors: class colors
     :param names: class names
-    :param pts_per_class: number of points per class to plot
     :param s_name: optional name where to save figure
     """
     names_keep = np.asarray(names)[classes_to_keep]
     names_keep = names_keep.tolist()
-    plt.figure(figsize=(8, 8))
     for i, class_label in enumerate(classes_to_keep):
-        ind_data = np.arange(pts_per_class * (class_label - 1), pts_per_class * class_label)
-        plt.scatter(tsne_all[ind_data, 0], tsne_all[ind_data, 1],
-                    c=np.asarray(colors)[class_label] / 255, marker='o', alpha=.7)
+        data_plt = tsne_all[tsne_y == class_label]
+        ax.scatter(data_plt[:, 0], data_plt[:, 1],
+                   c=np.asarray(colors)[class_label], marker='o', alpha=.7)
 
-    ind_data = np.arange(pts_per_class * (class_to_remove - 1), pts_per_class * class_to_remove)
-    plt.scatter(tsne_all[ind_data, 0], tsne_all[ind_data, 1],
-                c=np.asarray(colors)[class_to_remove] / 255, marker='x', alpha=.7)
+    if class_to_remove is not None:
+        data_plt = tsne_all[tsne_y == class_to_remove]
+        ax.scatter(data_plt[:, 0], data_plt[:, 1],
+                   c=np.asarray(colors)[class_to_remove], marker='x', alpha=.7)
     names_legend = names_keep.copy()
-    names_legend.append('unseen class (' + names[class_to_remove] + ')')
-    plt.legend(names_legend, framealpha=1)
-    plt.axis('off')
+    if class_to_remove is not None:
+        names_legend.append('unseen class (' + names[class_to_remove] + ')')
+    ax.legend(names_legend, framealpha=1)
+    ax.axis('off')
     if s_name is not None:
         plt.savefig(s_name, bbox_inches='tight', pad_inches=0)
 
@@ -180,3 +184,88 @@ def plot_pca(pca_data, class_to_remove, classes_to_keep, names, dataset_subset_i
     plt.savefig("../Figures/PCA/pca_components_3d_" + names[class_to_remove] + ".pdf", bbox_inches='tight',
                 pad_inches=0)
     plt.show()
+
+
+def plot_pca_2d(pca_data, y_labels, ax, classes_to_keep, names, colors,
+                class_to_remove=None, s_name=None, subsample_pct=1):
+    """
+    Plot first two PCA components of data in 3D
+    :param pca_data: PCA data to plot
+    :param y_labels: the corresponding y labels to the PCA data, needs to be in same classes as classes_to_keep
+    :param ax: axis on which to plot data (can be combined with other plot calls, such as to show ellipses)
+    :param class_to_remove: class number removed in classification
+    :param classes_to_keep: array of classes to keep
+    :param names: class names
+    :param subsample_pct: percentage of all data to show
+    :param colors: colors corresponding to classes
+    :param s_name: name where to save figure
+    """
+    names_keep = np.asarray(names)[classes_to_keep]
+    names_keep = names_keep.tolist()
+
+    # points corresponding to seen classes
+    for i, class_keep in enumerate(classes_to_keep):
+        data_plt = draw_subsamples(pca_data[y_labels == class_keep], subsample_pct, replace=False)
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_keep], s=15, marker='o', alpha=.7)
+
+    # points corresponding to unseen class
+    if class_to_remove is not None:
+        data_plt = draw_subsamples(pca_data[y_labels == class_to_remove], subsample_pct, replace=False)
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], s=25,
+                   marker='x', alpha=.7)
+
+    # add legend
+    names_legend = names_keep.copy()
+    if class_to_remove is not None:
+        names_legend.append('unseen class (' + names[class_to_remove] + ')')
+    ax.legend(names_legend, framealpha=1)
+
+    if s_name is not None:
+        plt.savefig(s_name, bbox_inches='tight', pad_inches=0)
+
+
+def plot_splits(dataset, root, minrange, maxrange, margin):
+    """
+    plot splits
+    :param dataset: dataset
+    :param root: root node
+    :param minrange: minimum of range in x and y
+    :param maxrange: maximum of range in x and y
+    :param margin: margin at both sides
+    """
+    cut_vals, cut_dims = get_values_preorder(root, [], [])
+    cut_vals = np.asarray(cut_vals).astype(float)
+    cut_dims = np.asarray(cut_dims).astype(int)
+
+    # show splits
+    x_split = cut_vals[cut_dims == 0]
+    y_split = cut_vals[cut_dims == 1]
+
+    fig, ax = plt.subplots(1, 1, figsize=(7, 7))
+    plot_data(dataset, ax, title="Training data after splitting", labels=False, lines_x=x_split, lines_y=y_split,
+              minrange=minrange, maxrange=maxrange, margin=margin)
+
+    plt.axis('off')
+    plt.show()
+
+
+def plot_ellipses(ax, means=None, covs=None):
+    """
+    Overlay covariance ellipses on a 2D plot
+    """
+    #  covariance
+    def eigsorted(cov):
+        vals_, vecs_ = np.linalg.eigh(cov)
+        order = vals_.argsort()[::-1]
+        return vals_[order], vecs_[:, order]
+
+    nstd = 2
+    for i in range(len(covs)):
+        vals, vecs = eigsorted(covs[i])
+        theta = np.degrees(np.arctan2(*vecs[:, 0][::-1]))
+        w, h = 2 * nstd * np.sqrt(vals)
+        ell = Ellipse(xy=means[i],
+                      width=w, height=h,
+                      angle=theta, color='red')
+        ell.set_facecolor('none')
+        ax.add_artist(ell)

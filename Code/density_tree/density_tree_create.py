@@ -63,20 +63,20 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
         treenode.mean = np.mean(dataset_node, axis=0)
 
         # left side of split
+        treenode.left_entropy = e_left
         treenode.left_cov = np.cov(left.T)
         treenode.left_cov_det = np.linalg.det(treenode.left_cov)
         treenode.left_cov_inv = np.linalg.inv(treenode.left_cov)
         treenode.left_mean = np.mean(left, axis=0)
         treenode.left_pdf_mean = my_normal(treenode.left_mean, treenode.left_mean, treenode.left_cov_det,
                                            treenode.left_cov_inv)
-        treenode.left_entropy = e_left
 
         # right side of split
+        treenode.right_entropy = e_right
         treenode.right_cov = np.cov(right.T)
         treenode.right_cov_det = np.linalg.det(treenode.right_cov)
         treenode.right_cov_inv = np.linalg.inv(treenode.right_cov)
         treenode.right_mean = np.mean(right, axis=0)
-        treenode.right_entropy = e_right
         treenode.right_pdf_mean = my_normal(treenode.right_mean, treenode.right_mean, treenode.right_cov_det,
                                             treenode.right_cov_inv)
 
@@ -95,3 +95,80 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
         return treenode
     else:
         return
+
+
+def create_density_tree_v1(dataset, clusters, parentnode=None, side_label=None, n_max_dim=0):
+    """create decision tree be performing initial split,
+    then recursively splitting until all labels are in unique bins
+    init: flag for first iteration
+    Principle:  create an initial split, save value, dimension, and entropies on node as well as on both split sides
+    As long as total number of splits < nclusters - 1, perform another split on the side having the higher entropy
+    Or, if there are parent nodes: perform a split on the side of the node that has the highest entropy on a side
+    """
+
+    # split
+
+    dim_max, val_dim_max = get_best_split(dataset, labelled=False, n_max_dim=n_max_dim)
+
+    left = dataset[dataset[..., dim_max] < val_dim_max]
+    right = dataset[dataset[..., dim_max] >= val_dim_max]
+    e_left = entropy_gaussian(left)
+    e_right = entropy_gaussian(right)
+
+    treenode = DensityNode()  # initial node
+
+    # split imformation
+    treenode.split_dimension = dim_max
+    treenode.split_value = val_dim_max
+    treenode.left_dataset_pct = len(left) / len(dataset)
+    treenode.right_dataset_pct = len(right) / len(dataset)
+    treenode.entropy = entropy_gaussian(dataset)
+    treenode.cov = np.cov(dataset.T)
+    treenode.mean = np.mean(dataset, axis=0)
+
+    # left side of split
+    treenode.left_dataset = left
+    treenode.left_entropy = e_left
+    treenode.left_cov = np.cov(left.T)
+    treenode.left_cov_det = np.linalg.det(treenode.left_cov)
+    treenode.left_cov_inv = np.linalg.inv(treenode.left_cov)
+    treenode.left_mean = np.mean(left, axis=0)
+    treenode.left_pdf_mean = my_normal(treenode.left_mean, treenode.left_mean, treenode.left_cov_det,
+                                       treenode.left_cov_inv)
+
+    # right side of split
+    treenode.right_dataset = right
+    treenode.right_entropy = e_right
+    treenode.right_cov = np.cov(right.T)
+    treenode.right_cov_det = np.linalg.det(treenode.right_cov)
+    treenode.right_cov_inv = np.linalg.inv(treenode.right_cov)
+    treenode.right_mean = np.mean(right, axis=0)
+    treenode.right_pdf_mean = my_normal(treenode.right_mean, treenode.right_mean, treenode.right_cov_det,
+                                        treenode.right_cov_inv)
+
+    # link parent node to new node.
+    if parentnode is not None:
+        treenode.parent = parentnode
+        if side_label == 'left':
+            treenode.parent.left = treenode
+        elif side_label == 'right':
+            treenode.parent.right = treenode
+
+    clusters_left = clusters - 1
+    if clusters_left > 1:
+        # recursively continue splitting
+        # continue splitting always splitting on worst side (highest entropy)
+        # find node where left or right entropy is highest and left or right node is not split yet
+        node_e, e, side = treenode.get_root().highest_entropy(dataset, 0, 'None')
+
+        if side == 'left':
+            dataset = node_e.left_dataset
+            side_label = 'left'
+        elif side == 'right':
+            dataset = node_e.right_dataset
+            side_label = 'right'
+
+        create_density_tree_v1(dataset, clusters=clusters_left,
+                               parentnode=node_e, side_label=side_label)  # iterate
+
+    return treenode

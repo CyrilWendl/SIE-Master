@@ -3,6 +3,7 @@ import multiprocessing
 from joblib import Parallel, delayed
 from tqdm import tqdm_notebook
 
+from density_tree.helpers import draw_subsamples
 from .decision_tree_create import create_decision_tree
 from .decision_tree_traverse import descend_decision_tree_aux, descend_decision_tree
 
@@ -23,20 +24,6 @@ def get_grid_labels(root, minrange, maxrange, rf=False):
     else:  # decision tree
         dataset_grid_eval = descend_decision_tree_aux(dataset_grid, root)
     return dataset_grid_eval[:, -1]
-
-
-def draw_subsamples(dataset, subsample_pct=.8):
-    """draw random subsamples with replacement from a dataset
-    :param dataset: the dataset from which to chose subsamples from
-    :param subsample_pct: the size of the subsample dataset to create in percentage of the original dataset
-    """
-    subsample_size = int(np.round(len(dataset) * subsample_pct))  # subsample size
-    dataset_indices = np.arange(len(dataset))
-
-    #  draw random samples with replacement
-    dataset_subset_indices = np.random.choice(dataset_indices, size=subsample_size, replace=True,)
-    dataset_subset = dataset[dataset_subset_indices, :]
-    return dataset_subset
 
 
 def random_forest_build(dataset, ntrees, subsample_pct, n_jobs):
