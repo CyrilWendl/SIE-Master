@@ -4,31 +4,34 @@ from .density_tree import DensityNode
 from .helpers import entropy_gaussian, get_best_split, my_normal
 
 
-def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, side_label=None,
-                        verbose=False, n_max_dim=0, fact_improvement=1.5):
+def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, side_label=None,
+                        verbose=False, n_max_dim=0, fact_improvement=1.5, n_grid=50):
     """
     create decision tree, using as a stopping criterion a maximum tree depth criterion
-    Principle:
-    - Create an initial split
-    - Continue splitting on both sides as long as current depth is not maximum tree depth
+    Steps:
+    1. Find best split
+    2. If entropy of l/r brings an improvement > fact_improvement, save as a new node
+    3. If maximum depth not yet reached and min number of points l/r > minimum number of points, recurse
     :param dataset: the entire dataset to split
     :param max_depth: maximum depth of tree to create
     :param min_subset: minimum subset of data required to do further split
-    :param parentnode: parent node
+    :param parent_node: parent node
     :param fact_improvement: minimum factor of improvement of Gaussian entropy to make new split (-1 = ignore)
     :param side_label: side of the node with respect to the parent node
     :param verbose: whether to output debugging information
     :param n_max_dim: maximum number of dimensions within which to search for best split
+    :param n_grid: grid resolution for parameter search in each dimension
 
     """
     dataset_node = dataset
     dim = dataset.shape[-1]
 
-    if parentnode is not None:
+    if parent_node is not None:
         # get subset of data at this level of the tree
-        dataset_node = parentnode.get_dataset(side_label, dataset)
+        dataset_node = parent_node.get_dataset(side_label, dataset)
 
-    dim_max, val_dim_max = get_best_split(dataset_node, labelled=False, n_max_dim=n_max_dim)
+    # split dataset
+    dim_max, val_dim_max = get_best_split(dataset_node, labelled=False, n_max_dim=n_max_dim, n_grid=n_grid)
     left = dataset_node[dataset_node[..., dim_max] < val_dim_max]
     right = dataset_node[dataset_node[..., dim_max] >= val_dim_max]
 
@@ -38,26 +41,25 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
     e_right = entropy_gaussian(right)
 
     improvement_entropy = e_node - np.dot([e_left, e_right], [len(left), len(right)]) / len(dataset_node)
+    # check positive semi-definite covariance matrices to both sides
+    left_cov_det = np.linalg.det(np.cov(left.T))
+    right_cov_det = np.linalg.det(np.cov(right.T))
 
-    if (improvement_entropy > fact_improvement) or (fact_improvement == -1):
-        if verbose:
-            print("new node")
-
+    if ((improvement_entropy > fact_improvement) or (fact_improvement == -1)) and (
+            (left_cov_det > 0) and (right_cov_det > 0)):
         treenode = DensityNode()
-        if parentnode is not None:
+        if parent_node is not None:
             # link parent node to new node
             if side_label == 'l':
-                parentnode.left = treenode
+                parent_node.left = treenode
             else:
-                parentnode.right = treenode
+                parent_node.right = treenode
             # link new node to parent node
-            treenode.parent = parentnode
+            treenode.parent = parent_node
 
         # split information
         treenode.split_dimension = dim_max
         treenode.split_value = val_dim_max
-        treenode.left_dataset_pct = len(left) / len(dataset)
-        treenode.right_dataset_pct = len(right) / len(dataset)
         treenode.entropy = e_node
         treenode.cov = np.cov(dataset_node.T)
         treenode.mean = np.mean(dataset_node, axis=0)
@@ -65,30 +67,35 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parentnode=None, sid
         # left side of split
         treenode.left_entropy = e_left
         treenode.left_cov = np.cov(left.T)
-        treenode.left_cov_det = np.linalg.det(treenode.left_cov)
+        treenode.left_cov_det = left_cov_det
         treenode.left_cov_inv = np.linalg.inv(treenode.left_cov)
         treenode.left_mean = np.mean(left, axis=0)
         treenode.left_pdf_mean = my_normal(treenode.left_mean, treenode.left_mean, treenode.left_cov_det,
                                            treenode.left_cov_inv)
+        treenode.left_dataset_pct = len(left) / len(dataset)
 
         # right side of split
         treenode.right_entropy = e_right
         treenode.right_cov = np.cov(right.T)
-        treenode.right_cov_det = np.linalg.det(treenode.right_cov)
+        treenode.right_cov_det = right_cov_det
         treenode.right_cov_inv = np.linalg.inv(treenode.right_cov)
         treenode.right_mean = np.mean(right, axis=0)
         treenode.right_pdf_mean = my_normal(treenode.right_mean, treenode.right_mean, treenode.right_cov_det,
                                             treenode.right_cov_inv)
+        treenode.right_dataset_pct = len(right) / len(dataset)
 
-        # recursively continue splitting
+        # check current node depth
         if treenode.get_depth() < max_depth:
-            # only continue splitting if len(left) greater than twice the number of dimensions
-            if (len(left) > min_subset * len(dataset)) and (len(left) > (dim * 2)):
-                create_density_tree(dataset, max_depth, min_subset=min_subset, parentnode=treenode,
+            # check minimum number of points l
+            if (len(left) > (min_subset * len(dataset))) and (len(left) > (dim * 2)):
+                # recursively split
+                create_density_tree(dataset, max_depth, min_subset=min_subset, parent_node=treenode,
                                     side_label='l', n_max_dim=n_max_dim, verbose=verbose,
                                     fact_improvement=fact_improvement)
-            if (len(right) > min_subset * len(dataset)) and (len(right) > (dim * 2)):
-                create_density_tree(dataset, max_depth, min_subset=min_subset, parentnode=treenode,
+            # check minimum number of points r
+            if (len(right) > (min_subset * len(dataset))) and (len(right) > (dim * 2)):
+                # recursively split
+                create_density_tree(dataset, max_depth, min_subset=min_subset, parent_node=treenode,
                                     side_label='r', n_max_dim=n_max_dim, verbose=verbose,
                                     fact_improvement=fact_improvement)
 

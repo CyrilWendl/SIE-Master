@@ -5,6 +5,7 @@ from keras import backend as k_b
 def my_normal(x, mu, cov_det, cov_inv):
     """
     Calculate the PDF probability of a multivariate normal distribution
+    Covariance matrix must be positive definite, s.t. cov_det cannot be negative!
     :param x: data point
     :param mu: mean of cluster
     :param cov_det: pre-calculated determinant of covariance of cluster (for speed reasons during traversal)
@@ -116,7 +117,7 @@ def print_decision_tree_latex(node, tree_string):
     return tree_string
 
 
-def get_best_split(dataset, labelled=False, n_max_dim=0):
+def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
     """
     for a given dimension, get best split based on information gain
     for labelled and unlabelled data
@@ -128,6 +129,7 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
     :return val_dim_max: value at best split dimensions
     :return ig_dims: information gains for all split values in all possible split dimensions
     :return split_dims: split values corresponding to ig_dims
+    :param n_grid: grid resolution for parameter search in each dimension
     """
 
     # get information gains on dimensions
@@ -147,7 +149,7 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
         dimensions = np.random.choice(dimensions, n_max_dim, replace=False)
 
     for dim in dimensions:  # loop all dimensions
-        ig_dim, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f)
+        ig_dim, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f, n_grid=n_grid)
         ig_dims_len = np.append(ig_dims_len, len(ig_dim))
         ig_dims = np.append(ig_dims, ig_dim)
         split_dims = np.append(split_dims, split_vals)
@@ -163,48 +165,55 @@ def get_best_split(dataset, labelled=False, n_max_dim=0):
     return dimensions[idx_dim_max], split_dims[max_ind]
 
 
-def get_ig_dim(data, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
+def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
     """
     get information gain for one dimension
     working with labelled and unlabelled data
-    :param data: dataset without labels (X)
+    :param dataset: dataset without labels (X)
     :param dim_cut: dimension for which all cut values are to be calculated
     :param entropy_f: entropy function to be used (labelled / unlabelled)
     :param base: base to use for entropy calculation
     :param n_grid: resolution at which to search for optimal split value
     """
     ig_dim, split_vals = [], []
-    dims = np.shape(data)[-1]
+    dims = np.shape(dataset)[-1]
 
     # for labelled data, we effectively have one less dimension
     if entropy_f != entropy_gaussian:
         dims = dims - 1
 
     # min split has to > dim-smallest element of array (to have at least dims points to either side)
-    if entropy_f==entropy_gaussian:
-        dataset_dim_min = np.partition(data[:, dim_cut], dims)[dims]
-        dataset_dim_max = np.partition(data[:, dim_cut], -dims)[-dims]
+    if entropy_f == entropy_gaussian:  # labelled case
+        # TODO error testing
+        try:
+            dataset_dim_min = np.partition(dataset[:, dim_cut], dims)[dims]
+            dataset_dim_max = np.partition(dataset[:, dim_cut], -dims)[-dims]
+        except IndexError as e:
+            print("Error", (e, dataset, dims))
+            raise
+
     else:
-        dataset_dim_min = np.min(data[:, dim_cut])
-        dataset_dim_max = np.max(data[:, dim_cut])
+        dataset_dim_min = np.min(dataset[:, dim_cut])
+        dataset_dim_max = np.max(dataset[:, dim_cut])
 
         # ensure that at least for one split value, we have n_points >= n_dims on both sides
     iter_set = np.random.uniform(dataset_dim_min, dataset_dim_max, n_grid)
 
     for split_val in iter_set:
         # split values
-        left = data[data[:, dim_cut] < split_val]
-        right = data[data[:, dim_cut] >= split_val]
+        left = dataset[dataset[:, dim_cut] < split_val]
+        right = dataset[dataset[:, dim_cut] >= split_val]
 
         # check that there are more values on each side than dimensions in the dataset
-        if (len(left) >= dims) and (len(right) >= dims) or ((entropy_f!=entropy_gaussian) and len(right) and len(left)):
+        if (len(left) >= dims) and (len(right) >= dims) or (
+                (entropy_f != entropy_gaussian) and len(right) and len(left)):
             # entropy
             entropy_l = entropy_f(left, base=base)
             entropy_r = entropy_f(right, base=base)
-            entropy_tot = entropy_f(data, base=base)
+            entropy_tot = entropy_f(dataset, base=base)
 
             # information gain
-            ig = entropy_tot - (entropy_l * len(left) / len(data) + entropy_r * len(right) / len(data))
+            ig = entropy_tot - (entropy_l * len(left) / len(dataset) + entropy_r * len(right) / len(dataset))
 
             # append split value and information gain
             ig_dim = np.append(ig_dim, ig)
@@ -259,6 +268,7 @@ def get_balanced_subset_indices(gt, classes, pts_per_class=100):
 
     return dataset_subset_indices
 
+
 def get_values_preorder(node, split_dims, split_vals):
     """
     Get cut values and dimensions of a density tree by preorder traversal
@@ -276,7 +286,7 @@ def get_values_preorder(node, split_dims, split_vals):
     return split_vals, split_dims
 
 
-def draw_subsamples(dataset, subsample_pct=.8, replace=False):
+def draw_subsamples(dataset, subsample_pct=.8, replace=False, return_indices=False):
     """draw random subsamples with or without replacement from a dataset
     :param dataset: the dataset from which to chose subsamples from
     :param subsample_pct: the size of the subsample dataset to create in percentage of the original dataset
@@ -288,4 +298,6 @@ def draw_subsamples(dataset, subsample_pct=.8, replace=False):
     #  draw random samples with replacement
     dataset_subset_indices = np.random.choice(dataset_indices, size=subsample_size, replace=replace)
     dataset_subset = dataset[dataset_subset_indices, :]
+    if return_indices:
+        return dataset_subset, dataset_subset_indices
     return dataset_subset

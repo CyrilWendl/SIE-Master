@@ -8,8 +8,10 @@ from .density_tree_traverse import *
 from .helpers import my_normal
 
 
+from sklearn.manifold import TSNE
+
 def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=0, n_jobs=-1,
-              verbose=1, fact_improvement=.9, funct=create_density_tree, n_clusters=None):
+              verbose=1, fact_improvement=.9):
     """
     Create Density Forest
     :param dataset: entire dataset on which to create trees
@@ -21,8 +23,6 @@ def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=
     :param fact_improvement: minimum improvement factor needed to continue splitting tree
     :param n_jobs: number of processors to use for parallel processing. If -1, all processors are used
     :param verbose: verbosity level of parallel processing
-    :param funct: function to use for creation of density tree (create_density_tree or create_density_tree_v1)
-    :param n_clusters: number of clusters to fit if method==create_density_tree_v1
     :return root_nodes: array of root nodes of each tree in Density Forest
     """
     if verbose:
@@ -32,26 +32,18 @@ def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=
     if n_jobs == -1:
         n_jobs = multiprocessing.cpu_count()
 
-        if funct=='v1':
-            root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
-                delayed(create_density_tree_v1)(draw_subsamples(dataset, subsample_pct=subsample_pct),
-                                                n_clusters, n_max_dim=n_max_dim)
-                for _ in range(n_trees))
-
-        else:
-            root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
-                delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), max_depth,
-                               min_subset=min_subset, n_max_dim=n_max_dim, fact_improvement=fact_improvement)
-                for _ in range(n_trees))
+    root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
+        delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), max_depth,
+                       min_subset=min_subset, n_max_dim=n_max_dim, fact_improvement=fact_improvement)
+        for _ in range(n_trees))
 
     root_nodes = np.asarray(root_nodes)
     root_nodes = root_nodes[[root_node is not None for root_node in root_nodes]]  # only keep not-None root nodes
 
     if verbose:
         print("Number of created root nodes: %i" % len(root_nodes))
-
         x = [get_clusters(root_nodes[i], [], []) for i in range(len(root_nodes))]
-        lens = [len(x[i][1]) for i in range(len(x))]  # x[i][1] are the cluster means
+        lens = [len(x[i][1]) for i in range(len(x))]
         print("Mean number of clusters created per tree: %i" % int(np.mean(lens)))
 
     return root_nodes
@@ -59,7 +51,13 @@ def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=
 
 def df_traverse(dataset, root_nodes, thresh=.1, method='normal', standardize=False):
     """
-    traverse density forest and get mean probability for point to belong to the leaf clusters of each tree
+    traverse Density Forest (DF) and get mean probability for point to belong to the leaf clusters of each tree
+    :param dataset: dataset for which to traverse DF
+    :param root_nodes: Array of root nodes belonging to a DF
+    :param thresh:
+    :param method:
+    :param standardize:
+    :return:
     """
     # set up variabless
     pairs_proba = np.empty((len(dataset), len(root_nodes)), float)  # indexes of data points
