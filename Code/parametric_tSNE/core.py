@@ -439,7 +439,10 @@ class Parametric_tSNE(object):
 
         if verbose:
             print('{time}: Beginning training on {epochs} epochs'.format(time=datetime.datetime.now(), epochs=epochs))
-        self.model.fit_generator(train_generator, batches_per_epoch, epochs, verbose=verbose)
+        self.model.fit_generator(train_generator,
+                                 batches_per_epoch,
+                                 epochs,
+                                 verbose=verbose)
 
         if verbose:
             print('{time}: Finished training on {epochs} epochs'.format(time=datetime.datetime.now(), epochs=epochs))

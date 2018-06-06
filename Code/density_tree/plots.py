@@ -118,43 +118,10 @@ def visualize_decision_boundaries(dataset, rootnode, minrange, maxrange, rf=Fals
     plt.show()
 
 
-def plot_tsne(tsne_all, tsne_y, ax, classes_to_keep, colors, names, class_to_remove=None, s_name=None):
-    """
-    Show t-SNE plot for points in high-dimensional space
-    :param tsne_all: all tsne points with pts_per_class points per class
-    :param tsne_y: corresponding y label for each tsne point, needs to be in same classes as classes_to_keep
-    :param ax: ax on which to plot the tsne visualization
-    :param class_to_remove: index of removed class in classification
-    :param classes_to_keep: classes which were kept
-    :param colors: class colors
-    :param names: class names
-    :param s_name: optional name where to save figure
-    """
-    # TODO merge with plot_pts_2D and plot_pts_3D
-    names_keep = np.asarray(names)[classes_to_keep]
-    names_keep = names_keep.tolist()
-    for i, class_label in enumerate(classes_to_keep):
-        data_plt = tsne_all[tsne_y == class_label]
-        ax.scatter(data_plt[:, 0], data_plt[:, 1],
-                   c=np.asarray(colors)[class_label], marker='o', alpha=.7)
-
-    if class_to_remove is not None:
-        data_plt = tsne_all[tsne_y == class_to_remove]
-        ax.scatter(data_plt[:, 0], data_plt[:, 1],
-                   c=np.asarray(colors)[class_to_remove], marker='x', alpha=.7)
-    names_legend = names_keep.copy()
-    if class_to_remove is not None:
-        names_legend.append('unseen class (' + names[class_to_remove] + ')')
-    ax.legend(names_legend, framealpha=1)
-    ax.axis('off')
-    if s_name is not None:
-        plt.savefig(s_name, bbox_inches='tight', pad_inches=0)
-
-
 def plot_pts_3d(x_pts, y_labels, classes_to_keep, names, colors,
                 class_to_remove=None, subsample_pct=1, s_name=None):
     """
-    Plot 3D data with class label
+    Plot 3D data with class label and with op
     :param x_pts: 3D data to plot
     :param y_labels: the corresponding y labels to the PCA data, needs to be in same classes as classes_to_keep
     :param class_to_remove: class number removed in classification

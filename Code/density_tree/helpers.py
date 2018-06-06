@@ -184,14 +184,8 @@ def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
 
     # min split has to > dim-smallest element of array (to have at least dims points to either side)
     if entropy_f == entropy_gaussian:  # labelled case
-        # TODO error testing
-        try:
-            dataset_dim_min = np.partition(dataset[:, dim_cut], dims)[dims]
-            dataset_dim_max = np.partition(dataset[:, dim_cut], -dims)[-dims]
-        except IndexError as e:
-            print("Error", (e, dataset, dims))
-            raise
-
+        dataset_dim_min = np.partition(dataset[:, dim_cut], dims)[dims]
+        dataset_dim_max = np.partition(dataset[:, dim_cut], -dims)[-dims]
     else:
         dataset_dim_min = np.min(dataset[:, dim_cut])
         dataset_dim_max = np.max(dataset[:, dim_cut])

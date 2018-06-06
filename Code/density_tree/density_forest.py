@@ -69,7 +69,7 @@ def df_traverse(dataset, root_nodes, thresh=.1, method='normal', standardize=Fal
             d_mean, d_pct, d_pdf_mean, d_cov_det, d_cov_inv = descend_density_tree(d, tree)
             if d_pct > thresh:
                 if method == 'normal':
-                    pairs_proba[d_idx, t_idx] = my_normal(d, d_mean, d_cov_det, d_cov_inv)
+                    pairs_proba[d_idx, t_idx] = d_pct * my_normal(d, d_mean, d_cov_det, d_cov_inv)
                     if standardize:
                         pairs_proba[d_idx, t_idx] /= d_pdf_mean  # standardize by max. probability
                 else:
