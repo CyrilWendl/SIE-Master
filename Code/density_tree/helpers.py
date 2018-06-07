@@ -260,7 +260,7 @@ def get_balanced_subset_indices(gt, classes, pts_per_class=100):
         ds_subset_ind = np.where(gt[gt < np.infty] == class_label)[0]
         dataset_subset_indices.append(np.random.choice(ds_subset_ind, size=pts_per_class, replace=False))
 
-    return dataset_subset_indices
+    return np.asarray(dataset_subset_indices)
 
 
 def get_values_preorder(node, split_dims, split_vals):
