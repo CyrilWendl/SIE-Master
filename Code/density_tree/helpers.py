@@ -1,6 +1,6 @@
 import numpy as np
 from keras import backend as k_b
-
+# TODO put generic helper functions in helpers library
 
 def my_normal(x, mu, cov_det, cov_inv):
     """
