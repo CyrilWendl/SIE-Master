@@ -157,9 +157,9 @@ def create_density_tree_v1(dataset, clusters, parentnode=None, side_label=None, 
     if parentnode is not None:
         treenode.parent = parentnode
         if side_label == 'left':
-            treenode.parent.left = treenode
+            parentnode.left = treenode
         elif side_label == 'right':
-            treenode.parent.right = treenode
+            parentnode.right = treenode
 
     clusters_left = clusters - 1
     if clusters_left > 1:

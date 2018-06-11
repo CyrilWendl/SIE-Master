@@ -1,4 +1,4 @@
-# %%writefile ./density_tree/decision_tree_traverse.py
+# %%writefile ./density_forest/decision_tree_traverse.py
 # Binary tree node to save binary tree nodes
 """
 """

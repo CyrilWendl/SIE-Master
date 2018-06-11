@@ -1,4 +1,4 @@
-# %%writefile ./density_tree/decision_tree_create.py
+# %%writefile ./density_forest/decision_tree_create.py
 """Functions for entropy and splitting with labelled data"""
 import numpy as np
 from .decision_tree import DecisionNode

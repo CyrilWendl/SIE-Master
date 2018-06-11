@@ -3,15 +3,13 @@ import multiprocessing
 from scipy.spatial.distance import euclidean
 from joblib import Parallel, delayed
 from .density_tree_create import *
-from density_tree.helpers import draw_subsamples
+from density_forest.helpers import draw_subsamples
 from .density_tree_traverse import *
 from .helpers import my_normal
 
 
-from sklearn.manifold import TSNE
-
 def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=0, n_jobs=-1,
-              verbose=1, fact_improvement=.9):
+              verbose=1, fact_improvement=.9, funct=create_density_tree, n_clusters=None):
     """
     Create Density Forest
     :param dataset: entire dataset on which to create trees
@@ -23,6 +21,8 @@ def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=
     :param fact_improvement: minimum improvement factor needed to continue splitting tree
     :param n_jobs: number of processors to use for parallel processing. If -1, all processors are used
     :param verbose: verbosity level of parallel processing
+    :param funct: function name for creation of density trees (create_density_tree or create_density_tree_v1)
+    :param n_clusters: number of clusters, only relevant if function create_density_tree_v1 is set
     :return root_nodes: array of root nodes of each tree in Density Forest
     """
     if verbose:
@@ -32,10 +32,16 @@ def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=
     if n_jobs == -1:
         n_jobs = multiprocessing.cpu_count()
 
-    root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
-        delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), max_depth,
-                       min_subset=min_subset, n_max_dim=n_max_dim, fact_improvement=fact_improvement)
-        for _ in range(n_trees))
+    if funct == create_density_tree:
+        root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
+            delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), max_depth,
+                                         min_subset=min_subset, n_max_dim=n_max_dim, fact_improvement=fact_improvement)
+            for _ in range(n_trees))
+    else:
+        root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
+            delayed(create_density_tree_v1)(draw_subsamples(dataset, subsample_pct=subsample_pct), n_clusters,
+                                            n_max_dim=n_max_dim)
+            for _ in range(n_trees))
 
     root_nodes = np.asarray(root_nodes)
     root_nodes = root_nodes[[root_node is not None for root_node in root_nodes]]  # only keep not-None root nodes
@@ -96,7 +102,7 @@ def df_traverse_batch(activations, root_nodes_seen, method='normal', n_jobs=-1,
     :param standardize: whether to standardize each output by the maximum value in the cluster
     :return: Gaussian probabilities for activations
     """
-    steps = np.linspace(0, len(activations), len(activations) / batch_size, dtype='int')
+    steps = np.linspace(0, len(activations), int(len(activations) / batch_size), dtype='int')
     print("Total steps: %i" % len(steps))
     if n_jobs == -1:
         n_jobs = multiprocessing.cpu_count()

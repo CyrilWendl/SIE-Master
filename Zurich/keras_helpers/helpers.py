@@ -4,7 +4,7 @@ from keras import backend as k
 from helpers.helpers import get_offset
 
 
-def get_activations(imgs, model, layer_idx, img_patches, img_ids, batch_size=20,
+def get_activations_batch(imgs, model, layer_idx, img_patches, img_ids, batch_size=20,
                     patch_size=64, stride=64):
     """
     get activations for a set of patches, used for semantic segmentation

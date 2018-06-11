@@ -174,6 +174,7 @@ def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
     :param entropy_f: entropy function to be used (labelled / unlabelled)
     :param base: base to use for entropy calculation
     :param n_grid: resolution at which to search for optimal split value
+    :return ig_dim, split_vals
     """
     ig_dim, split_vals = [], []
     dims = np.shape(dataset)[-1]
@@ -248,7 +249,7 @@ def get_activations(model, layer, x_batch):
 def get_balanced_subset_indices(gt, classes, pts_per_class=100):
     """
     Get indices of balanced subset of data where every class has pts_per_class points
-    helper function of t-SNE plot in density_tree/plots.py
+    helper function of t-SNE plot in density_forest/plots.py
     :param gt: ground truth corresponding to dataset to be indexed
     :param classes: array of possible classes in gt.
     :param pts_per_class: points per class

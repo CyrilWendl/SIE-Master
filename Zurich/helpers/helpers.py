@@ -265,7 +265,7 @@ def get_acc_net_msr(y_pred):
     :param y_pred: one-hot of predicted probabilities from CNN
     :return: accuracy as MSR
     """
-    return np.argmax(y_pred, -1)
+    return np.max(y_pred, -1)
 
 
 def get_acc_net_max_margin(y_pred):

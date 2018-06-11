@@ -1,6 +1,6 @@
 """Functions to generate test data"""
 import numpy as np
-from density_tree.helpers import rotate
+from density_forest.helpers import rotate
 
 
 def gaussian(x, mu, sig):

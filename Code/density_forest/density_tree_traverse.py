@@ -16,7 +16,13 @@ def descend_density_tree(data_point, node):
 
 
 def get_clusters(node, covs, means):
-    """add all leaf nodes to an array in preorder traversal fashion"""
+    """
+    add all leaf nodes to an array in preorder traversal fashion
+    :param node: Root node for which to get covs and means
+    :param covs: covariances, initialize as empty array []
+    :param means: means, initialize as empty array []
+    :return: covs, means
+    """
     # check for leaf node
     if node.left is not None:
         get_clusters(node.left, covs, means)
