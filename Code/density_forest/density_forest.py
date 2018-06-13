@@ -34,12 +34,12 @@ def df_create(dataset, max_depth, min_subset, n_trees, subsample_pct, n_max_dim=
 
     if funct == create_density_tree:
         root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
-            delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct), max_depth,
+            delayed(create_density_tree)(draw_subsamples(dataset, subsample_pct=subsample_pct, replace=True), max_depth,
                                          min_subset=min_subset, n_max_dim=n_max_dim, fact_improvement=fact_improvement)
             for _ in range(n_trees))
     else:
         root_nodes = Parallel(n_jobs=n_jobs, verbose=verbose)(
-            delayed(create_density_tree_v1)(draw_subsamples(dataset, subsample_pct=subsample_pct), n_clusters,
+            delayed(create_density_tree_v1)(draw_subsamples(dataset, subsample_pct=subsample_pct, replace=True), n_clusters,
                                             n_max_dim=n_max_dim)
             for _ in range(n_trees))
 

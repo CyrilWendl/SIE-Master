@@ -2,14 +2,13 @@
 
 ### Baseline Methods 
 - Implement 3b - Confidence estimation in Neural Networks.pdf
-- Dropout as a Bayesian Approximation: https://arxiv.org/abs/1506.02142
-
 
 ### Ideas 
 - Account for prediction variability
 - Apply to active learning (seen classes)
 
 ### Density Forests
+- Why does it work significantly better in less dimensions?
 - Subsample all classes equally for training DF?
 
 ### Experiments
@@ -38,7 +37,7 @@
 
 #### MNIST: Novelty Detection PR AUC
 
-|   Class |   0| 1 |  2|  3| 4|  5| 6 |  7|  8| 9| 
+|   Class |   0 |  1  |  2 |  3 | 4 |  5 | 6 |  7 | 8 | 9 | 
 | --- | --- | --- |  --- | --- |  --- | --- |  --- | --- |  --- |--- |
 |   MSR |     |     |      |     ||     |     |      |     |
 |   Margin |     |     |      |     ||     |     |      |     |

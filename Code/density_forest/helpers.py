@@ -16,7 +16,7 @@ def my_normal(x, mu, cov_det, cov_inv):
     return 1 / a * np.exp(b)
 
 
-def entropy(labels, base=np.e):
+def entropy(labels):
     """
     Calculate the Shannon entropy for a set of labels.
     :param labels: an array of labels
@@ -25,14 +25,13 @@ def entropy(labels, base=np.e):
     """
     value, counts = np.unique(labels, return_counts=True)
     norm_counts = counts / counts.sum()
-    return -(norm_counts * np.log(norm_counts) / np.log(base)).sum()
+    return -(norm_counts * np.log(norm_counts) / np.log(np.e)).sum()
 
 
-def entropy_gaussian(dataset, base=2):
+def entropy_gaussian(dataset):
     """
     Differential entropy of a d-variate Gaussian density
     :param dataset: dataset in R^(N*D)
-    :param base: base of entropy
     :return: entropy
     """
     # check if there are more dimensions
@@ -41,12 +40,12 @@ def entropy_gaussian(dataset, base=2):
 
     k = np.linalg.det(np.cov(dataset.T))
     d = dataset.shape[-1]
-    ent = np.multiply(np.power(2 * np.pi * np.exp(1), d), k)
+    ent = np.multiply(np.power((2 * np.pi * np.e), d), k)
+    ent = np.log(ent) / 2
     if ent <= 0:
         return 0
-    ent = np.log(ent) / (np.log(base) * 2)
     if np.isnan(ent):
-        ent = 0
+        ent = np.infty
     return ent
 
 
@@ -165,14 +164,13 @@ def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
     return dimensions[idx_dim_max], split_dims[max_ind]
 
 
-def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
+def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50):
     """
     get information gain for one dimension
     working with labelled and unlabelled data
     :param dataset: dataset without labels (X)
     :param dim_cut: dimension for which all cut values are to be calculated
     :param entropy_f: entropy function to be used (labelled / unlabelled)
-    :param base: base to use for entropy calculation
     :param n_grid: resolution at which to search for optimal split value
     :return ig_dim, split_vals
     """
@@ -203,9 +201,9 @@ def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50, base=2):
         if (len(left) >= dims) and (len(right) >= dims) or (
                 (entropy_f != entropy_gaussian) and len(right) and len(left)):
             # entropy
-            entropy_l = entropy_f(left, base=base)
-            entropy_r = entropy_f(right, base=base)
-            entropy_tot = entropy_f(dataset, base=base)
+            entropy_l = entropy_f(left)
+            entropy_r = entropy_f(right)
+            entropy_tot = entropy_f(dataset)
 
             # information gain
             ig = entropy_tot - (entropy_l * len(left) / len(dataset) + entropy_r * len(right) / len(dataset))
@@ -286,6 +284,8 @@ def draw_subsamples(dataset, subsample_pct=.8, replace=False, return_indices=Fal
     :param dataset: the dataset from which to chose subsamples from
     :param subsample_pct: the size of the subsample dataset to create in percentage of the original dataset
     :param replace: subsampling with or without replacement
+    :param return indices: optional parameter to return also indices of subset
+    :return dataset or dataset, indices if return_indices is True
     """
     subsample_size = int(np.round(len(dataset) * subsample_pct))  # subsample size
     dataset_indices = np.arange(len(dataset))
