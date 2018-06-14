@@ -9,7 +9,18 @@
 
 ### Density Forests
 - Why does it work significantly better in less dimensions?
+- Why n_clusters not behaving expectedly as a function of tree detph, n_subsample? 
 - Subsample all classes equally for training DF?
+
+### Hyperparameters to Test
+- Density Forests: 
+  - Max Depth
+  - Improvement Factor
+  - N_trees
+- SVM
+  - kernel (poly, rbf, degrees 3-9)
+- GMM
+  - n_clusters (3-15)
 
 ### Experiments
 **Error Detection**: all classes, MNIST and Zurich dataset: detect wrongly predicted classes
