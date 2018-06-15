@@ -7,7 +7,7 @@ Implementation of Density Forests for splitting n-dimensional points in regions 
 
 The goal of this project is to perform error detection and novelty detection using Density Forests. Applications to the MNIST dataset and a dataset for semantic segmentation of land cover classes in Zurich are visualized in  `Code/` and `Zurich/`. 
 
-## Usage of DensityTree:
+## Usage of DensityForest:
 ```python
 from density_forest.density_forest import DensityForest
 
