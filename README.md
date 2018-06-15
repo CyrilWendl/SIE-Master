@@ -1,4 +1,4 @@
-# SIE Master Project 2018
+# Density Forest 
 Code Repository of the EPFL SIE Master Project, Spring Semester 2018
 
 Implementation of Density Forests for splitting n-dimensional points in regions of high Gaussianity
