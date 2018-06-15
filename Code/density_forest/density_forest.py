@@ -1,6 +1,5 @@
 """
 Forest of density trees
-Cyril Wendl, 2018
 """
 import multiprocessing
 from scipy.spatial.distance import euclidean

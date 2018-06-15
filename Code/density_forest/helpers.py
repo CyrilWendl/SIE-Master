@@ -42,7 +42,7 @@ def entropy_gaussian(dataset):
     d = dataset.shape[-1]
     ent = np.multiply(np.power((2 * np.pi * np.e), d), k)
     if ent <= 0:
-        return ent
+        return 0
     ent = np.log(ent) / 2
     if np.isnan(ent):
         ent = np.infty
