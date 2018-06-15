@@ -41,9 +41,9 @@ def entropy_gaussian(dataset):
     k = np.linalg.det(np.cov(dataset.T))
     d = dataset.shape[-1]
     ent = np.multiply(np.power((2 * np.pi * np.e), d), k)
-    ent = np.log(ent) / 2
     if ent <= 0:
-        return 0
+        return ent
+    ent = np.log(ent) / 2
     if np.isnan(ent):
         ent = np.infty
     return ent
