@@ -2,6 +2,7 @@ import numpy as np
 from keras import backend as k_b
 # TODO put generic helper functions in helpers library
 
+
 def my_normal(x, mu, cov_det, cov_inv):
     """
     Calculate the PDF probability of a multivariate normal distribution
@@ -20,7 +21,6 @@ def entropy(labels):
     """
     Calculate the Shannon entropy for a set of labels.
     :param labels: an array of labels
-    :param base: base of entropy, by default e
     :return: entropy
     """
     value, counts = np.unique(labels, return_counts=True)
@@ -231,6 +231,36 @@ def rotate(origin, point, angle):
     return qx, qy
 
 
+def get_activations_batch(model, layer_idx, x, batch_size=20):
+    """
+    get activations for a set of patches, used for semantic segmentation
+    :param model: model for which to extract activations
+    :param layer_idx: layer index for which to extract activations
+    :param x: data set for which to extract activations
+    :param batch_size: batch size
+    """
+    # TODO merge with function in keras_helpers/helpers.py
+    # generic function
+    get_activations_keras = k_b.function([model.layers[0].input,
+                                          k_b.learning_phase()], [model.layers[layer_idx].output, ])
+
+    # number of iterations
+    steps = np.arange(0, len(x), batch_size)
+    if steps[-1] != len(x):
+        steps = np.concatenate((steps, [len(x)]))
+
+    act_batches = []
+    for i in range(len(steps) - 1):
+        idx_begin = steps[i]
+        idx_end = steps[i + 1]
+        act_batch = get_activations_keras([x[idx_begin:idx_end], 0])[0]
+        act_batches.append(act_batch)
+
+    act_batches = np.concatenate(act_batches)
+
+    return act_batches
+
+
 def get_activations(model, layer, x_batch):
     """
     get activations for patch-wise classification (MNIST)
@@ -284,7 +314,7 @@ def draw_subsamples(dataset, subsample_pct=.8, replace=False, return_indices=Fal
     :param dataset: the dataset from which to chose subsamples from
     :param subsample_pct: the size of the subsample dataset to create in percentage of the original dataset
     :param replace: subsampling with or without replacement
-    :param return indices: optional parameter to return also indices of subset
+    :param return_indices: optional parameter to return also indices of subset
     :return dataset or dataset, indices if return_indices is True
     """
     subsample_size = int(np.round(len(dataset) * subsample_pct))  # subsample size

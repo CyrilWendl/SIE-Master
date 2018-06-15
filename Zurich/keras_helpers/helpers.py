@@ -17,6 +17,8 @@ def get_activations_batch(imgs, model, layer_idx, img_patches, img_ids, batch_si
     :param patch_size: size of the patches
     :param stride: number of overlapping pixels between patches
     """
+
+    # TODO write generic function independent of semantic segmentation
     n_filters = model.layers[layer_idx].filters
     act_imgs = []
     get_activations_keras = k.function([model.layers[0].input, k.learning_phase()], [model.layers[layer_idx].output, ])
