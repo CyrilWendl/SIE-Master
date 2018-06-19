@@ -13,7 +13,10 @@ A density forest is a collection of density trees each trained on a random subse
 
 ![t-SNE of pre-softmax activations of Zurich dataset](Figures/Zurich/GIF/tsne_act.gif) 
 
-The above example shows the t-SNE of the pre-softmax activations of a network trained for semantic segmentation of the Zurich dataset, leaving out one class. 
+The above example shows the t-SNE of the pre-softmax activations of a network trained for semantic segmentation of the
+ Zurich dataset, leaving out one class during training. 
+Density trees were trained on bootstrap samples of all classes but the unseen one. 
+
 Confidence of each data point in the test set, the probability is calculated as the average Gaussian likelihood to come from the leaf node clusters.
 
 ![Probas](Figures/Zurich/GIF/probas.png)
@@ -22,17 +25,38 @@ Darker points represent regions of lower certainty and crosses represent activat
  
  
 
-## Usage of DensityForest:
-
+## Usage of the `DensityForest` class:
+#### Fitting a Density Forest
 Suppose you have your training data `X_train` and test data `X_test`, in `[N, D]` with `N` data points in `D` dimensions:
 
 ```python
 from density_forest.density_forest import DensityForest
 
-clf_df = DensityForest()  # create new class instance
-clf_df.fit(X_train)       # fit to a training set
-conf = clf_df(X_test)     # get confidence values for test set
+clf_df = DensityForest(**params)  # create new class instance, put hyperparameters here
+clf_df.fit(X_train)               # fit to a training set
+conf = clf_df.predict(X_test)     # get confidence values for test set
 ```
+Hyperparameters are documented in the docstring. To find the optimal hyperparameters, consider the section below.
+
+#### Finding Hyperparameters
+To find the optimal hyperparameters, use the `ParameterSearch` from `helpers.cross_validator`, which allows CV, and hyperparameter search.
+
+```python
+from helpers.cross_validator import ParameterSearch
+
+# define hyperparameters to test
+tuned_parameters=[{'max_depth':[2, 3, 4], 'n_trees':[10, 20]}] # optionally add non-default arguments as single-element arrays
+
+# do parameter search
+ps = ParameterSearch(DensityForest, tuned_parameters, X_train, X_train_all, y_true_tr, f_scorer, n_iter=2, verbosity=0, n_jobs=1)
+ps.fit()
+
+# get model with the best parameters, as above
+clf_df = DensityForest(**(ps.best_params))  # create new class instance with best hyperparameters
+...  # continue as above
+```
+Check the docstrings for more detailed documentation af the `ParameterSearch` class.
+
 
 ## File Structure
 
