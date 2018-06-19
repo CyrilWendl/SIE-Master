@@ -16,7 +16,7 @@ class DensityForest:
     """
     def __init__(self, max_depth, min_subset, n_trees, n_max_dim=0, n_jobs=-1, verbose=1,
                  fact_improvement=.9, funct=create_density_tree, n_clusters=None, thresh_traverse=0, method='normal',
-                 standardize=False):
+                 subsample_pct = .1, standardize=False):
         """
         :param max_depth: maximum depth for each tree
         :param min_subset: minimum percentage of data which should be contained in each leaf node
@@ -48,28 +48,29 @@ class DensityForest:
         self.method = method
         self.standardize = standardize
         self.root_nodes = None
+        self.subsample_pct = subsample_pct
 
-    def fit(self, dataset, subsample_pct=1):
+    def fit(self, dataset):
         """
         Create density forest on a dataset
         :param dataset: dataset on which to create density forest
         :param subsample_pct: subsample percentage of data on which to fit df
         """
         if self.verbose:
-            print("Number of points on which to train each tree: %i" % int(len(dataset) * subsample_pct))
+            print("Number of points on which to train each tree: %i" % int(len(dataset) * self.subsample_pct))
             print("Minimum number of points in each leaf: %i" % int(
-                len(dataset) * subsample_pct * self.min_subset))
+                len(dataset) * self.subsample_pct * self.min_subset))
 
         if self.funct == create_density_tree:
             root_nodes = Parallel(n_jobs=self.n_jobs, verbose=self.verbose)(
                 delayed(create_density_tree)(
-                    draw_subsamples(dataset, subsample_pct=subsample_pct, replace=True), self.max_depth,
+                    draw_subsamples(dataset, subsample_pct=self.subsample_pct, replace=True), self.max_depth,
                     min_subset=self.min_subset, n_max_dim=self.n_max_dim, fact_improvement=self.fact_improvement)
                 for _ in range(self.n_trees))
         else:
             root_nodes = Parallel(n_jobs=self.n_jobs, verbose=self.verbose)(
                 delayed(create_density_tree_v1)(
-                    draw_subsamples(dataset, subsample_pct=subsample_pct, replace=True), self.n_clusters,
+                    draw_subsamples(dataset, subsample_pct=self.subsample_pct, replace=True), self.n_clusters,
                     n_max_dim=self.n_max_dim)
                 for _ in range(self.n_trees))
 
@@ -129,8 +130,7 @@ class DensityForest:
         print("Number of jobs: %i " % self.n_jobs)
 
         probas = Parallel(n_jobs=self.n_jobs, verbose=self.verbose)(
-            delayed(self.predict)(dataset[steps[i]:steps[i + 1], :], self.root_nodes,
-                                  thresh=self.thresh_traverse, method=self.method, standardize=self.standardize)
+            delayed(self.predict)(dataset[steps[i]:steps[i + 1], :])
             for i in range(len(steps) - 1))
 
         probas = np.concatenate(probas)

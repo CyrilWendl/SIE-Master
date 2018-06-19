@@ -1,13 +1,31 @@
 # Density Forest 
-Code Repository of the EPFL SIE Master Project, Spring Semester 2018
+Code Repository of the EPFL SIE Master Project, Spring Semester 2018.
 
-Implementation of Density Forests for splitting n-dimensional points in regions of high Gaussianity
+The goal of this project is to perform error detection and novelty detection in Convolutional Neural Networks (CNNs) using Density Forests. Applications to the MNIST dataset and a dataset for semantic segmentation of land cover classes in Zurich are visualized in  `Code/` and `Zurich/`.
+
+
+## Visualization
+Density trees maximize Gaussianity at each split level. In 2D this might look as follows:
 
 ![Simple 2D visualization](Figures/density_tree/gif/splits_visu.gif) 
 
-The goal of this project is to perform error detection and novelty detection using Density Forests. Applications to the MNIST dataset and a dataset for semantic segmentation of land cover classes in Zurich are visualized in  `Code/` and `Zurich/`. 
+A density forest is a collection of density trees each trained on a random subset of all data.
+
+![t-SNE of pre-softmax activations of Zurich dataset](Figures/Zurich/GIF/tsne_act.gif) 
+
+The above example shows the t-SNE of the pre-softmax activations of a network trained for semantic segmentation of the Zurich dataset, leaving out one class. 
+Confidence of each data point in the test set, the probability is calculated as the average Gaussian likelihood to come from the leaf node clusters.
+
+![Probas](Figures/Zurich/GIF/probas.png)
+
+Darker points represent regions of lower certainty and crosses represent activations of unseen classes.
+ 
+ 
 
 ## Usage of DensityForest:
+
+Suppose you have your training data `X_train` and test data `X_test`, in `[N, D]` with `N` data points in `D` dimensions:
+
 ```python
 from density_forest.density_forest import DensityForest
 
@@ -17,15 +35,8 @@ conf = clf_df(X_test)     # get confidence values for test set
 ```
 
 ## File Structure
-### `Code/`: 
-Visualizations of basic functionalities
-- `decision_tree.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
-- `density_tree.ipynb`: Density Trees on randomly generated unlabelled data
-- `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset leaving out one class, retrieval of the FC layer activations, comparison of novelty detection methods
-- `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset, retrieval of the FC layer activations, comparison of error detection methods
 
 #### `Code/density_forest/`
-
 Package for implementation of Decision Trees, Random Forests, Density Trees and Density Forests
 - `create_data.py`: functions for generating labelled and unlabelled data
 - `decision_tree.py`: data structure for decision tree nodes
@@ -35,16 +46,9 @@ Package for implementation of Decision Trees, Random Forests, Density Trees and 
 - `density_tree_create.py`: functions for generating density trees
 - `density_tree_traverse.py`: functions for descending density trees and retreiving their Gaussian parameters
 - `density_forest.py`: functions for creating density forests
-- `helper.py`: helper functions
+- `helper.py`: various helper functions
 - `plots.py`: functions for plotting the data
 - `random_forests`: functions for creating random forests
-
-
-### `Zurich/`
-- `Zurich Dataset Data Loading.ipynb`: CNN and data loading illustration for semantic segmentation on the 
-"Zurich Summer v1.0" dataset (cf. `Zurich_dataset/README`)
-- `Zurich Dataset Error Detection.ipynb`: Methods for error detection
-- `Zurich Dataset Novelty Detection.ipynb`: Methods for novelty detection
 
 #### `Zurich Land Cover/helpers`: 
 General helpers library for semantic segmentation
@@ -61,6 +65,18 @@ Helper functions for Keras
 - `MLP.py`: MLP for Image Transformation Baseline
 
 
+### `Code/`: 
+Visualizations of basic functionalities
+- `decision_tree.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
+- `density_tree.ipynb`: Density Trees on randomly generated unlabelled data
+- `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset leaving out one class, retrieval of the FC layer activations, comparison of novelty detection methods
+- `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset, retrieval of the FC layer activations, comparison of error detection methods
+
+### `Zurich/`
+- `Zurich Dataset Data Loading.ipynb`: CNN and data loading illustration for semantic segmentation on the 
+"Zurich Summer v1.0" dataset (cf. `Zurich_dataset/README`)
+- `Zurich Dataset Error Detection.ipynb`: Methods for error detection
+- `Zurich Dataset Novelty Detection.ipynb`: Methods for novelty detection
 
 ## Supervisors:
 - Prof. Devis Tuia, University of Wageningen

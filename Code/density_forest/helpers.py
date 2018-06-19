@@ -1,5 +1,6 @@
 import numpy as np
 from keras import backend as k_b
+from tqdm import tqdm
 # TODO put generic helper functions in helpers library
 
 
@@ -231,15 +232,15 @@ def rotate(origin, point, angle):
     return qx, qy
 
 
-def get_activations_batch(model, layer_idx, x, batch_size=20):
+def get_activations_batch(model, layer_idx, x, batch_size=20, verbose=False):
     """
     get activations for a set of patches, used for semantic segmentation
     :param model: model for which to extract activations
     :param layer_idx: layer index for which to extract activations
     :param x: data set for which to extract activations
     :param batch_size: batch size
+    :param verbose: whether to output status bar
     """
-    # TODO merge with function in keras_helpers/helpers.py
     # generic function
     get_activations_keras = k_b.function([model.layers[0].input,
                                           k_b.learning_phase()], [model.layers[layer_idx].output, ])
@@ -250,7 +251,8 @@ def get_activations_batch(model, layer_idx, x, batch_size=20):
         steps = np.concatenate((steps, [len(x)]))
 
     act_batches = []
-    for i in range(len(steps) - 1):
+    it = range(len(steps) - 1)
+    for i in tqdm(it) if verbose else it:
         idx_begin = steps[i]
         idx_end = steps[i + 1]
         act_batch = get_activations_keras([x[idx_begin:idx_end], 0])[0]
@@ -259,6 +261,8 @@ def get_activations_batch(model, layer_idx, x, batch_size=20):
     act_batches = np.concatenate(act_batches)
 
     return act_batches
+
+
 
 
 def get_activations(model, layer, x_batch):

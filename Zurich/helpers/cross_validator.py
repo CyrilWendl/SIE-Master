@@ -42,7 +42,7 @@ class ParameterSearch:
             params_names = sorted(p_test_l)
             combinations_l = it.product(*(p_test_l[Name] for Name in params_names))
             self.combinations.append([{n: k for k, n in zip(c, params_names)} for c in combinations_l])
-
+        self.combinations = np.concatenate(self.combinations)
         self.best_params = None
         self.results = None
 
@@ -50,13 +50,13 @@ class ParameterSearch:
         self.results = {}
 
         results = Parallel(n_jobs=self.n_jobs, verbose=self.verbosity)(
-            delayed(self.fit_iter)(c) for c in np.concatenate(self.combinations))
+            delayed(self.fit_iter)(c) for c in self.combinations)
 
-        for c, r in zip(np.concatenate(self.combinations), results):
+        for c, r in zip(self.combinations, results):
             self.results[str(c)] = r
 
         # best parameters = those with highest score
-        self.best_params = np.concatenate(self.combinations)[np.argmax(list(self.results.values()))]
+        self.best_params = self.combinations[np.argmax(list(self.results.values()))]
 
     def fit_iter(self, c):
         score_m = []
