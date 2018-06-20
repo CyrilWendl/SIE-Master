@@ -4,7 +4,7 @@ Code Repository of the EPFL SIE Master Project, Spring Semester 2018.
 The goal of this project is to perform error detection and novelty detection in Convolutional Neural Networks (CNNs) using Density Forests. Applications to the MNIST dataset and a dataset for semantic segmentation of land cover classes in Zurich are visualized in  `Code/` and `Zurich/`.
 
 
-## Visualization
+## 📈 Visualization
 Density trees maximize Gaussianity at each split level. In 2D this might look as follows:
 
 ![Simple 2D visualization](Figures/density_tree/gif/splits_visu.gif) 
@@ -25,7 +25,7 @@ Darker points represent regions of lower certainty and crosses represent activat
  
  
 
-## Usage of the `DensityForest` class:
+## 📖 Usage of the `DensityForest` class:
 #### 🌳 Fitting a Density Forest
 Suppose you have your training data `X_train` and test data `X_test`, in `[N, D]` with `N` data points in `D` dimensions:
 
