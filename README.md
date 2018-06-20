@@ -58,9 +58,9 @@ clf_df = DensityForest(**(ps.best_params))  # create new class instance with bes
 Check the docstrings for more detailed documentation af the `ParameterSearch` class.
 
 
-## 💻 File Structure
+## 🗂 File Structure
 
-### Code
+### 💻 Code
 #### `Code/density_forest/`
 Package for implementation of Decision Trees, Random Forests, Density Trees and Density Forests
 - `create_data.py`: functions for generating labelled and unlabelled data
@@ -89,7 +89,7 @@ Helper functions for Keras
 - `unet.py`: UNET model for training of network on Zurich dataset
 - `MLP.py`: MLP for Image Transformation Baseline
 
-### Visualizations
+### 🗾 Visualizations
 #### `Code/`: 
 Visualizations of basic functionalities
 - `decision_tree.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
@@ -103,7 +103,7 @@ Visualizations of basic functionalities
 - `Zurich Dataset Error Detection.ipynb`: Methods for error detection
 - `Zurich Dataset Novelty Detection.ipynb`: Methods for novelty detection
 
-## Supervisors:
+## 🎓 Supervisors:
 - Prof. Devis Tuia, University of Wageningen
 - Diego Marcos González, University of Wageningen
 - Prof. François Golay, EPFL
