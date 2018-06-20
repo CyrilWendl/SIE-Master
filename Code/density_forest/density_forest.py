@@ -16,7 +16,7 @@ class DensityForest:
     """
     def __init__(self, max_depth, min_subset, n_trees, n_max_dim=0, n_jobs=-1, verbose=1,
                  fact_improvement=.9, funct=create_density_tree, n_clusters=None, thresh_traverse=0, method='normal',
-                 subsample_pct = .1, standardize=False):
+                 subsample_pct=.1, standardize=False, batch_size=-1):
         """
         :param max_depth: maximum depth for each tree
         :param min_subset: minimum percentage of data which should be contained in each leaf node
@@ -30,6 +30,7 @@ class DensityForest:
         :param n_clusters: number of clusters, only relevant if function create_density_tree_v1 is set
         :param thresh_traverse: threshold of min. pct of points per leaf node to consider a tree
         :param method: 'normal' for probability estimation according to Gaussianity, 'euclid' for distance to mean
+        :param batch_size: batch size for parallel prediction, default=-1 (no parallel prediction)
         :return root_nodes: array of root nodes of each tree in Density Forest
         """
         self.max_depth = max_depth
@@ -49,12 +50,12 @@ class DensityForest:
         self.standardize = standardize
         self.root_nodes = None
         self.subsample_pct = subsample_pct
+        self.batch_size = batch_size
 
     def fit(self, dataset):
         """
         Create density forest on a dataset
         :param dataset: dataset on which to create density forest
-        :param subsample_pct: subsample percentage of data on which to fit df
         """
         if self.verbose:
             print("Number of points on which to train each tree: %i" % int(len(dataset) * self.subsample_pct))
@@ -85,16 +86,17 @@ class DensityForest:
 
         self.root_nodes = root_nodes
 
-    def predict(self, dataset, batch_size=-1):
+    def predict(self, dataset, parallel=True):
         """
         traverse Density Forest (DF) and get mean probability for point to belong to the leaf clusters of each tree
         :param dataset: dataset for which to traverse density forest
         :param batch_size: optional argument for batch traversal
+        :param parallel: make predictions in parallel, requires self.n_jobs!=0 (default: True)
         """
 
         # set up variables
-        if batch_size > 0:
-            return self.predict_batch(dataset, batch_size)
+        if self.batch_size > 0 and parallel:
+            return self.predict_batch(dataset, self.batch_size)
         else:
             pairs_proba = np.empty((len(dataset), len(self.root_nodes)), float)  # indexes of data points
 
@@ -126,11 +128,10 @@ class DensityForest:
         """
         steps = np.linspace(0, len(dataset), int(len(dataset) / batch_size), dtype='int')
         print("Total steps: %i" % len(steps))
-
         print("Number of jobs: %i " % self.n_jobs)
 
         probas = Parallel(n_jobs=self.n_jobs, verbose=self.verbose)(
-            delayed(self.predict)(dataset[steps[i]:steps[i + 1], :])
+            delayed(self.predict)(dataset[steps[i]:steps[i + 1], :], parallel=False)
             for i in range(len(steps) - 1))
 
         probas = np.concatenate(probas)

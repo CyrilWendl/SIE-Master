@@ -60,18 +60,22 @@ class ParameterSearch:
     def fit(self):
         """
         Fit model trying all possible model combinations in parallel self.n_iter times
+        :return self
         """
-        scores = Parallel(n_jobs=self.n_jobs, verbose=self.verbosity)(
-            delayed(self.fit_iter)(c) for c in self.combinations)
+        if self.n_jobs != 0:
+            scores_c = Parallel(n_jobs=self.n_jobs, verbose=self.verbosity)(
+                delayed(self.fit_iter)(c) for c in self.combinations)
+        else:
+            scores_c = [self.fit_iter(c) for c in self.combinations]
 
-        for param_c, scores_c in zip(self.combinations, scores):
+        for param_c, scores_c in zip(self.combinations, scores_c):
             self.results_r_mean = np.append(self.results_r_mean, np.mean(scores_c))
             self.results_c = np.append(self.results_c, param_c)
-            self.results[str(param_c)] = {'mean score': np.mean(scores_c),
-                                          'scores': scores_c}
+            self.results[str(param_c)] = {'mean score': np.mean(scores_c), 'scores': scores_c}
 
         # best parameters = those with highest score
         self.best_params = self.results_c[np.argmax(self.results_r_mean)]
+        return self
 
     def fit_iter(self, c):
         """
@@ -80,8 +84,12 @@ class ParameterSearch:
         :return: scores of all self.n_iter runs
         """
         scores_c = []
+        if self.verbosity > 0:
+            print("Trying parameters: " + str(c))
+
         for _ in range(self.n_iter):
             # get optionally, get data subsamples
+            # TODO change to k-fold cross-validation
             if self.subsample_train < 1:
                 x_train_ss = draw_subsamples(self.x_train, self.subsample_train)
             else:
@@ -100,10 +108,6 @@ class ParameterSearch:
 
             # add score to array
             score = self.f_scoring(model_try, x_test_ss, y_true_ss)
-            if self.verbosity > 10:
-                print(score)
-
             scores_c.append(score)
 
         return scores_c
-

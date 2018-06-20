@@ -58,8 +58,6 @@ class DensityNode:
         for i in range(len(nodes)):
             node = nodes.pop()
             side = sides.pop()
-            #print(side)
-            #print(node.__format__())
             if side == 'l':
                 dataset_split = dataset_split[dataset_split[:, node.split_dimension] < node.split_value]
             else:

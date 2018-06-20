@@ -1,5 +1,10 @@
 def descend_density_tree(data_point, node):
-    """given some test data and decision tree, assign the correct label using a decision tree"""
+    """
+    Descend some density tree from the root node and yield the corresponding leaf node of the data point
+    :param data_point: data point for which to find leaf node
+    :param node: root node of a density tree
+    :return: cluster mean (mu), dataset percentage, PDF value at mean, cluster cov (Sigma), det and inv of cov
+    """
 
     if data_point[node.split_dimension] < node.split_value:
         if node.left is not None:  # no leaf node

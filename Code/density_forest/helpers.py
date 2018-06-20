@@ -1,6 +1,8 @@
 import numpy as np
 from keras import backend as k_b
 from tqdm import tqdm
+import multiprocessing
+from joblib import Parallel,  delayed
 # TODO put generic helper functions in helpers library
 
 
@@ -263,8 +265,6 @@ def get_activations_batch(model, layer_idx, x, batch_size=20, verbose=False):
     return act_batches
 
 
-
-
 def get_activations(model, layer, x_batch):
     """
     get activations for patch-wise classification (MNIST)
@@ -330,3 +330,25 @@ def draw_subsamples(dataset, subsample_pct=.8, replace=False, return_indices=Fal
     if return_indices:
         return dataset_subset, dataset_subset_indices
     return dataset_subset
+
+
+def parallel_batch(data, funct, batch_size, args=None, n_jobs=-1, verbose=0):
+    """
+    Perform a function on some data in parallel by cutting the data in batches (first dimensions)
+    :param data: data to process in parallel
+    :param funct: function to apply to each data chunk, taking a data batch as first argument
+    :param batch_size: size of batches to process in parallel
+    :param args: Optional further function arguments as a dictionary {'arg1':val1, 'arg2':val2, ...}
+    :param n_jobs: number of processor cores to use, if n_jobs == -1, all cores are used
+    :param verbose: verbosity of parallel processing output
+    """
+    if args is None:
+        args = {}
+
+    if n_jobs == -1:
+        n_jobs = multiprocessing.cpu_count()
+
+    result = Parallel(n_jobs=n_jobs, verbose=verbose)(
+        delayed(funct)(data_batch, **args)
+        for data_batch in np.array_split(data, int(len(data) / (batch_size + 1))))
+    return np.concatenate(result)
