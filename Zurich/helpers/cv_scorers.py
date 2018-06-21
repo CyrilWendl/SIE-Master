@@ -37,6 +37,7 @@ def scorer_roc_probas_df(clf_df, x, y=None):
     :param y: optional gt data
     """
     probas = clf_df.predict(x)
-    probas[probas == np.infty] = 10**10
+    probas[probas == np.infty] = 10 ** 10
+    probas[np.isnan(probas)] = 10 ** 10
     auroc = metrics.roc_auc_score(y, -probas)
     return auroc

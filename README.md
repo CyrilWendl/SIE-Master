@@ -26,7 +26,7 @@ Darker points represent regions of lower certainty and crosses represent activat
  
 
 ## 📖 Usage of the `DensityForest` class:
-#### 🌳 Fitting a Density Forest
+#### Fitting a Density Forest
 Suppose you have your training data `X_train` and test data `X_test`, in `[N, D]` with `N` data points in `D` dimensions:
 
 ```python
@@ -38,7 +38,7 @@ conf = clf_df.predict(X_test)     # get confidence values for test set
 ```
 Hyperparameters are documented in the docstring. To find the optimal hyperparameters, consider the section below.
 
-#### 👨‍🔬 Finding Hyperparameters
+#### Finding Hyperparameters
 To find the optimal hyperparameters, use the `ParameterSearch` from `helpers.cross_validator`, which allows CV, and hyperparameter search.
 
 ```python
@@ -60,7 +60,7 @@ Check the docstrings for more detailed documentation af the `ParameterSearch` cl
 
 ## 🗂 File Structure
 
-### 💻 Code
+### Code
 #### `Code/density_forest/`
 Package for implementation of Decision Trees, Random Forests, Density Trees and Density Forests
 - `create_data.py`: functions for generating labelled and unlabelled data
@@ -89,7 +89,7 @@ Helper functions for Keras
 - `unet.py`: UNET model for training of network on Zurich dataset
 - `MLP.py`: MLP for Image Transformation Baseline
 
-### 🗾 Visualizations
+### Visualizations
 #### `Code/`: 
 Visualizations of basic functionalities
 - `decision_tree.ipynb`: Decision Trees and Random Forest on randomly generated labelled data

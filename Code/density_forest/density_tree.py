@@ -8,6 +8,7 @@ class DensityNode:
         self.parent = None  # parent node
         self.split_value = None  # the split value
         self.split_dimension = None  # the split dimension
+        self.ig = None # information gain
 
         # unlabelled data
         self.entropy = None  # entropy, for unlabelled nodes

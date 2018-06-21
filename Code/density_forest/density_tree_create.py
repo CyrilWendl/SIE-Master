@@ -5,7 +5,7 @@ from .helpers import entropy_gaussian, get_best_split, my_normal
 
 
 def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, side_label=None,
-                        verbose=False, n_max_dim=0, fact_improvement=0, n_grid=50):
+                        verbose=False, n_max_dim=0, ig_improvement=0, n_grid=50):
     """
     create decision tree, using as a stopping criterion a maximum tree depth criterion
     Steps:
@@ -16,7 +16,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
     :param max_depth: maximum depth of tree to create
     :param min_subset: minimum subset of data required to do further split
     :param parent_node: parent node
-    :param fact_improvement: minimum factor of improvement of Gaussian entropy to make new split (-1 = ignore)
+    :param ig_improvement: minimum factor of improvement of Gaussian entropy to make new split (-1 = ignore)
     :param side_label: side of the node with respect to the parent node
     :param verbose: whether to output debugging information
     :param n_max_dim: maximum number of dimensions within which to search for best split
@@ -31,7 +31,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
         dataset_node = parent_node.get_dataset(side_label, dataset)
 
     # split dataset
-    dim_max, val_dim_max = get_best_split(dataset_node, labelled=False, n_max_dim=n_max_dim, n_grid=n_grid)
+    dim_max, val_dim_max, ig = get_best_split(dataset_node, labelled=False, n_max_dim=n_max_dim, n_grid=n_grid)
     left = dataset_node[dataset_node[..., dim_max] < val_dim_max]
     right = dataset_node[dataset_node[..., dim_max] >= val_dim_max]
 
@@ -40,15 +40,13 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
     e_left = entropy_gaussian(left)
     e_right = entropy_gaussian(right)
 
-    #improvement_entropy = e_node - np.dot([e_left, e_right], [len(left), len(right)]) / len(dataset_node)
-    # TODO check
-    improvement_entropy = (e_node - np.dot([e_left, e_right], [len(left), len(right)]) / len(dataset_node))/e_node
+    # TODO check semipositive definite
     # check positive semi-definite covariance matrices to both sides
     left_cov_det = np.linalg.det(np.cov(left.T))
     right_cov_det = np.linalg.det(np.cov(right.T))
 
-    if ((improvement_entropy > fact_improvement) or
-        (fact_improvement == -1)) and ((left_cov_det > 0) and (right_cov_det > 0)):
+    if ((ig > ig_improvement) or
+        (ig_improvement == -1)) and ((left_cov_det > 0) and (right_cov_det > 0)):
         treenode = DensityNode()
         if parent_node is not None:
             # link parent node to new node
@@ -62,6 +60,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
         # split information
         treenode.split_dimension = dim_max
         treenode.split_value = val_dim_max
+        treenode.ig = ig
         treenode.entropy = e_node
         treenode.cov = np.cov(dataset_node.T)
         treenode.mean = np.mean(dataset_node, axis=0)
@@ -93,18 +92,16 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
                 # recursively split
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parent_node=treenode,
                                     side_label='l', n_max_dim=n_max_dim, verbose=verbose,
-                                    fact_improvement=fact_improvement)
+                                    ig_improvement=ig_improvement)
             # check minimum number of points r
             if (len(right) > (min_subset * len(dataset))) and (len(right) > (dim * 2)):
                 # recursively split
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parent_node=treenode,
                                     side_label='r', n_max_dim=n_max_dim, verbose=verbose,
-                                    fact_improvement=fact_improvement)
+                                    ig_improvement=ig_improvement)
 
         return treenode
     else:
-        if (improvement_entropy > fact_improvement) and verbose:
-            print("Entropy improved less than fact_improvement: %.2f" % improvement_entropy)
         return
 
 
@@ -118,7 +115,7 @@ def create_density_tree_v1(dataset, clusters, parentnode=None, side_label=None, 
     """
 
     # split
-    dim_max, val_dim_max = get_best_split(dataset, labelled=False, n_max_dim=n_max_dim)
+    dim_max, val_dim_max, ig = get_best_split(dataset, labelled=False, n_max_dim=n_max_dim)
 
     left = dataset[dataset[..., dim_max] < val_dim_max]
     right = dataset[dataset[..., dim_max] >= val_dim_max]

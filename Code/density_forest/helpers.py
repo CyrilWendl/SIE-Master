@@ -164,7 +164,7 @@ def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
     # split dimension of maximum gain
     idx_dim_max = np.sum((max_ind >= np.cumsum(ig_dims_len)) * 1)
 
-    return dimensions[idx_dim_max], split_dims[max_ind]
+    return dimensions[idx_dim_max], split_dims[max_ind], np.max(ig_dims)
 
 
 def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50):

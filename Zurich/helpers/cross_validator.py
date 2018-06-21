@@ -89,7 +89,6 @@ class ParameterSearch:
 
         for _ in range(self.n_iter):
             # get optionally, get data subsamples
-            # TODO change to k-fold cross-validation
             if self.subsample_train < 1:
                 x_train_ss = draw_subsamples(self.x_train, self.subsample_train)
             else:

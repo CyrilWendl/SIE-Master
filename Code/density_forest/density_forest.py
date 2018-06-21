@@ -15,7 +15,7 @@ class DensityForest:
     Density Forest class
     """
     def __init__(self, max_depth, min_subset, n_trees, n_max_dim=0, n_jobs=-1, verbose=1,
-                 fact_improvement=.9, funct=create_density_tree, n_clusters=None, thresh_traverse=0, method='normal',
+                 ig_improvement=.9, funct=create_density_tree, n_clusters=None, thresh_traverse=0, method='normal',
                  subsample_pct=.1, standardize=False, batch_size=-1):
         """
         :param max_depth: maximum depth for each tree
@@ -23,7 +23,7 @@ class DensityForest:
         :param n_trees: number of trees to create
         :param subsample_pct: percentage of original dataset on which to create trees
         :param n_max_dim: maximum number of dimensions within which to search for best split
-        :param fact_improvement: minimum improvement factor needed to continue splitting tree
+        :param ig_improvement: minimum improvement factor needed to continue splitting tree
         :param n_jobs: number of processors to use for parallel processing. If -1, all processors are used
         :param verbose: verbosity level of parallel processing
         :param funct: function name for creation of density trees (create_density_tree or create_density_tree_v1)
@@ -42,7 +42,7 @@ class DensityForest:
         else:
             self.n_jobs = np.min([n_jobs, multiprocessing.cpu_count()])
         self.verbose = verbose
-        self.fact_improvement = fact_improvement
+        self.ig_improvement = ig_improvement
         self.funct = funct
         self.n_clusters = n_clusters
         self.thresh_traverse = thresh_traverse
@@ -66,7 +66,7 @@ class DensityForest:
             root_nodes = Parallel(n_jobs=self.n_jobs, verbose=self.verbose)(
                 delayed(create_density_tree)(
                     draw_subsamples(dataset, subsample_pct=self.subsample_pct, replace=True), self.max_depth,
-                    min_subset=self.min_subset, n_max_dim=self.n_max_dim, fact_improvement=self.fact_improvement)
+                    min_subset=self.min_subset, n_max_dim=self.n_max_dim, ig_improvement=self.ig_improvement)
                 for _ in range(self.n_trees))
         else:
             root_nodes = Parallel(n_jobs=self.n_jobs, verbose=self.verbose)(
