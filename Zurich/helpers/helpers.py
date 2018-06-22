@@ -186,19 +186,18 @@ def get_offset(images, patch_size, stride, begin_idx, end_idx):
     return n_patches
 
 
-def load_data(path):
+def load_data(path, idx):
     """
     Zurich dataset data loader
     :param path: path in which Zurich_dataset/ is saved
+    :param idx: indexes of images to be loaded
     :return: imgs, gt
     """
     im_dir = r'' + path + '/Zurich_dataset/images_tif/'
     gt_dir = r'' + path + '/Zurich_dataset/groundtruth/'
 
-    im_names = ns.natsorted(os.listdir(im_dir))
-    gt_names = ns.natsorted(os.listdir(gt_dir))
-    print("images: %i " % len(im_names))
-    print("ground truth images: %i " % len(gt_names))
+    im_names = ['zh'+str(i+1)+'.tif' for i in idx]
+    gt_names = ['zh'+str(i+1)+'_GT.tif' for i in idx]
 
     imgs = np.asarray([im_load(im_dir + im_name) for im_name in im_names])
     gt = np.asarray([im_load(gt_dir + gt_name) for gt_name in gt_names])

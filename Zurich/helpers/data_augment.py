@@ -44,20 +44,18 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=False, r
 
     im_patches_t = []  # transformed images
     gt_patches_t = []  # transformed labels
-    #  normalize image between range (0,1)
+
+    flag_singleimg = False
     if len(np.shape(im_patches)) < 4:
         flag_singleimg = True
-        im_patches = im_patches[np.newaxis]
-        gt_patches = gt_patches[np.newaxis]
-    else:
-        flag_singleimg = False
+        im_patches = [im_patches]
+        gt_patches = [gt_patches]
+
 
     for (im, gt) in zip(im_patches, gt_patches):
         # Scale image between [0, 1]
-        im -= np.min(im)
-        im /= np.max(im)
-
         if normalize:
+            im -= np.min(im)
             im /= np.max(im)
 
         # random flipping
@@ -88,34 +86,34 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=False, r
                 im = im ** gamma
 
         # PIL transformations
-        if im.shape[-1] == 1:
-            im_pil = Image.fromarray((im[..., 0] * 255).astype('uint8'))
-        else:
-            im_pil = Image.fromarray((im * 255).astype('uint8'))
+        if brightness or contrast or blur:
+            if im.shape[-1] == 1:
+                im_pil = Image.fromarray((im[..., 0] * 255).astype('uint8'))
+            else:
+                im_pil = Image.fromarray((im * 255).astype('uint8'))
 
-        if brightness:
-            if np.random.randint(2) or force:
-                im_pil = ImageEnhance.Brightness(im_pil).enhance(brightness)
-        if contrast:
-            if np.random.randint(2) or force:
-                im_pil = ImageEnhance.Contrast(im_pil).enhance(contrast)
-        if blur:
-            # not really working with semantic segmentation!
-            if np.random.randint(2) or force:
-                size = 5
-                kernel_motion_blur = np.zeros((size, size))
-                kernel_motion_blur[int((size - 1) / 2), :] = np.ones(size)
-                kernel_motion_blur = kernel_motion_blur / size
-                kernel_motion_blur = kernel_motion_blur.flatten()
-                im_pil = im_pil.filter(ImageFilter.Kernel((size, size), kernel_motion_blur))
+            if brightness:
+                if np.random.randint(2) or force:
+                    im_pil = ImageEnhance.Brightness(im_pil).enhance(brightness)
+            if contrast:
+                if np.random.randint(2) or force:
+                    im_pil = ImageEnhance.Contrast(im_pil).enhance(contrast)
+            if blur:
+                # not really working with semantic segmentation!
+                if np.random.randint(2) or force:
+                    size = 5
+                    kernel_motion_blur = np.zeros((size, size))
+                    kernel_motion_blur[int((size - 1) / 2), :] = np.ones(size)
+                    kernel_motion_blur = kernel_motion_blur / size
+                    kernel_motion_blur = kernel_motion_blur.flatten()
+                    im_pil = im_pil.filter(ImageFilter.Kernel((size, size), kernel_motion_blur))
 
-        im = np.asarray(im_pil) / 255
-        # Scale image between [0, 1]
-        im -= np.min(im)
-        im /= np.max(im)
-
-        if len(im.shape) == 2:
-            im = im[..., np.newaxis]
+            im = np.asarray(im_pil) / 255
+            # Scale image between [0, 1]
+            im -= np.min(im)
+            im /= np.max(im)
+            if len(im.shape) == 2:
+                im = im[..., np.newaxis]
 
         im_patches_t.append(im)
 

@@ -3,6 +3,7 @@ import multiprocessing
 import numpy as np
 from joblib import Parallel, delayed
 from density_forest.helpers import draw_subsamples
+import pandas as pd
 
 
 class ParameterSearch:
@@ -27,6 +28,7 @@ class ParameterSearch:
         :param subsample_train: percentage of data to use for training (default: all)
         :param subsample_test: percentage of data to use for testing (default: all)
         """
+        # TODO separate default values and CV values
         self.model = model
         self.params_test = params_test
         self.x_train = x_train
@@ -53,6 +55,13 @@ class ParameterSearch:
 
         self.best_params = None
         self.results = {}  # results of parameter combinations for which there are results
+        # dataframe with all parameters and results
+        colnames = list(np.concatenate([list(tp.keys()) for tp in params_test]))
+        colnames.append('result')  # mean result for a parameter setting
+        colnames.append('var')  # variance for a parameter setting
+        self.results_df = pd.DataFrame({}, columns=colnames)
+        for idx, c in enumerate(self.combinations):
+            self.results_df = self.results_df.append(pd.Series(c).rename(str(idx)))
         self.results_r_mean = np.array([])  # mean numbers of parameter combinations for which there are results
         self.results_r = np.array([])  # arrays of results for each combination set
         self.results_c = np.array([])  # names of parameter combinations for which there are results
@@ -72,6 +81,10 @@ class ParameterSearch:
             self.results_r_mean = np.append(self.results_r_mean, np.mean(scores_c))
             self.results_c = np.append(self.results_c, param_c)
             self.results[str(param_c)] = {'mean score': np.mean(scores_c), 'scores': scores_c}
+            self.results_df.loc[self.results_df[list(param_c.keys())].isin(param_c.values()).all(axis=1), 'result'] = \
+                np.mean(scores_c)
+            self.results_df.loc[self.results_df[list(param_c.keys())].isin(param_c.values()).all(axis=1), 'var'] = \
+                np.var(scores_c)
 
         # best parameters = those with highest score
         self.best_params = self.results_c[np.argmax(self.results_r_mean)]

@@ -7,7 +7,6 @@ from keras.models import Model
 from keras.layers import *
 from keras import optimizers
 
-
 # TODO test this function
 def weighted_pixelwise_crossentropy(class_weights):
     def loss(y_true, y_pred):
@@ -24,7 +23,6 @@ def ignore_background_class_accuracy(background_class_id):
     def fn(y_true, y_pred):
         class_id_true = K.argmax(y_true, axis=-1)
         class_id_preds = K.argmax(y_pred, axis=-1)
-
         # Replace class_id_preds with class_id_true for recall here
         accuracy_mask = K.cast(K.not_equal(class_id_true, background_class_id), 'int32')
         class_acc_tensor = K.cast(K.equal(class_id_true, class_id_preds), 'int32') * accuracy_mask
