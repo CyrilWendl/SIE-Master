@@ -1,0 +1,17 @@
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 2354282844064580917
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 183042048
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 2852452819759218086
+physical_device_desc: "device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1"
+]

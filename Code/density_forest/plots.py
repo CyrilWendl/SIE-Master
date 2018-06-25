@@ -1,4 +1,3 @@
-# TODO make all plots modular (take ax as input add to it)
 from .random_forest import get_grid_labels
 from .create_data import data_to_clusters
 from .helpers import get_values_preorder, draw_subsamples
@@ -155,7 +154,6 @@ def plot_pts_3d(x_pts, y_labels, classes_to_keep, names, colors,
     ax.legend(names_legend, framealpha=1)
     if s_name is not None:
         plt.savefig(s_name, bbox_inches='tight', pad_inches=0)
-    plt.show()
 
 
 def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, names, colors,

@@ -1,22 +1,10 @@
 """
 Keras CNN UNET model
 """
-
 from __future__ import print_function
 from keras.models import Model
 from keras.layers import *
 from keras import optimizers
-
-# TODO test this function
-def weighted_pixelwise_crossentropy(class_weights):
-    def loss(y_true, y_pred):
-        mask = K.ones_like(y_pred)[..., 0]
-        for i in range(len(class_weights)):
-            mask_class_weight = K.ones_like(mask) * class_weights[i]
-            mask = K.tf.where(y_true[..., i] > 0, mask_class_weight, mask)
-        loss_weighted = mask * K.categorical_crossentropy(y_true, y_pred)
-        return loss_weighted
-    return loss
 
 
 def ignore_background_class_accuracy(background_class_id):

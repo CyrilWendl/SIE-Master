@@ -1,6 +1,4 @@
 # To Do
-- Refine cross-validation for all methods
-- Implement k-fold cv in cross-validation
 - `min_subset` parameter should lead to at most 1/`min_subset` clusters
 - Export hyperparameters for each class
 - Make runnable scripts from notebooks

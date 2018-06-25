@@ -2,8 +2,6 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-
-# TODO necessary to keep?
 import sys
 
 base_dir = '/raid/home/cwendl'  # for guanabana
@@ -187,7 +185,7 @@ class Unet(nn.Module):
         up_4 = self.up_4(concat_4)
 
         out = self.out(up_4)
-        if self.training:  # TODO check dim
+        if self.training:
             out = nn.LogSoftmax(dim=1)(out)
         else:
             out = nn.Softmax(dim=1)(out)

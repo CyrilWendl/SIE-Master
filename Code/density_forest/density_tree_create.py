@@ -45,7 +45,7 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
     left_cov_det = np.linalg.det(np.cov(left.T))
     right_cov_det = np.linalg.det(np.cov(right.T))
 
-    if ((ig > ig_improvement) or
+    if ((len(left) > (min_subset * len(dataset))) and (len(right) > (min_subset * len(dataset)))) and ((ig > ig_improvement) or
         (ig_improvement == -1)) and ((left_cov_det > 0) and (right_cov_det > 0)):
         treenode = DensityNode()
         if parent_node is not None:

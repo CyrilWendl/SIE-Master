@@ -23,7 +23,6 @@ class ZurichLoader(Dataset):
         :param stride: stride between patches
         :param transform: optional transform to be applied on a sample
         """
-        # TODO add data augmentation
         self.root_dir = root_dir
         self.subset = subset
         self.patch_size = patch_size

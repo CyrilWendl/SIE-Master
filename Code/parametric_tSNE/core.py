@@ -306,8 +306,6 @@ class Parametric_tSNE(object):
             Only use `beta_batch_size` points to calculate beta values. This is
             for speed and memory reasons. Data must be well-shuffled for this to be effective,
             betas will be calculated based on regular batches of this size
-            # TODO K-NN or something would probably be better rather than just
-            # batches
         Returns
         -------
         betas : 2D array_like (N,P)
