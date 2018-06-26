@@ -45,14 +45,14 @@ To find the optimal hyperparameters, use the `ParameterSearch` from `helpers.cro
 from helpers.cross_validator import ParameterSearch
 
 # define hyperparameters to test
-tuned_parameters=[{'max_depth':[2, 3, 4], 'n_trees':[10, 20]}] # optionally add non-default arguments as single-element arrays
-
+tuned_params = [{'max_depth':[2, 3, 4], 'n_trees': [10, 20]}] # optionally add non-default arguments as single-element arrays
+default_params = [{'verbose':0, ...}]  # other default parameters 
 # do parameter search
-ps = ParameterSearch(DensityForest, tuned_parameters, X_train, X_train_all, y_true_tr, f_scorer, n_iter=2, verbosity=0, n_jobs=1)
+ps = ParameterSearch(DensityForest, tuned_parameters, X_train, X_train_all, y_true_tr, f_scorer, n_iter=2, verbosity=0, n_jobs=1, default_params=default_params)
 ps.fit()
 
 # get model with the best parameters, as above
-clf_df = DensityForest(**(ps.best_params))  # create new class instance with best hyperparameters
+clf_df = DensityForest(**ps.best_params, **default_params)  # create new class instance with best hyperparameters
 ...  # continue as above
 ```
 Check the docstrings for more detailed documentation af the `ParameterSearch` class.
@@ -95,13 +95,12 @@ Visualizations of basic functionalities
 - `decision_tree.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
 - `density_tree.ipynb`: Density Trees on randomly generated unlabelled data
 - `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset leaving out one class, retrieval of the FC layer activations, comparison of novelty detection methods
-- `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset, retrieval of the FC layer activations, comparison of error detection methods
 
 #### `Zurich/`
 - `Zurich Dataset Data Loading.ipynb`: CNN and data loading illustration for semantic segmentation on the 
 "Zurich Summer v1.0" dataset (cf. `Zurich_dataset/README`)
-- `Zurich Dataset Error Detection.ipynb`: Methods for error detection
-- `Zurich Dataset Novelty Detection.ipynb`: Methods for novelty detection
+- `Zurich Dataset Novelty Detection.ipynb`: Training of CNN, baselines and DF for novelty detection
+- `Zurich Dataset Error Detection.ipynb`: Training of CNN, baselines and DF for error detection
 
 ## 🎓 Supervisors:
 - Prof. Devis Tuia, University of Wageningen
