@@ -14,7 +14,7 @@ def create_decision_tree(dataset, parent_node=None, side_label=None, max_depth=n
     :param side_label: indicator of which side of parent node to create a new node
     :param max_depth: maximum depth of decision tree
     """
-    dim_max, val_dim_max = get_best_split(dataset, labelled=True)
+    dim_max, val_dim_max, _ = get_best_split(dataset, labelled=True)
 
     # create binary tree node
     treenode = DecisionNode()
