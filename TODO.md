@@ -1,8 +1,10 @@
 # To Do
-- `min_subset` parameter should lead to at most 1/`min_subset` clusters
+- Zurich ND
+    - Export accuracy metrics for ND
+    - Recalculate min_subset for classes 1-5
+    
+- Clean up code and library folder structure
 - Export hyperparameters for each class
-- Make runnable scripts from notebooks
-- Clean up code and folder structure
 - Rewrite U-Net in PyTorch for Dropout
 
 ### Density Forests

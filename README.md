@@ -97,8 +97,6 @@ Visualizations of basic functionalities
 - `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset leaving out one class, retrieval of the FC layer activations, comparison of novelty detection methods
 
 #### `Zurich/`
-- `Zurich Dataset Data Loading.ipynb`: CNN and data loading illustration for semantic segmentation on the 
-"Zurich Summer v1.0" dataset (cf. `Zurich_dataset/README`)
 - `Zurich Dataset Novelty Detection.ipynb`: Training of CNN, baselines and DF for novelty detection
 - `Zurich Dataset Error Detection.ipynb`: Training of CNN, baselines and DF for error detection
 
