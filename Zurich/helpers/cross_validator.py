@@ -29,7 +29,6 @@ class ParameterSearch:
         :param subsample_train: percentage of data to use for training (default: all)
         :param subsample_test: percentage of data to use for testing (default: all)
         """
-        # TODO separate default values and CV values
         self.model = model
         self.params_test = params_test
         self.x_train = x_train
@@ -74,7 +73,7 @@ class ParameterSearch:
         self.best_params = None
         self.results = {}  # results of parameter combinations for which there are results
         # dataframe with all parameters and results
-        colnames = list(np.concatenate([list(tp.keys()) for tp in params_test]))
+        colnames = list(np.unique(np.concatenate([list(tp.keys()) for tp in params_test])))
         colnames.append('result')  # mean result for a parameter setting
         colnames.append('std')  # variance for a parameter setting
         self.results_df = pd.DataFrame({}, columns=colnames)

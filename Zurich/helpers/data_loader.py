@@ -48,11 +48,11 @@ class ZurichLoader(Dataset):
 
         # image ids for training, validation and test sets
         if self.subset == 'train':
-            self.ids_imgs = np.arange(0, 12)
+            self.ids_imgs = np.arange(0, 10)
         elif self.subset == 'val':
-            self.ids_imgs = np.arange(12, 16)
+            self.ids_imgs = np.arange(10, 15)
         elif self.subset == 'test':
-            self.ids_imgs = np.arange(16, 20)
+            self.ids_imgs = np.arange(15, 20)
         else:
             print("No valid set indicated, must be either 'train', 'val' or 'test'")
 
