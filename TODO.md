@@ -12,3 +12,6 @@
 ## Folder structure
 - Put all libraries in same subfolder
 - Document functions
+
+## Report
+- Compare single tree to Density Forest 

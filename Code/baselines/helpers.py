@@ -25,6 +25,7 @@ def predict_with_dropouts_batch(model, x, batch_size=300, n_iter=10):
     :param batch_size: number of samples of x for which to make predictions at a time
     :param n_iter: number of iterations for dropout predictions
     """
+    # TODO get mean per patch to avoid high memory usage
     n_steps = int(np.ceil(len(x) / batch_size))
     preds = []
 
@@ -73,11 +74,13 @@ def predict_with_dropout_imgs(model, x, imgs, ids, batch_size=300, n_iter=10):
 
 def reorder_truncate_concatenate(y_preds, n_components):
     """
+    Method related to basline "confidence from invariance to image transformations"
     reorder, truncate, concatenate softmax prediction vectors
-    y_pred = [n_transforms, n_pred_points, n_classes]
     y_pred[0] as to be the original prediction
     y_pred[1:] are transformed predictions
-
+    :param y_preds: [n_transforms, n_pred_points, n_classes]
+    :param n_components: number of components to keep
+    :return: reordered, truncated, concatenated y vector
     """
     # reorder
     y_pred_o = deepcopy(y_preds)
