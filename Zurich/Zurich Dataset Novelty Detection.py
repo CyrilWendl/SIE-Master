@@ -1,3 +1,4 @@
+
 # coding: utf-8
 
 # # Zurich Land Cover Classification
@@ -8,15 +9,16 @@
 
 # In[1]:
 
-import sys
-import os
 
+import os, sys
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+
 
 # In[2]:
 
 
+get_ipython().run_line_magic('matplotlib', 'inline')
 # python libraries
 from multiprocessing import cpu_count
 from sklearn.manifold import TSNE
@@ -31,12 +33,11 @@ from keras.utils import to_categorical
 from keras.models import load_model
 
 from tensorflow.python.client import device_lib
-
 print(device_lib.list_local_devices())
 
 # custom libraries
 base_dir = '/Users/cyrilwendl/Documents/EPFL'
-# base_dir = '/raid/home/cwendl'  # for guanabana
+#base_dir = '/raid/home/cwendl'  # for guanabana
 sys.path.append(base_dir + '/SIE-Master/Code')  # Path to density Tree package
 sys.path.append(base_dir + '/SIE-Master')  # Path to density Tree package
 sys.path.append(base_dir + '/SIE-Master/Code/density_tree')  # Path to density Tree package
@@ -52,11 +53,13 @@ from density_forest.helpers import *
 from keras_helpers.unet import *
 from keras_helpers.callbacks import *
 
+
 # In[3]:
 
 
 class_to_remove = int(sys.argv[1])
 paramsearch = False  # search for best hyperparameters
+
 
 # # Load Data
 
@@ -90,6 +93,7 @@ classes_to_keep = np.asarray([x for x in range(1, n_classes) if x != class_to_re
 names_keep = np.asarray(names)[classes_to_keep]
 print("classes to keep: " + str(names_keep))
 
+
 # In[5]:
 
 
@@ -108,6 +112,7 @@ plt.xlim([0, 100])
 plt.xlabel("Count [%]")
 plt.grid(alpha=.3)
 plt.savefig("../Figures/Zurich/Pred_count/ZH_dist.pdf", bbox_inches='tight', pad_inches=0)
+
 
 # # CNN Training
 # 
@@ -146,6 +151,7 @@ for i, w in enumerate(class_weights):
     print("%15s: %3.3f" % (names[i], w))
 """
 
+
 # In[7]:
 
 
@@ -169,6 +175,7 @@ class_weights = class_weights[classes_to_keep]
 for var in x_train, y_train, x_val, y_val:
     print(np.shape(var))
 """
+
 
 # ### Train CNN
 
@@ -217,6 +224,7 @@ def model_train(model, data_augmentation):
                         
 """
 
+
 # In[9]:
 
 
@@ -231,10 +239,11 @@ def model_train(model, data_augmentation):
 
 
 # load model
-name_model = path + '/models_out/model_unet_64_flip_rot90_wo_cl_' + str(names[class_to_remove]).lower() + '.h5'
+name_model = path + '/models_out/model_unet_64_flip_rot90_wo_cl_' + str(names[class_to_remove]).lower() + '.h5'    
 model_unet = load_model(name_model, custom_objects={'fn': ignore_background_class_accuracy(0)})
 
-# ### Prediction on Test Set
+
+# ### Predictions
 
 # In[11]:
 
@@ -275,9 +284,8 @@ pred_f_te = data_test.gt_patches == class_to_remove
 
 
 def oa(y_true, y_pred):
-    """get overall accuracy"""
-    return np.sum(y_true == y_pred) / len(y_true)
-
+        """get overall accuracy"""
+        return np.sum(y_true == y_pred) / len(y_true)
 
 def aa(y_true, y_pred):
     """get average (macro) accuracy"""
@@ -316,13 +324,14 @@ print(np.round(np.multiply([oa_tr, aa_tr], 100), 2))
 print(np.round(np.multiply([oa_val, aa_val], 100), 2))
 print(np.round(np.multiply([oa_te, aa_te], 100), 2))
 
+
 # In[14]:
 
 
 # write metrics to CSV files
 df_metrics = pd.read_csv('models_out/metrics_ND.csv', index_col=0)
-df2 = pd.DataFrame({str(names[class_to_remove]): [oa_tr, aa_tr, oa_val, aa_val, oa_te, aa_te]},
-                   index=['OA Train', 'AA Train', 'OA Val', 'AA Val', 'OA Test', 'AA Test']).T
+df2 = pd.DataFrame({str(names[class_to_remove]):[oa_tr, aa_tr, oa_val, aa_val, oa_te, aa_te]},
+                    index = ['OA Train', 'AA Train', 'OA Val', 'AA Val', 'OA Test', 'AA Test']).T
 df_metrics = df_metrics.append(df2)
 df_metrics = df_metrics[~df_metrics.index.duplicated(keep='last')]  # avoid duplicates
 df_metrics.to_csv('models_out/metrics_ND.csv')
@@ -346,8 +355,10 @@ print(metrics.classification_report(
     target_names=names_keep,
     digits=3))
 
+
 # Overall accuracy
 print("Overall accuracy: %.3f %%" % (oa_te * 100))
+
 
 # ## Distribution of predictions in unseen class
 
@@ -356,20 +367,20 @@ print("Overall accuracy: %.3f %%" % (oa_te * 100))
 
 # distribution of predicted label
 pred_labels, pred_counts = np.unique(y_pred_label_te[pred_f_te], return_counts=True)
-pred_counts = pred_counts / sum(pred_counts) * 100
+pred_counts = pred_counts  / sum(pred_counts) * 100
 
 # visualization
 plt.figure(figsize=(7, 5))
 plt.bar(pred_labels, pred_counts)
 plt.xticks(np.arange(0, 10))
-plt.ylim([0, 100])
+plt.ylim([0,100])
 plt.xlabel("Predicted Label")
 plt.ylabel("Count [%]")
 plt.grid(alpha=.3)
 plt.title("Misclassified labels (mean MSR=%.2f)" % np.mean(get_acc_net_msr(y_pred_te[pred_f_te])))
 plt.xticks(pred_labels_te, names, rotation=20)
-plt.savefig("../Figures/Zurich/Pred_count/ZH_pred-count_wo_cl" + str(class_to_remove) + ".pdf", bbox_inches='tight',
-            pad_inches=0)
+plt.savefig("../Figures/Zurich/Pred_count/ZH_pred-count_wo_cl" + str(class_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
+
 
 # # Novelty Detection
 
@@ -402,6 +413,7 @@ pr_auc_entropy = metrics.average_precision_score(y_true, y_scores)
 auroc_entropy = metrics.roc_auc_score(y_true, y_scores)
 fpr_entropy, tpr_entropy, _ = metrics.roc_curve(y_true, y_scores)
 
+
 # In[18]:
 
 
@@ -427,51 +439,50 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_msr = imgs_stretch_eq([acc_im_msr])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_msr[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_msr_im_" + str(img_idx) + ".pdf",
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_msr_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
-
+    
     acc_im_margin = convert_patches_to_image(data_test.imgs, probas_patches_margin[..., np.newaxis],
                                              img_idx, 64, 64, 0)
     acc_im_margin = imgs_stretch_eq([acc_im_margin])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_margin[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_margin_im_" + str(img_idx) + ".pdf",
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_margin_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
-
+    
     acc_im_entropy = convert_patches_to_image(data_test.imgs, probas_patches_entropy[..., np.newaxis],
                                               img_idx, 64, 64, 0)
     acc_im_entropy = imgs_stretch_eq([acc_im_entropy])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_entropy[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_entropy_im_" + str(img_idx) + ".pdf",
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_entropy_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
+
 # ## Dropout
 
-# In[19]:
+# In[ ]:
 
 
 # get predictions
 y_preds = predict_with_dropout_imgs(model_unet, data_test_overlap.im_patches,
                                     data_test.imgs, np.arange(len(data_test.imgs)), batch_size=500,
-                                    n_iter=20)
+                                    n_iter=10)
 
-# In[20]:
+
+# In[ ]:
 
 
 # get prediction and confidence
 prediction = np.mean(y_preds, 0)
 probas_dropout = -get_acc_net_entropy(prediction)
+del y_preds # free memory
 
-# In[21]:
 
-
-del y_preds
-
-# In[22]:
+# In[ ]:
 
 
 # dropout metrics
@@ -482,7 +493,8 @@ auroc_dropout = metrics.roc_auc_score(y_true, y_scores)
 fpr_dropout, tpr_dropout, _ = metrics.roc_curve(y_true, y_scores)
 print("AUROC: %.2f, PR AUC: %.2f" % (auroc_dropout, pr_auc_dropout))
 
-# In[23]:
+
+# In[ ]:
 
 
 # visualization
@@ -492,29 +504,29 @@ probas_patches_dropout /= np.max(probas_patches_dropout)
 
 # show image of DF uncertainty vs. max margin uncertainty
 for img_idx in range(len(data_test.imgs)):
-    acc_im_dropout = convert_patches_to_image(data_test.imgs, probas_patches_dropout[..., np.newaxis], img_idx, 64, 64,
-                                              0)
+    acc_im_dropout = convert_patches_to_image(data_test.imgs, probas_patches_dropout[..., np.newaxis], img_idx, 64, 64, 0)
     acc_im_dropout = imgs_stretch_eq([acc_im_dropout])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_dropout[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/dropout_im_" + str(img_idx) + ".pdf",
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/dropout_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
+
 # ## Retrieve Activations, PCA, t-SNE
 
-# In[24]:
+# In[ ]:
 
 
 # get activations for training Density Forest
 act_train_all = get_activations_batch(model_unet, -2, data_train_overlap.im_patches, 20, verbose=True)
 
 # retain only activation weights for which there is a ground truth
-act_train_all = np.concatenate(
-    remove_overlap(data_train.imgs, act_train_all, np.arange(len(data_train.imgs)), patch_size=64, stride=32))
+act_train_all = np.concatenate(remove_overlap(data_train.imgs, act_train_all, np.arange(len(data_train.imgs)), patch_size=64, stride=32))
 act_train = act_train_all[pred_t_tr]
 
-# In[25]:
+
+# In[ ]:
 
 
 # get activations
@@ -525,7 +537,8 @@ act_val_all = np.concatenate(remove_overlap(data_val.imgs, act_val_all, np.arang
                                             patch_size=64, stride=32))
 act_val = act_val_all[pred_t_val]
 
-# In[26]:
+
+# In[ ]:
 
 
 # get activations for testing Density Forest
@@ -535,16 +548,18 @@ act_test = get_activations_batch(model_unet, -2, data_test_overlap.im_patches, 2
 act_test = remove_overlap(data_test.imgs, act_test, np.arange(len(data_test.imgs)), patch_size=64, stride=32)
 act_test = np.concatenate(np.concatenate(np.concatenate(act_test)))
 
-# In[27]:
+
+# In[ ]:
 
 
 # get balanced data subset to show in figure
 tsne_pts_per_class = 200
-dataset_subset_indices = get_balanced_subset_indices(data_test.gt_patches.flatten(),
+dataset_subset_indices = get_balanced_subset_indices(data_test.gt_patches.flatten(), 
                                                      np.arange(1, 9), pts_per_class=tsne_pts_per_class)
 dataset_subset_indices = np.concatenate(dataset_subset_indices)
 
-# In[28]:
+
+# In[ ]:
 
 
 # t-SNE visualization
@@ -552,17 +567,19 @@ tsne = TSNE(n_components=2, verbose=1, perplexity=50, n_iter=500)
 tsne_all = tsne.fit_transform(act_test[dataset_subset_indices])
 tsne_y = data_test.gt_patches.flatten()[dataset_subset_indices]
 
-# In[29]:
+
+# In[ ]:
 
 
 # plot
 _, ax = plt.subplots(1, 1, figsize=(10, 10))
 ax.set_axis_off()
-plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, names, colors, class_to_remove=class_to_remove)
+plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, colors, class_to_remove=class_to_remove)
 plt.savefig("../Figures/Zurich/tSNE/t-SNE_" + str(names[class_to_remove]).lower() + "_before_PCA.pdf",
             bbox_inches='tight', pad_inches=0)
 
-# In[30]:
+
+# In[ ]:
 
 
 # create density tree for activation weights of training data
@@ -580,58 +597,68 @@ act_train = pca.transform(act_train)
 act_val_all = pca.transform(np.concatenate(np.concatenate(act_val_all)))
 act_val = pca.transform(act_val)
 
+
 # transform test set activations
 act_test = pca.transform(act_test)
 
-# In[31]:
+
+# In[ ]:
 
 
-# TODO plot cumulative explained variance
+# Plot cumulative explained variance
 plt.scatter(np.arange(n_components), np.cumsum(pca.explained_variance_ratio_))
 plt.xlabel("Number of components")
 plt.ylabel("Cumulative sum of explained variance")
 plt.grid()
-plt.savefig("../Figures/Zurich/PCA/pca_components_wo_cl_" + str(class_to_remove) + ".pdf", bbox_inches='tight',
-            pad_inches=0)
+plt.savefig("../Figures/Zurich/PCA/pca_components_wo_cl_" + str(class_to_remove) + ".pdf",
+            bbox_inches='tight', pad_inches=0)
 
-# In[32]:
+
+# In[ ]:
 
 
 # t-SNE visualization after PCA
 tsne_all = tsne.fit_transform(act_test[dataset_subset_indices])
 # tsne without unseen class
 tsne_train = tsne_all[tsne_y != class_to_remove]
+
+
+# In[ ]:
+
+
 # plot
 _, ax = plt.subplots(1, 1, figsize=(10, 10))
-plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, names, colors, class_to_remove=class_to_remove)
+plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, colors, class_to_remove=class_to_remove)
 ax.set_axis_off()
 plt.savefig("../Figures/Zurich/tSNE/t-SNE_" + str(names[class_to_remove]).lower() + "_after_PCA.pdf",
             bbox_inches='tight', pad_inches=0)
 
-# In[33]:
+
+# In[ ]:
 
 
 # plot first 3 PCA components
-plot_pts_3d(act_test[:, :3], data_test.gt_patches.flatten(), classes_to_keep, names, colors,
+plot_pts_3d(act_test[:, :3], data_test.gt_patches.flatten(), classes_to_keep, colors,
             class_to_remove=class_to_remove, subsample_pct=.0003,
             s_name='../Figures/Zurich/PCA/pca_components_3d_' + str(names[class_to_remove]) + '.pdf')
 
 print("Variance explained by first 3 components: %.2f" % np.sum(pca.explained_variance_ratio_[:3]))
 
-# In[34]:
+
+# In[ ]:
 
 
 # plot first 2 PCA components
 _, ax = plt.subplots(1, 1, figsize=(8, 8))
-plot_pts_2d(act_test[:, :2], data_test.gt_patches.flatten(), ax, classes_to_keep, names, colors,
+plot_pts_2d(act_test[:, :2], data_test.gt_patches.flatten(), ax, classes_to_keep, colors,
             class_to_remove=class_to_remove, subsample_pct=.0005,
             s_name='../Figures/Zurich/PCA/pca_components_2d_' + str(names[class_to_remove]) + '.pdf')
-
 print("Variance explained by first 2 components: %.2f" % np.sum(pca.explained_variance_ratio_[:2]))
+
 
 # ## GMM
 
-# In[35]:
+# In[ ]:
 
 
 best_degrees = [6, 7, 6, 9, 5, 3, 4, 9]
@@ -640,7 +667,7 @@ if paramsearch:
     tuned_parameters = [{'n_components': np.arange(3, 12), 'max_iter': [10000]}]
     # do parameter search
     ps_gmm = ParameterSearch(GaussianMixture, tuned_parameters, act_train, act_train_all,
-                             pred_f_tr.flatten(), scorer_roc_probas_gmm,
+                             pred_f_tr.flatten(), scorer_roc_probas_gmm, 
                              n_iter=3, verbosity=10, n_jobs=-1, subsample_train=.01, subsample_test=.001)
     ps_gmm.fit()
     best_params = ps_gmm.best_params
@@ -648,7 +675,8 @@ else:
     best_params = {'n_components': best_degrees[class_to_remove-1], 'max_iter': 10000}
 print(best_params)
 
-# In[37]:
+
+# In[ ]:
 
 
 # Fit GMM
@@ -659,7 +687,8 @@ gmm.fit(draw_subsamples(act_train, .01))
 probas_gmm = gmm.predict_proba(act_test)
 probas_gmm = get_acc_net_entropy(probas_gmm)
 
-# In[38]:
+
+# In[ ]:
 
 
 # plot
@@ -673,12 +702,12 @@ colors_plt = plt.cm.YlOrRd(1 - probas_gmm_c)[:, :3][dataset_subset_indices]
 
 # threshold for second plot
 c_thresh_t = plt.cm.YlOrRd((probas_gmm_c[dataset_subset_indices] <
-                            np.sort(probas_gmm_c[dataset_subset_indices])[200]) * 255)[:, :3]
-c_thresh_f = plt.cm.YlOrRd((probas_gmm_c[dataset_subset_indices] >
-                            np.sort(probas_gmm_c[dataset_subset_indices])[200]) * 255)[:, :3]
+                            np.sort(probas_gmm_c[dataset_subset_indices])[200])*255)[:, :3]
+c_thresh_f = plt.cm.YlOrRd((probas_gmm_c[dataset_subset_indices] > 
+                            np.sort(probas_gmm_c[dataset_subset_indices])[200])*255)[:, :3]
 
 # plot correctly predicted points (o marker)
-_, axes = plt.subplots(1, 2, figsize=(20, 10))
+_, axes = plt.subplots(1, 2, figsize=(20, 10)) 
 axes[0].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=colors_plt[pred_t], alpha=.6)
 axes[1].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=c_thresh_t[pred_t])
 
@@ -686,7 +715,8 @@ axes[1].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=c_thresh_t[pre
 axes[0].scatter(tsne_all[:, 0][pred_f], tsne_all[:, 1][pred_f], c=colors_plt[pred_f], marker='x')
 axes[1].scatter(tsne_all[:, 0][pred_f], tsne_all[:, 1][pred_f], c=c_thresh_f[pred_f], marker='x')
 
-# In[39]:
+
+# In[ ]:
 
 
 # precision-recall curve
@@ -698,7 +728,8 @@ auroc_gmm = metrics.roc_auc_score(y_true, y_scores)
 plt.step(recall_gmm, precision_gmm)
 print("AUROC: %.2f, PR AUC: %.2f" % (auroc_gmm, pr_auc_gmm))
 
-# In[40]:
+
+# In[ ]:
 
 
 # visualization
@@ -712,41 +743,43 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_gmm = imgs_stretch_eq([acc_im_gmm])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_gmm[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/GMM_im_" + str(img_idx) + ".pdf",
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/GMM_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
-#
+
+# 
 # # SVM
 
-# In[41]:
+# In[ ]:
 
 
 act_train_svm = preprocessing.scale(act_train)
 act_val_all_svm = preprocessing.scale(act_val_all)
 act_test_svm = preprocessing.scale(act_test)
 
-# In[42]:
+
+# In[ ]:
 
 
-best_params = [{'kernel': 'poly', 'degree': 5, 'nu': 1e-4, 'max_iter': 10000},
-               {'kernel': 'poly', 'degree': 1, 'nu': 1e-3, 'max_iter': 10000},
-               {'kernel': 'poly', 'degree': 1, 'nu': 1e-1, 'max_iter': 10000},
-               {'kernel': 'poly', 'degree': 3, 'nu': 1e-1, 'max_iter': 10000},
-               {'kernel': 'poly', 'degree': 3, 'nu': 1e-4, 'max_iter': 10000},
-               {'kernel': 'rbf', 'degree': 1,  'nu': 1e-3, 'max_iter': 10000},
-               {'kernel': 'poly', 'degree': 3, 'nu': 1e-1, 'max_iter': 10000},
-               {'kernel': 'poly', 'degree': 9, 'nu': 1e-1, 'max_iter': 10000},
-               ]
+best_params = [{'kernel':'poly', 'degree':5, 'nu':1e-4, 'max_iter':10000},
+               {'kernel':'poly', 'degree':1, 'nu':1e-3, 'max_iter':10000},
+               {'kernel':'poly', 'degree':1, 'nu':1e-1, 'max_iter':10000},
+               {'kernel':'poly', 'degree':3, 'nu':1e-1, 'max_iter':10000},
+               {'kernel':'poly', 'degree':3, 'nu':1e-4, 'max_iter':10000},
+               {'kernel':'rbf',  'degree':1, 'nu':1e-3, 'max_iter':10000},
+               {'kernel':'poly', 'degree':3, 'nu':1e-1, 'max_iter':10000},
+               {'kernel':'poly', 'degree':9, 'nu':1e-1, 'max_iter':10000},
+              ]
 
 if paramsearch:
     tuned_parameters = [{'kernel': ['rbf'],
-                         'nu': [1e-4, 1e-3, 1e-2, 1e-1, 5e-1]
-                         },
-                        {'kernel': ['poly'],
-                         'degree': np.arange(1, 7),
-                         'nu': [1e-4, 1e-3, 1e-2, 1e-1, 5e-1],
-                         'max_iter': [10000]}]
+                     'nu': [1e-4, 1e-3, 1e-2, 1e-1, 5e-1]
+                     },
+                    {'kernel': ['poly'],
+                     'degree': np.arange(1, 7),
+                     'nu': [1e-4, 1e-3, 1e-2, 1e-1, 5e-1],
+                     'max_iter': [10000]}]
 
     # do parameter search
     ps_svm = ParameterSearch(svm.OneClassSVM, tuned_parameters, act_train_svm, act_train_all,
@@ -756,17 +789,19 @@ if paramsearch:
     best_params = ps_svm.best_params
 else:
     best_params = best_params[class_to_remove-1]
-
+    
 print(best_params)
 
-# In[44]:
+
+# In[ ]:
 
 
 # Fit SVM
 clf_svm = svm.OneClassSVM(**best_params)
 clf_svm.fit(draw_subsamples(act_train_svm, .001))
 
-# In[45]:
+
+# In[ ]:
 
 
 # predict
@@ -774,7 +809,8 @@ probas_svm = clf_svm.decision_function(act_test_svm[dataset_subset_indices])
 probas_svm -= np.min(probas_svm)
 probas_svm /= np.max(probas_svm)
 
-# In[46]:
+
+# In[ ]:
 
 
 # plot
@@ -786,12 +822,12 @@ probas_svm_c = probas_svm[..., 0]
 colors_plt = plt.cm.YlOrRd(1 - probas_svm_c)[..., :3]
 
 # threshold for second plot
-c_thresh_t = plt.cm.YlOrRd((probas_svm_c < np.sort(probas_svm_c)[200]) * 255)[:, :3]
+c_thresh_t = plt.cm.YlOrRd((probas_svm_c < np.sort(probas_svm_c)[200])*255)[:, :3]
 
-c_thresh_f = plt.cm.GnBu((probas_svm_c > np.sort(probas_svm_c)[200]) * 255)[:, :3]
+c_thresh_f = plt.cm.GnBu((probas_svm_c > np.sort(probas_svm_c)[200])*255)[:, :3]
 
 # plot correctly predicted points (o marker)
-_, axes = plt.subplots(1, 2, figsize=(20, 10))
+_, axes = plt.subplots(1, 2, figsize=(20, 10)) 
 axes[0].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=colors_plt[pred_t])
 axes[1].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=c_thresh_t[pred_t])
 
@@ -799,14 +835,16 @@ axes[1].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=c_thresh_t[pre
 axes[0].scatter(tsne_all[:, 0][pred_f], tsne_all[:, 1][pred_f], c=colors_plt[pred_f], marker='x')
 axes[1].scatter(tsne_all[:, 0][pred_f], tsne_all[:, 1][pred_f], c=c_thresh_f[pred_f], marker='x')
 
-# In[47]:
+
+# In[ ]:
 
 
 probas_svm = clf_svm.decision_function(act_test_svm)
 probas_svm -= np.min(probas_svm)
 probas_svm /= np.max(probas_svm)
 
-# In[48]:
+
+# In[ ]:
 
 
 # precision-recall curve
@@ -819,12 +857,14 @@ pr_auc_svm = metrics.auc(recall_svm, precision_svm)
 fpr_svm, tpr_svm, _ = metrics.roc_curve(y_true, y_scores)
 auroc_svm = metrics.roc_auc_score(y_true, y_scores)
 
-# In[49]:
+
+# In[ ]:
 
 
-print(auroc_svm), print(pr_auc_svm)
+print(auroc_svm, pr_auc_svm)
 
-# In[50]:
+
+# In[ ]:
 
 
 # visualization
@@ -838,24 +878,27 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_svm = imgs_stretch_eq([acc_im_svm])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_svm[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/svm_im_" + str(img_idx) + ".pdf",
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/svm_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
+
 # #### Visualize Kernels
 
-# In[51]:
+# In[ ]:
 
 
 gts_train = data_train.gt_patches[(data_train.gt_patches != class_to_remove) & (data_train.gt_patches != 0)]
 
-# In[52]:
+
+# In[ ]:
 
 
 subset_ind = get_balanced_subset_indices(gts_train, classes_to_keep, pts_per_class=50)
 subsample = act_train_svm[np.concatenate(subset_ind)]
 
-# In[1]:
+
+# In[ ]:
 
 
 # RBF
@@ -865,7 +908,7 @@ K_X = exposure.equalize_hist(K_X)
 plt.figure(figsize=(8, 8))
 plt.imshow(K_X)
 plt.axis('off')
-plt.savefig("../Figures/Zurich/Kernels/Kernel_RBF_wo_cl_" + str(class_to_remove) + ".pdf",
+plt.savefig("../Figures/Zurich/Kernels/Kernel_RBF_wo_cl_" + str(class_to_remove) + ".pdf", 
             bbox_inches='tight', pad_inches=0)
 plt.title('RBF')
 
@@ -879,13 +922,15 @@ for deg in [1, 5, 10, best_params['degree']]:
     plt.figure(figsize=(8, 8))
     plt.imshow(K_X)
     plt.axis('off')
-    plt.savefig("../Figures/Zurich/Kernels/Kernel_poly_wo_cl_" + str(class_to_remove) + "_deg_" + str(deg) + ".pdf",
-                bbox_inches='tight', pad_inches=0)
+    plt.savefig("../Figures/Zurich/Kernels/Kernel_poly_wo_cl_" + str(class_to_remove) + "_deg_" + str(deg) + ".pdf", 
+                        bbox_inches='tight', pad_inches=0)
     plt.title('Poly')
+    plt.close()
+
 
 # ## Density Forest
 
-# In[55]:
+# In[ ]:
 
 
 # Create DensityForest instance
@@ -893,22 +938,26 @@ clf_df = DensityForest(max_depth=2, min_subset=.1, n_trees=100,
                        subsample_pct=.1, n_jobs=-1, verbose=10,
                        ig_improvement=.4)
 
+
 # In[ ]:
 
 
 # fit to training data
 clf_df.fit(tsne_train)
 
+
 # In[ ]:
 
 
 # Show ellipses on plot
-_, axes = plt.subplots(2, 2, figsize=(15, 15))
+_, axes = plt.subplots(2, 2, figsize=(15, 15)) 
 for i in range(4):
-    plot_pts_2d(tsne_all, tsne_y, axes[int(i / 2)][np.mod(i, 2)], classes_to_keep, names,
+    plot_pts_2d(tsne_all, tsne_y, axes[int(i/2)][np.mod(i, 2)], classes_to_keep, 
                 colors, class_to_remove=class_to_remove)
+    axes[int(i/2)][np.mod(i, 2)].set_axis_off()
     covs, means = get_clusters(clf_df.root_nodes[i], [], [])
     plot_ellipses(axes[int(i / 2)][np.mod(i, 2)], means, covs)
+
 
 # In[ ]:
 
@@ -916,16 +965,18 @@ for i in range(4):
 # export some ellipses for GIF
 
 for i in range(10):
-    _, ax = plt.subplots(1, 1, figsize=(8, 8))
+    _, ax = plt.subplots(1, 1, figsize=(8, 8)) 
     plt.xlim([-50, 50])
     plt.ylim([-50, 50])
-    plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, names, colors,
-                class_to_remove=class_to_remove)
+    plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, colors, 
+                class_to_remove=class_to_remove, names=names)
     covs, means = get_clusters(clf_df.root_nodes[i], [], [])
     plot_ellipses(ax, means, covs)
     plt.axis('off')
-    plt.savefig("../Figures/Zurich/GIF/TSNE_act_wo_cl" + str(class_to_remove) + "_" + str(i) + ".pdf",
-                bbox_inches='tight', pad_inches=0)
+    #plt.savefig("../Figures/Zurich/GIF/TSNE_act_wo_cl" + str(class_to_remove) + "_"+str(i)+".pdf", 
+    #            bbox_inches='tight', pad_inches=0)
+    plt.close()
+
 
 # In[ ]:
 
@@ -944,12 +995,12 @@ probas_df_c = imgs_stretch_eq(probas_df[np.newaxis, ..., np.newaxis])[0, ..., 0]
 colors_plt = plt.cm.YlOrRd(1 - probas_df_c)[..., :3]
 
 # threshold for second plot
-c_thresh_t = plt.cm.GnBu((probas_df < np.sort(probas_df)[tsne_pts_per_class]) * 255)[:, :3]
+c_thresh_t = plt.cm.GnBu((probas_df < np.sort(probas_df)[tsne_pts_per_class])*255)[:, :3]
 
-c_thresh_f = plt.cm.GnBu((probas_df > np.sort(probas_df)[tsne_pts_per_class]) * 255)[:, :3]
+c_thresh_f = plt.cm.GnBu((probas_df > np.sort(probas_df)[tsne_pts_per_class])*255)[:, :3]
 
 # plot correctly predicted points (o marker)
-fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+fig, axes = plt.subplots(1, 2, figsize=(20, 10)) 
 axes[0].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=colors_plt[pred_t])
 axes[1].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=c_thresh_t[pred_t])
 
@@ -961,63 +1012,66 @@ axes[1].scatter(tsne_all[:, 0][pred_f], tsne_all[:, 1][pred_f], c=c_thresh_f[pre
 extent = axes[0].get_window_extent().transformed(fig.dpi_scale_trans.inverted())
 plt.savefig("../Figures/Zurich/GIF/probas.pdf", bbox_inches=extent, pad_inches=0)
 
+
 # ### Fit on real data
 
 # In[ ]:
 
 
-best_params_found = [{'max_depth': 3, 'ig_improvement': 0},
-                     {'max_depth': 2, 'ig_improvement': .5},
-                     {'max_depth': 4, 'ig_improvement': .5},
-                     {'max_depth': 2, 'ig_improvement': .3},
-                     {'max_depth': 2, 'ig_improvement': .3},
-                     {'max_depth': 2, 'ig_improvement': 0},
-                     {'max_depth': 2, 'ig_improvement': .3},
-                     {'max_depth': 4, 'ig_improvement': 0}]
+best_params = [{'max_depth': 3, 'ig_improvement': 0},
+               {'max_depth': 2, 'ig_improvement': .5},
+               {'max_depth': 4, 'ig_improvement': .5},
+               {'max_depth': 2, 'ig_improvement': .3},
+               {'max_depth': 2, 'ig_improvement': .3},
+               {'max_depth': 2, 'ig_improvement': 0},
+               {'max_depth': 2, 'ig_improvement': .3},
+               {'max_depth': 4, 'ig_improvement': 0}
+              ]
 
-# In[ ]:
 
-
-default_params = {'n_trees': 10, 'n_max_dim': 0, 'n_jobs': -1,
+default_params = {'n_trees': 10, 'n_max_dim': 0, 'n_jobs': -1, 
                   'verbose': 0, 'subsample_pct': .0002, 'min_subset': 1e-3}
 
 if paramsearch:
     """search for best hyperparameters"""
     tuned_params = [{'max_depth': [1, 2, 3],
                      'ig_improvement': [-np.infty, 0, .4, .7]
-                     }]
+                    }]
 
     # do parameter search
     ps_df = ParameterSearch(DensityForest, tuned_params, act_train, act_train_all,
                             pred_f_tr.flatten(), scorer_roc_probas_df,
-                            n_iter=3, verbosity=11, n_jobs=1, subsample_train=1,
+                            n_iter=3, verbosity=11, n_jobs=1, subsample_train=1, 
                             subsample_test=.001, default_params=default_params)
 
     print("Testing %i combinations %i times" % (len(ps_df.combinations), ps_df.n_iter))
     print(ps_df.combinations)
     ps_df.fit()
     print(ps_df.best_params)
-
+    
     # Create DensityForest instance
     best_params = ps_df.best_params
-
+    
 else:
     """use previously found hyperparameters"""
-    print(best_params_found[class_to_remove - 1])
-    best_params = best_params_found[class_to_remove - 1]
-
+    best_params = best_params[class_to_remove-1]
+    
+    
+print(best_params)
 default_params['verbose'] = 1
 default_params['batch_size'] = 10000
+
 
 # In[ ]:
 
 
 # fit DF with best found parameters
 clf_df = DensityForest(**best_params, **default_params)
-clf_df.fit(act_train[..., :3])
+clf_df.fit(act_train)
 
 # get probabilities for all images
-probas_df = clf_df.predict(act_test[..., :3])
+probas_df = clf_df.predict(act_test)
+
 
 # In[ ]:
 
@@ -1029,14 +1083,14 @@ pred_t = pred_t_te.flatten()[dataset_subset_indices]
 
 # plot colors
 probas_df_c = probas_df[dataset_subset_indices]
-colors_plt = plt.cm.YlOrRd(1 - np.log(probas_df_c))[..., :3]
+colors_plt = plt.cm.YlOrRd(1-np.log(probas_df_c))[..., :3]
 
 # threshold for second plot
-c_thresh_t = plt.cm.YlOrRd((probas_df_c < np.sort(probas_df_c)[200]) * 255)[:, :3]
-c_thresh_f = plt.cm.YlOrRd((probas_df_c > np.sort(probas_df_c)[200]) * 255)[:, :3]
+c_thresh_t = plt.cm.YlOrRd((probas_df_c < np.sort(probas_df_c)[200])*255)[:, :3]
+c_thresh_f = plt.cm.YlOrRd((probas_df_c > np.sort(probas_df_c)[200])*255)[:, :3]
 
 # plot correctly predicted points (o marker)
-_, axes = plt.subplots(1, 2, figsize=(20, 10))
+_, axes = plt.subplots(1, 2, figsize=(20, 10)) 
 axes[0].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=colors_plt[pred_t])
 axes[1].scatter(tsne_all[:, 0][pred_t], tsne_all[:, 1][pred_t], c=c_thresh_t[pred_t])
 
@@ -1058,6 +1112,7 @@ probas_patches_df = np.reshape(probas_df, np.shape(data_test.gt_patches))
 probas_patches_df -= np.nanmin(probas_patches_df)
 probas_patches_df /= np.nanmax(probas_patches_df)
 
+
 # ### Metrics
 
 # In[ ]:
@@ -1076,6 +1131,7 @@ auroc_df = metrics.roc_auc_score(y_true, y_scores)
 
 print("AUROC: %.2f, PR AUC: %.2f" % (auroc_df, pr_auc_df))
 
+
 # In[ ]:
 
 
@@ -1090,9 +1146,10 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_df = imgs_stretch_eq([acc_im_df])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_df[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/df_im_" + str(img_idx) + ".pdf",
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/df_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
+
 
 # ## Plot Results
 
@@ -1104,7 +1161,7 @@ for img_idx in range(len(data_test.imgs)):
 scores_pr = [pr_auc_msr, pr_auc_margin, pr_auc_entropy, pr_auc_dropout, pr_auc_gmm, pr_auc_svm, pr_auc_df]
 
 recalls = [recall_msr, recall_margin, recall_entropy, recall_dropout, recall_gmm, recall_svm, recall_df]
-precisions = [precision_msr, precision_margin, precision_entropy, precision_dropout,
+precisions = [precision_msr, precision_margin, precision_entropy, precision_dropout, 
               precision_gmm, precision_svm, precision_df]
 
 names_methods = np.array(['MSR', 'Margin', 'Entropy', 'Dropout', 'GMM', 'OC SVM', 'DF'])
@@ -1121,8 +1178,9 @@ plt.ylabel('Precision')
 plt.ylim([0.0, 1.05])
 plt.xlim([0.0, 1.0])
 plt.legend([str.format('%s: %.2f') % (names_methods[i], scores_pr[i]) for i in scores_order], title="PR AUC")
-plt.savefig("../Figures/Zurich/Metrics/PR_pred_wo_cl_" + str(class_to_remove) + ".pdf", bbox_inches='tight',
-            pad_inches=0)
+plt.savefig("../Figures/Zurich/Metrics/PR_pred_wo_cl_" + str(class_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
+plt.close()
+
 
 # In[ ]:
 
@@ -1146,8 +1204,9 @@ plt.ylabel('True Positive Rate')
 plt.ylim([0.0, 1.05])
 plt.xlim([0.0, 1.0])
 plt.legend([str.format('%s: %.2f') % (names_methods[i], scores_auc[i]) for i in scores_order], title="AUROC")
-plt.savefig("../Figures/Zurich/Metrics/ROC_pred_wo_cl_" + str(class_to_remove) + ".pdf", bbox_inches='tight',
-            pad_inches=0)
+plt.savefig("../Figures/Zurich/Metrics/ROC_pred_wo_cl_" + str(class_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
+plt.close()
+
 
 # In[ ]:
 
@@ -1156,14 +1215,22 @@ plt.savefig("../Figures/Zurich/Metrics/ROC_pred_wo_cl_" + str(class_to_remove) +
 
 # AUROC
 df_auroc = pd.read_csv('models_out/auroc_all.csv', index_col=0)
-df2 = pd.DataFrame({str(names[class_to_remove]): scores_auc}, index=names_methods).T
+df2 = pd.DataFrame({str(names[class_to_remove]): scores_auc}, index = names_methods).T
 df_auroc = df_auroc.append(df2)
 df_auroc = df_auroc[~df_auroc.index.duplicated(keep='last')]  # avoid duplicates
 df_auroc.to_csv('models_out/auroc_all.csv')
 
+
 # PR AUC
 df_aucpr = pd.read_csv('models_out/aucpr_all.csv', index_col=0)
-df2 = pd.DataFrame({str(names[class_to_remove]): scores_pr}, index=names_methods).T
+df2 = pd.DataFrame({str(names[class_to_remove]): scores_pr}, index = names_methods).T
 df_aucpr = df_aucpr.append(df2)
 df_aucpr = df_aucpr[~df_aucpr.index.duplicated(keep='last')]  # avoid duplicates
 df_aucpr.to_csv('models_out/aucpr_all.csv')
+
+
+# In[ ]:
+
+
+print(df_auroc.round(2).to_latex())
+

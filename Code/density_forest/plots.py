@@ -117,8 +117,8 @@ def visualize_decision_boundaries(dataset, rootnode, minrange, maxrange, rf=Fals
     plt.show()
 
 
-def plot_pts_3d(x_pts, y_labels, classes_to_keep, names, colors,
-                class_to_remove=None, subsample_pct=1, s_name=None):
+def plot_pts_3d(x_pts, y_labels, classes_to_keep, colors,
+                names=None, class_to_remove=None, subsample_pct=1, s_name=None):
     """
     Plot 3D data with class label and with op
     :param x_pts: 3D data to plot
@@ -130,8 +130,6 @@ def plot_pts_3d(x_pts, y_labels, classes_to_keep, names, colors,
     :param subsample_pct: percentage of data to show on plot (optional)
     :param s_name: name where to save file (optional)
     """
-    names_keep = np.asarray(names)[classes_to_keep]
-    names_keep = names_keep.tolist()
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(111, projection=Axes3D.name)
 
@@ -148,16 +146,19 @@ def plot_pts_3d(x_pts, y_labels, classes_to_keep, names, colors,
                    c=np.asarray(colors)[class_to_remove], s=25, marker='x', depthshade=True, alpha=.7)
 
     # add legend
-    names_legend = names_keep.copy()
-    if class_to_remove is not None:
-        names_legend.append('unseen class (' + names[class_to_remove] + ')')
-    ax.legend(names_legend, framealpha=1)
+    if names is not None:
+        names_keep = np.asarray(names)[classes_to_keep]
+        names_keep = names_keep.tolist()
+        names_legend = names_keep.copy()
+        if class_to_remove is not None:
+            names_legend.append('unseen class (' + names[class_to_remove] + ')')
+        ax.legend(names_legend, framealpha=1)
     if s_name is not None:
         plt.savefig(s_name, bbox_inches='tight', pad_inches=0)
 
 
-def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, names, colors,
-                class_to_remove=None, s_name=None, subsample_pct=1):
+def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, colors,
+                names=None, class_to_remove=None, s_name=None, subsample_pct=1, legend=False):
     """
     Plot 2D data with class label
     :param x_pts: 2D data to plot
@@ -165,30 +166,30 @@ def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, names, colors,
     :param ax: axis on which to plot data (can be combined with other plot calls, such as to show ellipses)
     :param class_to_remove: class number removed in classification
     :param classes_to_keep: array of classes to keep
-    :param names: class names
+    :param names: class names for legend (optional)
     :param subsample_pct: percentage of all data to show
     :param colors: colors corresponding to classes
     :param s_name: name where to save figure
     """
-    names_keep = np.asarray(names)[classes_to_keep]
-    names_keep = names_keep.tolist()
-
     # points corresponding to seen classes
     for i, class_keep in enumerate(classes_to_keep):
         data_plt = draw_subsamples(x_pts[y_labels == class_keep], subsample_pct, replace=False)
-        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_keep], s=15, marker='o', alpha=.7)
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_keep], s=30, marker='o', alpha=.7)
 
     # points corresponding to unseen class
     if class_to_remove is not None:
         data_plt = draw_subsamples(x_pts[y_labels == class_to_remove], subsample_pct, replace=False)
-        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], s=25,
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], s=50,
                    marker='x', alpha=.7)
 
     # add legend
-    names_legend = names_keep.copy()
-    if class_to_remove is not None:
-        names_legend.append('unseen class (' + names[class_to_remove] + ')')
-    ax.legend(names_legend, framealpha=1)
+    if names is not None:
+        names_keep = np.asarray(names)[classes_to_keep]
+        names_keep = names_keep.tolist()
+        names_legend = names_keep.copy()
+        if class_to_remove is not None:
+            names_legend.append('unseen class (' + names[class_to_remove] + ')')
+        ax.legend(names_legend, framealpha=1)
 
     if s_name is not None:
         plt.savefig(s_name, bbox_inches='tight', pad_inches=0)

@@ -159,7 +159,7 @@ def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
     # get all maximum ig indexes and take a random one if there are several
     max_ind = np.where(ig_dims == np.max(ig_dims))[0]
     max_ind = [max_ind] if not len(np.shape(max_ind)) else max_ind  # numpy compatibility
-    max_ind = np.random.choice(max_ind)
+    max_ind = max_ind[0]  # take first value, lowest dimension
 
     # split dimension of maximum gain
     idx_dim_max = np.sum((max_ind >= np.cumsum(ig_dims_len)) * 1)
