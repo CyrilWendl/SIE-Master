@@ -51,7 +51,6 @@ def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=False, r
         im_patches = [im_patches]
         gt_patches = [gt_patches]
 
-
     for (im, gt) in zip(im_patches, gt_patches):
         # Scale image between [0, 1]
         if normalize:

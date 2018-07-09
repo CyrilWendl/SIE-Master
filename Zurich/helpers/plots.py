@@ -1,6 +1,3 @@
-import matplotlib.pyplot as plt
-
-
 def get_fig_overlay(im_1, im_2, thresh=.5, opacity=.3):
     """
     get an overlay of two images im_1 and im_2 a threshold value for im_2 and an opacity.

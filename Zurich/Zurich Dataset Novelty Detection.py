@@ -18,7 +18,6 @@ os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
 # In[2]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 # python libraries
 from multiprocessing import cpu_count
 from sklearn.manifold import TSNE
@@ -36,8 +35,8 @@ from tensorflow.python.client import device_lib
 print(device_lib.list_local_devices())
 
 # custom libraries
-base_dir = '/Users/cyrilwendl/Documents/EPFL'
-#base_dir = '/raid/home/cwendl'  # for guanabana
+#base_dir = '/Users/cyrilwendl/Documents/EPFL'
+base_dir = '/raid/home/cwendl'  # for guanabana
 sys.path.append(base_dir + '/SIE-Master/Code')  # Path to density Tree package
 sys.path.append(base_dir + '/SIE-Master')  # Path to density Tree package
 sys.path.append(base_dir + '/SIE-Master/Code/density_tree')  # Path to density Tree package
@@ -63,7 +62,7 @@ paramsearch = False  # search for best hyperparameters
 
 # # Load Data
 
-# In[4]:
+# In[ ]:
 
 
 path = os.getcwd()
@@ -94,7 +93,38 @@ names_keep = np.asarray(names)[classes_to_keep]
 print("classes to keep: " + str(names_keep))
 
 
-# In[5]:
+# In[ ]:
+
+
+for dataset, offset in zip([data_train, data_val, data_test], [0, 10, 15]):
+    for im_idx, im in enumerate(dataset.imgs):
+        plt.figure(figsize=(8, 8))
+        plt.imshow(im[..., :3])
+        plt.axis('off')
+        plt.gca().xaxis.set_major_locator(plt.NullLocator())
+        plt.gca().yaxis.set_major_locator(plt.NullLocator())
+        plt.savefig("../Figures/Zurich/Im/Im_" + str(im_idx + offset) + ".pdf", 
+                    bbox_inches='tight', pad_inches=0)
+        plt.close()
+
+
+# In[ ]:
+
+
+for dataset, offset in zip([data_train, data_val, data_test], [0, 10, 15]):
+    for gt_idx, gt in enumerate(dataset.gt):
+        plt.figure(figsize=(8, 8))
+        gt_col = gt_label_to_color(gt, colors)*255
+        plt.imshow(gt_col)
+        plt.axis('off')
+        plt.gca().xaxis.set_major_locator(plt.NullLocator())
+        plt.gca().yaxis.set_major_locator(plt.NullLocator())
+        plt.savefig("../Figures/Zurich/Im/GT_" + str(gt_idx + offset) + ".pdf", 
+                    bbox_inches='tight', pad_inches=0)
+        plt.close()
+
+
+# In[ ]:
 
 
 pred_labels_tr, cnt_tr = np.unique(data_train.gt_patches, return_counts=True)
@@ -107,10 +137,12 @@ cnt_te = cnt_te / np.sum(cnt_te) * 100
 
 df = pd.DataFrame({'Train': cnt_tr, 'Val': cnt_val, 'Test': cnt_te}, index=names[pred_labels_tr])
 
-df[::-1].plot.barh(figsize=(7, 6), colormap='winter')
+axis = df[::-1].plot.barh(figsize=(7, 6), colormap='winter')
 plt.xlim([0, 100])
 plt.xlabel("Count [%]")
 plt.grid(alpha=.3)
+axis.spines['right'].set_visible(False)
+axis.spines['top'].set_visible(False)
 plt.savefig("../Figures/Zurich/Pred_count/ZH_dist.pdf", bbox_inches='tight', pad_inches=0)
 
 
@@ -129,7 +161,7 @@ plt.savefig("../Figures/Zurich/Pred_count/ZH_dist.pdf", bbox_inches='tight', pad
 # | U-Net | 128 | Rot 90°, Flipping  | 7,828,200 | 0.69 | 0.61 | 0.64 | t |
 # | U-Net | 128 | Rot 90°, Flipping  | 7,828,200 | 0.90 | 0.89 | 0.89 | v |
 
-# In[6]:
+# In[ ]:
 
 
 """
@@ -152,7 +184,7 @@ for i, w in enumerate(class_weights):
 """
 
 
-# In[7]:
+# In[ ]:
 
 
 """
@@ -179,7 +211,7 @@ for var in x_train, y_train, x_val, y_val:
 
 # ### Train CNN
 
-# In[8]:
+# In[ ]:
 
 
 """
@@ -225,7 +257,7 @@ def model_train(model, data_augmentation):
 """
 
 
-# In[9]:
+# In[ ]:
 
 
 # train or load model
@@ -235,17 +267,17 @@ def model_train(model, data_augmentation):
 # model_unet.save('models_out/model_unet_64_flip_rot90_wo_cl_' + str(names[class_to_remove]).lower() + '_2.h5')  # save model, weights
 
 
-# In[10]:
+# In[ ]:
 
 
 # load model
-name_model = path + '/models_out/model_unet_64_flip_rot90_wo_cl_' + str(names[class_to_remove]).lower() + '.h5'    
+name_model = path + '/models_out/model_unet_64_flip_rot90_wo_cl_' + str(names[class_to_remove]).lower().replace(" ", "") + '.h5'    
 model_unet = load_model(name_model, custom_objects={'fn': ignore_background_class_accuracy(0)})
 
 
 # ### Predictions
 
-# In[11]:
+# In[ ]:
 
 
 # get all predictions in training and test set
@@ -260,7 +292,7 @@ y_pred_val = np.concatenate(remove_overlap(data_val.imgs, y_pred_val, np.arange(
 y_pred_label_val = get_y_pred_labels(y_pred_val, class_to_remove=class_to_remove, background=True)
 
 # test set
-y_pred_te = model_unet.predict(data_test_overlap.im_patches, batch_size=20, verbose=1)
+y_pred_te = model_unet.predict(data_test_overlap.im_patches, verbose=1)
 y_pred_te = np.concatenate(remove_overlap(data_test.imgs, y_pred_te, np.arange(5), 64, 32))
 y_pred_label_te = get_y_pred_labels(y_pred_te, class_to_remove=class_to_remove, background=True)
 
@@ -278,9 +310,54 @@ pred_t_te = (data_test.gt_patches != class_to_remove) & (data_test.gt_patches !=
 pred_f_te = data_test.gt_patches == class_to_remove
 
 
+# In[ ]:
+
+
+np.shape(data_train.imgs)
+
+
+# In[ ]:
+
+
+y_pred_label_tr.shape
+
+
+# In[ ]:
+
+
+data_test.imgs[4].shape[1]
+
+
+# In[ ]:
+
+
+convert_patches_to_image(data_train.imgs, y_pred_label_tr[..., np.newaxis], im_idx, 64, 64, 0).shape
+
+
+# In[ ]:
+
+
+# export predicted images
+offset = 0
+for dataset, preds in zip([data_train, data_val, data_test], [y_pred_label_tr, y_pred_label_val, y_pred_label_te]):
+    for im_idx in range(len(dataset.imgs)):
+        im = convert_patches_to_image(dataset.imgs, preds[..., np.newaxis], im_idx, 64, 64, 0)[..., 0]
+        im_color = gt_label_to_color(im, colors) * 255
+        plt.figure(figsize=(8, 8))
+        plt.imshow(im_color)
+        plt.axis('off')
+        plt.gca().xaxis.set_major_locator(plt.NullLocator())
+        plt.gca().yaxis.set_major_locator(plt.NullLocator())
+        plt.savefig("../Figures/Zurich/Im_pred/Im_" + str(im_idx + offset) + "_wo_cl_" + str(class_to_remove) + ".pdf", 
+                    bbox_inches='tight', pad_inches=0)
+        plt.close()
+        
+    offset += len(dataset.imgs)
+
+
 # ### Accuracy Metrics (Test Set)
 
-# In[12]:
+# In[ ]:
 
 
 def oa(y_true, y_pred):
@@ -295,7 +372,7 @@ def aa(y_true, y_pred):
     return np.nanmean(acc_cl), acc_cl
 
 
-# In[13]:
+# In[ ]:
 
 
 # Get oa, aa for train, val, test
@@ -325,7 +402,7 @@ print(np.round(np.multiply([oa_val, aa_val], 100), 2))
 print(np.round(np.multiply([oa_te, aa_te], 100), 2))
 
 
-# In[14]:
+# In[ ]:
 
 
 # write metrics to CSV files
@@ -338,7 +415,7 @@ df_metrics.to_csv('models_out/metrics_ND.csv')
 # print((df_metrics*100).round(2).to_latex())
 
 
-# In[15]:
+# In[ ]:
 
 
 # Accuracy metrics
@@ -362,7 +439,7 @@ print("Overall accuracy: %.3f %%" % (oa_te * 100))
 
 # ## Distribution of predictions in unseen class
 
-# In[16]:
+# In[ ]:
 
 
 # distribution of predicted label
@@ -370,13 +447,15 @@ pred_labels, pred_counts = np.unique(y_pred_label_te[pred_f_te], return_counts=T
 pred_counts = pred_counts  / sum(pred_counts) * 100
 
 # visualization
-plt.figure(figsize=(7, 5))
+fig = plt.figure(figsize=(7, 5))
 plt.bar(pred_labels, pred_counts)
 plt.xticks(np.arange(0, 10))
 plt.ylim([0,100])
 plt.xlabel("Predicted Label")
 plt.ylabel("Count [%]")
 plt.grid(alpha=.3)
+fig.axes[0].spines['right'].set_visible(False)
+fig.axes[0].spines['top'].set_visible(False)
 plt.title("Misclassified labels (mean MSR=%.2f)" % np.mean(get_acc_net_msr(y_pred_te[pred_f_te])))
 plt.xticks(pred_labels_te, names, rotation=20)
 plt.savefig("../Figures/Zurich/Pred_count/ZH_pred-count_wo_cl" + str(class_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
@@ -386,7 +465,7 @@ plt.savefig("../Figures/Zurich/Pred_count/ZH_pred-count_wo_cl" + str(class_to_re
 
 # ## Network
 
-# In[17]:
+# In[ ]:
 
 
 # precision-recall curves
@@ -414,7 +493,7 @@ auroc_entropy = metrics.roc_auc_score(y_true, y_scores)
 fpr_entropy, tpr_entropy, _ = metrics.roc_curve(y_true, y_scores)
 
 
-# In[18]:
+# In[ ]:
 
 
 # visualization
@@ -439,7 +518,10 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_msr = imgs_stretch_eq([acc_im_msr])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_msr[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_msr_im_" + str(img_idx) + ".pdf", 
+    plt.axis('off')
+    plt.gca().xaxis.set_major_locator(plt.NullLocator())
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_net_msr_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
     
@@ -447,8 +529,11 @@ for img_idx in range(len(data_test.imgs)):
                                              img_idx, 64, 64, 0)
     acc_im_margin = imgs_stretch_eq([acc_im_margin])[0]
     plt.figure(figsize=(8, 8))
+    plt.axis('off')
+    plt.gca().xaxis.set_major_locator(plt.NullLocator())
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
     plt.imshow(acc_im_margin[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_margin_im_" + str(img_idx) + ".pdf", 
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_net_margin_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
     
@@ -457,7 +542,10 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_entropy = imgs_stretch_eq([acc_im_entropy])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_entropy[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/net_entropy_im_" + str(img_idx) + ".pdf", 
+    plt.axis('off')
+    plt.gca().xaxis.set_major_locator(plt.NullLocator())
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_net_entropy_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
@@ -504,11 +592,14 @@ probas_patches_dropout /= np.max(probas_patches_dropout)
 
 # show image of DF uncertainty vs. max margin uncertainty
 for img_idx in range(len(data_test.imgs)):
-    acc_im_dropout = convert_patches_to_image(data_test.imgs, probas_patches_dropout[..., np.newaxis], img_idx, 64, 64, 0)
+    acc_im_dropout = convert_patches_to_image(data_test.imgs, -probas_patches_dropout[..., np.newaxis], img_idx, 64, 64, 0)
     acc_im_dropout = imgs_stretch_eq([acc_im_dropout])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_dropout[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/dropout_im_" + str(img_idx) + ".pdf", 
+    plt.axis('off')
+    plt.gca().xaxis.set_major_locator(plt.NullLocator())
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_dropout_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
@@ -575,7 +666,7 @@ tsne_y = data_test.gt_patches.flatten()[dataset_subset_indices]
 _, ax = plt.subplots(1, 1, figsize=(10, 10))
 ax.set_axis_off()
 plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, colors, class_to_remove=class_to_remove)
-plt.savefig("../Figures/Zurich/tSNE/t-SNE_" + str(names[class_to_remove]).lower() + "_before_PCA.pdf",
+plt.savefig("../Figures/Zurich/tSNE/t-SNE_" + str(names[class_to_remove]).lower().replace(" ", "") + "_before_PCA.pdf",
             bbox_inches='tight', pad_inches=0)
 
 
@@ -606,10 +697,13 @@ act_test = pca.transform(act_test)
 
 
 # Plot cumulative explained variance
+fig = plt.figure()
 plt.scatter(np.arange(n_components), np.cumsum(pca.explained_variance_ratio_))
 plt.xlabel("Number of components")
 plt.ylabel("Cumulative sum of explained variance")
-plt.grid()
+plt.grid(alpha=.3)
+fig.axes[0].spines['right'].set_visible(False)
+fig.axes[0].spines['top'].set_visible(False)
 plt.savefig("../Figures/Zurich/PCA/pca_components_wo_cl_" + str(class_to_remove) + ".pdf",
             bbox_inches='tight', pad_inches=0)
 
@@ -630,7 +724,7 @@ tsne_train = tsne_all[tsne_y != class_to_remove]
 _, ax = plt.subplots(1, 1, figsize=(10, 10))
 plot_pts_2d(tsne_all, tsne_y, ax, classes_to_keep, colors, class_to_remove=class_to_remove)
 ax.set_axis_off()
-plt.savefig("../Figures/Zurich/tSNE/t-SNE_" + str(names[class_to_remove]).lower() + "_after_PCA.pdf",
+plt.savefig("../Figures/Zurich/tSNE/t-SNE_" + str(names[class_to_remove]).lower().replace(" ", "") + "_after_PCA.pdf",
             bbox_inches='tight', pad_inches=0)
 
 
@@ -650,6 +744,7 @@ print("Variance explained by first 3 components: %.2f" % np.sum(pca.explained_va
 
 # plot first 2 PCA components
 _, ax = plt.subplots(1, 1, figsize=(8, 8))
+ax.set_axis_off()
 plot_pts_2d(act_test[:, :2], data_test.gt_patches.flatten(), ax, classes_to_keep, colors,
             class_to_remove=class_to_remove, subsample_pct=.0005,
             s_name='../Figures/Zurich/PCA/pca_components_2d_' + str(names[class_to_remove]) + '.pdf')
@@ -743,7 +838,10 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_gmm = imgs_stretch_eq([acc_im_gmm])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_gmm[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/GMM_im_" + str(img_idx) + ".pdf", 
+    plt.axis('off')
+    plt.gca().xaxis.set_major_locator(plt.NullLocator())
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_gmm_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
@@ -874,11 +972,14 @@ probas_patches_svm /= np.max(probas_patches_svm)
 
 # show image of DF uncertainty vs. max margin uncertainty
 for img_idx in range(len(data_test.imgs)):
-    acc_im_svm = convert_patches_to_image(data_test.imgs, probas_patches_svm[..., np.newaxis], img_idx, 64, 64, 0)
+    acc_im_svm = convert_patches_to_image(data_test.imgs, -probas_patches_svm[..., np.newaxis], img_idx, 64, 64, 0)
     acc_im_svm = imgs_stretch_eq([acc_im_svm])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_svm[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/svm_im_" + str(img_idx) + ".pdf", 
+    plt.axis('off')
+    plt.gca().xaxis.set_major_locator(plt.NullLocator())
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_svm_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
@@ -1145,8 +1246,12 @@ for img_idx in range(len(data_test.imgs)):
     acc_im_df = convert_patches_to_image(data_test.imgs, probas_patches_df[..., np.newaxis], img_idx, 64, 64, 0)
     acc_im_df = imgs_stretch_eq([acc_im_df])[0]
     plt.figure(figsize=(8, 8))
+    plt.axis('off')
+    plt.gca().xaxis.set_major_locator(plt.NullLocator())
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
     plt.imshow(acc_im_df[..., 0], cmap='RdYlGn')
-    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/df_im_" + str(img_idx) + ".pdf", 
+    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_df_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
 
@@ -1227,6 +1332,12 @@ df2 = pd.DataFrame({str(names[class_to_remove]): scores_pr}, index = names_metho
 df_aucpr = df_aucpr.append(df2)
 df_aucpr = df_aucpr[~df_aucpr.index.duplicated(keep='last')]  # avoid duplicates
 df_aucpr.to_csv('models_out/aucpr_all.csv')
+
+
+# In[ ]:
+
+
+df_auroc = pd.read_csv('models_out/auroc_all.csv', index_col=0)
 
 
 # In[ ]:

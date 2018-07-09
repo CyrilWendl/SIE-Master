@@ -1,16 +1,22 @@
+import os, sys
+
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-import sys
+import numpy as np
 
 base_dir = '/raid/home/cwendl'  # for guanabana
 sys.path.append(base_dir + '/SIE-Master/Code')  # Path to density Tree package
 sys.path.append(base_dir + '/SIE-Master/Zurich')  # Path to density Tree package
 from helpers.data_loader import ZurichLoader
 
+
 class HyperColumn(nn.Module):
-    def __init__(self, in_dim, out_dim, n_filters, act=nn.ReLU):
+    def __init__(self, in_dim, out_dim, n_filters, act=nn.ReLU, patch_size=128):
         super(HyperColumn, self).__init__()
         self.in_dim = in_dim
         self.out_dim = out_dim
@@ -23,7 +29,7 @@ class HyperColumn(nn.Module):
         self.down_4 = self.conv_block(self.n_filters * 4, self.n_filters * 8, self.act)
         self.pool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
 
-        self.upsample = nn.Upsample(size=[64, 64], mode='bilinear', align_corners=True)
+        self.upsample = nn.Upsample(size=[patch_size, patch_size], mode='bilinear', align_corners=True)
 
         dim_end = self.in_dim + sum(self.n_filters * [1, 2, 4, 8])
         self.out = nn.Sequential(
@@ -192,24 +198,53 @@ class Unet(nn.Module):
         return out
 
 
-def test(model, epoch, f_loss, dataloader_train, dataloader_val):
+def predict(model, dataloader_pred):
+    with torch.no_grad():
+        model.eval()
+        test_pred = torch.LongTensor()
+        for i_batch, (im, gt) in enumerate(dataloader_pred):
+            im = im.cuda()
+            gt = gt.cuda()
+            output = model(im)
+            _, pred = output.cpu().max(1, keepdim=True)
+            test_pred = torch.cat((test_pred, pred), dim=0)
+
+    return test_pred
+
+
+def acc_with_filt(y_true, y_pred, label_to_ignore):
+    """
+    get accuracy ignoring a label in y_true
+    :param y_true: ground truth (tensor)
+    :param y_pred: predicted label (tensor)
+    :param label_to_ignore: label to ignore
+    :return: accuracy
+    """
+    y_true = y_true.numpy().flatten()
+    y_pred = y_pred.numpy().flatten()
+    filt = y_true != label_to_ignore
+    return np.sum(np.equal(y_pred[filt], y_true[filt])) / len(y_true[filt])
+
+
+def test(model, f_loss, dataloader_train, dataloader_val):
     with torch.no_grad():
         for dataloader, name in zip([dataloader_train, dataloader_val], ['Training', 'Validation']):
             model.eval()
             loss = 0
-            correct = 0
+            acc = []  # average accuracy
             for i_batch, (im, gt) in enumerate(dataloader):
                 im = im.cuda()
                 gt = gt.cuda()
                 output = model(im)
                 loss += f_loss(output, gt).cpu()
                 _, pred = output.cpu().max(1, keepdim=True)
-                correct += float(pred.eq(gt.cpu().view_as(pred)).sum()) / (64.0 ** 2)
+                acc.append(acc_with_filt(gt.cpu(), pred.cpu(), 0))
 
             loss /= len(dataloader.dataset)
-            accuracy = correct / float(len(dataloader.dataset))
-            print('After epoch ' + str(epoch) + ", " + name + ' set: Average loss: {:.4f}, Accuracy: {:.2f}%\n'
+            accuracy = np.mean(acc)
+            print(name + ' set: Average loss: {:.4f}, OA: {:.2f}%'
                   .format(loss, accuracy * 100))
+        return pred
 
 
 def train(model, dataloader_train, dataloader_val, epochs, verbosity=0):
@@ -223,13 +258,13 @@ def train(model, dataloader_train, dataloader_val, epochs, verbosity=0):
     :return:
     """
     opt = torch.optim.Adam(model.parameters())
-    weights = torch.from_numpy(dataloader_train.dataset.weights).float().cuda()
-    loss = nn.NLLLoss(weight=weights, ignore_index=0)
+    # weights = torch.from_numpy(dataloader_train.dataset.weights).float().cuda()
+    loss = nn.NLLLoss(ignore_index=0)
     model.train()
 
     for epoch in range(epochs):
         av_loss = 0
-        for i_batch, (im, gt) in (tqdm(enumerate(dataloader_train)) if verbosity>1 else enumerate(dataloader_train)):
+        for i_batch, (im, gt) in (tqdm(enumerate(dataloader_train)) if verbosity > 2 else enumerate(dataloader_train)):
             im = im.cuda()
             gt = gt.cuda()
             opt.zero_grad()
@@ -239,36 +274,43 @@ def train(model, dataloader_train, dataloader_val, epochs, verbosity=0):
             loss_out.backward()
             opt.step()
 
-            if not i_batch % 100 and verbosity>0:
-                tqdm.write("Average loss: {:.2f}".format(av_loss/(i_batch+1)))
-
-            # log to tensorboard
-            # info = {'loss': av_loss, 'accuracy': accuracy, i_batch}
+            if not i_batch % 100 and verbosity > 1:
+                tqdm.write("Average loss: {:.2f}".format(av_loss / (i_batch + 1)))
 
         # validation
-        test(model, epoch + 1, loss, dataloader_train, dataloader_val)
+        print("Epoch %i:" % epoch)
+        test(model, loss, dataloader_train, dataloader_val)
 
 
-def main():
+def main(verbose=True):
     # load data
+    if verbose:
+        print("Loading Data")
     base_dir = '/raid/home/cwendl'  # for guanabana
     root_dir = base_dir + '/SIE-Master/Zurich'
-    dataset_train = ZurichLoader(root_dir, 'train')
-    dataset_val = ZurichLoader(root_dir, 'val')
-    dataloader_train = DataLoader(dataset_train, batch_size=20, shuffle=True, num_workers=10)
-    dataloader_val = DataLoader(dataset_val, batch_size=20, shuffle=True, num_workers=10)
+    dataset_train = ZurichLoader(root_dir, 'train', patch_size=128, stride=128)
+    dataset_val = ZurichLoader(root_dir, 'val', patch_size=128, stride=128)
+    # dataset_test = ZurichLoader(root_dir, 'test', patch_size=128, stride=128)
+    dataloader_train = DataLoader(dataset_train, batch_size=10, shuffle=True, num_workers=10)
+    dataloader_val = DataLoader(dataset_val, batch_size=10, shuffle=False, num_workers=10)
 
     # get model
-    model = HyperColumn(in_dim=4, out_dim=9, n_filters=32).cuda()
-    # logger = Logger('./logs')
+    if verbose:
+        print("Get Model")
+    model = HyperColumn(in_dim=4, out_dim=9, n_filters=32, patch_size=128).cuda()
     # print number of trainable parameters
-    # print("Trainable parameters: %i" % sum(p.numel() for p in model.parameters() if p.requires_grad))
-    train(model, dataloader_train, dataloader_val, 300, verbosity=10)
+    print("Trainable parameters: %i" % sum(p.numel() for p in model.parameters() if p.requires_grad))
 
+    train(model, dataloader_train, dataloader_val, epochs=200, verbosity=1)
+
+    preds_val = predict(model, dataloader_val)
+    preds_train = predict(model, dataloader_train)
     # save model
     state = {
         'model': model.state_dict(),
-        'loss_trian': 0.0
+        'preds_train': preds_train,
+        'preds_val': preds_val,
+        'loss_train': 0.0  # TODO change
     }
     torch.save(state, 'model.pytorch')
 

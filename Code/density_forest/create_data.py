@@ -1,6 +1,21 @@
 """Functions to generate test data"""
 import numpy as np
-from density_forest.helpers import rotate
+
+
+def rotate(origin, point, angle):
+    """
+    Rotate a point counterclockwise by a given angle around a given origin.
+    :param origin: Origin around which to rotate
+    :param point: data point
+    :param angle: angle, should be given in radians
+    :return: rotated x, y point coordinates
+    """
+    ox, oy = origin
+    px, py = point
+
+    qx = ox + np.cos(angle) * (px - ox) - np.sin(angle) * (py - oy)
+    qy = oy + np.sin(angle) * (px - ox) + np.cos(angle) * (py - oy)
+    return qx, qy
 
 
 def gaussian(x, mu, sig):

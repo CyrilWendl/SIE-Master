@@ -1,8 +1,6 @@
 import numpy as np
 from keras import backend as k_b
 from tqdm import tqdm
-import multiprocessing
-from joblib import Parallel,  delayed
 # TODO put generic helper functions in helpers library
 
 
@@ -92,8 +90,7 @@ def print_density_tree_latex(node, tree_string):
 def print_decision_tree_latex(node, tree_string):
     """print decision tree in a LaTeX syntax for visualizing the decision tree
     To be called as:
-    tree_string = ""
-    tree_string = print_decision_tree_latex(root,tree_string)
+    tree_string = print_decision_tree_latex(root, "")
     """
     tree_string += "["
 
@@ -121,9 +118,7 @@ def print_decision_tree_latex(node, tree_string):
 
 def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
     """
-    for a given dimension, get best split based on information gain
-    for labelled and unlabelled data
-
+    for a given dimension, get best split based on information gain for labelled and unlabelled data.
     :param dataset: dataset for which to find the best split
     :param labelled: indicator whether dataset contains labels or not
     :param n_max_dim: maximum number of dimensions within which to search for best split
@@ -133,7 +128,6 @@ def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
     :return split_dims: split values corresponding to ig_dims
     :param n_grid: grid resolution for parameter search in each dimension
     """
-
     # get information gains on dimensions
     ig_dims, split_dims = [], []
     ig_dims_len = []
@@ -169,11 +163,10 @@ def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
 
 def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50):
     """
-    get information gain for one dimension
-    working with labelled and unlabelled data
+    Get information gain for one dimension, works for labelled and unlabelled data (according to entropy function)
     :param dataset: dataset without labels (X)
     :param dim_cut: dimension for which all cut values are to be calculated
-    :param entropy_f: entropy function to be used (labelled / unlabelled)
+    :param entropy_f: entropy function to be used (unlabelled: entropy_gaussian, unlabelled: other)
     :param n_grid: resolution at which to search for optimal split value
     :return ig_dim, split_vals
     """
@@ -218,22 +211,6 @@ def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50):
     return ig_dim, split_vals
 
 
-def rotate(origin, point, angle):
-    """
-    Rotate a point counterclockwise by a given angle around a given origin.
-    :param origin: Origin around which to rotate
-    :param point: data point
-    :param angle: angle, should be given in radians
-    :return: rotated x, y point coordinates
-    """
-    ox, oy = origin
-    px, py = point
-
-    qx = ox + np.cos(angle) * (px - ox) - np.sin(angle) * (py - oy)
-    qy = oy + np.sin(angle) * (px - ox) + np.cos(angle) * (py - oy)
-    return qx, qy
-
-
 def get_activations_batch(model, layer_idx, x, batch_size=20, verbose=False):
     """
     get activations for a set of patches, used for semantic segmentation
@@ -263,19 +240,6 @@ def get_activations_batch(model, layer_idx, x, batch_size=20, verbose=False):
     act_batches = np.concatenate(act_batches)
 
     return act_batches
-
-
-def get_activations(model, layer, x_batch):
-    """
-    get activations for patch-wise classification (MNIST)
-    :param model: model for which to get activations
-    :param layer: layer index, normally -2 (FC layer before softmax)
-    :param x_batch: batch of data points for which to get activations
-    :return: activations
-    """
-    get_k_activations = k_b.function([model.layers[0].input, k_b.learning_phase()], [model.layers[layer].output, ])
-    activations = get_k_activations([x_batch, 0])
-    return activations
 
 
 def get_balanced_subset_indices(gt, classes, pts_per_class=100):
@@ -330,25 +294,3 @@ def draw_subsamples(dataset, subsample_pct=.8, replace=False, return_indices=Fal
     if return_indices:
         return dataset_subset, dataset_subset_indices
     return dataset_subset
-
-
-def parallel_batch(data, funct, batch_size, args=None, n_jobs=-1, verbose=0):
-    """
-    Perform a function on some data in parallel by cutting the data in batches (first dimensions)
-    :param data: data to process in parallel
-    :param funct: function to apply to each data chunk, taking a data batch as first argument
-    :param batch_size: size of batches to process in parallel
-    :param args: Optional further function arguments as a dictionary {'arg1':val1, 'arg2':val2, ...}
-    :param n_jobs: number of processor cores to use, if n_jobs == -1, all cores are used
-    :param verbose: verbosity of parallel processing output
-    """
-    if args is None:
-        args = {}
-
-    if n_jobs == -1:
-        n_jobs = multiprocessing.cpu_count()
-
-    result = Parallel(n_jobs=n_jobs, verbose=verbose)(
-        delayed(funct)(data_batch, **args)
-        for data_batch in np.array_split(data, int(len(data) / (batch_size + 1))))
-    return np.concatenate(result)

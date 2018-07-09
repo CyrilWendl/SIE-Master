@@ -4,22 +4,25 @@ import numpy as np
 from skimage.io import imread
 from skimage import exposure
 from skimage.util import view_as_windows
-import natsort as ns
-import os
 from scipy.stats import entropy as e
 
 
 def im_load(path, offset=2):
-    """load a TIF image"""
+    """
+    load a TIF image
+    :param path: path of image
+    :param offset: number of pixels to ignore at the border of each image
+    :return: image
+    """
     image = np.asarray(imread(path)).astype(float)
-    return np.asarray(image[offset:, offset:, :])
+    return np.asarray(image[offset:, offset:])
 
 
 def imgs_stretch_eq(imgs):
     """
-    perform histogram stretching and equalization
+    perform contrast stretching and histogram equalization
     :param imgs: images to stretch and equalize
-    :return imgs_eq: equalized images
+    :return imgs_eq: contrast-stretched, equalized images
     """
 
     imgs_eq = imgs.copy()
@@ -36,10 +39,13 @@ def imgs_stretch_eq(imgs):
     return imgs_eq
 
 
-def gt_color_to_label(gt, colors, maj=False):
+def gt_color_to_label(gt, colors):
     """
     Transform a set of GT image in value range [0, 255] of shape (n_images, width, height, 3)
     to a set of GT labels of shape (n_images, width, height)
+    :param gt: ground truth consisting of colors per pixel
+    :param colors: colors corresponding to each label (0, 1, ..., len(colors))
+    :return: gt as labels (0, 1, ..., len(colors))
     """
 
     # sum of distinct color values
@@ -51,23 +57,17 @@ def gt_color_to_label(gt, colors, maj=False):
             gt_new[j][..., 0][np.all(gt[j] == colors[i], axis=-1)] = i
 
     gt_new = np.asarray([gt_new[j][..., 0] for j in range(np.shape(gt)[0])])  # only keep first band = label
-
-    if maj:
-        # return only majority label for each patch
-        gt_maj_label = []
-        for i in range(len(gt)):
-            counts = np.bincount(gt_new[i].flatten())
-            gt_maj_label.append(np.argmax(counts))
-
-        gt_new = np.asarray([gt_maj_label]).T
-
     return gt_new
 
 
 def gt_label_to_color(gt, colors):
     """
     Transform a set of GT labels of shape (n_images, width, height)
-    to a set of GT images in value range [0,1] of shape (n_images, width, height, 3) """
+    to a set of GT images in value range [0,1] of shape (n_images, width, height, 3)
+    :param gt: ground truth consisting of labels as pixels
+    :param colors: colors corresponding to each label (0, 1, ..., len(colors))
+    :return: ground truth consisting of colors
+    """
     gt_new = np.zeros(gt.shape + (3,))
     for i in range(len(colors)):  # loop colors
         gt_new[gt == i, :] = np.divide(colors[i], 255)
@@ -196,8 +196,8 @@ def load_data(path, idx):
     im_dir = r'' + path + '/Zurich_dataset/images_tif/'
     gt_dir = r'' + path + '/Zurich_dataset/groundtruth/'
 
-    im_names = ['zh'+str(i+1)+'.tif' for i in idx]
-    gt_names = ['zh'+str(i+1)+'_GT.tif' for i in idx]
+    im_names = ['zh' + str(i + 1) + '.tif' for i in idx]
+    gt_names = ['zh' + str(i + 1) + '_GT.tif' for i in idx]
 
     imgs = np.asarray([im_load(im_dir + im_name) for im_name in im_names])
     gt = np.asarray([im_load(gt_dir + gt_name) for gt_name in gt_names])
