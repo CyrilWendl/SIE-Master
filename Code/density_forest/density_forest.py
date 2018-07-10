@@ -90,7 +90,6 @@ class DensityForest:
         """
         traverse Density Forest (DF) and get mean probability for point to belong to the leaf clusters of each tree
         :param dataset: dataset for which to traverse density forest
-        :param batch_size: optional argument for batch traversal
         :param parallel: make predictions in parallel, requires self.n_jobs!=0 (default: True)
         """
 

@@ -1,7 +1,19 @@
 import numpy as np
 from keras import backend as k_b
 from tqdm import tqdm
-# TODO put generic helper functions in helpers library
+
+
+def oa(y_true, y_pred):
+    """get overall accuracy"""
+    return np.sum(y_true == y_pred) / len(y_true)
+
+
+def aa(y_true, y_pred):
+    """get average (macro) accuracy"""
+    acc_cl = []
+    for label in np.unique(y_pred):
+        acc_cl.append(np.sum(y_true[y_pred == label] == y_pred[y_pred == label]) / len(y_pred[y_pred == label]))
+    return np.nanmean(acc_cl), acc_cl
 
 
 def my_normal(x, mu, cov_det, cov_inv):

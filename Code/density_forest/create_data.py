@@ -132,19 +132,18 @@ def create_spirals(n_points_arm=1000, radius_min=np.pi / 50, radius_max=7 * np.p
 
     # save as new dataset
     dataset = np.asarray([x, y]).T
-    minRange = np.min(x)
-    maxRange = np.max(x)
-    return dataset, minRange, maxRange
+    min_range = np.min(x)
+    max_range = np.max(x)
+    return dataset, min_range, max_range
 
 
-def create_S_shape(n_points_arm=300, radius_min=np.pi / 4, radius_max=6 * np.pi / 4, divergence=0.05):
+def create_s_shape(n_points_arm=300, radius_min=np.pi / 4, radius_max=6 * np.pi / 4, divergence=0.05):
     """
     Create data according to a S shape
     :param n_points_arm: number of points per arm
     :param radius_min: minimum radius from to which to create data
     :param radius_max: maximum radius up to which to create data
-    :param divergence: scattering factor of points along the sprial arms
-    :param n_arms: number of arms to create
+    :param divergence: scattering factor of points along the spiral arms
     :return:
     """
     theta = np.linspace(radius_min, radius_max, n_points_arm)
@@ -155,9 +154,9 @@ def create_S_shape(n_points_arm=300, radius_min=np.pi / 4, radius_max=6 * np.pi 
 
     # save as new dataset
     dataset = np.asarray([x, y]).T
-    minRange = np.min([np.min(x),np.min(y)])
-    maxRange = np.max([np.max(x),np.max(y)])
-    return dataset, minRange, maxRange
+    min_range = np.min([np.min(x), np.min(y)])
+    max_range = np.max([np.max(x), np.max(y)])
+    return dataset, min_range, max_range
 
 
 def data_to_clusters(dataset):

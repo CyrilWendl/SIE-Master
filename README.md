@@ -3,7 +3,6 @@ Code Repository of the EPFL SIE Master Project, Spring Semester 2018.
 
 The goal of this project is to perform error detection and novelty detection in Convolutional Neural Networks (CNNs) using Density Forests. Applications to the MNIST dataset and a dataset for semantic segmentation of land cover classes in Zurich are visualized in  `Code/` and `Zurich/`.
 
-
 ## 📈 Visualization
 Density trees maximize Gaussianity at each split level. In 2D this might look as follows:
 
@@ -60,41 +59,47 @@ Check the docstrings for more detailed documentation af the `ParameterSearch` cl
 
 ## 🗂 File Structure
 
-### Code
+### 👾 Code
+All libraries for density forests, helper libraries for semantic segmentation and for baselines. 
 #### `Code/density_forest/`
 Package for implementation of Decision Trees, Random Forests, Density Trees and Density Forests
 - `create_data.py`: functions for generating labelled and unlabelled data
 - `decision_tree.py`: data structure for decision tree nodes
 - `decision_tree_create.py`: functions for generating decision trees
-- `decision_tree_traverse.py`: functions for traversing a decision tree to predict labels
+- `decision_tree_traverse.py`: functions for traversing a decision tree and predicting labels
 - `density_tree.py`: data struture for density tree nodes
-- `density_tree_create.py`: functions for generating density trees
-- `density_tree_traverse.py`: functions for descending density trees and retreiving their Gaussian parameters
+- `density_tree_create.py`: functions for generating a density tree
+- `density_tree_traverse.py`: functions for descending a density tree and retreiving its cluster parameters
 - `density_forest.py`: functions for creating density forests
 - `helper.py`: various helper functions
 - `plots.py`: functions for plotting the data
-- `random_forests`: functions for creating random forests
+- `random_forests.py`: functions for creating random forests
 
-#### `Zurich Land Cover/helpers`: 
+#### `Code/helpers`: 
 General helpers library for semantic segmentation
 - `data_augment.py`: custom data augmentation methods applied to both the image and the ground truth
+- `data_loader.py`: PyTorch data loader for Zurich dataset
 - `helpers.py`: functions for importing, cropping, padding images and other related image tranformations
-- `plots.py`: plotter functions for 2D and 3D plots 
-
+- `parameter_search.py`: functions for finding optimal hyperparameters for Density Forest, OC-SVM and GMM (explained above)
+- `plots.py`: Generic plotter functions for labelled 2D and 3D plots, used for t-SNE and PCA plots
 
 #### `Zurich Land Cover/keras_helpers`
 Helper functions for Keras
 - `helpers.py`: get activations
 - `callbacks.py`: callbacks to be evaluated after each epoch
 - `unet.py`: UNET model for training of network on Zurich dataset
-- `MLP.py`: MLP for Image Transformation Baseline
 
-### Visualizations
+#### `Zurich Land Cover/baselines`
+
+### 🗾 Visualizations
 #### `Code/`: 
-Visualizations of basic functionalities
+Visualizations of basic decision tree and density tree
 - `decision_tree.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
 - `density_tree.ipynb`: Density Trees on randomly generated unlabelled data
-- `MNIST Novelty Detection.ipynb`: Training of a CNN on the MNIST dataset leaving out one class, retrieval of the FC layer activations, comparison of novelty detection methods
+
+#### `MNIST/`:
+- `MNIST Novelty Detection.ipynb`: Training of a CNN leaving out one class, baselines and DF for novelty detection
+- `MNIST Error Detection.ipynb`: Training of a CNN, baselines and DF for error detection
 
 #### `Zurich/`
 - `Zurich Dataset Novelty Detection.ipynb`: Training of CNN, baselines and DF for novelty detection

@@ -15,9 +15,6 @@
 %%
 %% Matplotlib used the following preamble
 %%   \usepackage{fontspec}
-%%   \setmainfont{Bitstream Vera Serif}
-%%   \setsansfont{Bitstream Vera Sans}
-%%   \setmonofont{Bitstream Vera Sans Mono}
 %%
 \begingroup%
 \makeatletter%

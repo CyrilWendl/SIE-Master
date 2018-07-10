@@ -158,7 +158,7 @@ def plot_pts_3d(x_pts, y_labels, classes_to_keep, colors,
 
 
 def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, colors,
-                names=None, class_to_remove=None, s_name=None, subsample_pct=1, legend=False):
+                names=None, class_to_remove=None, s_name=None, subsample_pct=1):
     """
     Plot 2D data with class label
     :param x_pts: 2D data to plot

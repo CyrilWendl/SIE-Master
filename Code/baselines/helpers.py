@@ -3,6 +3,41 @@ import numpy as np
 from tqdm import tqdm
 import keras.backend as k
 from helpers.helpers import remove_overlap
+from scipy.stats import entropy as e
+from keras.layers import Dense, Dropout
+from keras.models import Sequential
+from keras.optimizers import Adam
+
+
+def get_acc_net_msr(y_pred):
+    """
+    Get accuracy as maximum softmax response (MSR)
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as MSR
+    """
+    return np.max(y_pred, -1)
+
+
+def get_acc_net_max_margin(y_pred):
+    """
+    Get accuracy as softmax activation margin between highest and second highest class
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as margin between highest and second highest class activations
+    """
+    y_pred_rank = np.sort(y_pred, axis=-1)  # for every pixel, get the rank
+    y_pred_max1 = y_pred_rank[..., -1]  # highest proba
+    y_pred_max2 = y_pred_rank[..., -2]  # second highest proba
+    y_pred_acc = y_pred_max1 - y_pred_max2
+    return y_pred_acc
+
+
+def get_acc_net_entropy(y_pred):
+    """
+    Get accuracy as negative entropy of softmax activations
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as negative entropy of activations
+    """
+    return np.transpose(-e(np.transpose(y_pred)))
 
 
 def keras_predict_with_dropout(model, x, n_iter=10):
@@ -105,3 +140,26 @@ def kl(a, b):
     a = np.asarray(a, dtype=np.float)
     b = np.asarray(b, dtype=np.float)
     return np.sum(np.where(a != 0, a * np.log(a / b), 0))
+
+
+def get_mlp(n_classes, input_shape, n_filt=70):
+    """
+    get an MLP model instance
+    :param n_classes: number of classes
+    :param input_shape: x_train.shape[1:]
+    :param n_filt: number of filters per layer
+    :return: model
+    """
+    model_mlp = Sequential()
+    model_mlp.add(Dense(n_filt, activation='relu', input_shape=input_shape))
+    model_mlp.add(Dropout(0.5))
+    model_mlp.add(Dense(n_filt, activation='relu'))
+    model_mlp.add(Dropout(0.5))
+    model_mlp.add(Dense(n_classes, activation='softmax'))
+
+    model_mlp.summary()
+
+    model_mlp.compile(loss='categorical_crossentropy',
+                      optimizer=Adam(),
+                      metrics=['accuracy'])
+    return model_mlp
