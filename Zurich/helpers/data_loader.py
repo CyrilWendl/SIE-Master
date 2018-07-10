@@ -14,7 +14,7 @@ class ZurichLoader(Dataset):
     Data loader for Zurich Dataset
     """
 
-    def __init__(self, root_dir, subset, patch_size=64, stride=64, transform=None, random_crop=False):
+    def __init__(self, root_dir, subset, patch_size=64, stride=64, transform=None, random_crop=False, class_to_remove=None):
         """
         Initialize
         :param root_dir: directory where Zurich dataset with subfolders images_tif/ and groundtruth/ is saved
@@ -23,6 +23,7 @@ class ZurichLoader(Dataset):
         :param stride: stride between patches
         :param transform: optional transform to be applied on a sample
         :param random_crop: if True, patches are given from randomly cropped subparts of the image
+        :param class_to_remove: class label to replace by 0 in gt patches
         """
         self.root_dir = root_dir
         self.subset = subset
@@ -67,6 +68,7 @@ class ZurichLoader(Dataset):
         counts[0] = 0.0  # background label, give no weight
         self.weights = counts / sum(counts)
         self.random_crop = random_crop
+        self.class_to_remove = class_to_remove
         self.load_all_patches()
 
     def load_all_patches(self):
@@ -102,10 +104,12 @@ class ZurichLoader(Dataset):
         """
         if self.random_crop:
             im_patch, gt_patch = self.extract_patch()
-
         else:
             im_patch = self.im_patches[idx]
             gt_patch = self.gt_patches[idx]
+
+        if self.class_to_remove is not None:
+            gt_patch[gt_patch == self.class_to_remove] = 0
 
         if self.transform is not None:
             im_patch, gt_patch = augment_images_and_gt(im_patch, gt_patch, rf_h=True, rf_v=True)

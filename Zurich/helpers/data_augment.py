@@ -24,15 +24,15 @@ def batch_generator(patches_im, patches_gt, batch_size, data_augmentation=False)
 
 
 def augment_images_and_gt(im_patches, gt_patches, normalize=False, rf_h=False, rf_v=False, rot=False, jitter=False,
-                          gamma=0, brightness=0, contrast=0, blur=False, force=False):
+                          gamma=0., brightness=0., contrast=0., blur=False, force=False):
     """
     :param im_patches: Image to transform
     :param gt_patches: Ground truth to transform
     :param rot: Rotations by +/- 90 degrees
-    :param normalize: normalization (default:False)
-    :param rf_h: Random horizontal flipping (default: True)
-    :param rf_v: Random vertical flipping (default: True)
-    :param rot: Randomly rotate image by 0, 90, 180 or 270 degrees (default: True)
+    :param normalize: normalization
+    :param rf_h: Random horizontal flipping
+    :param rf_v: Random vertical flipping
+    :param rot: Randomly rotate image by 0, 90, 180 or 270 degrees
     :param jitter: Add random noise in N(0,0.01) to image
     :param gamma: Put every pixel to the power of 0.85
     :param brightness: Increase brightness of picture by a factor 3

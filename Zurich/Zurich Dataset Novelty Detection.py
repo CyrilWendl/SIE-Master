@@ -62,7 +62,7 @@ paramsearch = False  # search for best hyperparameters
 
 # # Load Data
 
-# In[ ]:
+# In[4]:
 
 
 path = os.getcwd()
@@ -93,7 +93,7 @@ names_keep = np.asarray(names)[classes_to_keep]
 print("classes to keep: " + str(names_keep))
 
 
-# In[ ]:
+# In[5]:
 
 
 for dataset, offset in zip([data_train, data_val, data_test], [0, 10, 15]):
@@ -108,7 +108,7 @@ for dataset, offset in zip([data_train, data_val, data_test], [0, 10, 15]):
         plt.close()
 
 
-# In[ ]:
+# In[6]:
 
 
 for dataset, offset in zip([data_train, data_val, data_test], [0, 10, 15]):
@@ -124,7 +124,7 @@ for dataset, offset in zip([data_train, data_val, data_test], [0, 10, 15]):
         plt.close()
 
 
-# In[ ]:
+# In[7]:
 
 
 pred_labels_tr, cnt_tr = np.unique(data_train.gt_patches, return_counts=True)
@@ -161,7 +161,7 @@ plt.savefig("../Figures/Zurich/Pred_count/ZH_dist.pdf", bbox_inches='tight', pad
 # | U-Net | 128 | Rot 90°, Flipping  | 7,828,200 | 0.69 | 0.61 | 0.64 | t |
 # | U-Net | 128 | Rot 90°, Flipping  | 7,828,200 | 0.90 | 0.89 | 0.89 | v |
 
-# In[ ]:
+# In[8]:
 
 
 """
@@ -184,7 +184,7 @@ for i, w in enumerate(class_weights):
 """
 
 
-# In[ ]:
+# In[9]:
 
 
 """
@@ -211,7 +211,7 @@ for var in x_train, y_train, x_val, y_val:
 
 # ### Train CNN
 
-# In[ ]:
+# In[10]:
 
 
 """
@@ -257,7 +257,7 @@ def model_train(model, data_augmentation):
 """
 
 
-# In[ ]:
+# In[11]:
 
 
 # train or load model
@@ -267,7 +267,7 @@ def model_train(model, data_augmentation):
 # model_unet.save('models_out/model_unet_64_flip_rot90_wo_cl_' + str(names[class_to_remove]).lower() + '_2.h5')  # save model, weights
 
 
-# In[ ]:
+# In[12]:
 
 
 # load model
@@ -277,7 +277,7 @@ model_unet = load_model(name_model, custom_objects={'fn': ignore_background_clas
 
 # ### Predictions
 
-# In[ ]:
+# In[13]:
 
 
 # get all predictions in training and test set
@@ -310,31 +310,7 @@ pred_t_te = (data_test.gt_patches != class_to_remove) & (data_test.gt_patches !=
 pred_f_te = data_test.gt_patches == class_to_remove
 
 
-# In[ ]:
-
-
-np.shape(data_train.imgs)
-
-
-# In[ ]:
-
-
-y_pred_label_tr.shape
-
-
-# In[ ]:
-
-
-data_test.imgs[4].shape[1]
-
-
-# In[ ]:
-
-
-convert_patches_to_image(data_train.imgs, y_pred_label_tr[..., np.newaxis], im_idx, 64, 64, 0).shape
-
-
-# In[ ]:
+# In[14]:
 
 
 # export predicted images
@@ -357,7 +333,7 @@ for dataset, preds in zip([data_train, data_val, data_test], [y_pred_label_tr, y
 
 # ### Accuracy Metrics (Test Set)
 
-# In[ ]:
+# In[15]:
 
 
 def oa(y_true, y_pred):
@@ -372,7 +348,7 @@ def aa(y_true, y_pred):
     return np.nanmean(acc_cl), acc_cl
 
 
-# In[ ]:
+# In[16]:
 
 
 # Get oa, aa for train, val, test
@@ -402,7 +378,7 @@ print(np.round(np.multiply([oa_val, aa_val], 100), 2))
 print(np.round(np.multiply([oa_te, aa_te], 100), 2))
 
 
-# In[ ]:
+# In[17]:
 
 
 # write metrics to CSV files
@@ -415,7 +391,7 @@ df_metrics.to_csv('models_out/metrics_ND.csv')
 # print((df_metrics*100).round(2).to_latex())
 
 
-# In[ ]:
+# In[18]:
 
 
 # Accuracy metrics
@@ -439,7 +415,7 @@ print("Overall accuracy: %.3f %%" % (oa_te * 100))
 
 # ## Distribution of predictions in unseen class
 
-# In[ ]:
+# In[19]:
 
 
 # distribution of predicted label
@@ -465,7 +441,7 @@ plt.savefig("../Figures/Zurich/Pred_count/ZH_pred-count_wo_cl" + str(class_to_re
 
 # ## Network
 
-# In[ ]:
+# In[20]:
 
 
 # precision-recall curves
@@ -548,6 +524,24 @@ for img_idx in range(len(data_test.imgs)):
     plt.savefig("../Figures/Zurich/Im_cert/cl_" + str(class_to_remove) + "/ZH_wo_cl_" + str(class_to_remove) + "_net_entropy_im_" + str(img_idx) + ".pdf", 
                 bbox_inches='tight', pad_inches=0)
     plt.close()
+
+
+# In[ ]:
+
+
+# export colorbar
+a = np.array([[0,1]])
+plt.figure(figsize=(9, 1.5))
+img = plt.imshow(a, cmap="RdYlGn")
+plt.gca().set_visible(False)
+cax = plt.axes([0.1, 0.1, 0.4, 0.5])
+cb = plt.colorbar(orientation="horizontal", cax=cax)
+cb.outline.set_linewidth(0)
+plt.axis('off')
+plt.gca().xaxis.set_major_locator(plt.NullLocator())
+plt.gca().yaxis.set_major_locator(plt.NullLocator())
+plt.savefig("../Figures/Zurich/Im_cert/colorbar.pdf", bbox_inches='tight', pad_inches=0)
+plt.close()
 
 
 # ## Dropout
@@ -946,7 +940,7 @@ probas_svm /= np.max(probas_svm)
 
 
 # precision-recall curve
-y_scores = -probas_svm
+y_scores = -probas_svm[:]
 # PR
 precision_svm, recall_svm, _ = metrics.precision_recall_curve(y_true, y_scores)
 pr_auc_svm = metrics.auc(recall_svm, precision_svm)
@@ -967,12 +961,10 @@ print(auroc_svm, pr_auc_svm)
 
 # visualization
 probas_patches_svm = np.reshape(probas_svm, np.shape(data_test.gt_patches))
-probas_patches_svm -= np.min(probas_patches_svm)
-probas_patches_svm /= np.max(probas_patches_svm)
 
 # show image of DF uncertainty vs. max margin uncertainty
 for img_idx in range(len(data_test.imgs)):
-    acc_im_svm = convert_patches_to_image(data_test.imgs, -probas_patches_svm[..., np.newaxis], img_idx, 64, 64, 0)
+    acc_im_svm = convert_patches_to_image(data_test.imgs, probas_patches_svm[..., np.newaxis], img_idx, 64, 64, 0)
     acc_im_svm = imgs_stretch_eq([acc_im_svm])[0]
     plt.figure(figsize=(8, 8))
     plt.imshow(acc_im_svm[..., 0], cmap='RdYlGn')
@@ -1282,6 +1274,9 @@ plt.xlabel('Recall')
 plt.ylabel('Precision')
 plt.ylim([0.0, 1.05])
 plt.xlim([0.0, 1.0])
+plt.grid(alpha=.3)
+fig.axes[0].spines['right'].set_visible(False)
+fig.axes[0].spines['top'].set_visible(False)
 plt.legend([str.format('%s: %.2f') % (names_methods[i], scores_pr[i]) for i in scores_order], title="PR AUC")
 plt.savefig("../Figures/Zurich/Metrics/PR_pred_wo_cl_" + str(class_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
 plt.close()
@@ -1299,7 +1294,7 @@ scores_order = np.argsort(scores_auc)
 colors_lines = plt.cm.rainbow(np.linspace(0, 1, len(scores_auc)))[:, :3]
 
 # plot
-plt.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(6, 6))
 for i in scores_order:
     plt.step(fprs[i], tprs[i], where='post', c=colors_lines[i])
 
@@ -1308,6 +1303,9 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.ylim([0.0, 1.05])
 plt.xlim([0.0, 1.0])
+plt.grid(alpha=.3)
+fig.axes[0].spines['right'].set_visible(False)
+fig.axes[0].spines['top'].set_visible(False)
 plt.legend([str.format('%s: %.2f') % (names_methods[i], scores_auc[i]) for i in scores_order], title="AUROC")
 plt.savefig("../Figures/Zurich/Metrics/ROC_pred_wo_cl_" + str(class_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
 plt.close()
@@ -1317,7 +1315,6 @@ plt.close()
 
 
 # write results to CSV files
-
 # AUROC
 df_auroc = pd.read_csv('models_out/auroc_all.csv', index_col=0)
 df2 = pd.DataFrame({str(names[class_to_remove]): scores_auc}, index = names_methods).T
@@ -1337,11 +1334,35 @@ df_aucpr.to_csv('models_out/aucpr_all.csv')
 # In[ ]:
 
 
+# load auroc df with previously saved results
 df_auroc = pd.read_csv('models_out/auroc_all.csv', index_col=0)
 
 
 # In[ ]:
 
 
+# reorder by class names
+df_auroc = df_auroc.reindex(names[1:])
+df_auroc.to_csv('models_out/auroc_all.csv')
+
+
+# In[ ]:
+
+
+# show latex table of AUROC metrics for all methods
 print(df_auroc.round(2).to_latex())
+
+
+# In[ ]:
+
+
+# show best method for each left-out class
+df_auroc.T.idxmax()
+
+
+# In[ ]:
+
+
+# show mean aourc for each method
+df_auroc.mean().round(2)
 
