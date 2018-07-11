@@ -3,6 +3,7 @@ from torch.utils.data import Dataset
 from collections import OrderedDict
 from helpers.helpers import *
 from helpers.data_augment import augment_images_and_gt
+from sklearn.utils import class_weight
 
 
 class ZurichLoader(Dataset):
@@ -63,11 +64,13 @@ class ZurichLoader(Dataset):
         gt_flat = np.concatenate([gt_im.flatten() for gt_im in self.gt])
         _, counts = np.unique(gt_flat, return_counts=True)
         counts[0] = 0.0  # background label, give no weight
-        self.weights = counts / sum(counts)
         self.random_crop = random_crop
         self.class_to_remove = class_to_remove
         self.im_patches = get_padded_patches(self.imgs, patch_size=self.patch_size, stride=self.stride)
         self.gt_patches = get_gt_patches(self.gt, patch_size=self.patch_size, stride=self.stride)
+        self.weights = class_weight.compute_class_weight('balanced',
+                                                         np.unique(self.gt_patches.flatten()),
+                                                         self.gt_patches.flatten())
 
     def extract_patch(self):
         """extract random gt and im patches from all images"""
@@ -100,7 +103,10 @@ class ZurichLoader(Dataset):
             gt_patch = self.gt_patches[idx]
 
         if self.class_to_remove is not None:
+            # remove all labels of that class
             gt_patch[gt_patch == self.class_to_remove] = 0
+            # decrease others by one
+            gt_patch[gt_patch >= self.class_to_remove] = gt_patch[gt_patch >= self.class_to_remove] - 1
 
         if self.transform is not None:
             im_patch, gt_patch = augment_images_and_gt(im_patch, gt_patch, rf_h=True, rf_v=True, rot=True)

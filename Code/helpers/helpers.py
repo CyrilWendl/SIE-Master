@@ -84,7 +84,7 @@ def get_padded_patches(images, patch_size=64, stride=64):
     for im in images:  # loop over images
         max_x = np.mod(im.shape[0], patch_size)
         max_y = np.mod(im.shape[1], patch_size)
-        if max_x & max_y:
+        if max_x or max_y:
             im = im[:-max_x, :-max_y]  # image range divisible by patch_size
         patches_im = np.zeros(
             [int((im.shape[0]) / stride), int((im.shape[1]) / stride), patch_size, patch_size, im.shape[-1]])
@@ -254,3 +254,15 @@ def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
         patches_wo_overlap.append(get_padded_patches(act_im[np.newaxis], patch_size, patch_size))
 
     return np.asarray(patches_wo_overlap)
+
+def oa(y_true, y_pred):
+    """get overall accuracy"""
+    return np.sum(y_true == y_pred) / len(y_true)
+
+
+def aa(y_true, y_pred):
+    """get average (macro) accuracy"""
+    acc_cl = []
+    for label in np.unique(y_pred):
+        acc_cl.append(np.sum(y_true[y_pred == label] == y_pred[y_pred == label]) / len(y_pred[y_pred == label]))
+    return np.nanmean(acc_cl), acc_cl
