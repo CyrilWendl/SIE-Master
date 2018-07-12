@@ -72,6 +72,23 @@ def gt_label_to_color(gt, colors):
     return gt_new
 
 
+def custom_view_as_windows(padded, patch_size, step=None):
+    if step is None:
+        step = 0
+
+    patches = []
+    if step == patch_size:
+        n_cols = int(padded.shape[0] / step)
+        n_rows = int(padded.shape[1] / step)
+    else:
+        n_cols = int(padded.shape[0] / step) - 1
+        n_rows = int(padded.shape[1] / step) - 1
+    for i in range(n_cols):
+        for j in range(n_rows):
+            patches.append(padded[(i * step):((i * step) + patch_size), (j * step):((j * step) + patch_size)])
+    return patches
+
+
 def get_padded_patches(images, patch_size=64, stride=64):
     """
     get padded, optionally overlapping patches for all images (n_images, width, height, n_channels).
@@ -86,18 +103,12 @@ def get_padded_patches(images, patch_size=64, stride=64):
         max_y = np.mod(im.shape[1], patch_size)
         if max_x or max_y:
             im = im[:-max_x, :-max_y]  # image range divisible by patch_size
-        patches_im = np.zeros(
-            [int((im.shape[0]) / stride), int((im.shape[1]) / stride), patch_size, patch_size, im.shape[-1]])
-        for i in range(np.shape(im)[-1]):  # loop bands
-            # pad original image
-            padded = np.lib.pad(im[..., i], n_pad, 'reflect')
+        # pad original image
+        padded = np.pad(im, ((n_pad, n_pad), (n_pad, n_pad), (0, 0)), 'reflect')
+        patches_im = custom_view_as_windows(padded, patch_size, stride)
 
-            # extract patches
-            patches_im[..., i] = view_as_windows(padded, patch_size, step=stride)
-
-        patches_im = np.reshape(patches_im, (patches_im.shape[0] * patches_im.shape[1],
-                                             patch_size, patch_size, im.shape[-1]))
         patches.append(patches_im)
+
     patches = np.array(patches)
     patches = np.asarray([patches[i][j] for i in range(len(patches)) for j in range(len(patches[i]))])
     return patches
@@ -111,6 +122,7 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
     :param patch_size: size of each patch
     :param stride: horizontal and vertical stride between each patch
     """
+    # TODO optimize runtime, use
     gt_patches = []
     n_pad = int((patch_size - stride) / 2)  # number of pixels to pad on each side
     for im in images_gt:
@@ -119,7 +131,7 @@ def get_gt_patches(images_gt, patch_size=64, stride=64, central_label=False):
         if max_x & max_y:
             im = im[:-max_x, :-max_y]  # image range divisible by patch_size
 
-        padded = np.lib.pad(im, n_pad, 'reflect')
+        padded = np.pad(im, n_pad, 'reflect')
         patches_im_gt = view_as_windows(padded, patch_size, step=stride)
 
         patches_im_gt = np.reshape(patches_im_gt, (patches_im_gt.shape[0] * patches_im_gt.shape[1],
@@ -205,7 +217,7 @@ def load_data(path, idx):
     return imgs, gt
 
 
-def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32, img_start=16):
+def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32, img_start=16, max_out=None):
     """
     Merge patches to image
     :param imgs: set of original images in (n_images, w, h, c)
@@ -215,8 +227,10 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     :param stride: stride (central overlap) between each pair of adjacent patches
     :param img_start: index of image from which to calculate offset (for test set, index of first image in test set)
     """
-    max_x = np.mod(imgs[img_idx].shape[0], patch_size)
-    max_y = np.mod(imgs[img_idx].shape[1], patch_size)
+    if max_out == None:
+        max_out = patch_size
+    max_x = np.mod(imgs[img_idx].shape[0], max_out)
+    max_y = np.mod(imgs[img_idx].shape[1], max_out)
     image_size = np.shape(imgs[img_idx][:-max_x, :-max_y])
 
     n_channels = im_patches.shape[-1]
@@ -224,7 +238,7 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     n_patches_col = int(image_size[1] / stride)
 
     image_out = np.zeros((image_size[0], image_size[1], n_channels))
-    offset = get_offset(imgs, patch_size, stride, img_start, img_idx)
+    offset = get_offset(imgs, max_out, stride, img_start, img_idx)
     for i in range(n_patches_row):
         for j in range(n_patches_col):
             ind_patch = offset + (i * n_patches_col + j)
@@ -237,7 +251,7 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     return image_out
 
 
-def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
+def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32, patch_size_out=None):
     """
     create non-overlapping patches from overlapping patches in prediction
     :param imgs: original images
@@ -245,13 +259,17 @@ def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32):
     :param idx_imgs: indexes of corresponding images
     :param patch_size: size of patches
     :param stride: central overlap between patches
+    :param out size of patches, default = patch_size
     :return patches_wo_overlap: new patches without overlap
     """
+    if patch_size_out is None:
+        patch_size_out = patch_size
+
     patches_wo_overlap = []
     for idx, idx_im in enumerate(idx_imgs):
-        act_im = convert_patches_to_image(imgs, patches, img_idx=idx_im,
-                                          img_start=idx_imgs[0], patch_size=patch_size, stride=stride)
-        patches_wo_overlap.append(get_padded_patches(act_im[np.newaxis], patch_size, patch_size))
+        act_im = convert_patches_to_image(imgs, patches, img_idx=idx_im, img_start=idx_imgs[0], patch_size=patch_size,
+                                          stride=stride, max_out=patch_size_out)
+        patches_wo_overlap.append(get_padded_patches(act_im[np.newaxis], patch_size_out, patch_size_out))
 
     return np.asarray(patches_wo_overlap)
 

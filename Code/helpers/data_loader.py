@@ -12,7 +12,7 @@ class ZurichLoader(Dataset):
     """
 
     def __init__(self, root_dir, subset, patch_size=64, stride=64, transform=None, random_crop=False,
-                 class_to_remove=None):
+                 class_to_remove=None, inherit_loader=None):
         """
         Initialize
         :param root_dir: directory where Zurich dataset with subfolders images_tif/ and groundtruth/ is saved
@@ -22,6 +22,7 @@ class ZurichLoader(Dataset):
         :param transform: optional transform to be applied on a sample
         :param random_crop: if True, patches are given from randomly cropped subparts of the image
         :param class_to_remove: class label to replace by 0 in gt patches
+        :param inherit_loader: loader from which to inherit images to avoid reloading
         """
         self.root_dir = root_dir
         self.subset = subset
@@ -56,9 +57,13 @@ class ZurichLoader(Dataset):
         else:
             print("No valid set indicated, must be either 'train', 'val' or 'test'")
 
-        # load images
-        self.imgs, self.gt = load_data(self.root_dir, self.ids_imgs)
-        self.gt = gt_color_to_label(self.gt, colors)
+        if inherit_loader is None:
+            # load images
+            self.imgs, self.gt = load_data(self.root_dir, self.ids_imgs)
+            self.gt = gt_color_to_label(self.gt, colors)
+        else:
+            self.imgs = inherit_loader.imgs
+            self.gt = inherit_loader.gt
 
         # get weights
         gt_flat = np.concatenate([gt_im.flatten() for gt_im in self.gt])
