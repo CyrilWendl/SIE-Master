@@ -64,22 +64,34 @@ def predict_softmax(model, dataloader_pred):
     return pred
 
 
-def predict(model, dataloader_pred):
+def predict_softmax_w_dropout(model, dataloader_pred, n_iter):
     """
-    Output label
-    :param model:
-    :param dataloader_pred:
-    :return:
+    Predict n_iter times using dropout using test time
+    :param model: model to use in MC dropout prediction
+    :param dataloader_pred: dataloader to use for MC-Dropout prediction
+    :param n_iter: number of iterations for MC-Dropout prediction
+    :return: array of softmax predictions (n_iter, n_samples, dim_samples, n_classes)
     """
-    with torch.no_grad():
-        model.eval()
-        test_pred = torch.LongTensor()
-        for i_batch, (im, _) in enumerate(dataloader_pred):
-            im = im.cuda()
-            output = model(im)
-            _, pred = output.cpu().max(1, keepdim=False)
-            test_pred = torch.cat((test_pred, pred), dim=0)
-    return test_pred.numpy()
+    preds = []
+    model.predict_dropout = True
+    model.get_activations = False
+    for _ in tqdm(range(n_iter)):
+        with torch.no_grad():
+            model.train()
+            pred = []  # softmax activations
+            for i_batch, (im, gt) in enumerate(dataloader_pred):
+                im = im.cuda()
+                output = model(im)
+                pred.append(output.cpu())
+
+        while gc.collect():
+            torch.cuda.empty_cache()
+
+        pred = np.concatenate([p.numpy() for p in pred])
+        pred = np.transpose(pred, (0, 2, 3, 1))
+        preds.append(pred)
+    model.predict_dropout = False
+    return np.asarray(preds)
 
 
 def get_activations(model, dataloader_pred, patch_size, pca=None):

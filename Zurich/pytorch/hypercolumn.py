@@ -6,6 +6,7 @@ class HyperColumn(nn.Module):
     def __init__(self, in_dim, out_dim, n_filters, act=nn.ReLU, patch_size=128):
         super(HyperColumn, self).__init__()
         self.get_activations = False
+        self.predict_dropout = False
         self.in_dim = in_dim
         self.out_dim = out_dim
         self.n_filters = n_filters
@@ -60,7 +61,7 @@ class HyperColumn(nn.Module):
         else:
             out = self.out(cat_l)
 
-        if self.training:
+        if self.training and (self.predict_dropout is False):
             out = out  # CrossEntropyLoss already implements softmax
         else:
             if self.get_activations:

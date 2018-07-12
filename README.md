@@ -72,7 +72,7 @@ Package for implementation of Decision Trees, Random Forests, Density Trees and 
 - `density_tree_traverse.py`: functions for descending a density tree and retreiving its cluster parameters
 - `density_forest.py`: functions for creating density forests
 - `helper.py`: various helper functions
-- `plots.py`: functions for plotting the data
+- `plots.py`:  Generic plotter functions for labelled and unlabelled 2D and 3D plots, used for t-SNE and PCA plots
 - `random_forests.py`: functions for creating random forests
 
 #### `Code/helpers`: 
@@ -81,7 +81,6 @@ General helpers library for semantic segmentation
 - `data_loader.py`: PyTorch data loader for Zurich dataset
 - `helpers.py`: functions for importing, cropping, padding images and other related image tranformations
 - `parameter_search.py`: functions for finding optimal hyperparameters for Density Forest, OC-SVM and GMM (explained above)
-- `plots.py`: Generic plotter functions for labelled 2D and 3D plots, used for t-SNE and PCA plots
 
 #### `Zurich Land Cover/keras_helpers`
 Helper functions for Keras

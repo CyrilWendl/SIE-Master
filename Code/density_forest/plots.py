@@ -184,7 +184,7 @@ def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, colors,
     if class_to_remove is not None:
         data_plt = draw_subsamples(x_pts[y_labels == class_to_remove], subsample_pct, replace=False)
         ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], s=50,
-                   marker='x', alpha=.9)
+                   marker='x')
 
     # add legend
     if names is not None:
