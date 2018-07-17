@@ -3,41 +3,9 @@ import numpy as np
 from tqdm import tqdm
 import keras.backend as k
 from helpers.helpers import remove_overlap
-from scipy.stats import entropy as e
 from keras.layers import Dense, Dropout
 from keras.models import Sequential
 from keras.optimizers import Adam
-
-
-def get_acc_net_msr(y_pred):
-    """
-    Get accuracy as maximum softmax response (MSR)
-    :param y_pred: one-hot of predicted probabilities from CNN
-    :return: accuracy as MSR
-    """
-    return np.max(y_pred, -1)
-
-
-def get_acc_net_max_margin(y_pred):
-    """
-    Get accuracy as softmax activation margin between highest and second highest class
-    :param y_pred: one-hot of predicted probabilities from CNN
-    :return: accuracy as margin between highest and second highest class activations
-    """
-    y_pred_rank = np.sort(y_pred, axis=-1)  # for every pixel, get the rank
-    y_pred_max1 = y_pred_rank[..., -1]  # highest proba
-    y_pred_max2 = y_pred_rank[..., -2]  # second highest proba
-    y_pred_acc = y_pred_max1 - y_pred_max2
-    return y_pred_acc
-
-
-def get_acc_net_entropy(y_pred):
-    """
-    Get accuracy as negative entropy of softmax activations
-    :param y_pred: one-hot of predicted probabilities from CNN
-    :return: accuracy as negative entropy of activations
-    """
-    return np.transpose(-e(np.transpose(y_pred)))
 
 
 def keras_predict_with_dropout(model, x, n_iter=10):

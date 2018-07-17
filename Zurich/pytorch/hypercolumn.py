@@ -36,7 +36,7 @@ class HyperColumn(nn.Module):
         return nn.Sequential(
             nn.Conv2d(dim_in, dim_out, kernel_size=kernel_size, stride=stride, padding=padding),
             nn.BatchNorm2d(dim_out),
-            act
+            self.act
         )
 
     def forward(self, input):

@@ -2,7 +2,6 @@
 
 ## Ideas
 - Use results of pre-softmax activations * w to predict same / different outcome on class
-- Export results for all left-out classes
 - Redo parameter search
 - Color scheme for figures
 - Intermediate layer in hypercolumn

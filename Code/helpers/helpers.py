@@ -2,6 +2,7 @@
 import numpy as np
 from skimage.io import imread
 from skimage import exposure
+from scipy.stats import entropy as e
 from skimage.util import view_as_windows
 
 
@@ -217,7 +218,7 @@ def load_data(path, idx):
     return imgs, gt
 
 
-def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32, img_start=16, max_out=None):
+def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32, img_start=16, patch_size_out=None):
     """
     Merge patches to image
     :param imgs: set of original images in (n_images, w, h, c)
@@ -226,11 +227,12 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     :param patch_size: size of each patch
     :param stride: stride (central overlap) between each pair of adjacent patches
     :param img_start: index of image from which to calculate offset (for test set, index of first image in test set)
+    :param patch_size_out: patch size of out image
     """
-    if max_out == None:
-        max_out = patch_size
-    max_x = np.mod(imgs[img_idx].shape[0], max_out)
-    max_y = np.mod(imgs[img_idx].shape[1], max_out)
+    if patch_size_out is None:
+        patch_size_out = patch_size
+    max_x = np.mod(imgs[img_idx].shape[0], patch_size_out)
+    max_y = np.mod(imgs[img_idx].shape[1], patch_size_out)
     image_size = np.shape(imgs[img_idx][:-max_x, :-max_y])
 
     n_channels = im_patches.shape[-1]
@@ -238,7 +240,7 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     n_patches_col = int(image_size[1] / stride)
 
     image_out = np.zeros((image_size[0], image_size[1], n_channels))
-    offset = get_offset(imgs, max_out, stride, img_start, img_idx)
+    offset = get_offset(imgs, patch_size_out, stride, img_start, img_idx)
     for i in range(n_patches_row):
         for j in range(n_patches_col):
             ind_patch = offset + (i * n_patches_col + j)
@@ -259,7 +261,7 @@ def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32, patch_size
     :param idx_imgs: indexes of corresponding images
     :param patch_size: size of patches
     :param stride: central overlap between patches
-    :param out size of patches, default = patch_size
+    :param patch_size_out: size of returned patches, default = patch_size
     :return patches_wo_overlap: new patches without overlap
     """
     if patch_size_out is None:
@@ -268,10 +270,11 @@ def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32, patch_size
     patches_wo_overlap = []
     for idx, idx_im in enumerate(idx_imgs):
         act_im = convert_patches_to_image(imgs, patches, img_idx=idx_im, img_start=idx_imgs[0], patch_size=patch_size,
-                                          stride=stride, max_out=patch_size_out)
+                                          stride=stride, patch_size_out=patch_size_out)
         patches_wo_overlap.append(get_padded_patches(act_im[np.newaxis], patch_size_out, patch_size_out))
 
     return np.asarray(patches_wo_overlap)
+
 
 def oa(y_true, y_pred):
     """get overall accuracy"""
@@ -284,3 +287,34 @@ def aa(y_true, y_pred):
     for label in np.unique(y_pred):
         acc_cl.append(np.sum(y_true[y_pred == label] == y_pred[y_pred == label]) / len(y_pred[y_pred == label]))
     return np.nanmean(acc_cl), acc_cl
+
+
+def get_acc_net_msr(y_pred):
+    """
+    Get accuracy as maximum softmax response (MSR)
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as MSR
+    """
+    return np.max(y_pred, -1)
+
+
+def get_acc_net_max_margin(y_pred):
+    """
+    Get accuracy as softmax activation margin between highest and second highest class
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as margin between highest and second highest class activations
+    """
+    y_pred_rank = np.sort(y_pred, axis=-1)  # for every pixel, get the rank
+    y_pred_max1 = y_pred_rank[..., -1]  # highest proba
+    y_pred_max2 = y_pred_rank[..., -2]  # second highest proba
+    y_pred_acc = y_pred_max1 - y_pred_max2
+    return y_pred_acc
+
+
+def get_acc_net_entropy(y_pred):
+    """
+    Get accuracy as negative entropy of softmax activations
+    :param y_pred: one-hot of predicted probabilities from CNN
+    :return: accuracy as negative entropy of activations
+    """
+    return np.transpose(-e(np.transpose(y_pred)))

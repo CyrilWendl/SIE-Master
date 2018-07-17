@@ -5,7 +5,7 @@ from joblib import Parallel, delayed
 from density_forest.helpers import draw_subsamples
 import pandas as pd
 from sklearn import metrics
-from baselines.helpers import get_acc_net_entropy
+from helpers.helpers import get_acc_net_entropy
 
 
 def scorer_roc_probas_gmm(clf_gmm, x, y=None):

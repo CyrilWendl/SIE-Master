@@ -1,8 +1,4 @@
-import os, sys
-
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-
+import os
 import torch
 import torch.nn as nn
 import gc
@@ -10,6 +6,10 @@ from tqdm import tqdm
 import numpy as np
 import matplotlib.pyplot as plt
 from helpers.helpers import remove_overlap
+
+
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 def acc_with_filt(y_true, y_pred, label_to_ignore):
@@ -98,6 +98,7 @@ def get_activations(model, dataloader_pred, patch_size, pca=None):
     """
     Get activations for a model
     :param model: model for which to get activations
+    :param patch_size: size of central patches to keep
     :param dataloader_pred: dataloader
     :param pca: optional pca to apply to each prediction
     """
@@ -136,7 +137,7 @@ def get_activations(model, dataloader_pred, patch_size, pca=None):
     return act
 
 
-def train(model, dataloader_train, dataloader_val, epochs, verbosity=0, plot=False):
+def train(model, dataloader_train, dataloader_val, epochs, verbosity=False, plot=False, class_to_remove=None):
     """
     Train a model for a given number of epochs
     :param model: Model to train
@@ -144,7 +145,6 @@ def train(model, dataloader_train, dataloader_val, epochs, verbosity=0, plot=Fal
     :param dataloader_val: dataloader for test data
     :param epochs: number of epochs to train
     :param verbosity: verbosity level of status messages
-    :return:
     """
     opt = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-3)
     # weights = torch.from_numpy(dataloader_train.dataset.weights).float().cuda()
@@ -189,7 +189,7 @@ def train(model, dataloader_train, dataloader_val, epochs, verbosity=0, plot=Fal
             fig.axes[0].spines['right'].set_visible(False)
             fig.axes[0].spines['top'].set_visible(False)
             ax.legend(['Training Set', 'Validation Set'])
-            plt.savefig('Figures/hist_train_all_acc.pdf')
+            plt.savefig('Figures/hist_loss_acc/hist_train_all_acc' + str(class_to_remove) + '.pdf')
             plt.close()
 
             # plot loss history
@@ -202,7 +202,5 @@ def train(model, dataloader_train, dataloader_val, epochs, verbosity=0, plot=Fal
             fig.axes[0].spines['right'].set_visible(False)
             fig.axes[0].spines['top'].set_visible(False)
             ax.legend(['Training Set', 'Validation Set'])
-            plt.savefig('Figures/hist_train_all_loss.pdf')
+            plt.savefig('Figures/hist_loss_acc/hist_train_all_loss' + str(class_to_remove) + '.pdf')
             plt.close()
-
-
