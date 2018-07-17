@@ -77,6 +77,10 @@ class ZurichLoader(Dataset):
                                                          np.unique(self.gt_patches.flatten()),
                                                          self.gt_patches.flatten())
 
+        # self.weights[0] = 0
+        # if class_to_remove is not None:
+            # self.weights[class_to_remove] = 0
+
     def extract_patch(self):
         """extract random gt and im patches from all images"""
         # chose random image

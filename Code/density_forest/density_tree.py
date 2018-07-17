@@ -1,5 +1,6 @@
 """ Density Tree Data Structure """
 
+
 class DensityNode:
     """constructor for new nodes in a density tree."""
     def __init__(self):
@@ -8,7 +9,7 @@ class DensityNode:
         self.parent = None  # parent node
         self.split_value = None  # the split value
         self.split_dimension = None  # the split dimension
-        self.ig = None # information gain
+        self.ig = None  # information gain
 
         # unlabelled data
         self.entropy = None  # entropy, for unlabelled nodes
@@ -119,5 +120,4 @@ class DensityNode:
 
     def __format__(self, **kwargs):
         print('Node Depth: %i' % self.get_depth())
-        print('Split Rule: %i < %.2f' % (self.split_dimension,self.split_value))
-
+        print('Split Rule: %i < %.2f' % (self.split_dimension, self.split_value))
