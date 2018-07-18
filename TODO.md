@@ -3,7 +3,6 @@
 ## Ideas
 - Use results of pre-softmax activations * w to predict same / different outcome on class
 - Redo parameter search
-- Color scheme for figures
 - Intermediate layer in hypercolumn
 - Apply DF to other dataset
 
