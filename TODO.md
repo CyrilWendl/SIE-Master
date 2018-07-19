@@ -11,3 +11,8 @@
 - Discussion per class
 - CNN tables in appendix, figure U-Net
 - Show other novelties: tennis courts etc.
+- Inconsistent behavious DF / SVM left-out class 1 and 3, image 3
+
+## Code
+- Rename traversal methods to descending
+- Implement automatic hyperparameter search in density forest

@@ -23,12 +23,16 @@ class HyperColumn(nn.Module):
         self.out = nn.Sequential(
             nn.Conv2d(dim_end, dim_end, kernel_size=1, stride=1),
             self.act,
+            nn.Conv2d(dim_end, 30, kernel_size=1, stride=1),
+            self.act,
             nn.Dropout(.5),
-            nn.Conv2d(dim_end, self.out_dim, kernel_size=1, stride=1)
+            nn.Conv2d(30, self.out_dim, kernel_size=1, stride=1)
         )
 
         self.out_logits = nn.Sequential(
             nn.Conv2d(dim_end, dim_end, kernel_size=1, stride=1),
+            self.act,
+            nn.Conv2d(dim_end, 30, kernel_size=1, stride=1),
             self.act
         )
 

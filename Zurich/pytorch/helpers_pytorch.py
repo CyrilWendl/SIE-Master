@@ -94,13 +94,14 @@ def predict_softmax_w_dropout(model, dataloader_pred, n_iter):
     return np.asarray(preds)
 
 
-def get_activations(model, dataloader_pred, patch_size, pca=None):
+def get_activations(model, dataloader_pred, patch_size, pca=None, max_components=None):
     """
     Get activations for a model
     :param model: model for which to get activations
     :param patch_size: size of central patches to keep
     :param dataloader_pred: dataloader
     :param pca: optional pca to apply to each prediction
+    :param max_components: components to keep for PCA
     """
     model.get_activations = True
     with torch.no_grad():
@@ -115,7 +116,9 @@ def get_activations(model, dataloader_pred, patch_size, pca=None):
             # put bands last
             patch_act = np.transpose(patch_act, (0, 2, 3, 1))
             if pca is not None:
-                patch_act = pca.transform(np.concatenate(np.concatenate(patch_act)))[..., :10]
+                patch_act = pca.transform(np.concatenate(np.concatenate(patch_act)))
+                if max_components is not None:
+                    patch_act = patch_act[..., :max_components]
             act.append(patch_act)
             gc.collect()
 
