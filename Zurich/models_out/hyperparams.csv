@@ -3,3 +3,7 @@ Buildings,5,poly,1,0.001,3,-inf
 Grass,3,poly,1,0.001,3,0.0
 Roads,3,poly,2,0.001,1,-inf
 Bare Soil,9,poly,1,0.5,1,0.0
+Water,3,poly,1,0.001,1,0.0
+Trees,4,poly,1,0.01,1,0.7
+Railways,9,poly,3,0.5,3,0.7
+Swimming Pools,3,rbf,1,0.5,3,0.7

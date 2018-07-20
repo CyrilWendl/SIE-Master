@@ -2539,3 +2539,809 @@ Trying parameters: {'max_iter': 10000, 'n_components': 3}
 Trying parameters: {'max_iter': 10000, 'n_components': 6}
 Trying parameters: {'max_iter': 10000, 'n_components': 7}
 Trying parameters: {'max_iter': 10000, 'n_components': 8}
+Trying parameters: {'max_iter': 10000, 'n_components': 3}
+Trying parameters: {'max_iter': 10000, 'n_components': 4}
+Trying parameters: {'max_iter': 10000, 'n_components': 6}
+Trying parameters: {'max_iter': 10000, 'n_components': 5}
+{'max_iter': 10000, 'n_components': 3}
+AUROC: 0.69, PR AUC: 0.07
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   13.1s
+[Parallel(n_jobs=40)]: Done   2 out of   7 | elapsed:   18.9s remaining:   47.2s
+[Parallel(n_jobs=40)]: Done   3 out of   7 | elapsed:   34.6s remaining:   46.1s
+[Parallel(n_jobs=40)]: Done   4 out of   7 | elapsed:   36.7s remaining:   27.5s
+[Parallel(n_jobs=40)]: Done   5 out of   7 | elapsed:   46.7s remaining:   18.7s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  1.2min remaining:    0.0s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  1.2min finished
+{'max_iter': 10000, 'n_components': 4}
+AUROC: 0.66, PR AUC: 0.18
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   17.4s
+[Parallel(n_jobs=40)]: Done   2 out of   7 | elapsed:   22.4s remaining:   55.9s
+[Parallel(n_jobs=40)]: Done   3 out of   7 | elapsed:   36.4s remaining:   48.6s
+[Parallel(n_jobs=40)]: Done   4 out of   7 | elapsed:   48.8s remaining:   36.6s
+[Parallel(n_jobs=40)]: Done   5 out of   7 | elapsed:   50.7s remaining:   20.3s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  1.1min remaining:    0.0s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  1.1min finished
+xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
+Qt: Failed to create XKB context!
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .
+2018-07-20 20:41:03.883196: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-20 20:41:03.883343: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-20 20:41:03.883358: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-20 20:41:03.883368: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-20 20:41:03.883580: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10413 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 920657413274306146
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 10919205274
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 856616153556752307
+physical_device_desc: "device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1"
+]
+loading data
+loading data with overlap
+classes to keep: ['Roads' 'Buildings' 'Trees' 'Grass' 'Bare Soil' 'Water' 'Railways']
+
+   32/14484 [..............................] - ETA: 8:47
+  128/14484 [..............................] - ETA: 2:16
+  224/14484 [..............................] - ETA: 1:21
+  320/14484 [..............................] - ETA: 59s 
+  416/14484 [..............................] - ETA: 47s
+  512/14484 [>.............................] - ETA: 39s
+  608/14484 [>.............................] - ETA: 34s
+  704/14484 [>.............................] - ETA: 30s
+  800/14484 [>.............................] - ETA: 27s
+  928/14484 [>.............................] - ETA: 24s
+ 1056/14484 [=>............................] - ETA: 22s
+ 1184/14484 [=>............................] - ETA: 20s
+ 1280/14484 [=>............................] - ETA: 19s
+ 1408/14484 [=>............................] - ETA: 18s
+ 1536/14484 [==>...........................] - ETA: 16s
+ 1664/14484 [==>...........................] - ETA: 16s
+ 1760/14484 [==>...........................] - ETA: 15s
+ 1856/14484 [==>...........................] - ETA: 14s
+ 1984/14484 [===>..........................] - ETA: 14s
+ 2080/14484 [===>..........................] - ETA: 13s
+ 2176/14484 [===>..........................] - ETA: 13s
+ 2304/14484 [===>..........................] - ETA: 12s
+ 2400/14484 [===>..........................] - ETA: 12s
+ 2528/14484 [====>.........................] - ETA: 11s
+ 2624/14484 [====>.........................] - ETA: 11s
+ 2720/14484 [====>.........................] - ETA: 11s
+ 2816/14484 [====>.........................] - ETA: 11s
+ 2912/14484 [=====>........................] - ETA: 10s
+ 3040/14484 [=====>........................] - ETA: 10s
+ 3136/14484 [=====>........................] - ETA: 10s
+ 3232/14484 [=====>........................] - ETA: 10s
+ 3328/14484 [=====>........................] - ETA: 9s 
+ 3424/14484 [======>.......................] - ETA: 9s
+ 3520/14484 [======>.......................] - ETA: 9s
+ 3616/14484 [======>.......................] - ETA: 9s
+ 3712/14484 [======>.......................] - ETA: 9s
+ 3808/14484 [======>.......................] - ETA: 9s
+ 3904/14484 [=======>......................] - ETA: 8s
+ 4000/14484 [=======>......................] - ETA: 8s
+ 4128/14484 [=======>......................] - ETA: 8s
+ 4224/14484 [=======>......................] - ETA: 8s
+ 4320/14484 [=======>......................] - ETA: 8s
+ 4416/14484 [========>.....................] - ETA: 8s
+ 4512/14484 [========>.....................] - ETA: 8s
+ 4608/14484 [========>.....................] - ETA: 7s
+ 4704/14484 [========>.....................] - ETA: 7s
+ 4800/14484 [========>.....................] - ETA: 7s
+ 4896/14484 [=========>....................] - ETA: 7s
+ 4992/14484 [=========>....................] - ETA: 7s
+ 5088/14484 [=========>....................] - ETA: 7s
+ 5184/14484 [=========>....................] - ETA: 7s
+ 5280/14484 [=========>....................] - ETA: 7s
+ 5376/14484 [==========>...................] - ETA: 6s
+ 5472/14484 [==========>...................] - ETA: 6s
+ 5600/14484 [==========>...................] - ETA: 6s
+ 5696/14484 [==========>...................] - ETA: 6s
+ 5824/14484 [===========>..................] - ETA: 6s
+ 5920/14484 [===========>..................] - ETA: 6s
+ 6016/14484 [===========>..................] - ETA: 6s
+ 6144/14484 [===========>..................] - ETA: 6s
+ 6272/14484 [===========>..................] - ETA: 6s
+ 6368/14484 [============>.................] - ETA: 5s
+ 6464/14484 [============>.................] - ETA: 5s
+ 6592/14484 [============>.................] - ETA: 5s
+ 6720/14484 [============>.................] - ETA: 5s
+ 6848/14484 [=============>................] - ETA: 5s
+ 6944/14484 [=============>................] - ETA: 5s
+ 7040/14484 [=============>................] - ETA: 5s
+ 7136/14484 [=============>................] - ETA: 5s
+ 7232/14484 [=============>................] - ETA: 5s
+ 7328/14484 [==============>...............] - ETA: 5s
+ 7424/14484 [==============>...............] - ETA: 4s
+ 7520/14484 [==============>...............] - ETA: 4s
+ 7616/14484 [==============>...............] - ETA: 4s
+ 7712/14484 [==============>...............] - ETA: 4s
+ 7808/14484 [===============>..............] - ETA: 4s
+ 7904/14484 [===============>..............] - ETA: 4s
+ 8000/14484 [===============>..............] - ETA: 4s
+ 8096/14484 [===============>..............] - ETA: 4s
+ 8192/14484 [===============>..............] - ETA: 4s
+ 8256/14484 [================>.............] - ETA: 4s
+ 8352/14484 [================>.............] - ETA: 4s
+ 8448/14484 [================>.............] - ETA: 4s
+ 8544/14484 [================>.............] - ETA: 4s
+ 8640/14484 [================>.............] - ETA: 3s
+ 8768/14484 [=================>............] - ETA: 3s
+ 8864/14484 [=================>............] - ETA: 3s
+ 8992/14484 [=================>............] - ETA: 3s
+ 9088/14484 [=================>............] - ETA: 3s
+ 9184/14484 [==================>...........] - ETA: 3s
+ 9280/14484 [==================>...........] - ETA: 3s
+ 9376/14484 [==================>...........] - ETA: 3s
+ 9472/14484 [==================>...........] - ETA: 3s
+ 9568/14484 [==================>...........] - ETA: 3s
+ 9664/14484 [===================>..........] - ETA: 3s
+ 9760/14484 [===================>..........] - ETA: 3s
+ 9856/14484 [===================>..........] - ETA: 3s
+ 9952/14484 [===================>..........] - ETA: 3s
+10048/14484 [===================>..........] - ETA: 2s
+10144/14484 [====================>.........] - ETA: 2s
+10240/14484 [====================>.........] - ETA: 2s
+10304/14484 [====================>.........] - ETA: 2s
+10368/14484 [====================>.........] - ETA: 2s
+10464/14484 [====================>.........] - ETA: 2s
+10560/14484 [====================>.........] - ETA: 2s
+10656/14484 [=====================>........] - ETA: 2s
+10752/14484 [=====================>........] - ETA: 2s
+10848/14484 [=====================>........] - ETA: 2s
+10944/14484 [=====================>........] - ETA: 2s
+11040/14484 [=====================>........] - ETA: 2s
+11136/14484 [======================>.......] - ETA: 2s
+11232/14484 [======================>.......] - ETA: 2s
+11328/14484 [======================>.......] - ETA: 2s
+11424/14484 [======================>.......] - ETA: 2s
+11520/14484 [======================>.......] - ETA: 1s
+11616/14484 [=======================>......] - ETA: 1s
+11680/14484 [=======================>......] - ETA: 1s
+11776/14484 [=======================>......] - ETA: 1s
+11872/14484 [=======================>......] - ETA: 1s
+11968/14484 [=======================>......] - ETA: 1s
+12064/14484 [=======================>......] - ETA: 1s
+12160/14484 [========================>.....] - ETA: 1s
+12256/14484 [========================>.....] - ETA: 1s
+12352/14484 [========================>.....] - ETA: 1s
+12448/14484 [========================>.....] - ETA: 1s
+12544/14484 [========================>.....] - ETA: 1s
+12640/14484 [=========================>....] - ETA: 1s
+12704/14484 [=========================>....] - ETA: 1s
+12800/14484 [=========================>....] - ETA: 1s
+12896/14484 [=========================>....] - ETA: 1s
+12992/14484 [=========================>....] - ETA: 0s
+13088/14484 [==========================>...] - ETA: 0s
+13152/14484 [==========================>...] - ETA: 0s
+13216/14484 [==========================>...] - ETA: 0s
+13312/14484 [==========================>...] - ETA: 0s
+13408/14484 [==========================>...] - ETA: 0s
+13504/14484 [==========================>...] - ETA: 0s
+13568/14484 [===========================>..] - ETA: 0s
+13600/14484 [===========================>..] - ETA: 0s
+13696/14484 [===========================>..] - ETA: 0s
+13792/14484 [===========================>..] - ETA: 0s
+13888/14484 [===========================>..] - ETA: 0s
+13984/14484 [===========================>..] - ETA: 0s
+14080/14484 [============================>.] - ETA: 0s
+14176/14484 [============================>.] - ETA: 0s
+14272/14484 [============================>.] - ETA: 0s
+14368/14484 [============================>.] - ETA: 0s
+14464/14484 [============================>.] - ETA: 0s
+14484/14484 [==============================] - 10s 662us/step
+
+  32/4688 [..............................] - ETA: 2s
+ 128/4688 [..............................] - ETA: 2s
+ 224/4688 [>.............................] - ETA: 2s
+ 320/4688 [=>............................] - ETA: 2s
+ 416/4688 [=>............................] - ETA: 2s
+ 512/4688 [==>...........................] - ETA: 2s
+ 608/4688 [==>...........................] - ETA: 2s
+ 704/4688 [===>..........................] - ETA: 2s
+ 800/4688 [====>.........................] - ETA: 2s
+ 896/4688 [====>.........................] - ETA: 2s
+ 992/4688 [=====>........................] - ETA: 2s
+1088/4688 [=====>........................] - ETA: 1s
+1184/4688 [======>.......................] - ETA: 1s
+1280/4688 [=======>......................] - ETA: 1s
+1376/4688 [=======>......................] - ETA: 1s
+1472/4688 [========>.....................] - ETA: 1s
+1568/4688 [=========>....................] - ETA: 1s
+1664/4688 [=========>....................] - ETA: 1s
+1760/4688 [==========>...................] - ETA: 1s
+1856/4688 [==========>...................] - ETA: 1s
+1952/4688 [===========>..................] - ETA: 1s
+2048/4688 [============>.................] - ETA: 1s
+2144/4688 [============>.................] - ETA: 1s
+2240/4688 [=============>................] - ETA: 1s
+2336/4688 [=============>................] - ETA: 1s
+2432/4688 [==============>...............] - ETA: 1s
+2528/4688 [===============>..............] - ETA: 1s
+2624/4688 [===============>..............] - ETA: 1s
+2720/4688 [================>.............] - ETA: 1s
+2816/4688 [=================>............] - ETA: 1s
+2912/4688 [=================>............] - ETA: 0s
+3008/4688 [==================>...........] - ETA: 0s
+3104/4688 [==================>...........] - ETA: 0s
+3200/4688 [===================>..........] - ETA: 0s
+3296/4688 [====================>.........] - ETA: 0s
+3392/4688 [====================>.........] - ETA: 0s
+3520/4688 [=====================>........] - ETA: 0s
+3616/4688 [======================>.......] - ETA: 0s
+3744/4688 [======================>.......] - ETA: 0s
+3840/4688 [=======================>......] - ETA: 0s
+3936/4688 [========================>.....] - ETA: 0s
+4064/4688 [=========================>....] - ETA: 0s
+4192/4688 [=========================>....] - ETA: 0s
+4320/4688 [==========================>...] - ETA: 0s
+4416/4688 [===========================>..] - ETA: 0s
+4512/4688 [===========================>..] - ETA: 0s
+4608/4688 [============================>.] - ETA: 0s
+4688/4688 [==============================] - 3s 556us/step
+
+  32/4740 [..............................] - ETA: 2s
+ 160/4740 [>.............................] - ETA: 2s
+ 256/4740 [>.............................] - ETA: 2s
+ 352/4740 [=>............................] - ETA: 2s
+ 448/4740 [=>............................] - ETA: 2s
+ 576/4740 [==>...........................] - ETA: 2s
+ 672/4740 [===>..........................] - ETA: 2s
+ 768/4740 [===>..........................] - ETA: 2s
+ 864/4740 [====>.........................] - ETA: 2s
+ 960/4740 [=====>........................] - ETA: 2s
+1056/4740 [=====>........................] - ETA: 2s
+1152/4740 [======>.......................] - ETA: 1s
+1248/4740 [======>.......................] - ETA: 1s
+1344/4740 [=======>......................] - ETA: 1s
+1440/4740 [========>.....................] - ETA: 1s
+1536/4740 [========>.....................] - ETA: 1s
+1632/4740 [=========>....................] - ETA: 1s
+1728/4740 [=========>....................] - ETA: 1s
+1824/4740 [==========>...................] - ETA: 1s
+1920/4740 [===========>..................] - ETA: 1s
+2016/4740 [===========>..................] - ETA: 1s
+2112/4740 [============>.................] - ETA: 1s
+2208/4740 [============>.................] - ETA: 1s
+2272/4740 [=============>................] - ETA: 1s
+2368/4740 [=============>................] - ETA: 1s
+2464/4740 [==============>...............] - ETA: 1s
+2560/4740 [===============>..............] - ETA: 1s
+2656/4740 [===============>..............] - ETA: 1s
+2752/4740 [================>.............] - ETA: 1s
+2848/4740 [=================>............] - ETA: 1s
+2944/4740 [=================>............] - ETA: 1s
+3072/4740 [==================>...........] - ETA: 0s
+3168/4740 [===================>..........] - ETA: 0s
+3264/4740 [===================>..........] - ETA: 0s
+3360/4740 [====================>.........] - ETA: 0s
+3456/4740 [====================>.........] - ETA: 0s
+3552/4740 [=====================>........] - ETA: 0s
+3648/4740 [======================>.......] - ETA: 0s
+3776/4740 [======================>.......] - ETA: 0s
+3872/4740 [=======================>......] - ETA: 0s
+3968/4740 [========================>.....] - ETA: 0s
+4064/4740 [========================>.....] - ETA: 0s
+4160/4740 [=========================>....] - ETA: 0s
+4256/4740 [=========================>....] - ETA: 0s
+4352/4740 [==========================>...] - ETA: 0s
+4448/4740 [===========================>..] - ETA: 0s
+4576/4740 [===========================>..] - ETA: 0s
+4704/4740 [============================>.] - ETA: 0s
+4740/4740 [==============================] - 3s 569us/step
+{'max_iter': 10000, 'n_components': 9}
+AUROC: 0.59, PR AUC: 0.00
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   38.2s
+[Parallel(n_jobs=40)]: Done   2 out of   7 | elapsed:   49.0s remaining:  2.0min
+[Parallel(n_jobs=40)]: Done   3 out of   7 | elapsed:   54.9s remaining:  1.2min
+[Parallel(n_jobs=40)]: Done   4 out of   7 | elapsed:  1.1min remaining:   51.4s
+[Parallel(n_jobs=40)]: Done   5 out of   7 | elapsed:  1.2min remaining:   28.5s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  1.3min remaining:    0.0s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  1.3min finished
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/svm/base.py:218: ConvergenceWarning: Solver terminated early (max_iter=10000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  % self.max_iter, ConvergenceWarning)
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+{'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+AUROC: 0.60, PR AUC: 0.06
+Number of points on which to train each tree: 140
+Minimum number of points in each leaf: 14
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   25.2s
+[Parallel(n_jobs=40)]: Done   3 out of  20 | elapsed:   32.0s remaining:  3.0min
+[Parallel(n_jobs=40)]: Done   5 out of  20 | elapsed:   37.6s remaining:  1.9min
+[Parallel(n_jobs=40)]: Done   7 out of  20 | elapsed:   39.7s remaining:  1.2min
+[Parallel(n_jobs=40)]: Done   9 out of  20 | elapsed:   43.0s remaining:   52.5s
+[Parallel(n_jobs=40)]: Done  11 out of  20 | elapsed:   47.1s remaining:   38.5s
+[Parallel(n_jobs=40)]: Done  13 out of  20 | elapsed:   51.7s remaining:   27.9s
+[Parallel(n_jobs=40)]: Done  15 out of  20 | elapsed:   56.2s remaining:   18.7s
+[Parallel(n_jobs=40)]: Done  17 out of  20 | elapsed:  1.0min remaining:   10.8s
+[Parallel(n_jobs=40)]: Done  20 out of  20 | elapsed:  1.1min finished
+{'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+AUROC: 0.36, PR AUC: 0.09
+Number of points on which to train each tree: 140
+Minimum number of points in each leaf: 14
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   24.1s
+[Parallel(n_jobs=40)]: Done   3 out of  20 | elapsed:   30.4s remaining:  2.9min
+[Parallel(n_jobs=40)]: Done   5 out of  20 | elapsed:   35.3s remaining:  1.8min
+[Parallel(n_jobs=40)]: Done   7 out of  20 | elapsed:   38.2s remaining:  1.2min
+[Parallel(n_jobs=40)]: Done   9 out of  20 | elapsed:   41.2s remaining:   50.4s
+[Parallel(n_jobs=40)]: Done  11 out of  20 | elapsed:   44.4s remaining:   36.3s
+[Parallel(n_jobs=40)]: Done  13 out of  20 | elapsed:   48.3s remaining:   26.0s
+[Parallel(n_jobs=40)]: Done  15 out of  20 | elapsed:   55.4s remaining:   18.5s
+[Parallel(n_jobs=40)]: Done  17 out of  20 | elapsed:   56.9s remaining:   10.0s
+[Parallel(n_jobs=40)]: Done  20 out of  20 | elapsed:  1.1min finished
+Number of created root nodes: 100
+Mean number of clusters created per tree: 4
+Testing 12 combinations 3 times
+[{'ig_improvement': -inf, 'max_depth': 1}
+ {'ig_improvement': -inf, 'max_depth': 2}
+ {'ig_improvement': -inf, 'max_depth': 3}
+ {'ig_improvement': 0, 'max_depth': 1}
+ {'ig_improvement': 0, 'max_depth': 2}
+ {'ig_improvement': 0, 'max_depth': 3}
+ {'ig_improvement': 0.4, 'max_depth': 1}
+ {'ig_improvement': 0.4, 'max_depth': 2}
+ {'ig_improvement': 0.4, 'max_depth': 3}
+ {'ig_improvement': 0.7, 'max_depth': 1}
+ {'ig_improvement': 0.7, 'max_depth': 2}
+ {'ig_improvement': 0.7, 'max_depth': 3}]
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=40)]: Done   5 tasks      | elapsed:    0.4s
+[Parallel(n_jobs=40)]: Done  18 tasks      | elapsed:    0.6s
+[Parallel(n_jobs=40)]: Done  32 out of 100 | elapsed:    0.7s remaining:    1.5s
+[Parallel(n_jobs=40)]: Done  43 out of 100 | elapsed:    0.8s remaining:    1.1s
+[Parallel(n_jobs=40)]: Done  54 out of 100 | elapsed:    0.9s remaining:    0.8s
+[Parallel(n_jobs=40)]: Done  65 out of 100 | elapsed:    1.0s remaining:    0.5s
+[Parallel(n_jobs=40)]: Done  76 out of 100 | elapsed:    1.0s remaining:    0.3s
+[Parallel(n_jobs=40)]: Done  87 out of 100 | elapsed:    1.1s remaining:    0.2s
+[Parallel(n_jobs=40)]: Done  98 out of 100 | elapsed:    1.2s remaining:    0.0s
+[Parallel(n_jobs=40)]: Done 100 out of 100 | elapsed:    1.2s finished
+Number of created root nodes: 100
+Mean number of clusters created per tree: 4
+Testing 12 combinations 3 times
+[{'ig_improvement': -inf, 'max_depth': 1}
+ {'ig_improvement': -inf, 'max_depth': 2}
+ {'ig_improvement': -inf, 'max_depth': 3}
+ {'ig_improvement': 0, 'max_depth': 1}
+ {'ig_improvement': 0, 'max_depth': 2}
+ {'ig_improvement': 0, 'max_depth': 3}
+ {'ig_improvement': 0.4, 'max_depth': 1}
+ {'ig_improvement': 0.4, 'max_depth': 2}
+ {'ig_improvement': 0.4, 'max_depth': 3}
+ {'ig_improvement': 0.7, 'max_depth': 1}
+ {'ig_improvement': 0.7, 'max_depth': 2}
+ {'ig_improvement': 0.7, 'max_depth': 3}]
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=40)]: Done   5 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done  18 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done  32 out of 100 | elapsed:    0.4s remaining:    0.8s
+[Parallel(n_jobs=40)]: Done  43 out of 100 | elapsed:    0.5s remaining:    0.7s
+[Parallel(n_jobs=40)]: Done  54 out of 100 | elapsed:    0.6s remaining:    0.5s
+[Parallel(n_jobs=40)]: Done  65 out of 100 | elapsed:    0.6s remaining:    0.3s
+[Parallel(n_jobs=40)]: Done  76 out of 100 | elapsed:    0.7s remaining:    0.2s
+[Parallel(n_jobs=40)]: Done  87 out of 100 | elapsed:    0.8s remaining:    0.1s
+[Parallel(n_jobs=40)]: Done  98 out of 100 | elapsed:    0.8s remaining:    0.0s
+[Parallel(n_jobs=40)]: Done 100 out of 100 | elapsed:    0.9s finished
+Using TensorFlow backend.
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:05<00:53,  5.90s/it] 20%|██        | 2/10 [00:10<00:42,  5.35s/it] 30%|███       | 3/10 [00:14<00:33,  4.85s/it] 40%|████      | 4/10 [00:16<00:25,  4.22s/it] 50%|█████     | 5/10 [00:21<00:21,  4.24s/it] 60%|██████    | 6/10 [00:26<00:17,  4.46s/it] 70%|███████   | 7/10 [00:30<00:12,  4.33s/it] 80%|████████  | 8/10 [00:32<00:08,  4.08s/it]Trying parameters: {'ig_improvement': -inf, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:   50.1s remaining:    0.0s
+ 90%|█████████ | 9/10 [00:34<00:03,  3.88s/it]Trying parameters: {'ig_improvement': -inf, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:   48.7s remaining:    0.0s
+100%|██████████| 10/10 [00:39<00:00,  3.92s/it]
+  0%|          | 0/725 [00:00<?, ?it/s]  0%|          | 1/725 [00:00<02:40,  4.50it/s]  1%|          | 9/725 [00:00<00:25, 27.71it/s]  2%|▏         | 12/725 [00:00<00:26, 27.19it/s]  3%|▎         | 20/725 [00:00<00:19, 36.67it/s]  3%|▎         | 25/725 [00:00<00:20, 33.64it/s]  5%|▍         | 33/725 [00:00<00:17, 39.06it/s]  6%|▌         | 42/725 [00:00<00:15, 43.88it/s]  7%|▋         | 48/725 [00:01<00:18, 37.39it/s]  8%|▊         | 56/725 [00:01<00:16, 40.32it/s]  9%|▉         | 64/725 [00:01<00:15, 42.95it/s] 10%|▉         | 72/725 [00:01<00:14, 45.13it/s] 11%|█         | 80/725 [00:01<00:13, 47.14it/s] 12%|█▏        | 88/725 [00:01<00:13, 48.91it/s] 13%|█▎        | 97/725 [00:01<00:12, 50.78it/s] 14%|█▍        | 105/725 [00:05<00:30, 20.54it/s] 15%|█▌        | 112/725 [00:05<00:28, 21.46it/s] 16%|█▋        | 119/725 [00:05<00:27, 22.34it/s] 18%|█▊        | 127/725 [00:05<00:25, 23.35it/s] 19%|█▊        | 135/725 [00:05<00:24, 24.35it/s] 20%|█▉        | 144/725 [00:05<00:22, 25.48it/s] 21%|██        | 152/725 [00:05<00:21, 26.39it/s] 22%|██▏       | 160/725 [00:05<00:20, 27.27it/s] 23%|██▎       | 168/725 [00:05<00:19, 28.13it/s] 24%|██▍       | 176/725 [00:06<00:18, 28.93it/s] 25%|██▌       | 184/725 [00:06<00:18, 29.73it/s] 27%|██▋       | 193/725 [00:06<00:17, 30.65it/s] 28%|██▊       | 201/725 [00:06<00:16, 31.42it/s] 29%|██▉       | 209/725 [00:15<00:38, 13.36it/s] 30%|███       | 218/725 [00:15<00:36, 13.85it/s] 31%|███▏      | 227/725 [00:15<00:34, 14.32it/s] 33%|███▎      | 236/725 [00:15<00:33, 14.79it/s] 34%|███▎      | 244/725 [00:16<00:31, 15.18it/s] 35%|███▍      | 253/725 [00:16<00:30, 15.64it/s] 36%|███▌      | 262/725 [00:16<00:28, 16.09it/s] 37%|███▋      | 271/725 [00:16<00:27, 16.53it/s] 39%|███▊      | 280/725 [00:16<00:26, 16.97it/s] 40%|███▉      | 289/725 [00:16<00:25, 17.40it/s] 41%|████      | 298/725 [00:16<00:23, 17.83it/s] 42%|████▏     | 307/725 [00:16<00:22, 18.25it/s] 44%|████▎     | 316/725 [00:16<00:21, 18.67it/s] 45%|████▍     | 325/725 [00:17<00:20, 19.09it/s]Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+ 46%|████▌     | 334/725 [00:17<00:20, 19.46it/s] 47%|████▋     | 343/725 [00:17<00:19, 19.87it/s] 49%|████▊     | 353/725 [00:17<00:18, 20.33it/s] 50%|█████     | 363/725 [00:17<00:17, 20.77it/s] 51%|█████▏    | 372/725 [00:17<00:16, 21.16it/s] 53%|█████▎    | 381/725 [00:17<00:15, 21.54it/s] 54%|█████▍    | 390/725 [00:17<00:15, 21.92it/s] 55%|█████▌    | 399/725 [00:17<00:14, 22.30it/s]Trying parameters: {'ig_improvement': -inf, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:  1.8min remaining:    0.0s
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:  1.8min remaining:    0.0s
+ 56%|█████▋    | 408/725 [00:19<00:15, 20.49it/s] 57%|█████▋    | 416/725 [00:20<00:14, 20.78it/s] 58%|█████▊    | 424/725 [00:20<00:14, 21.07it/s] 60%|█████▉    | 433/725 [00:20<00:13, 21.40it/s] 61%|██████    | 441/725 [00:20<00:13, 21.69it/s] 62%|██████▏   | 449/725 [00:20<00:12, 21.97it/s] 63%|██████▎   | 457/725 [00:20<00:12, 22.25it/s] 64%|██████▍   | 465/725 [00:20<00:11, 22.53it/s] 65%|██████▌   | 473/725 [00:20<00:11, 22.80it/s] 66%|██████▋   | 482/725 [00:20<00:10, 23.12it/s] 68%|██████▊   | 491/725 [00:20<00:09, 23.44it/s] 69%|██████▉   | 501/725 [00:21<00:09, 23.79it/s] 70%|███████   | 510/725 [00:21<00:08, 24.08it/s] 72%|███████▏  | 519/725 [00:21<00:08, 24.37it/s] 73%|███████▎  | 528/725 [00:21<00:07, 24.66it/s] 74%|███████▍  | 536/725 [00:21<00:07, 24.89it/s] 75%|███████▌  | 544/725 [00:21<00:07, 25.11it/s] 76%|███████▌  | 552/725 [00:21<00:06, 25.28it/s] 77%|███████▋  | 559/725 [00:21<00:06, 25.47it/s] 78%|███████▊  | 566/725 [00:22<00:06, 25.64it/s] 79%|███████▉  | 573/725 [00:22<00:05, 25.81it/s] 80%|███████▉  | 579/725 [00:22<00:05, 25.96it/s] 81%|████████  | 585/725 [00:22<00:05, 26.10it/s] 82%|████████▏ | 591/725 [00:22<00:05, 26.22it/s] 82%|████████▏ | 597/725 [00:22<00:04, 26.32it/s] 83%|████████▎ | 603/725 [00:22<00:04, 26.44it/s] 84%|████████▍ | 609/725 [00:22<00:04, 26.56it/s] 85%|████████▍ | 614/725 [00:23<00:04, 26.65it/s] 85%|████████▌ | 619/725 [00:23<00:03, 26.75it/s] 86%|████████▌ | 624/725 [00:23<00:03, 26.84it/s] 87%|████████▋ | 629/725 [00:23<00:03, 26.94it/s] 87%|████████▋ | 634/725 [00:23<00:03, 27.03it/s] 88%|████████▊ | 640/725 [00:23<00:03, 27.15it/s] 89%|████████▉ | 646/725 [00:23<00:02, 27.29it/s] 90%|████████▉ | 652/725 [00:23<00:02, 27.42it/s] 91%|█████████ | 659/725 [00:23<00:02, 27.59it/s] 92%|█████████▏| 666/725 [00:23<00:02, 27.75it/s] 93%|█████████▎| 673/725 [00:24<00:01, 27.91it/s] 94%|█████████▍| 680/725 [00:24<00:01, 28.07it/s] 95%|█████████▍| 687/725 [00:24<00:01, 28.23it/s] 96%|█████████▌| 694/725 [00:24<00:01, 28.38it/s] 97%|█████████▋| 701/725 [00:24<00:00, 28.53it/s] 98%|█████████▊| 708/725 [00:24<00:00, 28.68it/s] 99%|█████████▊| 715/725 [00:24<00:00, 28.84it/s]100%|█████████▉| 722/725 [00:24<00:00, 29.00it/s]100%|██████████| 725/725 [00:24<00:00, 29.08it/s]
+  0%|          | 0/235 [00:00<?, ?it/s]  0%|          | 1/235 [00:01<04:40,  1.20s/it]  4%|▍         | 9/235 [00:01<00:32,  6.91it/s]  7%|▋         | 17/235 [00:01<00:18, 12.06it/s] 10%|█         | 24/235 [00:01<00:13, 15.73it/s] 13%|█▎        | 30/235 [00:01<00:11, 18.41it/s] 16%|█▌        | 37/235 [00:01<00:09, 21.27it/s] 19%|█▉        | 45/235 [00:01<00:07, 24.25it/s] 22%|██▏       | 52/235 [00:01<00:06, 26.51it/s] 26%|██▌       | 60/235 [00:02<00:06, 29.10it/s] 29%|██▉       | 68/235 [00:02<00:05, 31.29it/s] 32%|███▏      | 76/235 [00:02<00:04, 33.41it/s] 36%|███▌      | 84/235 [00:02<00:04, 35.21it/s] 39%|███▉      | 92/235 [00:02<00:03, 36.48it/s] 42%|████▏     | 99/235 [00:02<00:03, 37.66it/s] 46%|████▌     | 108/235 [00:02<00:03, 39.48it/s] 50%|████▉     | 117/235 [00:02<00:02, 41.17it/s] 54%|█████▎    | 126/235 [00:02<00:02, 42.70it/s] 57%|█████▋    | 134/235 [00:03<00:02, 43.88it/s] 60%|██████    | 142/235 [00:03<00:02, 44.74it/s] 64%|██████▍   | 150/235 [00:03<00:01, 45.56it/s] 67%|██████▋   | 158/235 [00:03<00:01, 46.44it/s] 71%|███████   | 166/235 [00:03<00:01, 47.30it/s] 74%|███████▍  | 174/235 [00:03<00:01, 48.14it/s] 77%|███████▋  | 182/235 [00:03<00:01, 48.69it/s] 81%|████████  | 190/235 [00:03<00:00, 48.66it/s] 84%|████████▍ | 197/235 [00:04<00:00, 48.98it/s] 88%|████████▊ | 206/235 [00:04<00:00, 49.88it/s] 91%|█████████ | 213/235 [00:04<00:00, 50.15it/s] 94%|█████████▎| 220/235 [00:04<00:00, 50.23it/s] 97%|█████████▋| 227/235 [00:04<00:00, 50.36it/s]100%|█████████▉| 234/235 [00:04<00:00, 50.40it/s]100%|██████████| 235/235 [00:04<00:00, 49.38it/s]
+  0%|          | 0/237 [00:00<?, ?it/s]  0%|          | 1/237 [00:01<04:57,  1.26s/it]  4%|▍         | 9/237 [00:01<00:34,  6.59it/s]  7%|▋         | 17/237 [00:01<00:19, 11.48it/s] 10%|█         | 24/237 [00:01<00:14, 15.10it/s] 14%|█▎        | 32/237 [00:01<00:10, 18.89it/s] 17%|█▋        | 40/237 [00:01<00:08, 22.28it/s] 21%|██        | 49/237 [00:01<00:07, 25.71it/s] 24%|██▍       | 58/237 [00:02<00:06, 28.84it/s] 28%|██▊       | 67/237 [00:02<00:05, 31.65it/s] 32%|███▏      | 76/237 [00:02<00:04, 34.22it/s] 36%|███▋      | 86/237 [00:02<00:04, 36.94it/s] 41%|████      | 96/237 [00:02<00:03, 39.41it/s] 45%|████▍     | 106/237 [00:02<00:03, 41.67it/s] 49%|████▊     | 115/237 [00:02<00:02, 43.47it/s] 52%|█████▏    | 124/237 [00:02<00:02, 44.92it/s] 56%|█████▌    | 133/237 [00:02<00:02, 46.01it/s] 60%|█████▉    | 142/237 [00:03<00:02, 46.94it/s] 63%|██████▎   | 150/237 [00:03<00:01, 47.69it/s] 67%|██████▋   | 158/237 [00:03<00:01, 48.33it/s] 70%|███████   | 166/237 [00:03<00:01, 48.94it/s] 73%|███████▎  | 174/237 [00:03<00:01, 49.67it/s] 77%|███████▋  | 182/237 [00:03<00:01, 50.48it/s] 80%|████████  | 190/237 [00:03<00:00, 51.28it/s] 84%|████████▍ | 199/237 [00:03<00:00, 52.14it/s] 88%|████████▊ | 208/237 [00:03<00:00, 53.04it/s] 92%|█████████▏| 217/237 [00:04<00:00, 53.89it/s] 95%|█████████▌| 226/237 [00:04<00:00, 54.69it/s] 99%|█████████▉| 235/237 [00:04<00:00, 55.51it/s]100%|██████████| 237/237 [00:04<00:00, 55.69it/s]Trying parameters: {'ig_improvement': 0, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:  2.9min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:  3.0min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:  3.6min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:  3.7min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:  4.6min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:  4.7min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:  5.8min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:  5.8min remaining:    0.0s
+[85.9  83.77]
+[80.54 70.5 ]
+[82.33 71.34]
+             precision    recall  f1-score   support
+
+      Roads      0.784     0.860     0.820    726236
+  Buildings      0.773     0.805     0.789    698275
+      Trees      0.926     0.743     0.824    603174
+      Grass      0.842     0.901     0.871    616207
+  Bare Soil      0.691     0.733     0.711     67038
+      Water      0.977     0.859     0.914    234163
+   Railways      0.001     0.001     0.001     18526
+
+avg / total      0.831     0.823     0.824   2963619
+
+82.33
+AUROC: 0.25, PR AUC: 0.00
+AUROC: 0.27, PR AUC: 0.00
+AUROC: 0.22, PR AUC: 0.00
+AUROC: 0.27, PR AUC: 0.00
+[t-SNE] Computing 151 nearest neighbors...
+[t-SNE] Indexed 1600 samples in 0.003s...
+[t-SNE] Computed neighbors for 1600 samples in 0.182s...
+[t-SNE] Computed conditional probabilities for sample 1000 / 1600
+[t-SNE] Computed conditional probabilities for sample 1600 / 1600
+[t-SNE] Mean sigma: 1.668199
+[t-SNE] KL divergence after 250 iterations with early exaggeration: 56.929188
+[t-SNE] Error after 500 iterations: 0.519243
+Variance explained by first 5 components: 0.96
+[t-SNE] Computing 151 nearest neighbors...
+[t-SNE] Indexed 1600 samples in 0.001s...
+[t-SNE] Computed neighbors for 1600 samples in 0.426s...
+[t-SNE] Computed conditional probabilities for sample 1000 / 1600
+[t-SNE] Computed conditional probabilities for sample 1600 / 1600
+[t-SNE] Mean sigma: 1.453696
+[t-SNE] KL divergence after 250 iterations with early exaggeration: 57.108490
+[t-SNE] Error after 500 iterations: 0.503695
+Variance explained by first 3 components: 0.89
+Variance explained by first 2 components: 0.79
+
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   7 out of   7 | elapsed:  6.4min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   7 out of   7 | elapsed:  6.5min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   8 out of   8 | elapsed:  7.6min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   8 out of   8 | elapsed:  7.7min remaining:    0.0s
+Trying parameters: {'max_iter': 10000, 'n_components': 3}
+Trying parameters: {'max_iter': 10000, 'n_components': 4}
+Trying parameters: {'max_iter': 10000, 'n_components': 5}
+Trying parameters: {'max_iter': 10000, 'n_components': 6}
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   9 out of   9 | elapsed:  8.8min remaining:    0.0s
+{'max_iter': 10000, 'n_components': 3}
+AUROC: 0.17, PR AUC: 0.00
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   35.7s
+[Parallel(n_jobs=40)]: Done   2 out of   7 | elapsed:   41.0s remaining:  1.7min
+[Parallel(n_jobs=40)]: Done   3 out of   7 | elapsed:   56.4s remaining:  1.3min
+[Parallel(n_jobs=40)]: Done   4 out of   7 | elapsed:  1.0min remaining:   46.7s
+[Parallel(n_jobs=40)]: Done   5 out of   7 | elapsed:  1.2min remaining:   29.6s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  2.0min remaining:    0.0s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:  2.0min finished
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   9 out of   9 | elapsed:  9.0min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done  10 out of  10 | elapsed:  9.5min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done  10 out of  10 | elapsed:  9.8min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+{'ig_improvement': 0.7, 'max_depth': 1}
+{'ig_improvement': 0.7, 'max_depth': 1}
+Number of points on which to train each tree: 1393
+Minimum number of points in each leaf: 1
+[Parallel(n_jobs=1)]: Done  12 out of  12 | elapsed: 11.5min finished
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.0001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Number of created root nodes: 10
+Mean number of clusters created per tree: 4
+Total steps: 485
+Number of jobs: 40 
+[Parallel(n_jobs=40)]: Done   8 out of  10 | elapsed:    6.6s remaining:    1.7s
+[Parallel(n_jobs=40)]: Done  10 out of  10 | elapsed:    7.0s finished
+{'ig_improvement': 0, 'max_depth': 1}
+{'ig_improvement': 0, 'max_depth': 1}
+Number of points on which to train each tree: 1457
+Minimum number of points in each leaf: 1
+[Parallel(n_jobs=1)]: Done  12 out of  12 | elapsed: 11.9min finished
+Number of created root nodes: 10
+Mean number of clusters created per tree: 4
+Total steps: 485
+Number of jobs: 40 
+[Parallel(n_jobs=40)]: Done   8 out of  10 | elapsed:    9.0s remaining:    2.3s
+[Parallel(n_jobs=40)]: Done  10 out of  10 | elapsed:    9.4s finished
+{'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+AUROC: 0.51, PR AUC: 0.00
+Number of points on which to train each tree: 140
+Minimum number of points in each leaf: 14
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   25.2s
+[Parallel(n_jobs=40)]: Done   3 out of  20 | elapsed:   34.3s remaining:  3.2min
+[Parallel(n_jobs=40)]: Done   5 out of  20 | elapsed:   46.3s remaining:  2.3min
+[Parallel(n_jobs=40)]: Done   7 out of  20 | elapsed:   57.8s remaining:  1.8min
+[Parallel(n_jobs=40)]: Done   9 out of  20 | elapsed:  1.2min remaining:  1.5min
+[Parallel(n_jobs=40)]: Done  11 out of  20 | elapsed:  1.3min remaining:  1.1min
+[Parallel(n_jobs=40)]: Done  13 out of  20 | elapsed:  1.6min remaining:   51.0s
+[Parallel(n_jobs=40)]: Done  15 out of  20 | elapsed:  1.6min remaining:   32.9s
+[Parallel(n_jobs=40)]: Done  17 out of  20 | elapsed:  1.9min remaining:   20.3s
+[Parallel(n_jobs=40)]: Done  20 out of  20 | elapsed:  2.2min finished
+Number of created root nodes: 100
+Mean number of clusters created per tree: 4
+Testing 12 combinations 3 times
+[{'ig_improvement': -inf, 'max_depth': 1}
+ {'ig_improvement': -inf, 'max_depth': 2}
+ {'ig_improvement': -inf, 'max_depth': 3}
+ {'ig_improvement': 0, 'max_depth': 1}
+ {'ig_improvement': 0, 'max_depth': 2}
+ {'ig_improvement': 0, 'max_depth': 3}
+ {'ig_improvement': 0.4, 'max_depth': 1}
+ {'ig_improvement': 0.4, 'max_depth': 2}
+ {'ig_improvement': 0.4, 'max_depth': 3}
+ {'ig_improvement': 0.7, 'max_depth': 1}
+ {'ig_improvement': 0.7, 'max_depth': 2}
+ {'ig_improvement': 0.7, 'max_depth': 3}]
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=40)]: Done   5 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done  18 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done  32 out of 100 | elapsed:    0.4s remaining:    0.8s
+[Parallel(n_jobs=40)]: Done  43 out of 100 | elapsed:    0.6s remaining:    0.8s
+[Parallel(n_jobs=40)]: Done  54 out of 100 | elapsed:    0.6s remaining:    0.5s
+[Parallel(n_jobs=40)]: Done  65 out of 100 | elapsed:    0.7s remaining:    0.4s
+[Parallel(n_jobs=40)]: Done  76 out of 100 | elapsed:    0.7s remaining:    0.2s
+[Parallel(n_jobs=40)]: Done  87 out of 100 | elapsed:    0.8s remaining:    0.1s
+[Parallel(n_jobs=40)]: Done  98 out of 100 | elapsed:    0.8s remaining:    0.0s
+[Parallel(n_jobs=40)]: Done 100 out of 100 | elapsed:    0.8s finished
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:   33.7s remaining:    0.0s
+[Parallel(n_jobs=40)]: Done 120 tasks      | elapsed:   17.4s
+[Parallel(n_jobs=40)]: Done 370 tasks      | elapsed:   41.4s
+[Parallel(n_jobs=40)]: Done 484 out of 484 | elapsed:   48.8s finished
+AUROC: 0.65, PR AUC: 0.07
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &   MSR &  Margin &  Entropy &  Dropout &   GMM &  OC SVM &    DF \\
+\midrule
+Roads          &  0.59 &    0.58 &     0.61 &     0.58 &  0.46 &    0.49 &  0.69 \\
+Buildings      &  0.65 &    0.65 &     0.64 &     0.64 &  0.66 &    0.62 &  0.64 \\
+Trees          &  0.74 &    0.73 &     0.74 &     0.74 &  0.54 &    0.81 &  0.63 \\
+Grass          &  0.38 &    0.38 &     0.39 &     0.39 &  0.67 &    0.76 &  0.51 \\
+Bare Soil      &  0.67 &    0.69 &     0.61 &     0.57 &  0.54 &    0.32 &  0.51 \\
+Water          &  0.60 &    0.61 &     0.60 &     0.59 &  0.69 &    0.60 &  0.65 \\
+Railways       &  0.56 &    0.59 &     0.53 &     0.54 &  0.59 &    0.43 &  0.42 \\
+Swimming Pools &  0.25 &    0.27 &     0.22 &     0.27 &  0.36 &    0.98 &  0.99 \\
+\bottomrule
+\end{tabular}
+
+[Parallel(n_jobs=40)]: Done 120 tasks      | elapsed:   11.6s
+[Parallel(n_jobs=40)]: Done 370 tasks      | elapsed:   44.1s
+[Parallel(n_jobs=40)]: Done 484 out of 484 | elapsed:   57.0s finished
+AUROC: 0.58, PR AUC: 0.14
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &   MSR &  Margin &  Entropy &  Dropout &   GMM &  OC SVM &    DF \\
+\midrule
+Roads          &  0.59 &    0.58 &     0.61 &     0.58 &  0.46 &    0.49 &  0.69 \\
+Buildings      &  0.65 &    0.65 &     0.64 &     0.64 &  0.66 &    0.62 &  0.64 \\
+Trees          &  0.74 &    0.73 &     0.74 &     0.74 &  0.66 &    0.36 &  0.58 \\
+Grass          &  0.38 &    0.38 &     0.39 &     0.39 &  0.67 &    0.76 &  0.51 \\
+Bare Soil      &  0.67 &    0.69 &     0.61 &     0.57 &  0.54 &    0.32 &  0.51 \\
+Water          &  0.60 &    0.61 &     0.60 &     0.59 &  0.69 &    0.60 &  0.65 \\
+Railways       &  0.56 &    0.59 &     0.53 &     0.54 &  0.59 &    0.43 &  0.42 \\
+Swimming Pools &  0.25 &    0.27 &     0.22 &     0.27 &  0.36 &    0.98 &  0.99 \\
+\bottomrule
+\end{tabular}
+
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:  1.4min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:  2.4min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:  2.9min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:  3.6min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:  4.7min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   7 out of   7 | elapsed:  5.2min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   8 out of   8 | elapsed:  6.0min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   9 out of   9 | elapsed:  7.0min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done  10 out of  10 | elapsed:  7.6min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+{'ig_improvement': 0.7, 'max_depth': 3}
+{'ig_improvement': 0.7, 'max_depth': 3}
+Number of points on which to train each tree: 1437
+Minimum number of points in each leaf: 1
+[Parallel(n_jobs=1)]: Done  12 out of  12 | elapsed:  9.4min finished
+Number of created root nodes: 10
+Mean number of clusters created per tree: 15
+Total steps: 485
+Number of jobs: 40 
+[Parallel(n_jobs=40)]: Done   8 out of  10 | elapsed:   14.2s remaining:    3.5s
+[Parallel(n_jobs=40)]: Done  10 out of  10 | elapsed:   14.5s finished
+[Parallel(n_jobs=40)]: Done 120 tasks      | elapsed:   10.4s
+[Parallel(n_jobs=40)]: Done 370 tasks      | elapsed:   29.0s
+[Parallel(n_jobs=40)]: Done 484 out of 484 | elapsed:   36.0s finished
+AUROC: 0.40, PR AUC: 0.00
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &   MSR &  Margin &  Entropy &  Dropout &   GMM &  OC SVM &    DF \\
+\midrule
+Roads          &  0.59 &    0.58 &     0.61 &     0.58 &  0.46 &    0.49 &  0.69 \\
+Buildings      &  0.65 &    0.65 &     0.64 &     0.64 &  0.66 &    0.62 &  0.64 \\
+Trees          &  0.74 &    0.73 &     0.74 &     0.74 &  0.66 &    0.36 &  0.58 \\
+Grass          &  0.38 &    0.38 &     0.39 &     0.39 &  0.67 &    0.76 &  0.51 \\
+Bare Soil      &  0.67 &    0.69 &     0.61 &     0.57 &  0.54 &    0.32 &  0.51 \\
+Water          &  0.60 &    0.61 &     0.60 &     0.59 &  0.69 &    0.60 &  0.65 \\
+Railways       &  0.56 &    0.59 &     0.53 &     0.54 &  0.59 &    0.51 &  0.40 \\
+Swimming Pools &  0.25 &    0.27 &     0.22 &     0.27 &  0.36 &    0.98 &  0.99 \\
+\bottomrule
+\end{tabular}
+
+{'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+AUROC: 0.98, PR AUC: 0.55
+Number of points on which to train each tree: 140
+Minimum number of points in each leaf: 14
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:   57.7s
+[Parallel(n_jobs=40)]: Done   3 out of  20 | elapsed:  1.0min remaining:  5.8min
+[Parallel(n_jobs=40)]: Done   5 out of  20 | elapsed:  1.3min remaining:  3.9min
+[Parallel(n_jobs=40)]: Done   7 out of  20 | elapsed:  1.4min remaining:  2.5min
+[Parallel(n_jobs=40)]: Done   9 out of  20 | elapsed:  1.7min remaining:  2.0min
+[Parallel(n_jobs=40)]: Done  11 out of  20 | elapsed:  1.7min remaining:  1.4min
+[Parallel(n_jobs=40)]: Done  13 out of  20 | elapsed:  2.0min remaining:  1.1min
+[Parallel(n_jobs=40)]: Done  15 out of  20 | elapsed:  2.1min remaining:   41.9s
+[Parallel(n_jobs=40)]: Done  17 out of  20 | elapsed:  2.2min remaining:   23.5s
+[Parallel(n_jobs=40)]: Done  20 out of  20 | elapsed:  2.5min finished
+Number of created root nodes: 99
+Mean number of clusters created per tree: 3
+Testing 12 combinations 3 times
+[{'ig_improvement': -inf, 'max_depth': 1}
+ {'ig_improvement': -inf, 'max_depth': 2}
+ {'ig_improvement': -inf, 'max_depth': 3}
+ {'ig_improvement': 0, 'max_depth': 1}
+ {'ig_improvement': 0, 'max_depth': 2}
+ {'ig_improvement': 0, 'max_depth': 3}
+ {'ig_improvement': 0.4, 'max_depth': 1}
+ {'ig_improvement': 0.4, 'max_depth': 2}
+ {'ig_improvement': 0.4, 'max_depth': 3}
+ {'ig_improvement': 0.7, 'max_depth': 1}
+ {'ig_improvement': 0.7, 'max_depth': 2}
+ {'ig_improvement': 0.7, 'max_depth': 3}]
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=40)]: Done   5 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done  18 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done  32 out of 100 | elapsed:    0.4s remaining:    0.9s
+[Parallel(n_jobs=40)]: Done  43 out of 100 | elapsed:    0.5s remaining:    0.7s
+[Parallel(n_jobs=40)]: Done  54 out of 100 | elapsed:    0.6s remaining:    0.5s
+[Parallel(n_jobs=40)]: Done  65 out of 100 | elapsed:    0.7s remaining:    0.4s
+[Parallel(n_jobs=40)]: Done  76 out of 100 | elapsed:    0.7s remaining:    0.2s
+[Parallel(n_jobs=40)]: Done  87 out of 100 | elapsed:    0.8s remaining:    0.1s
+[Parallel(n_jobs=40)]: Done  98 out of 100 | elapsed:    0.9s remaining:    0.0s
+[Parallel(n_jobs=40)]: Done 100 out of 100 | elapsed:    0.9s finished
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:   27.7s remaining:    0.0s
+Trying parameters: {'ig_improvement': -inf, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:  1.1min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:  1.8min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:  2.2min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:  2.8min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:  3.5min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   7 out of   7 | elapsed:  3.9min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   8 out of   8 | elapsed:  4.5min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 1, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   9 out of   9 | elapsed:  5.2min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 2, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done  10 out of  10 | elapsed:  5.6min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.7, 'max_depth': 3, 'min_subset': 0.001, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 10, 'subsample_pct': 0.0002, 'verbose': 0}
+{'ig_improvement': 0.7, 'max_depth': 3}
+{'ig_improvement': 0.7, 'max_depth': 3}
+Number of points on which to train each tree: 1463
+Minimum number of points in each leaf: 1
+[Parallel(n_jobs=1)]: Done  12 out of  12 | elapsed:  6.9min finished
+Number of created root nodes: 10
+Mean number of clusters created per tree: 15
+Total steps: 485
+Number of jobs: 40 
+[Parallel(n_jobs=40)]: Done   8 out of  10 | elapsed:    9.7s remaining:    2.4s
+[Parallel(n_jobs=40)]: Done  10 out of  10 | elapsed:    9.8s finished
+[Parallel(n_jobs=40)]: Done 120 tasks      | elapsed:   10.4s
+[Parallel(n_jobs=40)]: Done 370 tasks      | elapsed:   27.6s
+[Parallel(n_jobs=40)]: Done 484 out of 484 | elapsed:   34.6s finished
+AUROC: 0.99, PR AUC: 0.70
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &   MSR &  Margin &  Entropy &  Dropout &   GMM &  OC SVM &    DF \\
+\midrule
+Roads          &  0.59 &    0.58 &     0.61 &     0.58 &  0.46 &    0.49 &  0.69 \\
+Buildings      &  0.65 &    0.65 &     0.64 &     0.64 &  0.66 &    0.62 &  0.64 \\
+Trees          &  0.74 &    0.73 &     0.74 &     0.74 &  0.66 &    0.36 &  0.58 \\
+Grass          &  0.38 &    0.38 &     0.39 &     0.39 &  0.67 &    0.76 &  0.51 \\
+Bare Soil      &  0.67 &    0.69 &     0.61 &     0.57 &  0.54 &    0.32 &  0.51 \\
+Water          &  0.60 &    0.61 &     0.60 &     0.59 &  0.69 &    0.60 &  0.65 \\
+Railways       &  0.56 &    0.59 &     0.53 &     0.54 &  0.59 &    0.51 &  0.40 \\
+Swimming Pools &  0.25 &    0.27 &     0.22 &     0.27 &  0.17 &    0.98 &  0.99 \\
+\bottomrule
+\end{tabular}
+
