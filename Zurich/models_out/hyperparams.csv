@@ -1,2 +1,5 @@
 ,gmm_n_components,oc-svm_k,oc-svm_deg,oc_svm_nu,df_depth,df_min_ig
-Grass,3,poly,1,0.0001,3,0.7
+Buildings,5,poly,1,0.001,3,-inf
+Grass,3,poly,1,0.001,3,0.0
+Roads,3,poly,2,0.001,1,-inf
+Bare Soil,9,poly,1,0.5,1,0.0

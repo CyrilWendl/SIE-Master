@@ -58,7 +58,6 @@ class DensityForest:
         :param dataset: dataset on which to create density forest
         """
         # TODO handle NaNs
-        # TODO remove min_subset
         # TODO install dependencies
         if self.verbose:
             print("Number of points on which to train each tree: %i" % int(len(dataset) * self.subsample_pct))
