@@ -94,35 +94,31 @@ def predict_softmax_w_dropout(model, dataloader_pred, n_iter):
     return np.asarray(preds)
 
 
-def get_activations(model, dataloader_pred, patch_size, pca=None, max_components=None):
+def get_activations(model, dataloader_pred):
     """
     Get activations for a model
     :param model: model for which to get activations
-    :param patch_size: size of central patches to keep
     :param dataloader_pred: dataloader
-    :param pca: optional pca to apply to each prediction
-    :param max_components: components to keep for PCA
     """
     model.get_activations = True
+    patch_size=dataloader_pred.dataset.gt_patches.shape[-1]
+    pad = int(patch_size / 4)
     with torch.no_grad():
         model.eval()
         act = []
         for i_batch, (im, gt) in tqdm(enumerate(dataloader_pred)):
             im = im.cuda()
             output = model(im)
-            pad = int(patch_size / 4)
-            patch_act = output.cpu().numpy()[..., pad:(patch_size - pad), pad:(patch_size - pad)]
+            patch_act = output.cpu().numpy()[..., pad - 1:(patch_size - pad - 1), pad - 1:(patch_size - pad - 1)]
 
             # put bands last
             patch_act = np.transpose(patch_act, (0, 2, 3, 1))
-            if pca is not None:
-                patch_act = pca.transform(np.concatenate(np.concatenate(patch_act)))
-                if max_components is not None:
-                    patch_act = patch_act[..., :max_components]
             act.append(patch_act)
             gc.collect()
 
     model.get_activations = False
+
+    # concatenate batches
     act = np.concatenate(act)
 
     # clear CUDA storage
@@ -130,13 +126,11 @@ def get_activations(model, dataloader_pred, patch_size, pca=None, max_components
         torch.cuda.empty_cache()
 
     # upsample patches from 32*32 to 64*64
-    if pca is None:
-        act = remove_overlap(dataloader_pred.dataset.imgs, act, np.arange(len(dataloader_pred.dataset.imgs)),
-                             patch_size=int(patch_size / 2), stride=int(patch_size / 2), patch_size_out=patch_size)
+    act = remove_overlap(dataloader_pred.dataset.imgs, act, np.arange(len(dataloader_pred.dataset.imgs)),
+                         patch_size=int(patch_size / 2), stride=int(patch_size / 2), patch_size_out=patch_size)
 
-        # concatenate
-        act = np.concatenate(act)
-
+    # concatenate patches of images
+    act = np.concatenate(act)
     return act
 
 

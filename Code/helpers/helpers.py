@@ -1,4 +1,4 @@
-"""Set of preprocessing and helper functions"""
+"""Set of preprocessing, patching and helper functions"""
 import numpy as np
 from skimage.io import imread
 from skimage import exposure
@@ -222,7 +222,7 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     """
     Merge patches to image
     :param imgs: set of original images in (n_images, w, h, c)
-    :param im_patches: patches to convert to image, can be overlapping
+    :param im_patches: patches to convert to image, can be overlapping (n_patches, w, h, [c])
     :param img_idx: index of original image for finding output image dimensions
     :param patch_size: size of each patch
     :param stride: stride (central overlap) between each pair of adjacent patches
@@ -235,11 +235,15 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
     max_y = np.mod(imgs[img_idx].shape[1], patch_size_out)
     image_size = np.shape(imgs[img_idx][:-max_x, :-max_y])
 
-    n_channels = im_patches.shape[-1]
+
     n_patches_row = int(image_size[0] / stride)
     n_patches_col = int(image_size[1] / stride)
 
-    image_out = np.zeros((image_size[0], image_size[1], n_channels))
+    if len(im_patches) > 3:
+        n_channels = im_patches.shape[-1]
+        image_out = np.zeros((image_size[0], image_size[1], n_channels))
+    else:
+        image_out = np.zeros((image_size[0], image_size[1]))
     offset = get_offset(imgs, patch_size_out, stride, img_start, img_idx)
     for i in range(n_patches_row):
         for j in range(n_patches_col):
@@ -250,7 +254,7 @@ def convert_patches_to_image(imgs, im_patches, img_idx, patch_size=64, stride=32
                 patch = patch[int(stride / 2):(int(stride / 2) + stride), int(stride / 2):(int(stride / 2) + stride)]
             image_out[i * stride:i * stride + stride, j * stride:j * stride + stride] = patch
 
-    return image_out
+    return np.squeeze(image_out)
 
 
 def remove_overlap(imgs, patches, idx_imgs, patch_size=64, stride=32, patch_size_out=None):
