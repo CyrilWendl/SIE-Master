@@ -276,3 +276,4 @@ def export_figure_matplotlib(arr, f_name=None, dpi=200, resize_fact=1, plt_show=
         plt.show()
     else:
         plt.close()
+    return fig

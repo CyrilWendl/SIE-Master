@@ -72,7 +72,7 @@ class ZurichLoader(Dataset):
         self.random_crop = random_crop
         self.class_to_remove = class_to_remove
         self.im_patches = get_padded_patches(self.imgs, patch_size=self.patch_size, stride=self.stride)
-        self.gt_patches = get_gt_patches(self.gt, patch_size=self.patch_size, stride=self.stride)
+        self.gt_patches = get_padded_patches(self.gt, patch_size=self.patch_size, stride=self.stride)
         self.weights = class_weight.compute_class_weight('balanced',
                                                          np.unique(self.gt_patches.flatten()),
                                                          self.gt_patches.flatten())

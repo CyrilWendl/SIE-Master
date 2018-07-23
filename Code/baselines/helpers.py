@@ -28,7 +28,6 @@ def predict_with_dropouts_batch(model, x, batch_size=300, n_iter=10):
     :param batch_size: number of samples of x for which to make predictions at a time
     :param n_iter: number of iterations for dropout predictions
     """
-    # TODO get mean per patch to avoid high memory usage
     n_steps = int(np.ceil(len(x) / batch_size))
     preds = []
 

@@ -6,6 +6,8 @@ from tqdm import tqdm
 import numpy as np
 import matplotlib.pyplot as plt
 from helpers.helpers import remove_overlap
+from helpers.data_loader import ZurichLoader
+from torch.utils.data import DataLoader
 
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -45,6 +47,41 @@ def test(model, f_loss, dataloader, name, verbosity=False):
             print(name + ' set: Average loss: {:.4f}, Accuracy: {:.2f}%'
                   .format(loss, acc * 100))
         return acc, loss
+
+# new prediction function
+def predict_softmax_strides(model, dataset, strides, root_dir):
+    """
+    create predictions on images of a dataloader using a certain number of different strides, return mean
+    :param model: model
+    :param dataloader_pred: dataloader containing dataset with images
+    :param strides: list of strides for which to make predictions
+    :param root_dir: root dir of images
+    :return: mean of softmax predictions using different strides
+    """
+    pred_strides = []
+    patch_size = dataset.im_patches.shape[1]
+    for stride in strides:
+        print("creating dataloader with stride %i" % stride)
+        dataset_stride = ZurichLoader(root_dir, 'test', patch_size, stride, inherit_loader=dataset)
+        dataloader_stride = DataLoader(dataset_stride, batch_size=100, shuffle=False, num_workers=40)
+        print("Making predictions")
+        with torch.no_grad():
+            model.eval()
+            pred = []  # softmax activations
+            for i_batch, (im, gt) in tqdm(enumerate(dataloader_stride)):
+                im = im.cuda()
+                output = model(im)
+                pred.append(output.cpu())
+
+        while gc.collect():
+            torch.cuda.empty_cache()
+
+        pred = np.concatenate([p.numpy() for p in pred])
+        pred = np.transpose(pred, (0, 2, 3, 1))
+        pred = remove_overlap(dataset_stride.imgs, pred, patch_size, stride)
+        pred_strides.append(pred)
+    pred_strides = np.mean(pred_strides, 0)
+    return pred_strides
 
 
 def predict_softmax(model, dataloader_pred):
