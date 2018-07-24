@@ -137,13 +137,13 @@ def plot_pts_3d(x_pts, y_labels, classes_to_keep, colors,
     for i, class_keep in enumerate(classes_to_keep):
         data_plt = draw_subsamples(x_pts[y_labels == class_keep], subsample_pct=subsample_pct, replace=False)
         ax.scatter(data_plt[:, 0], data_plt[:, 1], zs=data_plt[:, 2],
-                   c=np.asarray(colors)[class_keep], s=15, depthshade=True, marker='o', alpha=.7)
+                   c=np.asarray(colors)[class_keep], s=15, depthshade=True, marker='o', alpha=.3)
 
     # points corresponding to unseen class
     if class_to_remove is not None:
         data_plt = draw_subsamples(x_pts[y_labels == class_to_remove], subsample_pct=subsample_pct, replace=False)
         ax.scatter(data_plt[:, 0], data_plt[:, 1], zs=data_plt[:, 2],
-                   c=np.asarray(colors)[class_to_remove], s=25, marker='x', depthshade=True, alpha=.7)
+                   c=np.asarray(colors)[class_to_remove], s=25, marker='x', depthshade=True, alpha=.9)
 
     # add legend
     if names is not None:
@@ -175,7 +175,7 @@ def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, colors,
     for i, class_keep in enumerate(classes_to_keep):
         data_plt = draw_subsamples(x_pts[y_labels == class_keep], subsample_pct, replace=False)
         if class_to_remove is not None:
-            alpha = .2
+            alpha = .15
         else:
             alpha = .7
         ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_keep], s=30, marker='o', alpha=alpha)
@@ -183,8 +183,8 @@ def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, colors,
     # points corresponding to unseen class
     if class_to_remove is not None:
         data_plt = draw_subsamples(x_pts[y_labels == class_to_remove], subsample_pct, replace=False)
-        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], s=50,
-                   marker='x')
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], edgecolors='black',
+                   linewidths=.5, s=70)
 
     # add legend
     if names is not None:
@@ -228,6 +228,7 @@ def plot_ellipses(ax, means=None, covs=None):
     """
     Overlay covariance ellipses on a 2D plot
     """
+
     #  covariance
     def eigsorted(cov):
         vals_, vecs_ = np.linalg.eigh(cov)

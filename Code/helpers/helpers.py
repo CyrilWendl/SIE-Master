@@ -293,7 +293,7 @@ def convert_patches_to_image(imgs, patches, patch_size=64, stride=32):
             else:
                 image_out = image_out[:, int(pad_y / 2):-(int(pad_y / 2))]
 
-        imgs_out.append(image_out)
+        imgs_out.append(np.squeeze(image_out))
     return np.asarray(imgs_out)
 
 

@@ -43,7 +43,7 @@ def predict_with_dropouts_batch(model, x, batch_size=300, n_iter=10):
     return preds
 
 
-def predict_with_dropout_imgs(model, x, imgs, ids, batch_size=300, n_iter=10):
+def predict_with_dropout_imgs(model, dataset, batch_size=300, n_iter=10):
     """
     make all predictions per batch for image data
     :param model: model to use for predictions
@@ -54,6 +54,8 @@ def predict_with_dropout_imgs(model, x, imgs, ids, batch_size=300, n_iter=10):
     :param ids: ids of images for which to make predictions
     :return:
     """
+    x = dataset.im_patches
+    imgs = dataset.imgs
     n_steps = int(np.ceil(len(x) / batch_size))
     preds_it = []
     f = k.function([model.layers[0].input, k.learning_phase()], [model.layers[-1].output])
@@ -67,8 +69,7 @@ def predict_with_dropout_imgs(model, x, imgs, ids, batch_size=300, n_iter=10):
             preds.append(pred)
 
         preds = np.concatenate(preds)
-        preds = remove_overlap(imgs, preds, ids)
-        preds = np.concatenate(preds)
+        preds = remove_overlap(dataset.imgs, preds, dataset.patch_size, dataset.stride)
         preds_it.append(preds)
 
     return preds_it
