@@ -15,9 +15,8 @@ def scorer_roc_probas_gmm(clf_gmm, x, y=None):
     :param x: validation data
     :param y: optional gt data
     """
-    probas = clf_gmm.predict_proba(x)
+    probas = -clf_gmm.score_samples(x)
 
-    probas = -get_acc_net_entropy(probas)
     auroc = metrics.roc_auc_score(y, probas)
     return auroc
 

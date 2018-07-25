@@ -6,6 +6,9 @@ from matplotlib.patches import Ellipse
 import matplotlib.pylab as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
+from helpers.helpers import convert_patches_to_image, gt_label_to_color
+from skimage import exposure
+from matplotlib import patches
 
 
 def plot_data(data, ax, title=None, n_clusters=None, save=False, lines_x=None, lines_y=None,
@@ -183,8 +186,7 @@ def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, colors,
     # points corresponding to unseen class
     if class_to_remove is not None:
         data_plt = draw_subsamples(x_pts[y_labels == class_to_remove], subsample_pct, replace=False)
-        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], edgecolors='black',
-                   linewidths=.5, s=70)
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], marker='x', s=90)
 
     # add legend
     if names is not None:
@@ -263,13 +265,14 @@ def export_figure_matplotlib(arr, f_name=None, dpi=200, resize_fact=1, plt_show=
     ax = plt.Axes(fig, [0., 0., 1., 1.])
     ax.set_axis_off()
     fig.add_axes(ax)
-    ax.imshow(arr, cmap='RdYlGn')
+    ax.imshow(arr, cmap=cm.RdYlGn)
 
     # add rectangle overlay
     if rect is not None:
         ax.add_patch(rect)
 
     # save figure
+
     if f_name is not None:
         plt.savefig(f_name, dpi=(dpi * resize_fact))
 
@@ -278,3 +281,46 @@ def export_figure_matplotlib(arr, f_name=None, dpi=200, resize_fact=1, plt_show=
     else:
         plt.close()
     return fig
+
+
+def export_particularity(dataset, img_idx, x, y, width, height, colors, confs_patches=None, names=None, dir_out=None,
+                         idx=0, dpi=255):
+    """
+    export detail view of interesting image: image with blue rectangle, cropped region, cropped GT, cropped conf images
+    """
+    # Image
+    class_to_remove = dataset.class_to_remove
+    im = dataset.imgs[img_idx][..., :3]
+    max_x = np.mod(im.shape[0], 32)
+    max_y = np.mod(im.shape[1], 32)
+    im = im[:-max_x, :-max_y]
+    rect = patches.Rectangle((x, y), width, height, linewidth=2, edgecolor='b', facecolor='b', alpha=.5)
+    f_name = dir_out + 'im_' + str(img_idx) + '_obj_' + str(idx) + '_im.jpg'
+    _ = export_figure_matplotlib(im, dpi=dpi, rect=rect, f_name=f_name)
+    plt.close()
+
+    # Cropped Image
+    im_crop = im[y:(y + height), x:(x + width)]
+    f_name = dir_out + 'im_' + str(img_idx) + '_obj_' + str(idx) + '_im_crop.jpg'
+    _ = export_figure_matplotlib(im_crop, dpi=dpi, f_name=f_name)
+    plt.close()
+
+    # GT
+    rect = patches.Rectangle((x, y), width, height, linewidth=3, edgecolor='b', facecolor='None')
+    im_gt = gt_label_to_color(dataset.gt[img_idx], colors) * 255
+    max_x = np.mod(im_gt.shape[0], 32)
+    max_y = np.mod(im_gt.shape[1], 32)
+    im_gt = im_gt[:-max_x, :-max_y]
+    f_name = dir_out + 'im_' + str(img_idx) + '_obj_' + str(idx) + '_gt.jpg'
+    _ = export_figure_matplotlib(im_gt, dpi=dpi, rect=rect, f_name=f_name)
+    plt.close()
+
+    if confs_patches is not None:
+        for idx_conf, conf_patches in enumerate(confs_patches):
+            conf_im = convert_patches_to_image(dataset.imgs, conf_patches[..., np.newaxis], 64, 64)
+            conf_im = exposure.equalize_hist(conf_im[img_idx])
+            rect = patches.Rectangle((x, y), width, height, linewidth=2, edgecolor='b', facecolor='None')
+            f_name = dir_out + 'im_' + str(img_idx) + '_obj_' + str(idx) + '_' + names[idx_conf] + '_wo_cl_' + str(
+                class_to_remove) + '.jpg'
+            export_figure_matplotlib(conf_im, dpi=dpi, rect=rect, f_name=f_name)
+            plt.close()

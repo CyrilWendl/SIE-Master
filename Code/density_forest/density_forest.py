@@ -14,6 +14,7 @@ class DensityForest:
     """
     Density Forest class
     """
+
     def __init__(self, max_depth, min_subset, n_trees, n_max_dim=0, n_jobs=-1, verbose=1,
                  ig_improvement=.9, funct=create_density_tree, n_clusters=None, thresh_traverse=0, method='normal',
                  subsample_pct=.1, standardize=False, batch_size=-1):
@@ -118,7 +119,7 @@ class DensityForest:
                     else:
                         pairs_proba[d_idx, t_idx] = np.nan
 
-            return np.nanmean(pairs_proba, axis=-1)
+            return np.log(np.nanmean(pairs_proba, axis=-1))
 
     def predict_batch(self, dataset, batch_size):
         """
@@ -139,4 +140,6 @@ class DensityForest:
         if self.method == 'euclid':
             probas = 1 - probas
 
+        # remove -infty points from log
+        probas[probas == -np.infty] = np.min(probas[probas != -np.infty])
         return probas
