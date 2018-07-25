@@ -1,0 +1,155 @@
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+python: can't open file 'MNIST Novelty': [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 13, in <module>
+    os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[2]
+NameError: name 'sys' is not defined
+2018-07-25 18:51:14.074448: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:51:16.915452: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:51:16.915512: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:51:17.223960: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:51:17.224026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:51:17.224039: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:51:17.224315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:51:18.191997: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:51:18.192086: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:51:18.192101: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:51:18.192121: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:51:18.192287: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
+Qt: Failed to create XKB context!
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .
+Using TensorFlow backend.
+  0%|          | 0/100 [00:00<?, ?it/s]  2%|▏         | 2/100 [00:00<00:07, 13.08it/s]  4%|▍         | 4/100 [00:00<00:06, 13.99it/s]  6%|▌         | 6/100 [00:00<00:06, 14.32it/s]  8%|▊         | 8/100 [00:00<00:06, 14.48it/s] 10%|█         | 10/100 [00:00<00:06, 14.08it/s] 12%|█▏        | 12/100 [00:00<00:06, 13.92it/s] 14%|█▍        | 14/100 [00:00<00:06, 14.05it/s] 16%|█▌        | 16/100 [00:01<00:05, 14.17it/s] 18%|█▊        | 18/100 [00:01<00:05, 14.26it/s] 20%|██        | 20/100 [00:01<00:05, 14.32it/s] 22%|██▏       | 22/100 [00:01<00:05, 14.33it/s] 24%|██▍       | 24/100 [00:01<00:05, 14.32it/s] 26%|██▌       | 26/100 [00:01<00:05, 14.31it/s] 28%|██▊       | 28/100 [00:01<00:05, 14.30it/s] 30%|███       | 30/100 [00:02<00:04, 14.29it/s] 32%|███▏      | 32/100 [00:02<00:04, 14.28it/s] 34%|███▍      | 34/100 [00:02<00:04, 14.27it/s] 36%|███▌      | 36/100 [00:02<00:04, 14.32it/s] 38%|███▊      | 38/100 [00:02<00:04, 14.12it/s] 40%|████      | 40/100 [00:02<00:04, 14.20it/s] 42%|████▏     | 42/100 [00:04<00:06,  9.26it/s] 44%|████▍     | 44/100 [00:04<00:06,  9.30it/s] 46%|████▌     | 46/100 [00:05<00:05,  9.19it/s] 48%|████▊     | 48/100 [00:05<00:05,  9.31it/s] 50%|█████     | 50/100 [00:05<00:05,  9.33it/s] 52%|█████▏    | 52/100 [00:05<00:05,  9.37it/s] 54%|█████▍    | 54/100 [00:05<00:04,  9.51it/s] 56%|█████▌    | 56/100 [00:05<00:04,  9.53it/s] 58%|█████▊    | 58/100 [00:06<00:04,  9.57it/s] 60%|██████    | 60/100 [00:06<00:04,  9.63it/s] 62%|██████▏   | 62/100 [00:06<00:03,  9.72it/s] 64%|██████▍   | 64/100 [00:06<00:03,  9.82it/s] 66%|██████▌   | 66/100 [00:06<00:03,  9.89it/s] 68%|██████▊   | 68/100 [00:06<00:03,  9.96it/s] 70%|███████   | 70/100 [00:07<00:03,  9.99it/s] 72%|███████▏  | 72/100 [00:07<00:02, 10.05it/s] 74%|███████▍  | 74/100 [00:07<00:02, 10.11it/s] 76%|███████▌  | 76/100 [00:07<00:02, 10.19it/s] 78%|███████▊  | 78/100 [00:07<00:02, 10.22it/s] 80%|████████  | 80/100 [00:07<00:01, 10.21it/s] 82%|████████▏ | 82/100 [00:07<00:01, 10.28it/s] 84%|████████▍ | 84/100 [00:08<00:01, 10.34it/s] 86%|████████▌ | 86/100 [00:08<00:01, 10.40it/s] 88%|████████▊ | 88/100 [00:08<00:01, 10.46it/s] 90%|█████████ | 90/100 [00:08<00:00, 10.50it/s] 92%|█████████▏| 92/100 [00:08<00:00, 10.54it/s] 94%|█████████▍| 94/100 [00:08<00:00, 10.59it/s] 96%|█████████▌| 96/100 [00:09<00:00, 10.63it/s] 98%|█████████▊| 98/100 [00:09<00:00, 10.67it/s]100%|██████████| 100/100 [00:09<00:00, 10.71it/s]
+  0%|          | 0/49 [00:00<?, ?it/s] 59%|█████▉    | 29/49 [00:00<00:00, 286.64it/s]100%|██████████| 49/49 [00:00<00:00, 371.70it/s]
+  0%|          | 0/3000 [00:00<?, ?it/s]  1%|          | 34/3000 [00:00<00:08, 338.63it/s]  4%|▍         | 118/3000 [00:00<00:04, 587.24it/s]  7%|▋         | 206/3000 [00:00<00:04, 682.49it/s] 10%|▉         | 292/3000 [00:00<00:03, 724.91it/s] 12%|█▏        | 367/3000 [00:00<00:03, 728.63it/s] 15%|█▍        | 448/3000 [00:00<00:03, 741.70it/s] 18%|█▊        | 526/3000 [00:00<00:03, 746.42it/s] 20%|██        | 606/3000 [00:00<00:03, 752.40it/s] 23%|██▎       | 685/3000 [00:00<00:03, 755.78it/s] 26%|██▌       | 769/3000 [00:01<00:02, 762.73it/s] 28%|██▊       | 849/3000 [00:01<00:02, 765.96it/s] 31%|███       | 931/3000 [00:01<00:02, 769.89it/s] 34%|███▎      | 1011/3000 [00:01<00:02, 764.90it/s] 37%|███▋      | 1097/3000 [00:01<00:02, 770.97it/s] 39%|███▉      | 1177/3000 [00:01<00:02, 771.76it/s] 42%|████▏     | 1256/3000 [00:01<00:02, 772.44it/s] 44%|████▍     | 1335/3000 [00:01<00:02, 772.21it/s] 47%|████▋     | 1414/3000 [00:01<00:02, 769.97it/s] 50%|████▉     | 1494/3000 [00:01<00:01, 771.13it/s] 53%|█████▎    | 1579/3000 [00:02<00:01, 774.90it/s] 56%|█████▌    | 1667/3000 [00:02<00:01, 779.81it/s] 58%|█████▊    | 1751/3000 [00:02<00:01, 781.91it/s] 61%|██████    | 1837/3000 [00:02<00:01, 784.94it/s] 64%|██████▍   | 1921/3000 [00:02<00:01, 785.85it/s] 67%|██████▋   | 2004/3000 [00:02<00:01, 786.67it/s] 70%|██████▉   | 2088/3000 [00:02<00:01, 788.51it/s] 72%|███████▏  | 2171/3000 [00:02<00:01, 788.23it/s] 75%|███████▌  | 2253/3000 [00:02<00:00, 786.68it/s] 78%|███████▊  | 2333/3000 [00:02<00:00, 785.81it/s] 80%|████████  | 2412/3000 [00:03<00:00, 784.51it/s] 83%|████████▎ | 2492/3000 [00:03<00:00, 784.98it/s] 86%|████████▌ | 2571/3000 [00:03<00:00, 784.54it/s] 89%|████████▊ | 2659/3000 [00:03<00:00, 787.25it/s] 91%|█████████▏| 2744/3000 [00:03<00:00, 788.94it/s] 94%|█████████▍| 2828/3000 [00:03<00:00, 790.17it/s] 97%|█████████▋| 2911/3000 [00:03<00:00, 789.99it/s]100%|█████████▉| 2993/3000 [00:03<00:00, 789.74it/s]100%|██████████| 3000/3000 [00:03<00:00, 789.23it/s]
+  0%|          | 0/500 [00:00<?, ?it/s]  0%|          | 1/500 [00:00<04:43,  1.76it/s] 12%|█▏        | 61/500 [00:00<00:04, 91.24it/s] 28%|██▊       | 142/500 [00:00<00:01, 184.58it/s] 43%|████▎     | 214/500 [00:00<00:01, 245.83it/s] 54%|█████▎    | 268/500 [00:00<00:00, 275.91it/s] 68%|██████▊   | 340/500 [00:01<00:00, 317.02it/s] 83%|████████▎ | 413/500 [00:01<00:00, 352.22it/s]2018-07-25 18:51:41.582727: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+ 97%|█████████▋| 485/500 [00:01<00:00, 380.97it/s]100%|██████████| 500/500 [00:01<00:00, 386.72it/s]2018-07-25 18:51:42.062188: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:51:42.062268: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:51:42.467778: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:51:42.467884: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:51:42.467905: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:51:42.468286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:51:43.368249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:51:43.368335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:51:43.368348: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:51:43.368358: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:51:43.368525: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:51:53.191994: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:51:55.707293: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:51:55.707359: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:51:56.127762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:51:56.127866: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:51:56.127886: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:51:56.128275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:51:57.175650: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:51:57.175737: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:51:57.175752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:51:57.175761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:51:57.175949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:52:07.562236: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:52:10.579087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:52:10.579166: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:52:11.048971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:52:11.049048: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:52:11.049063: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:52:11.049375: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:52:11.967729: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:52:11.967841: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:52:11.967864: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:52:11.967895: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:52:11.968084: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:52:21.943724: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:52:24.282969: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:52:24.283039: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:52:24.631946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:52:24.632014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:52:24.632026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:52:24.632322: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:52:25.460148: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:52:25.460230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:52:25.460242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:52:25.460249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:52:25.460386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:52:34.939888: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:52:37.252904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:52:37.252982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:52:37.676625: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:52:37.677490: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:52:37.677515: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:52:37.678157: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:52:38.648216: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:52:38.648475: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:52:38.648517: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:52:38.648530: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:52:38.649171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)

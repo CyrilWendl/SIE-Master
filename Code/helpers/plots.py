@@ -178,15 +178,15 @@ def plot_pts_2d(x_pts, y_labels, ax, classes_to_keep, colors,
     for i, class_keep in enumerate(classes_to_keep):
         data_plt = draw_subsamples(x_pts[y_labels == class_keep], subsample_pct, replace=False)
         if class_to_remove is not None:
-            alpha = .15
+            alpha = .1
         else:
-            alpha = .7
+            alpha = .9
         ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_keep], s=30, marker='o', alpha=alpha)
 
     # points corresponding to unseen class
     if class_to_remove is not None:
         data_plt = draw_subsamples(x_pts[y_labels == class_to_remove], subsample_pct, replace=False)
-        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], marker='x', s=90)
+        ax.scatter(data_plt[:, 0], data_plt[:, 1], c=np.asarray(colors)[class_to_remove], marker='x', s=80, alpha=.9)
 
     # add legend
     if names is not None:
