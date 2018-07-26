@@ -27,8 +27,7 @@ from sklearn.manifold import TSNE
 from sklearn.mixture import GaussianMixture
 from sklearn import decomposition, svm
 from tensorflow.python.client import device_lib
-
-
+import pandas as pd
 
 #custom libraries
 #base_dir = '/Users/cyrilwendl/Documents/EPFL'
@@ -49,10 +48,17 @@ print(device_lib.list_local_devices())
 # Import the data, delete all data in the training set of class 7
 # 
 
+# In[1]:
+
+
+df_ps = pd.read_csv('mnist_models/hyperparams.csv', index_col=0)
+df_ps
+
 # In[3]:
 
 
 label_to_remove = int(sys.argv[1])
+paramsearch=True
 
 # the data, shuffled and split between train and test sets
 def load_data(label_to_remove):
@@ -337,7 +343,7 @@ auroc_dropout = metrics.roc_auc_score(y_true, probas)
 # # Density Forest
 # ## Get Activations, PCA, t-SNE
 
-# In[39]:
+# In[15]:
 
 
 # get activation weights of last layer
@@ -346,21 +352,21 @@ act_train_all = get_activations_batch(model, 6, x_train_all[..., np.newaxis], ve
 act_train = act_train_all[y_train_all != label_to_remove]
 act_test = get_activations_batch(model, 6, x_test_all, verbose=True)
 
-# In[40]:
+# In[16]:
 
 
 pts_per_class = 150
 n_classes = 10
 dataset_subset_indices = get_balanced_subset_indices(y_test_all, np.arange(n_classes), pts_per_class)
 
-# In[41]:
+# In[17]:
 
 
 tsne = TSNE(n_components=2, verbose=1, perplexity=30, n_iter=300)
 # t-SNE visualization before PCA
 tsne_all = tsne.fit_transform(act_test[np.concatenate(dataset_subset_indices)])
 
-# In[42]:
+# In[18]:
 
 
 # color scale and legend for t-sne plots
@@ -371,7 +377,7 @@ classes_to_keep = np.asarray([x for x in range(n_classes) if x != label_to_remov
 # plot
 tsne_y = y_test_all[np.concatenate(dataset_subset_indices)]
 
-# In[43]:
+# In[20]:
 
 
 # plot
@@ -382,13 +388,13 @@ ax.set_axis_off()
 
 plt.savefig("../Figures/MNIST/tSNE/MNIST_t-SNE_wo_cl_" + str(label_to_remove) + "_before.pdf", bbox_inches='tight', pad_inches=0)
 
-# In[44]:
+# In[21]:
 
 
 pca = decomposition.PCA(n_components=.95)
 pca.fit(act_train)
 
-# In[45]:
+# In[22]:
 
 
 # PCA
@@ -409,7 +415,7 @@ fig.axes[0].spines['right'].set_visible(False)
 fig.axes[0].spines['top'].set_visible(False)
 plt.savefig("../Figures/MNIST/PCA/MNIST_pca_components_wo_cl_" + str(label_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
 
-# In[46]:
+# In[23]:
 
 
 # fit PCA
@@ -419,14 +425,14 @@ X_test = pca.transform(act_test)
 
 # #### Visualize PCA
 
-# In[47]:
+# In[24]:
 
 
 # test sample (with unseen class)
 plot_pts_3d(X_train_all, y_train_all, classes_to_keep, colors, class_to_remove=label_to_remove, 
             subsample_pct=.05, s_name="../Figures/MNIST/PCA/MNIST_PCA_3D_wo_cl_" + str(label_to_remove) + ".pdf")
 
-# In[48]:
+# In[25]:
 
 
 # test sample (with unseen class)
@@ -436,13 +442,13 @@ plot_pts_2d(X_train_all, y_train_all, ax, classes_to_keep, colors, class_to_remo
 ax.set_axis_off()
 plt.savefig("../Figures/MNIST/PCA/MNIST_PCA_2D_wo_cl_" + str(label_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
 
-# In[49]:
+# In[26]:
 
 
 # t-SNE visualization after PCA
 tsne_all = tsne.fit_transform(X_test)
 
-# In[50]:
+# In[27]:
 
 
 # plot
@@ -453,7 +459,7 @@ ax.set_axis_off()
 
 plt.savefig("../Figures/MNIST/tSNE/MNIST_t-SNE_wo_cl_" + str(label_to_remove) + "_after.pdf", bbox_inches='tight', pad_inches=0)
 
-# In[51]:
+# In[28]:
 
 
 tsne_train = tsne_all[y_test_all != label_to_remove]
@@ -461,38 +467,38 @@ tsne_train = tsne_all[y_test_all != label_to_remove]
 # ### GMM
 # GMM, calculate 
 
-# In[52]:
+# In[78]:
 
 
-tuned_parameters = [{'n_components': np.arange(4, 10), 
-                     'max_iter': [10000]}]
+# parameter search
+if paramsearch:
+    tuned_parameters = [{'n_components': np.arange(3, 10), 'max_iter': [10000]}]
+    # do parameter search
+    ps_gmm = ParameterSearch(GaussianMixture, tuned_parameters, X_train, X_train_all,
+                             pred_f_tr.flatten(), scorer_roc_probas_gmm, 
+                             n_iter=3, verbosity=10, n_jobs=-1, subsample_train=.01, subsample_test=.01)
+    ps_gmm.fit()
+    best_params_gmm = ps_gmm.best_params
 
-# do parameter search
-ps_gmm = ParameterSearch(GaussianMixture, tuned_parameters, X_train, X_train_all, 
-                         pred_f_tr[y_train_all < np.infty], scorer_roc_probas_gmm, 
-                         n_iter=3, verbosity=11, n_jobs=1, subsample_train=.05, subsample_test=.05)
-ps_gmm.fit()
+else:
+    best_params_gmm = {'n_components': df_ps.loc[str(names[label_to_remove])]['gmm_n_components'], 'max_iter': 10000}
 
-# In[53]:
+print(best_params_gmm)
 
-
-print(ps_gmm.best_params)
-
-# In[54]:
+# In[31]:
 
 
 # fit model
-gmm = GaussianMixture(**ps_gmm.best_params)
+gmm = GaussianMixture(**best_params_gmm)
 gmm.fit(X_test)
 
-# In[55]:
+# In[32]:
 
 
 # predict
-probas = gmm.predict_proba(X_test)
-probas = get_acc_net_entropy(probas)
+probas = gmm.score_samples(X_test)
 
-# In[56]:
+# In[33]:
 
 
 # Metrics
@@ -507,57 +513,59 @@ print("PR AUC: %.2f, AUROC: %.2f" % (pr_auc_gmm, auroc_gmm))
 
 # ## One-Class SVM
 
-# In[57]:
+# In[34]:
 
 
 X_train_svm = preprocessing.scale(X_train)
 X_train_all_svm = preprocessing.scale(X_train_all)
 X_test_svm = preprocessing.scale(X_test)
 
-# In[58]:
+# In[38]:
 
 
-y_true_tr = (y_train_all != y_pred_label_tr) * 1
+# parameter search
+if paramsearch:
+    tuned_parameters = [{'kernel': ['rbf'],
+                         'nu': [1e-4, 1e-3, 1e-2, 1e-1, 5e-1],
+                         'degree':[1]
+                         },
+                        {'kernel': ['poly'],
+                         'degree': np.arange(1, 4),
+                         'nu': [1e-4, 1e-3, 1e-2, 1e-1, 5e-1],
+                         'max_iter': [10000]}]
 
-tuned_parameters = [{'kernel': ['rbf'],
-                     'nu': [1e-2, .1, .3, .5]
-                     },
-                    {'kernel': ['poly'],
-                     'degree': np.arange(1, 16),
-                     'nu': [1e-2, .1, .3, .5],
-                     'max_iter': [10000]
-                     }]
+    # do parameter search
+    ps_svm = ParameterSearch(svm.OneClassSVM, tuned_parameters, X_train_svm, X_train_all_svm,
+                             pred_f_tr.flatten(), scorer_roc_probas_svm, n_iter=5,
+                             verbosity=11, n_jobs=-1, subsample_train=.001, subsample_test=.01)
+    ps_svm.fit()
+    best_params_svm = ps_svm.best_params
+else:
+    best_params_svm = {'kernel': df_ps.loc[str(names[label_to_remove])]['oc-svm_k'], 
+                       'degree': df_ps.loc[str(names[label_to_remove])]['oc-svm_deg'], 
+                       'nu': df_ps.loc[str(names[label_to_remove])]['oc_svm_nu'],
+                       'max_iter': 100}
+    
+print(best_params_svm)
 
-# do parameter search
-ps_svm = ParameterSearch(svm.OneClassSVM, tuned_parameters, X_train_svm, X_train_all_svm, 
-                         pred_f_tr[y_train_all < np.infty], scorer_roc_probas_svm, n_iter=5, 
-                         verbosity=10, n_jobs=-1, subsample_train=.1, subsample_test=.1)
-
-ps_svm.fit()
-
-# In[59]:
+# In[39]:
 
 
-print(ps_svm.best_params)
+clf_svm = svm.OneClassSVM(**best_params_svm, verbose=True)
 
-# In[60]:
-
-
-clf_svm = svm.OneClassSVM(**ps_svm.best_params, verbose=True)
-
-# In[61]:
+# In[40]:
 
 
 clf_svm.fit(X_train_svm)
 
-# In[62]:
+# In[41]:
 
 
 probas = clf_svm.decision_function(X_test_svm)[:, 0]
 probas -= np.min(probas)
 probas /= np.max(probas)
 
-# In[63]:
+# In[42]:
 
 
 # Metrics
@@ -572,61 +580,62 @@ print("PR AUC: %.2f, AUROC: %.2f" % (pr_auc_svm, auroc_svm))
 
 # # Density Forest
 
-# In[64]:
+# In[54]:
 
 
-best_params = [{'max_depth': 2, 'ig_improvement': .7},
-               {'max_depth': 2, 'ig_improvement': .7},
-               {'max_depth': 4, 'ig_improvement': .3},
-               {'max_depth': 4, 'ig_improvement': .7},
-               {'max_depth': 4, 'ig_improvement': .7},
-               {'max_depth': 5, 'ig_improvement': 0},
-               {'max_depth': 5, 'ig_improvement': 0},
-               {'max_depth': 2, 'ig_improvement': .5},
-               {'max_depth': 2, 'ig_improvement': 0},
-               {'max_depth': 4, 'ig_improvement': .3},
-              ]
+# parameter search
+default_params = {'n_trees': 10, 'n_max_dim': 0, 'n_jobs': -1,
+                  'verbose': 0, 'subsample_pct': .05, 'min_subset': 0}
 
-
-
-default_params = {'min_subset': .05, 'n_trees': 30, 'n_max_dim': 1, 'n_jobs': -1, 'subsample_pct': .02, 'verbose': 0}
-paramsearch = False
 if paramsearch:
-    tuned_params = [{'max_depth': [2, 4, 5],
-                     'ig_improvement': [0, .3, .5, .7, .9]}]
+    """search for best hyperparameters"""
+    tuned_params = [{'max_depth': [1, 2, 3],
+                     'ig_improvement': [0, .4, .7, .9]
+                    }]
 
+    # do parameter search
     ps_df = ParameterSearch(DensityForest, tuned_params, X_train, X_train_all,
-                            pred_f_tr[y_train_all < np.infty], scorer_roc_probas_df, n_iter=3,
-                            verbosity=11, n_jobs=1, subsample_train=1, subsample_test=1, default_params=default_params)
+                            pred_f_tr.flatten(), scorer_roc_probas_df,
+                            n_iter=3, verbosity=11, n_jobs=1, subsample_train=1, 
+                            subsample_test=.1, default_params=default_params)
 
+    print("Testing %i combinations %i times" % (len(ps_df.combinations), ps_df.n_iter))
+    print(ps_df.combinations)
     ps_df.fit()
+    print(ps_df.best_params)
     
-    best_params = ps_df.best_params
+    # Create DensityForest instance
+    best_params_df = ps_df.best_params
+    
 else:
-    best_params = best_params[label_to_remove]
-
+    """use previously found hyperparameters"""
+    best_params_df = {'max_depth': df_ps.loc[str(names[label_to_remove])]['df_depth'],
+                      'ig_improvement': df_ps.loc[str(names[label_to_remove])]['df_min_ig']}
+    
+    
+print(best_params_df)
 default_params['verbose'] = 1
-#default_params['n_trees'] = 30
-print(best_params)
+default_params['batch_size'] = 100
+default_params['n_trees'] = 20
 
 # In[65]:
 
 
 # Create DensityForest instance
-clf_df = DensityForest(**best_params, **default_params)
+clf_df = DensityForest(**best_params_df, **default_params)
 clf_df.fit(X_train)
-
-# In[66]:
-
-
-probas = clf_df.predict(X_test)
 
 # In[67]:
 
 
-covs, means = get_clusters(clf_df.root_nodes[1], [], [])
+probas = clf_df.predict(X_test)
 
 # In[68]:
+
+
+covs, means = get_clusters(clf_df.root_nodes[1], [], [])
+
+# In[69]:
 
 
 # precision-recall curve
@@ -642,7 +651,7 @@ metrics.auc(recall_df, precision_df)
 
 # ## Plot Results
 
-# In[69]:
+# In[70]:
 
 
 # Precision-Recall Curve
@@ -670,7 +679,7 @@ plt.xlim([0.0, 1.0])
 plt.legend([str.format('%s: %.2f') % (names_methods[i], scores_pr[i]) for i in scores_order], title="PR AUC [%]")
 plt.savefig("../Figures/MNIST/Metrics/PR_ED_wo_cl_" + str(label_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
 
-# In[70]:
+# In[71]:
 
 
 # ROC
@@ -693,3 +702,39 @@ plt.ylim([0.0, 1.05])
 plt.xlim([0.0, 1.0])
 plt.legend([str.format('%s: %.2f') % (names_methods[i], scores_auc[i]) for i in scores_order], title="AUROC [%]")
 plt.savefig("../Figures/MNIST/Metrics/ROC_ED_wo_cl_" + str(label_to_remove) + ".pdf", bbox_inches='tight', pad_inches=0)
+
+# In[79]:
+
+
+# write best hyperparameters to CSV file
+best_params = {'gmm_n_components': best_params_gmm['n_components'], 
+               'oc-svm_k': best_params_svm['kernel'], 
+               'oc-svm_deg': best_params_svm['degree'], 
+               'oc_svm_nu': best_params_svm['nu'], 
+               'df_depth': best_params_df['max_depth'], 
+               'df_min_ig': best_params_df['ig_improvement']}
+
+# In[89]:
+
+
+# write results to CSV files
+# hyperparameters
+df2 = pd.DataFrame(best_params, index=[str(names[label_to_remove])])
+df_ps = df_ps.append(df2)
+df_ps = df_ps[~df_ps.index.duplicated(keep='last')]  # avoid duplicates
+df_ps.to_csv('mnist_models/hyperparams.csv')
+
+# AUROC
+df_auroc = pd.read_csv('mnist_models/auroc_all.csv', index_col=0)
+df2 = pd.DataFrame({str(names[label_to_remove]): scores_auc}, index=names_methods).T
+df_auroc = df_auroc.append(df2)
+df_auroc = df_auroc[~df_auroc.index.duplicated(keep='last')]  # avoid duplicates
+df_auroc.to_csv('mnist_models/auroc_all.csv')
+
+
+# PR AUC
+df_aucpr = pd.read_csv('mnist_models/aucpr_all.csv', index_col=0)
+df2 = pd.DataFrame({str(names[label_to_remove]): scores_pr}, index=names_methods).T
+df_aucpr = df_aucpr.append(df2)
+df_aucpr = df_aucpr[~df_aucpr.index.duplicated(keep='last')]  # avoid duplicates
+df_aucpr.to_csv('mnist_models/aucpr_all.csv')

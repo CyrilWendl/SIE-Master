@@ -153,3 +153,898 @@ totalMemory: 10.92GiB freeMemory: 10.76GiB
 2018-07-25 18:52:38.648517: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
 2018-07-25 18:52:38.648530: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
 2018-07-25 18:52:38.649171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
+Qt: Failed to create XKB context!
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .
+Using TensorFlow backend.
+  0%|          | 0/100 [00:00<?, ?it/s]  2%|▏         | 2/100 [00:00<00:07, 12.78it/s]  4%|▍         | 4/100 [00:00<00:07, 13.08it/s]  6%|▌         | 6/100 [00:00<00:06, 13.46it/s]  8%|▊         | 8/100 [00:00<00:07, 13.14it/s] 10%|█         | 10/100 [00:00<00:07, 12.83it/s] 12%|█▏        | 12/100 [00:00<00:06, 12.63it/s] 14%|█▍        | 14/100 [00:01<00:06, 12.83it/s] 16%|█▌        | 16/100 [00:01<00:07, 11.97it/s] 18%|█▊        | 18/100 [00:01<00:06, 11.78it/s] 20%|██        | 20/100 [00:01<00:06, 12.08it/s] 22%|██▏       | 22/100 [00:01<00:06, 12.12it/s] 24%|██▍       | 24/100 [00:01<00:06, 12.07it/s] 26%|██▌       | 26/100 [00:02<00:06, 11.89it/s] 28%|██▊       | 28/100 [00:02<00:06, 11.77it/s] 30%|███       | 30/100 [00:02<00:05, 11.68it/s] 32%|███▏      | 32/100 [00:02<00:05, 11.64it/s] 34%|███▍      | 34/100 [00:02<00:05, 11.50it/s] 36%|███▌      | 36/100 [00:03<00:05, 11.62it/s] 38%|███▊      | 38/100 [00:03<00:05, 11.68it/s] 40%|████      | 40/100 [00:03<00:05, 11.64it/s] 42%|████▏     | 42/100 [00:03<00:04, 11.67it/s] 44%|████▍     | 44/100 [00:03<00:04, 11.75it/s] 46%|████▌     | 46/100 [00:03<00:04, 11.81it/s] 48%|████▊     | 48/100 [00:04<00:04, 11.89it/s] 50%|█████     | 50/100 [00:04<00:04, 11.98it/s] 52%|█████▏    | 52/100 [00:04<00:03, 12.07it/s] 54%|█████▍    | 54/100 [00:04<00:03, 12.14it/s] 56%|█████▌    | 56/100 [00:04<00:03, 12.22it/s] 58%|█████▊    | 58/100 [00:04<00:03, 12.28it/s] 60%|██████    | 60/100 [00:04<00:03, 12.30it/s] 62%|██████▏   | 62/100 [00:05<00:03, 12.32it/s] 64%|██████▍   | 64/100 [00:05<00:02, 12.34it/s] 66%|██████▌   | 66/100 [00:05<00:02, 12.36it/s] 68%|██████▊   | 68/100 [00:05<00:02, 12.38it/s] 70%|███████   | 70/100 [00:05<00:02, 12.40it/s] 72%|███████▏  | 72/100 [00:05<00:02, 12.38it/s] 74%|███████▍  | 74/100 [00:06<00:02, 12.28it/s] 76%|███████▌  | 76/100 [00:06<00:01, 12.26it/s] 78%|███████▊  | 78/100 [00:06<00:01, 12.27it/s] 80%|████████  | 80/100 [00:06<00:01, 12.32it/s] 82%|████████▏ | 82/100 [00:06<00:01, 12.36it/s] 84%|████████▍ | 84/100 [00:06<00:01, 12.41it/s] 86%|████████▌ | 86/100 [00:06<00:01, 12.39it/s] 88%|████████▊ | 88/100 [00:07<00:00, 12.44it/s] 90%|█████████ | 90/100 [00:07<00:00, 12.49it/s] 92%|█████████▏| 92/100 [00:07<00:00, 12.53it/s] 94%|█████████▍| 94/100 [00:07<00:00, 12.58it/s] 96%|█████████▌| 96/100 [00:07<00:00, 12.62it/s] 98%|█████████▊| 98/100 [00:07<00:00, 12.65it/s]100%|██████████| 100/100 [00:07<00:00, 12.62it/s]
+  0%|          | 0/50 [00:00<?, ?it/s] 50%|█████     | 25/50 [00:00<00:00, 249.05it/s]100%|██████████| 50/50 [00:00<00:00, 360.61it/s]
+  0%|          | 0/3000 [00:00<?, ?it/s]  1%|          | 28/3000 [00:00<00:10, 277.84it/s]  4%|▎         | 108/3000 [00:00<00:05, 536.55it/s]  6%|▋         | 192/3000 [00:00<00:04, 635.99it/s]  9%|▉         | 276/3000 [00:00<00:03, 686.23it/s] 12%|█▏        | 358/3000 [00:00<00:03, 712.51it/s] 15%|█▍        | 439/3000 [00:00<00:03, 728.26it/s] 17%|█▋        | 518/3000 [00:00<00:03, 737.02it/s] 20%|█▉        | 596/3000 [00:00<00:03, 741.90it/s] 22%|██▎       | 675/3000 [00:00<00:03, 746.54it/s] 25%|██▌       | 751/3000 [00:01<00:03, 747.84it/s] 28%|██▊       | 833/3000 [00:01<00:02, 754.25it/s] 31%|███       | 917/3000 [00:01<00:02, 760.80it/s] 33%|███▎      | 999/3000 [00:01<00:02, 765.10it/s] 36%|███▌      | 1079/3000 [00:01<00:02, 765.88it/s] 39%|███▊      | 1159/3000 [00:01<00:02, 765.35it/s] 41%|████▏     | 1238/3000 [00:01<00:02, 765.81it/s] 44%|████▍     | 1316/3000 [00:01<00:02, 765.76it/s] 46%|████▋     | 1394/3000 [00:01<00:02, 764.81it/s] 49%|████▉     | 1471/3000 [00:01<00:01, 764.84it/s] 52%|█████▏    | 1548/3000 [00:02<00:01, 764.66it/s] 54%|█████▍    | 1625/3000 [00:02<00:01, 764.52it/s] 57%|█████▋    | 1702/3000 [00:02<00:01, 763.05it/s] 59%|█████▉    | 1778/3000 [00:02<00:01, 761.74it/s] 62%|██████▏   | 1853/3000 [00:02<00:01, 759.63it/s] 64%|██████▍   | 1927/3000 [00:02<00:01, 751.28it/s] 67%|██████▋   | 2000/3000 [00:02<00:01, 750.18it/s] 69%|██████▉   | 2071/3000 [00:02<00:01, 746.84it/s] 71%|███████▏  | 2141/3000 [00:02<00:01, 744.86it/s] 74%|███████▍  | 2215/3000 [00:02<00:01, 744.39it/s] 76%|███████▌  | 2286/3000 [00:03<00:00, 741.31it/s] 79%|███████▊  | 2357/3000 [00:03<00:00, 740.29it/s] 81%|████████  | 2435/3000 [00:03<00:00, 741.33it/s] 84%|████████▎ | 2508/3000 [00:03<00:00, 740.70it/s] 86%|████████▌ | 2580/3000 [00:03<00:00, 737.97it/s] 88%|████████▊ | 2654/3000 [00:03<00:00, 737.85it/s] 91%|█████████ | 2730/3000 [00:03<00:00, 738.27it/s] 94%|█████████▎| 2807/3000 [00:03<00:00, 739.02it/s] 96%|█████████▌| 2885/3000 [00:03<00:00, 740.01it/s] 99%|█████████▉| 2965/3000 [00:03<00:00, 741.36it/s]100%|██████████| 3000/3000 [00:04<00:00, 740.70it/s]
+  0%|          | 0/500 [00:00<?, ?it/s]  3%|▎         | 13/500 [00:00<00:03, 129.98it/s] 17%|█▋        | 85/500 [00:00<00:00, 424.97it/s] 31%|███       | 156/500 [00:00<00:00, 517.56it/s] 45%|████▌     | 225/500 [00:00<00:00, 559.49it/s] 58%|█████▊    | 292/500 [00:00<00:00, 580.54it/s] 73%|███████▎  | 367/500 [00:00<00:00, 607.65it/s] 88%|████████▊ | 442/500 [00:00<00:00, 627.85it/s]100%|██████████| 500/500 [00:00<00:00, 641.69it/s]
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    0.3s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:    0.5s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:    0.9s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:    1.3s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    1.6s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:    2.0s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:    2.0s finished
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:164: UserWarning: Numerical issues were encountered when centering the data and might not be solved. Dataset may contain too large values. You may need to prescale your features.
+  warnings.warn("Numerical issues were encountered "
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:181: UserWarning: Numerical issues were encountered when scaling the data and might not be solved. The standard deviation of the data is probably very close to 0. 
+  warnings.warn("Numerical issues were encountered "
+
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    0.3s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:    0.5s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:    0.8s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:    1.1s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    1.4s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:    1.7s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed:    1.7s finished
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:164: UserWarning: Numerical issues were encountered when centering the data and might not be solved. Dataset may contain too large values. You may need to prescale your features.
+  warnings.warn("Numerical issues were encountered "
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:181: UserWarning: Numerical issues were encountered when scaling the data and might not be solved. The standard deviation of the data is probably very close to 0. 
+  warnings.warn("Numerical issues were encountered "
+[Parallel(n_jobs=40)]: Done   6 out of  64 | elapsed:    5.6s remaining:   53.8s
+[Parallel(n_jobs=40)]: Done  13 out of  64 | elapsed:    9.5s remaining:   37.1s
+[Parallel(n_jobs=40)]: Done  20 out of  64 | elapsed:   13.1s remaining:   28.7s
+[Parallel(n_jobs=40)]: Done  27 out of  64 | elapsed:   15.9s remaining:   21.8s
+[Parallel(n_jobs=40)]: Done  34 out of  64 | elapsed:   19.7s remaining:   17.4s
+[Parallel(n_jobs=40)]: Done  41 out of  64 | elapsed:   22.1s remaining:   12.4s
+[Parallel(n_jobs=40)]: Done  48 out of  64 | elapsed:   26.0s remaining:    8.7s
+[Parallel(n_jobs=40)]: Done  55 out of  64 | elapsed:   31.0s remaining:    5.1s
+[Parallel(n_jobs=40)]: Done  62 out of  64 | elapsed:   34.0s remaining:    1.1s
+[Parallel(n_jobs=40)]: Done  64 out of  64 | elapsed:   37.1s finished
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/svm/base.py:218: ConvergenceWarning: Solver terminated early (max_iter=10000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  % self.max_iter, ConvergenceWarning)
+[Parallel(n_jobs=40)]: Done  13 out of  30 | elapsed:    2.2s remaining:    2.9s
+[Parallel(n_jobs=40)]: Done  30 out of  30 | elapsed:    4.8s finished
+2018-07-25 18:56:26.937312: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:56:29.039156: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:56:29.039230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:56:29.346512: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:56:29.346574: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:56:29.346585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:56:29.346858: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:56:30.201751: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:56:30.201883: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:56:30.201899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:56:30.201922: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:56:30.202132: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:56:40.212429: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:56:42.377907: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:56:42.377994: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:56:42.789283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:56:42.789363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:56:42.789378: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:56:42.789748: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:56:43.769541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:56:43.769641: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:56:43.769653: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:56:43.769660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:56:43.769816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:56:54.009338: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:56:56.018337: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:56:56.018407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:56:56.399403: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:56:56.399470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:56:56.399485: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:56:56.399829: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:56:57.348766: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:56:57.348882: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:56:57.348894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:56:57.348902: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:56:57.349091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:57:07.552370: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:57:08.745761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:57:08.745859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:09.149353: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:09.149434: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:09.149448: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:09.149843: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:57:10.062870: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:10.062976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:10.062990: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:10.062998: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:10.063164: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:57:19.507720: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:57:21.606359: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:57:21.606433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:22.073902: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:22.073999: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:22.074019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:22.074480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:57:23.019648: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:23.019755: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:23.019766: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:23.019773: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:23.019929: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:57:32.327985: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:57:34.464738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:57:34.464814: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:34.848120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:34.848187: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:34.848198: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:34.848457: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:57:35.728094: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:35.728176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:35.728186: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:35.728193: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:35.728327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+[Parallel(n_jobs=40)]: Done   6 out of  64 | elapsed:    6.8s remaining:  1.1min
+[Parallel(n_jobs=40)]: Done  13 out of  64 | elapsed:   13.8s remaining:   54.2s
+[Parallel(n_jobs=40)]: Done  20 out of  64 | elapsed:   18.8s remaining:   41.3s
+[Parallel(n_jobs=40)]: Done  27 out of  64 | elapsed:   23.9s remaining:   32.8s
+[Parallel(n_jobs=40)]: Done  34 out of  64 | elapsed:   27.6s remaining:   24.4s
+[Parallel(n_jobs=40)]: Done  41 out of  64 | elapsed:   29.7s remaining:   16.7s
+[Parallel(n_jobs=40)]: Done  48 out of  64 | elapsed:   31.9s remaining:   10.6s
+[Parallel(n_jobs=40)]: Done  55 out of  64 | elapsed:   35.2s remaining:    5.8s
+[Parallel(n_jobs=40)]: Done  62 out of  64 | elapsed:   39.4s remaining:    1.3s
+[Parallel(n_jobs=40)]: Done  64 out of  64 | elapsed:   40.8s finished
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/svm/base.py:218: ConvergenceWarning: Solver terminated early (max_iter=10000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  % self.max_iter, ConvergenceWarning)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:57:52.477841: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:57:54.551402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:57:54.551461: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:54.944377: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:54.944455: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:54.944481: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:54.944854: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:57:55.916750: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:57:55.916892: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:57:55.916908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:57:55.916917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:57:55.917195: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+[Parallel(n_jobs=40)]: Done  13 out of  30 | elapsed:    6.0s remaining:    7.8s
+[Parallel(n_jobs=40)]: Done  30 out of  30 | elapsed:    8.4s finished
+2018-07-25 18:58:00.376336: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:58:02.657472: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:58:02.657593: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:03.022988: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:03.023074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:03.023091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:03.023450: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:58:04.010641: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:04.010727: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:04.010738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:04.010745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:04.010900: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:58:05.828548: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:58:07.814083: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:58:07.814140: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:08.133079: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:08.133143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:08.133154: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:08.133436: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:58:08.951662: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:08.951737: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:08.951749: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:08.951756: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:08.951906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:58:15.345683: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:58:19.217668: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:58:19.217723: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:19.625013: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:19.625074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:19.625087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:19.625446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:58:20.539455: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:20.539549: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:20.539569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:20.539584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:20.539821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:58:20.712072: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:58:22.425159: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:58:22.425215: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:22.788655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:22.788725: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:22.788738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:22.789097: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-25 18:58:23.650310: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:23.650394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:23.650407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:23.650414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:23.650549: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:58:31.072103: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:58:34.536366: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:58:34.536429: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:34.823117: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:34.823194: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:34.823205: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:34.823491: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:58:35.524159: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:35.524237: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:35.524246: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:35.524253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:35.524367: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:58:44.547634: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:58:47.672830: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:58:47.672893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:48.076693: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:48.076769: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:48.076783: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:48.077149: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:58:49.038298: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:58:49.038431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:58:49.038445: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:58:49.038454: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:58:49.038617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-25 18:58:57.994647: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-25 18:59:01.153554: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:83:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-25 18:59:01.153628: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:59:01.465480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:59:01.465551: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:59:01.465563: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:59:01.465840: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2018-07-25 18:59:02.175986: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-25 18:59:02.176110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-25 18:59:02.176122: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-25 18:59:02.176129: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-25 18:59:02.176271: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+qt.qpa.screen: QXcbConnection: Could not connect to display localhost:10.0
+Could not connect to any X display.
+2018-07-26 15:33:35.781968: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-26 15:33:37.889122: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-26 15:33:37.889196: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-26 15:33:38.223788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-26 15:33:38.223884: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-26 15:33:38.223896: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-26 15:33:38.224230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2018-07-26 15:33:39.236490: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-26 15:33:39.236595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-26 15:33:39.236610: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-26 15:33:39.236619: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-26 15:33:39.236835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 1233612700620633022
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 10921197568
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 2191968269557772053
+physical_device_desc: "device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1"
+]
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8), array([5923, 6742, 5958, 6131, 5842, 5421, 5918, 6265, 5851, 5949]))
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8], dtype=uint8), array([5923, 6742, 6131, 5842, 5421, 5918, 6265, 5851, 5949]))
+x_train shape: (54042, 28, 28, 1)
+54042 train samples
+8968 test samples
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 26, 26, 32)        320       
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 24, 64)        18496     
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 12, 12, 64)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 12, 12, 64)        0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 9216)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               1179776   
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 9)                 1161      
+=================================================================
+Total params: 1,199,753
+Trainable params: 1,199,753
+Non-trainable params: 0
+_________________________________________________________________
+None
+2
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8), array([5923, 6742, 5958, 6131, 5842, 5421, 5918, 6265, 5851, 5949]))
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8], dtype=uint8), array([5923, 6742, 6131, 5842, 5421, 5918, 6265, 5851, 5949]))
+x_train shape: (54042, 28, 28, 1)
+54042 train samples
+8968 test samples
+
+   32/60000 [..............................] - ETA: 31:06
+  800/60000 [..............................] - ETA: 1:17 
+ 1600/60000 [..............................] - ETA: 40s 
+ 2464/60000 [>.............................] - ETA: 26s
+ 3328/60000 [>.............................] - ETA: 20s
+ 4224/60000 [=>............................] - ETA: 16s
+ 5152/60000 [=>............................] - ETA: 13s
+ 6016/60000 [==>...........................] - ETA: 12s
+ 7008/60000 [==>...........................] - ETA: 10s
+ 8032/60000 [===>..........................] - ETA: 9s 
+ 9056/60000 [===>..........................] - ETA: 8s
+10080/60000 [====>.........................] - ETA: 7s
+11072/60000 [====>.........................] - ETA: 7s
+11968/60000 [====>.........................] - ETA: 6s
+12864/60000 [=====>........................] - ETA: 6s
+13792/60000 [=====>........................] - ETA: 5s
+14688/60000 [======>.......................] - ETA: 5s
+15680/60000 [======>.......................] - ETA: 5s
+16704/60000 [=======>......................] - ETA: 4s
+17760/60000 [=======>......................] - ETA: 4s
+18784/60000 [========>.....................] - ETA: 4s
+19808/60000 [========>.....................] - ETA: 4s
+20800/60000 [=========>....................] - ETA: 3s
+21888/60000 [=========>....................] - ETA: 3s
+22816/60000 [==========>...................] - ETA: 3s
+23712/60000 [==========>...................] - ETA: 3s
+24768/60000 [===========>..................] - ETA: 3s
+25792/60000 [===========>..................] - ETA: 3s
+26816/60000 [============>.................] - ETA: 2s
+27776/60000 [============>.................] - ETA: 2s2018-07-26 15:33:43.790298: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+
+28416/60000 [=============>................] - ETA: 2s
+29248/60000 [=============>................] - ETA: 2s
+30144/60000 [==============>...............] - ETA: 2s
+31168/60000 [==============>...............] - ETA: 2s
+32224/60000 [===============>..............] - ETA: 2s
+33216/60000 [===============>..............] - ETA: 2s
+34272/60000 [================>.............] - ETA: 2s
+35264/60000 [================>.............] - ETA: 2s
+35872/60000 [================>.............] - ETA: 1s
+36416/60000 [=================>............] - ETA: 1s
+36928/60000 [=================>............] - ETA: 1s
+37472/60000 [=================>............] - ETA: 1s
+38016/60000 [==================>...........] - ETA: 1s
+38752/60000 [==================>...........] - ETA: 1s2018-07-26 15:33:44.484761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:03:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2018-07-26 15:33:44.484834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+
+39840/60000 [==================>...........] - ETA: 1s
+40928/60000 [===================>..........] - ETA: 1s
+41952/60000 [===================>..........] - ETA: 1s
+42976/60000 [====================>.........] - ETA: 1s
+44032/60000 [=====================>........] - ETA: 1s
+45056/60000 [=====================>........] - ETA: 1s
+46016/60000 [======================>.......] - ETA: 1s
+46976/60000 [======================>.......] - ETA: 0s2018-07-26 15:33:44.887200: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-26 15:33:44.887280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-26 15:33:44.887303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-26 15:33:44.887796: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0, compute capability: 6.1)
+
+47968/60000 [======================>.......] - ETA: 0s
+48896/60000 [=======================>......] - ETA: 0s
+49728/60000 [=======================>......] - ETA: 0s
+50656/60000 [========================>.....] - ETA: 0s
+51584/60000 [========================>.....] - ETA: 0s
+52480/60000 [=========================>....] - ETA: 0s
+53440/60000 [=========================>....] - ETA: 0s
+54528/60000 [==========================>...] - ETA: 0s
+55616/60000 [==========================>...] - ETA: 0s
+56704/60000 [===========================>..] - ETA: 0s
+57728/60000 [===========================>..] - ETA: 0s
+58752/60000 [============================>.] - ETA: 0s
+59840/60000 [============================>.] - ETA: 0s
+60000/60000 [==============================] - 4s 71us/step
+
+   32/10000 [..............................] - ETA: 0s
+ 1024/10000 [==>...........................] - ETA: 0s
+ 2048/10000 [=====>........................] - ETA: 0s
+ 3072/10000 [========>.....................] - ETA: 0s
+ 4064/10000 [===========>..................] - ETA: 0s
+ 5088/10000 [==============>...............] - ETA: 0s
+ 6112/10000 [=================>............] - ETA: 0s2018-07-26 15:33:45.858066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-07-26 15:33:45.858213: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-26 15:33:45.858225: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-07-26 15:33:45.858233: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-07-26 15:33:45.858452: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10415 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0, compute capability: 6.1)
+
+ 7168/10000 [====================>.........] - ETA: 0s
+ 8064/10000 [=======================>......] - ETA: 0s
+ 8960/10000 [=========================>....] - ETA: 0s
+ 9952/10000 [============================>.] - ETA: 0s
+10000/10000 [==============================] - 1s 51us/step
+xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
+Qt: Failed to create XKB context!
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .
+Using TensorFlow backend.
+  0%|          | 0/100 [00:00<?, ?it/s]  2%|▏         | 2/100 [00:00<00:07, 13.16it/s]  4%|▍         | 4/100 [00:00<00:06, 13.80it/s]  6%|▌         | 6/100 [00:00<00:07, 13.23it/s]  8%|▊         | 8/100 [00:00<00:06, 13.26it/s] 10%|█         | 10/100 [00:00<00:06, 13.03it/s] 12%|█▏        | 12/100 [00:00<00:06, 12.85it/s] 14%|█▍        | 14/100 [00:01<00:06, 12.87it/s] 16%|█▌        | 16/100 [00:01<00:06, 12.81it/s] 18%|█▊        | 18/100 [00:01<00:06, 12.78it/s] 20%|██        | 20/100 [00:01<00:06, 12.52it/s] 22%|██▏       | 22/100 [00:01<00:06, 12.42it/s][name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 16722779390163568278
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 10921197568
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 2216109037307481194
+physical_device_desc: "device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0, compute capability: 6.1"
+]
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8), array([5923, 6742, 5958, 6131, 5842, 5421, 5918, 6265, 5851, 5949]))
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8], dtype=uint8), array([5923, 6742, 5958, 5842, 5421, 5918, 6265, 5851, 5949]))
+x_train shape: (53869, 28, 28, 1)
+53869 train samples
+8990 test samples
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 26, 26, 32)        320       
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 24, 64)        18496     
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 12, 12, 64)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 12, 12, 64)        0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 9216)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               1179776   
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 9)                 1161      
+=================================================================
+Total params: 1,199,753
+Trainable params: 1,199,753
+Non-trainable params: 0
+_________________________________________________________________
+None
+3
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8), array([5923, 6742, 5958, 6131, 5842, 5421, 5918, 6265, 5851, 5949]))
+(array([0, 1, 2, 3, 4, 5, 6, 7, 8], dtype=uint8), array([5923, 6742, 5958, 5842, 5421, 5918, 6265, 5851, 5949]))
+x_train shape: (53869, 28, 28, 1)
+53869 train samples
+8990 test samples
+
+   32/60000 [..............................] - ETA: 36:16 24%|██▍       | 24/100 [00:01<00:06, 12.37it/s]
+  800/60000 [..............................] - ETA: 1:29 
+ 1632/60000 [..............................] - ETA: 45s 
+ 2464/60000 [>.............................] - ETA: 30s 26%|██▌       | 26/100 [00:02<00:06, 12.31it/s]
+ 3296/60000 [>.............................] - ETA: 23s
+ 4128/60000 [=>............................] - ETA: 19s
+ 4992/60000 [=>............................] - ETA: 16s 28%|██▊       | 28/100 [00:02<00:05, 12.38it/s]
+ 5824/60000 [=>............................] - ETA: 14s
+ 6720/60000 [==>...........................] - ETA: 12s
+ 7616/60000 [==>...........................] - ETA: 11s
+ 8480/60000 [===>..........................] - ETA: 10s 30%|███       | 30/100 [00:02<00:05, 12.30it/s]
+ 9248/60000 [===>..........................] - ETA: 9s 
+10048/60000 [====>.........................] - ETA: 8s
+10880/60000 [====>.........................] - ETA: 8s 32%|███▏      | 32/100 [00:02<00:05, 12.18it/s]
+11712/60000 [====>.........................] - ETA: 7s
+12608/60000 [=====>........................] - ETA: 7s
+13408/60000 [=====>........................] - ETA: 6s
+14400/60000 [======>.......................] - ETA: 6s 34%|███▍      | 34/100 [00:02<00:05, 12.08it/s]
+15264/60000 [======>.......................] - ETA: 6s
+16160/60000 [=======>......................] - ETA: 5s
+17056/60000 [=======>......................] - ETA: 5s
+17920/60000 [=======>......................] - ETA: 5s 36%|███▌      | 36/100 [00:02<00:05, 12.03it/s]
+18816/60000 [========>.....................] - ETA: 4s
+19808/60000 [========>.....................] - ETA: 4s
+20800/60000 [=========>....................] - ETA: 4s 38%|███▊      | 38/100 [00:03<00:05, 12.06it/s]
+21792/60000 [=========>....................] - ETA: 4s
+22816/60000 [==========>...................] - ETA: 4s
+23744/60000 [==========>...................] - ETA: 3s 40%|████      | 40/100 [00:03<00:04, 12.01it/s]
+24608/60000 [===========>..................] - ETA: 3s
+25472/60000 [===========>..................] - ETA: 3s
+26400/60000 [============>.................] - ETA: 3s
+27328/60000 [============>.................] - ETA: 3s 42%|████▏     | 42/100 [00:03<00:04, 11.93it/s]
+28032/60000 [=============>................] - ETA: 3s
+28960/60000 [=============>................] - ETA: 3s
+29952/60000 [=============>................] - ETA: 2s
+30848/60000 [==============>...............] - ETA: 2s
+31680/60000 [==============>...............] - ETA: 2s
+32384/60000 [===============>..............] - ETA: 2s 44%|████▍     | 44/100 [00:03<00:04, 11.45it/s]
+33024/60000 [===============>..............] - ETA: 2s
+33664/60000 [===============>..............] - ETA: 2s
+34144/60000 [================>.............] - ETA: 2s
+34688/60000 [================>.............] - ETA: 2s 45%|████▌     | 45/100 [00:04<00:04, 11.11it/s]
+35232/60000 [================>.............] - ETA: 2s
+35808/60000 [================>.............] - ETA: 2s
+36416/60000 [=================>............] - ETA: 2s 46%|████▌     | 46/100 [00:04<00:04, 10.95it/s]
+37152/60000 [=================>............] - ETA: 2s
+38016/60000 [==================>...........] - ETA: 2s 47%|████▋     | 47/100 [00:04<00:04, 10.88it/s]
+38944/60000 [==================>...........] - ETA: 1s
+39968/60000 [==================>...........] - ETA: 1s 48%|████▊     | 48/100 [00:04<00:04, 10.85it/s]
+41120/60000 [===================>..........] - ETA: 1s
+42272/60000 [====================>.........] - ETA: 1s
+43296/60000 [====================>.........] - ETA: 1s
+44128/60000 [=====================>........] - ETA: 1s 50%|█████     | 50/100 [00:04<00:04, 10.83it/s]
+45248/60000 [=====================>........] - ETA: 1s
+46272/60000 [======================>.......] - ETA: 1s
+47232/60000 [======================>.......] - ETA: 1s
+48224/60000 [=======================>......] - ETA: 0s 52%|█████▏    | 52/100 [00:04<00:04, 10.84it/s]
+49216/60000 [=======================>......] - ETA: 0s
+50176/60000 [========================>.....] - ETA: 0s 53%|█████▎    | 53/100 [00:04<00:04, 10.82it/s]
+51168/60000 [========================>.....] - ETA: 0s
+52192/60000 [=========================>....] - ETA: 0s 54%|█████▍    | 54/100 [00:05<00:04, 10.79it/s]
+53184/60000 [=========================>....] - ETA: 0s
+54336/60000 [==========================>...] - ETA: 0s 55%|█████▌    | 55/100 [00:05<00:04, 10.76it/s]
+55424/60000 [==========================>...] - ETA: 0s
+56544/60000 [===========================>..] - ETA: 0s
+57536/60000 [===========================>..] - ETA: 0s 57%|█████▋    | 57/100 [00:05<00:03, 10.78it/s]
+58624/60000 [============================>.] - ETA: 0s
+59616/60000 [============================>.] - ETA: 0s
+60000/60000 [==============================] - 5s 77us/step
+
+   32/10000 [..............................] - ETA: 0s
+ 1024/10000 [==>...........................] - ETA: 0s 59%|█████▉    | 59/100 [00:05<00:03, 10.81it/s]
+ 2112/10000 [=====>........................] - ETA: 0s
+ 3200/10000 [========>.....................] - ETA: 0s
+ 4288/10000 [===========>..................] - ETA: 0s 61%|██████    | 61/100 [00:05<00:03, 10.88it/s]
+ 5344/10000 [===============>..............] - ETA: 0s
+ 6336/10000 [==================>...........] - ETA: 0s
+ 7424/10000 [=====================>........] - ETA: 0s 63%|██████▎   | 63/100 [00:05<00:03, 10.94it/s]
+ 8480/10000 [========================>.....] - ETA: 0s
+ 9536/10000 [===========================>..] - ETA: 0s
+10000/10000 [==============================] - 0s 49us/step
+ 65%|██████▌   | 65/100 [00:05<00:03, 11.00it/s]xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
+Qt: Failed to create XKB context!
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .
+ 67%|██████▋   | 67/100 [00:06<00:02, 11.04it/s] 69%|██████▉   | 69/100 [00:06<00:02, 11.11it/s] 71%|███████   | 71/100 [00:06<00:02, 11.10it/s] 73%|███████▎  | 73/100 [00:06<00:02, 11.13it/s] 75%|███████▌  | 75/100 [00:06<00:02, 11.07it/s]Using TensorFlow backend.
+  0%|          | 0/100 [00:00<?, ?it/s] 77%|███████▋  | 77/100 [00:06<00:02, 11.08it/s]  2%|▏         | 2/100 [00:00<00:08, 12.00it/s]  4%|▍         | 4/100 [00:00<00:07, 13.40it/s] 79%|███████▉  | 79/100 [00:07<00:01, 11.10it/s]  6%|▌         | 6/100 [00:00<00:06, 14.27it/s] 81%|████████  | 81/100 [00:07<00:01, 11.07it/s]  8%|▊         | 8/100 [00:00<00:06, 14.54it/s] 83%|████████▎ | 83/100 [00:07<00:01, 11.08it/s] 10%|█         | 10/100 [00:00<00:06, 13.83it/s] 85%|████████▌ | 85/100 [00:07<00:01, 11.10it/s] 12%|█▏        | 12/100 [00:00<00:06, 13.73it/s] 14%|█▍        | 14/100 [00:01<00:06, 13.73it/s] 87%|████████▋ | 87/100 [00:07<00:01, 11.13it/s] 89%|████████▉ | 89/100 [00:07<00:00, 11.18it/s] 16%|█▌        | 16/100 [00:01<00:06, 13.62it/s] 91%|█████████ | 91/100 [00:08<00:00, 11.24it/s] 18%|█▊        | 18/100 [00:01<00:05, 13.69it/s] 93%|█████████▎| 93/100 [00:08<00:00, 11.29it/s] 20%|██        | 20/100 [00:01<00:05, 13.79it/s] 95%|█████████▌| 95/100 [00:08<00:00, 11.34it/s] 22%|██▏       | 22/100 [00:01<00:05, 13.81it/s] 24%|██▍       | 24/100 [00:01<00:05, 13.92it/s] 97%|█████████▋| 97/100 [00:08<00:00, 11.35it/s] 26%|██▌       | 26/100 [00:01<00:05, 13.97it/s] 99%|█████████▉| 99/100 [00:08<00:00, 11.38it/s]100%|██████████| 100/100 [00:08<00:00, 11.39it/s]
+  0%|          | 0/52 [00:00<?, ?it/s] 28%|██▊       | 28/100 [00:02<00:05, 13.65it/s] 40%|████      | 21/52 [00:00<00:00, 207.90it/s]100%|██████████| 52/52 [00:00<00:00, 346.50it/s]
+  0%|          | 0/3000 [00:00<?, ?it/s] 30%|███       | 30/100 [00:02<00:05, 13.56it/s]  1%|          | 25/3000 [00:00<00:11, 249.18it/s]  3%|▎         | 102/3000 [00:00<00:05, 507.58it/s] 32%|███▏      | 32/100 [00:02<00:05, 13.49it/s]  6%|▌         | 170/3000 [00:00<00:05, 562.83it/s] 34%|███▍      | 34/100 [00:02<00:04, 13.43it/s]  8%|▊         | 250/3000 [00:00<00:04, 620.29it/s] 11%|█         | 328/3000 [00:00<00:04, 650.84it/s] 36%|███▌      | 36/100 [00:02<00:04, 13.36it/s] 13%|█▎        | 404/3000 [00:00<00:03, 667.78it/s] 38%|███▊      | 38/100 [00:02<00:04, 13.32it/s] 16%|█▌        | 482/3000 [00:00<00:03, 682.90it/s] 19%|█▉        | 563/3000 [00:00<00:03, 698.51it/s] 40%|████      | 40/100 [00:03<00:04, 13.32it/s] 22%|██▏       | 645/3000 [00:00<00:03, 711.14it/s] 42%|████▏     | 42/100 [00:03<00:04, 13.28it/s] 24%|██▍       | 724/3000 [00:01<00:03, 718.04it/s] 27%|██▋       | 802/3000 [00:01<00:03, 723.20it/s] 44%|████▍     | 44/100 [00:03<00:04, 13.25it/s] 29%|██▉       | 883/3000 [00:01<00:02, 729.85it/s] 32%|███▏      | 965/3000 [00:01<00:02, 736.45it/s] 46%|████▌     | 46/100 [00:03<00:04, 13.06it/s] 35%|███▍      | 1046/3000 [00:01<00:02, 741.60it/s] 38%|███▊      | 1127/3000 [00:01<00:02, 746.09it/s] 48%|████▊     | 48/100 [00:03<00:04, 12.88it/s] 40%|████      | 1207/3000 [00:01<00:02, 748.57it/s] 43%|████▎     | 1287/3000 [00:01<00:02, 750.43it/s] 50%|█████     | 50/100 [00:03<00:03, 12.71it/s] 46%|████▌     | 1369/3000 [00:01<00:02, 753.78it/s] 48%|████▊     | 1452/3000 [00:01<00:02, 757.42it/s] 52%|█████▏    | 52/100 [00:04<00:03, 12.60it/s] 51%|█████     | 1535/3000 [00:02<00:01, 760.79it/s] 54%|█████▍    | 1617/3000 [00:02<00:01, 762.90it/s] 54%|█████▍    | 54/100 [00:04<00:03, 12.46it/s] 57%|█████▋    | 1698/3000 [00:02<00:01, 764.88it/s] 59%|█████▉    | 1779/3000 [00:02<00:01, 766.38it/s] 56%|█████▌    | 56/100 [00:04<00:03, 12.34it/s] 62%|██████▏   | 1860/3000 [00:02<00:01, 766.24it/s] 65%|██████▍   | 1940/3000 [00:02<00:01, 766.63it/s] 58%|█████▊    | 58/100 [00:04<00:03, 12.26it/s] 67%|██████▋   | 2022/3000 [00:02<00:01, 768.65it/s] 70%|███████   | 2102/3000 [00:02<00:01, 769.68it/s] 60%|██████    | 60/100 [00:04<00:03, 12.16it/s] 73%|███████▎  | 2182/3000 [00:02<00:01, 770.59it/s] 75%|███████▌  | 2262/3000 [00:02<00:00, 771.38it/s] 62%|██████▏   | 62/100 [00:05<00:03, 12.12it/s] 78%|███████▊  | 2342/3000 [00:03<00:00, 771.54it/s] 81%|████████  | 2421/3000 [00:03<00:00, 771.89it/s] 64%|██████▍   | 64/100 [00:05<00:02, 12.03it/s] 83%|████████▎ | 2502/3000 [00:03<00:00, 772.97it/s] 86%|████████▌ | 2582/3000 [00:03<00:00, 773.46it/s] 66%|██████▌   | 66/100 [00:05<00:02, 12.01it/s] 89%|████████▊ | 2662/3000 [00:03<00:00, 773.66it/s] 91%|█████████▏| 2741/3000 [00:03<00:00, 774.03it/s] 68%|██████▊   | 68/100 [00:05<00:02, 11.92it/s] 94%|█████████▍| 2823/3000 [00:03<00:00, 775.02it/s] 70%|███████   | 70/100 [00:05<00:02, 11.87it/s] 97%|█████████▋| 2903/3000 [00:03<00:00, 774.93it/s] 99%|█████████▉| 2982/3000 [00:03<00:00, 774.41it/s]100%|██████████| 3000/3000 [00:03<00:00, 774.26it/s]
+  0%|          | 0/500 [00:00<?, ?it/s] 72%|███████▏  | 72/100 [00:06<00:02, 11.80it/s]  5%|▌         | 25/500 [00:00<00:01, 249.56it/s] 21%|██        | 103/500 [00:00<00:00, 512.25it/s] 74%|███████▍  | 74/100 [00:06<00:02, 11.80it/s] 37%|███▋      | 183/500 [00:00<00:00, 605.39it/s] 76%|███████▌  | 76/100 [00:06<00:02, 11.79it/s] 53%|█████▎    | 265/500 [00:00<00:00, 657.33it/s] 69%|██████▉   | 345/500 [00:00<00:00, 685.38it/s] 78%|███████▊  | 78/100 [00:06<00:01, 11.78it/s] 85%|████████▌ | 425/500 [00:00<00:00, 703.88it/s]100%|██████████| 500/500 [00:00<00:00, 713.35it/s] 80%|████████  | 80/100 [00:06<00:01, 11.73it/s] 82%|████████▏ | 82/100 [00:06<00:01, 11.74it/s] 84%|████████▍ | 84/100 [00:07<00:01, 11.72it/s] 86%|████████▌ | 86/100 [00:07<00:01, 11.72it/s] 88%|████████▊ | 88/100 [00:07<00:01, 11.66it/s] 90%|█████████ | 90/100 [00:07<00:00, 11.66it/s] 92%|█████████▏| 92/100 [00:07<00:00, 11.69it/s] 94%|█████████▍| 94/100 [00:08<00:00, 11.72it/s] 96%|█████████▌| 96/100 [00:08<00:00, 11.75it/s] 98%|█████████▊| 98/100 [00:08<00:00, 11.77it/s]100%|██████████| 100/100 [00:08<00:00, 11.80it/s]
+  0%|          | 0/51 [00:00<?, ?it/s] 51%|█████     | 26/51 [00:00<00:00, 257.62it/s]100%|██████████| 51/51 [00:00<00:00, 364.33it/s]
+  0%|          | 0/3000 [00:00<?, ?it/s]  1%|          | 21/3000 [00:00<00:14, 206.90it/s]  3%|▎         | 89/3000 [00:00<00:06, 438.78it/s]  5%|▌         | 157/3000 [00:00<00:05, 516.73it/s]  8%|▊         | 230/3000 [00:00<00:04, 568.40it/s] 10%|▉         | 299/3000 [00:00<00:04, 592.12it/s] 12%|█▏        | 369/3000 [00:00<00:04, 609.86it/s] 15%|█▍        | 438/3000 [00:00<00:04, 620.43it/s] 17%|█▋        | 507/3000 [00:00<00:03, 628.73it/s] 19%|█▉        | 575/3000 [00:00<00:03, 634.00it/s] 21%|██▏       | 644/3000 [00:01<00:03, 638.66it/s] 24%|██▎       | 710/3000 [00:01<00:03, 638.85it/s] 26%|██▌       | 778/3000 [00:01<00:03, 641.71it/s] 28%|██▊       | 844/3000 [00:01<00:03, 642.53it/s] 30%|███       | 910/3000 [00:01<00:03, 639.63it/s] 33%|███▎      | 980/3000 [00:01<00:03, 643.06it/s] 35%|███▌      | 1052/3000 [00:01<00:03, 647.68it/s] 37%|███▋      | 1121/3000 [00:01<00:02, 650.13it/s] 40%|███▉      | 1193/3000 [00:01<00:02, 653.85it/s] 42%|████▏     | 1263/3000 [00:01<00:02, 655.97it/s] 44%|████▍     | 1333/3000 [00:02<00:02, 655.54it/s] 47%|████▋     | 1401/3000 [00:02<00:02, 652.79it/s] 49%|████▉     | 1469/3000 [00:02<00:02, 653.93it/s] 51%|█████     | 1536/3000 [00:02<00:02, 653.99it/s] 53%|█████▎    | 1603/3000 [00:02<00:02, 653.27it/s] 56%|█████▌    | 1669/3000 [00:02<00:02, 652.25it/s] 58%|█████▊    | 1738/3000 [00:02<00:01, 653.50it/s] 60%|██████    | 1807/3000 [00:02<00:01, 654.49it/s] 63%|██████▎   | 1878/3000 [00:02<00:01, 656.32it/s] 65%|██████▍   | 1946/3000 [00:02<00:01, 656.35it/s] 67%|██████▋   | 2016/3000 [00:03<00:01, 657.62it/s] 70%|██████▉   | 2090/3000 [00:03<00:01, 660.10it/s] 72%|███████▏  | 2160/3000 [00:03<00:01, 660.78it/s] 74%|███████▍  | 2230/3000 [00:03<00:01, 660.36it/s] 77%|███████▋  | 2303/3000 [00:03<00:01, 662.13it/s] 79%|███████▉  | 2373/3000 [00:03<00:00, 661.94it/s] 81%|████████▏ | 2442/3000 [00:03<00:00, 661.91it/s] 84%|████████▎ | 2510/3000 [00:03<00:00, 662.30it/s] 86%|████████▌ | 2580/3000 [00:03<00:00, 663.17it/s] 88%|████████▊ | 2649/3000 [00:03<00:00, 662.53it/s] 91%|█████████ | 2716/3000 [00:04<00:00, 662.62it/s] 93%|█████████▎| 2783/3000 [00:04<00:00, 661.61it/s] 95%|█████████▌| 2852/3000 [00:04<00:00, 662.17it/s] 97%|█████████▋| 2919/3000 [00:04<00:00, 661.57it/s]100%|█████████▉| 2985/3000 [00:04<00:00, 661.28it/s]100%|██████████| 3000/3000 [00:04<00:00, 661.34it/s]
+  0%|          | 0/500 [00:00<?, ?it/s]  4%|▎         | 18/500 [00:00<00:02, 177.97it/s] 18%|█▊        | 88/500 [00:00<00:00, 436.44it/s] 31%|███       | 156/500 [00:00<00:00, 515.55it/s] 44%|████▍     | 221/500 [00:00<00:00, 548.92it/s] 58%|█████▊    | 290/500 [00:00<00:00, 575.87it/s] 71%|███████▏  | 357/500 [00:00<00:00, 590.85it/s] 85%|████████▌ | 427/500 [00:00<00:00, 605.80it/s] 99%|█████████▉| 495/500 [00:00<00:00, 614.42it/s]100%|██████████| 500/500 [00:00<00:00, 615.57it/s]OA training set: 99.34
+AA training set: 99.35
+OA test set: 98.80
+AA test set: 98.80
+[99.34]
+[99.35]
+[98.8]
+[98.8]
+Mean accuracy: 60.23 %
+Std accuracy: 32.33 %
+18.70% of all predictions made with an accuracy higher than 0.95%
+Mean accuracy: 98.19 %
+Std accuracy: 9.65 %
+94.97 % of all predictions made with an accuracy higher than 0.95%
+[t-SNE] Computing 91 nearest neighbors...
+[t-SNE] Indexed 1500 samples in 0.006s...
+[t-SNE] Computed neighbors for 1500 samples in 0.528s...
+[t-SNE] Computed conditional probabilities for sample 1000 / 1500
+[t-SNE] Computed conditional probabilities for sample 1500 / 1500
+[t-SNE] Mean sigma: 3.214103
+[t-SNE] KL divergence after 250 iterations with early exaggeration: 54.884903
+[t-SNE] Error after 300 iterations: 0.920741
+Variance explained by first 34 components: 0.95
+[t-SNE] Computing 91 nearest neighbors...
+[t-SNE] Indexed 10000 samples in 0.020s...
+[t-SNE] Computed neighbors for 10000 samples in 2.149s...
+[t-SNE] Computed conditional probabilities for sample 1000 / 10000
+[t-SNE] Computed conditional probabilities for sample 2000 / 10000
+[t-SNE] Computed conditional probabilities for sample 3000 / 10000
+[t-SNE] Computed conditional probabilities for sample 4000 / 10000
+[t-SNE] Computed conditional probabilities for sample 5000 / 10000
+[t-SNE] Computed conditional probabilities for sample 6000 / 10000
+[t-SNE] Computed conditional probabilities for sample 7000 / 10000
+[t-SNE] Computed conditional probabilities for sample 8000 / 10000
+[t-SNE] Computed conditional probabilities for sample 9000 / 10000
+[t-SNE] Computed conditional probabilities for sample 10000 / 10000
+[t-SNE] Mean sigma: 1.752374
+[t-SNE] KL divergence after 250 iterations with early exaggeration: 73.873161
+[t-SNE] Error after 300 iterations: 2.748080
+
+Trying parameters: {'max_iter': 10000, 'n_components': 3}
+Trying parameters: {'max_iter': 10000, 'n_components': 5}
+Trying parameters: {'max_iter': 10000, 'n_components': 6}
+Trying parameters: {'max_iter': 10000, 'n_components': 4}
+Trying parameters: {'max_iter': 10000, 'n_components': 7}
+Trying parameters: {'max_iter': 10000, 'n_components': 8}
+{'max_iter': 10000, 'n_components': 4}
+PR AUC: 0.17, AUROC: 0.72
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:    0.4s
+[Parallel(n_jobs=40)]: Done   2 out of   7 | elapsed:    0.6s remaining:    1.5s
+[Parallel(n_jobs=40)]: Done   3 out of   7 | elapsed:    0.7s remaining:    1.0s
+[Parallel(n_jobs=40)]: Done   4 out of   7 | elapsed:    0.8s remaining:    0.6s
+[Parallel(n_jobs=40)]: Done   5 out of   7 | elapsed:    1.0s remaining:    0.4s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:    1.1s remaining:    0.0s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:    1.1s finished
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:164: UserWarning: Numerical issues were encountered when centering the data and might not be solved. Dataset may contain too large values. You may need to prescale your features.
+  warnings.warn("Numerical issues were encountered "
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:181: UserWarning: Numerical issues were encountered when scaling the data and might not be solved. The standard deviation of the data is probably very close to 0. 
+  warnings.warn("Numerical issues were encountered "
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+OA training set: 99.27
+AA training set: 99.27
+OA test set: 99.12
+AA test set: 99.12
+[99.27]
+[99.27]
+[99.12]
+[99.12]
+Mean accuracy: 66.48 %
+Std accuracy: 32.24 %
+28.32% of all predictions made with an accuracy higher than 0.95%
+Mean accuracy: 98.64 %
+Std accuracy: 8.22 %
+96.15 % of all predictions made with an accuracy higher than 0.95%
+[t-SNE] Computing 91 nearest neighbors...
+[t-SNE] Indexed 1500 samples in 0.006s...
+[t-SNE] Computed neighbors for 1500 samples in 0.496s...
+[t-SNE] Computed conditional probabilities for sample 1000 / 1500
+[t-SNE] Computed conditional probabilities for sample 1500 / 1500
+[t-SNE] Mean sigma: 3.335662
+[t-SNE] KL divergence after 250 iterations with early exaggeration: 55.356216
+[t-SNE] Error after 300 iterations: 0.929143
+Variance explained by first 35 components: 0.95
+[t-SNE] Computing 91 nearest neighbors...
+[t-SNE] Indexed 10000 samples in 0.018s...
+[t-SNE] Computed neighbors for 10000 samples in 2.115s...
+[t-SNE] Computed conditional probabilities for sample 1000 / 10000
+[t-SNE] Computed conditional probabilities for sample 2000 / 10000
+[t-SNE] Computed conditional probabilities for sample 3000 / 10000
+[t-SNE] Computed conditional probabilities for sample 4000 / 10000
+[t-SNE] Computed conditional probabilities for sample 5000 / 10000
+[t-SNE] Computed conditional probabilities for sample 6000 / 10000
+[t-SNE] Computed conditional probabilities for sample 7000 / 10000
+[t-SNE] Computed conditional probabilities for sample 8000 / 10000
+[t-SNE] Computed conditional probabilities for sample 9000 / 10000
+[t-SNE] Computed conditional probabilities for sample 10000 / 10000
+[t-SNE] Mean sigma: 1.819612
+[t-SNE] KL divergence after 250 iterations with early exaggeration: 73.794930
+[t-SNE] Error after 300 iterations: 2.749615
+
+Trying parameters: {'max_iter': 10000, 'n_components': 3}
+Trying parameters: {'max_iter': 10000, 'n_components': 4}
+Trying parameters: {'max_iter': 10000, 'n_components': 5}
+Trying parameters: {'max_iter': 10000, 'n_components': 6}
+Trying parameters: {'max_iter': 10000, 'n_components': 7}
+Trying parameters: {'max_iter': 10000, 'n_components': 8}
+{'max_iter': 10000, 'n_components': 4}
+PR AUC: 0.13, AUROC: 0.65
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done   2 out of   7 | elapsed:    0.4s remaining:    1.1s
+[Parallel(n_jobs=40)]: Done   3 out of   7 | elapsed:    0.6s remaining:    0.9s
+[Parallel(n_jobs=40)]: Done   4 out of   7 | elapsed:    0.7s remaining:    0.5s
+[Parallel(n_jobs=40)]: Done   5 out of   7 | elapsed:    0.7s remaining:    0.3s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:    0.8s remaining:    0.0s
+[Parallel(n_jobs=40)]: Done   7 out of   7 | elapsed:    0.8s finished
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:164: UserWarning: Numerical issues were encountered when centering the data and might not be solved. Dataset may contain too large values. You may need to prescale your features.
+  warnings.warn("Numerical issues were encountered "
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/preprocessing/data.py:181: UserWarning: Numerical issues were encountered when scaling the data and might not be solved. The standard deviation of the data is probably very close to 0. 
+  warnings.warn("Numerical issues were encountered "
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+Trying parameters: {'degree': 1, 'kernel': 'rbf', 'nu': 0.1}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 1, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+Trying parameters: {'degree': 2, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.5}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.0001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.001}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.01}
+Trying parameters: {'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+......*..*..WARN: libsvm Solver reached max_iter
+optimization finished, #iter = 10000
+obj = 19520.256994, rho = 8.193109
+nSV = 5836, nBSV = 4991
+{'degree': 3, 'kernel': 'poly', 'max_iter': 10000, 'nu': 0.1}
+[LibSVM]PR AUC: 0.36, AUROC: 0.80
+Testing 16 combinations 3 times
+[{'ig_improvement': 0, 'max_depth': 1}
+ {'ig_improvement': 0, 'max_depth': 2}
+ {'ig_improvement': 0, 'max_depth': 3}
+ {'ig_improvement': 0, 'max_depth': 4}
+ {'ig_improvement': 0.4, 'max_depth': 1}
+ {'ig_improvement': 0.4, 'max_depth': 2}
+ {'ig_improvement': 0.4, 'max_depth': 3}
+ {'ig_improvement': 0.4, 'max_depth': 4}
+ {'ig_improvement': 0.7, 'max_depth': 1}
+ {'ig_improvement': 0.7, 'max_depth': 2}
+ {'ig_improvement': 0.7, 'max_depth': 3}
+ {'ig_improvement': 0.7, 'max_depth': 4}
+ {'ig_improvement': 0.9, 'max_depth': 1}
+ {'ig_improvement': 0.9, 'max_depth': 2}
+ {'ig_improvement': 0.9, 'max_depth': 3}
+ {'ig_improvement': 0.9, 'max_depth': 4}]
+Trying parameters: {'ig_improvement': 0, 'max_depth': 1, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done   3 out of  20 | elapsed:    0.3s remaining:    1.9s
+[Parallel(n_jobs=40)]: Done   5 out of  20 | elapsed:    0.4s remaining:    1.2s
+[Parallel(n_jobs=40)]: Done   7 out of  20 | elapsed:    0.5s remaining:    0.9s
+[Parallel(n_jobs=40)]: Done   9 out of  20 | elapsed:    0.6s remaining:    0.7s
+[Parallel(n_jobs=40)]: Done  11 out of  20 | elapsed:    0.7s remaining:    0.5s
+[Parallel(n_jobs=40)]: Done  13 out of  20 | elapsed:    0.7s remaining:    0.4s
+[Parallel(n_jobs=40)]: Done  15 out of  20 | elapsed:    0.8s remaining:    0.3s
+[Parallel(n_jobs=40)]: Done  17 out of  20 | elapsed:    0.9s remaining:    0.2s
+[Parallel(n_jobs=40)]: Done  20 out of  20 | elapsed:    1.0s finished
+/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/svm/base.py:218: ConvergenceWarning: Solver terminated early (max_iter=10000).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  % self.max_iter, ConvergenceWarning)
+Trying parameters: {'ig_improvement': 0, 'max_depth': 2, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:  1.4min remaining:    0.0s
+.Trying parameters: {'ig_improvement': 0, 'max_depth': 3, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:  3.1min remaining:    0.0s
+...Trying parameters: {'ig_improvement': 0, 'max_depth': 4, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:  4.1min remaining:    0.0s
+....Trying parameters: {'ig_improvement': 0.4, 'max_depth': 1, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed:  6.1min remaining:    0.0s
+./raid/home/cwendl/SIE-Master/Code/density_forest/density_forest.py:122: RuntimeWarning: Mean of empty slice
+  return np.log(np.nanmean(pairs_proba, axis=-1))
+Traceback (most recent call last):
+  File "MNIST Novelty Detection.py", line 604, in <module>
+    ps_df.fit()
+  File "/raid/home/cwendl/SIE-Master/Code/helpers/parameter_search.py", line 134, in fit
+    delayed(self.fit_iter)(c) for c in self.combinations_default)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/joblib/parallel.py", line 779, in __call__
+    while self.dispatch_one_batch(iterator):
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/joblib/parallel.py", line 625, in dispatch_one_batch
+    self._dispatch(tasks)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/joblib/parallel.py", line 588, in _dispatch
+    job = self._backend.apply_async(batch, callback=cb)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/joblib/_parallel_backends.py", line 111, in apply_async
+    result = ImmediateResult(func)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/joblib/_parallel_backends.py", line 332, in __init__
+    self.results = batch()
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/joblib/parallel.py", line 131, in __call__
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/joblib/parallel.py", line 131, in <listcomp>
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+  File "/raid/home/cwendl/SIE-Master/Code/helpers/parameter_search.py", line 180, in fit_iter
+    score = self.f_scoring(model_try, x_test_ss, y_true_ss)
+  File "/raid/home/cwendl/SIE-Master/Code/helpers/parameter_search.py", line 46, in scorer_roc_probas_df
+    auroc = metrics.roc_auc_score(y, -conf)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/metrics/ranking.py", line 277, in roc_auc_score
+    sample_weight=sample_weight)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/metrics/base.py", line 75, in _average_binary_score
+    return binary_metric(y_true, y_score, sample_weight=sample_weight)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/metrics/ranking.py", line 272, in _binary_roc_auc_score
+    sample_weight=sample_weight)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/metrics/ranking.py", line 534, in roc_curve
+    y_true, y_score, pos_label=pos_label, sample_weight=sample_weight)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/metrics/ranking.py", line 324, in _binary_clf_curve
+    assert_all_finite(y_score)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/utils/validation.py", line 54, in assert_all_finite
+    _assert_all_finite(X.data if sp.issparse(X) else X)
+  File "/opt/conda/envs/python36/lib/python3.6/site-packages/sklearn/utils/validation.py", line 44, in _assert_all_finite
+    " or a value too large for %r." % X.dtype)
+ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
+....
+Warning: using -h 0 may be faster
+*
+optimization finished, #iter = 13711
+obj = 33488638.149459, rho = 3281.200386
+nSV = 27028, nBSV = 27012
+{'degree': 1, 'kernel': 'rbf', 'nu': 0.5}
+[LibSVM]PR AUC: 0.17, AUROC: 0.70
+Testing 16 combinations 3 times
+[{'ig_improvement': 0, 'max_depth': 1}
+ {'ig_improvement': 0, 'max_depth': 2}
+ {'ig_improvement': 0, 'max_depth': 3}
+ {'ig_improvement': 0, 'max_depth': 4}
+ {'ig_improvement': 0.4, 'max_depth': 1}
+ {'ig_improvement': 0.4, 'max_depth': 2}
+ {'ig_improvement': 0.4, 'max_depth': 3}
+ {'ig_improvement': 0.4, 'max_depth': 4}
+ {'ig_improvement': 0.7, 'max_depth': 1}
+ {'ig_improvement': 0.7, 'max_depth': 2}
+ {'ig_improvement': 0.7, 'max_depth': 3}
+ {'ig_improvement': 0.7, 'max_depth': 4}
+ {'ig_improvement': 0.9, 'max_depth': 1}
+ {'ig_improvement': 0.9, 'max_depth': 2}
+ {'ig_improvement': 0.9, 'max_depth': 3}
+ {'ig_improvement': 0.9, 'max_depth': 4}]
+Trying parameters: {'ig_improvement': 0, 'max_depth': 1, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=40)]: Done   1 tasks      | elapsed:    0.3s
+[Parallel(n_jobs=40)]: Done   3 out of  20 | elapsed:    0.3s remaining:    2.0s
+[Parallel(n_jobs=40)]: Done   5 out of  20 | elapsed:    0.4s remaining:    1.3s
+[Parallel(n_jobs=40)]: Done   7 out of  20 | elapsed:    0.5s remaining:    0.9s
+[Parallel(n_jobs=40)]: Done   9 out of  20 | elapsed:    0.6s remaining:    0.7s
+[Parallel(n_jobs=40)]: Done  11 out of  20 | elapsed:    0.6s remaining:    0.5s
+[Parallel(n_jobs=40)]: Done  13 out of  20 | elapsed:    0.7s remaining:    0.4s
+[Parallel(n_jobs=40)]: Done  15 out of  20 | elapsed:    0.8s remaining:    0.3s
+[Parallel(n_jobs=40)]: Done  17 out of  20 | elapsed:    0.8s remaining:    0.1s
+[Parallel(n_jobs=40)]: Done  20 out of  20 | elapsed:    0.9s finished
+Trying parameters: {'ig_improvement': 0, 'max_depth': 2, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:  2.4min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 3, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   2 out of   2 | elapsed:  5.6min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0, 'max_depth': 4, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   3 out of   3 | elapsed:  8.5min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 1, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed: 12.1min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 2, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed: 18.2min remaining:    0.0s
+Trying parameters: {'ig_improvement': 0.4, 'max_depth': 3, 'min_subset': 0, 'n_jobs': -1, 'n_max_dim': 0, 'n_trees': 5, 'subsample_pct': 0.02, 'verbose': 0}
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed: 24.6min remaining:    0.0s

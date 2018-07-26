@@ -2,7 +2,7 @@
 
 ## Ideas
 - Use results of pre-softmax activations * w to predict same / different outcome on class
-- Apply DF to other dataset
+- Apply DF to other datasets
 
 ## Report
 - Compare single tree to density forest

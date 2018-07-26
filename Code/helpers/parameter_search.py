@@ -15,9 +15,8 @@ def scorer_roc_probas_gmm(clf_gmm, x, y=None):
     :param x: validation data
     :param y: optional gt data
     """
-    probas = -clf_gmm.score_samples(x)
-
-    auroc = metrics.roc_auc_score(y, probas)
+    conf = clf_gmm.score_samples(x)
+    auroc = metrics.roc_auc_score(y, -conf)
     return auroc
 
 
@@ -28,8 +27,8 @@ def scorer_roc_probas_svm(clf_svm, x, y=None):
     :param x: validation data
     :param y: optional gt data
     """
-    probas = -clf_svm.decision_function(x)
-    auroc = metrics.roc_auc_score(y, probas)
+    conf = clf_svm.decision_function(x)
+    auroc = metrics.roc_auc_score(y, -conf)
     return auroc
 
 
@@ -40,10 +39,11 @@ def scorer_roc_probas_df(clf_df, x, y=None):
     :param x: validation data
     :param y: optional gt data
     """
-    probas = clf_df.predict(x)
-    probas[probas == np.infty] = 10 ** 10
-    probas[np.isnan(probas)] = 10 ** 10
-    auroc = metrics.roc_auc_score(y, -probas)
+    conf = clf_df.predict(x)
+    conf[conf == np.infty] = np.max(conf[conf != np.infty])
+    conf[conf == -np.infty] = np.min(conf[conf != -np.infty])
+    #conf[np.isnan(conf)] = 0
+    auroc = metrics.roc_auc_score(y, -conf)
     return auroc
 
 

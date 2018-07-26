@@ -317,10 +317,9 @@ def export_particularity(dataset, img_idx, x, y, width, height, colors, confs_pa
 
     if confs_patches is not None:
         for idx_conf, conf_patches in enumerate(confs_patches):
-            conf_im = convert_patches_to_image(dataset.imgs, conf_patches[..., np.newaxis], 64, 64)
-            conf_im = exposure.equalize_hist(conf_im[img_idx])
+            conf_imgs = convert_patches_to_image(dataset.imgs, conf_patches[..., np.newaxis], 64, 64)
             rect = patches.Rectangle((x, y), width, height, linewidth=2, edgecolor='b', facecolor='None')
             f_name = dir_out + 'im_' + str(img_idx) + '_obj_' + str(idx) + '_' + names[idx_conf] + '_wo_cl_' + str(
                 class_to_remove) + '.jpg'
-            export_figure_matplotlib(conf_im, dpi=dpi, rect=rect, f_name=f_name)
+            export_figure_matplotlib(conf_imgs[img_idx], dpi=dpi, rect=rect, f_name=f_name)
             plt.close()
