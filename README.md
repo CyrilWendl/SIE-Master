@@ -67,12 +67,11 @@ Package for implementation of Decision Trees, Random Forests, Density Trees and 
 - `decision_tree.py`: data structure for decision tree nodes
 - `decision_tree_create.py`: functions for generating decision trees
 - `decision_tree_traverse.py`: functions for traversing a decision tree and predicting labels
+- `density_forest.py`: functions for creating density forests
 - `density_tree.py`: data struture for density tree nodes
 - `density_tree_create.py`: functions for generating a density tree
-- `density_tree_traverse.py`: functions for descending a density tree and retreiving its cluster parameters
-- `density_forest.py`: functions for creating density forests
+- `density_tree_traverse.py`: functions for descending a density tree and retrieving its cluster parameters
 - `helper.py`: various helper functions
-- `plots.py`:  Generic plotter functions for labelled and unlabelled 2D and 3D plots, used for t-SNE and PCA plots
 - `random_forests.py`: functions for creating random forests
 
 #### `Code/helpers`: 
@@ -81,6 +80,10 @@ General helpers library for semantic segmentation
 - `data_loader.py`: PyTorch data loader for Zurich dataset
 - `helpers.py`: functions for importing, cropping, padding images and other related image tranformations
 - `parameter_search.py`: functions for finding optimal hyperparameters for Density Forest, OC-SVM and GMM (explained above)
+- `plots.py`:  Generic plotter functions for labelled and unlabelled 2D and 3D plots, used for t-SNE and PCA plots
+
+#### `Code/baselines`:
+Helper functions for confidence estimation baselines MSR, margin, entropy and MC-Dropout
 
 #### `Zurich Land Cover/keras_helpers`
 Helper functions for Keras
@@ -93,8 +96,8 @@ Helper functions for Keras
 ### 🗾 Visualizations
 #### `Code/`: 
 Visualizations of basic decision tree and density tree
-- `decision_tree.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
-- `density_tree.ipynb`: Density Trees on randomly generated unlabelled data
+- `Decision Forest.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
+- `Density Forest.ipynb`: Density Trees on randomly generated unlabelled data
 
 #### `MNIST/`:
 - `MNIST Novelty Detection.ipynb`: Training of a CNN leaving out one class, baselines and DF for novelty detection

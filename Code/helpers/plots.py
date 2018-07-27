@@ -1,8 +1,9 @@
 from density_forest.random_forest import get_grid_labels
 from density_forest.create_data import data_to_clusters
 from density_forest.helpers import get_values_preorder, draw_subsamples
+from helpers.helpers import get_padded_im, get_n_patches
 from matplotlib.pyplot import cm
-from matplotlib.patches import Ellipse
+from matplotlib.patches import Ellipse, Rectangle
 import matplotlib.pylab as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
@@ -323,3 +324,64 @@ def export_particularity(dataset, img_idx, x, y, width, height, colors, confs_pa
                 class_to_remove) + '.jpg'
             export_figure_matplotlib(conf_imgs[img_idx], dpi=dpi, rect=rect, f_name=f_name)
             plt.close()
+
+
+def export_pad(img, patch_size=64, stride=40, dpi=255):
+    """for a given image, stride and patch size, export the padded image with overlapping patches and central strides"""
+    # overlap visualization
+    im_padded = get_padded_im(img, patch_size, stride)
+
+    fig = plt.figure(frameon=False)
+    fig.set_size_inches(im_padded.shape[1] / dpi, im_padded.shape[0] / dpi)
+    ax = plt.Axes(fig, [0., 0., 1., 1.])
+    ax.set_axis_off()
+    fig.add_axes(ax)
+    ax.imshow(im_padded[..., :3], alpha=.2)
+
+    pad_h = int((im_padded.shape[0] - img.shape[0]) / 2)
+    pad_w = int((im_padded.shape[1] - img.shape[1]) / 2)
+
+    pad = int((patch_size - stride) / 2)
+
+    rows, cols = get_n_patches(im_padded, stride)
+    rows, cols = rows - 1, cols - 1
+
+    cmap = cm.coolwarm  # colormap for patches
+    color = iter(cmap(np.linspace(0, 1, rows)))
+    # overlay pad total
+    rect_fill = Rectangle((pad_w, pad_h), im_padded.shape[1] - (2 * pad_w), im_padded.shape[0] - (2 * pad_h),
+                          edgecolor='blue', fill=False, linewidth=2)
+    ax.add_patch(rect_fill)
+    # overlay pad for
+    rect_fill = Rectangle((pad, pad), im_padded.shape[1] - (2 * pad), im_padded.shape[0] - (2 * pad),
+                          edgecolor='red', fill=False, linewidth=1, linestyle='--')
+
+    ax.add_patch(rect_fill)
+    # vertical patches
+    for x in range(1, rows):
+        color_win = next(color)
+        # patch
+        rect = Rectangle((0, x * stride), patch_size, patch_size, linewidth=1, color=color_win, fill=False,
+                         alpha=x / rows)
+        ax.add_patch(rect)
+        # central part
+        rect = Rectangle((pad, pad + (x * stride)), stride, stride, linewidth=1, facecolor=color_win, edgecolor='black',
+                         fill=True)
+        ax.add_patch(rect)
+
+    color = iter(cmap(np.linspace(0, 1, cols)))
+    # horizontal patches
+    for x in range(cols):
+        color_win = next(color)
+        # patch
+        rect = Rectangle((x * stride, 0), patch_size, patch_size, linewidth=1, color=color_win, fill=False,
+                         alpha=x / cols)
+        ax.add_patch(rect)
+        # central part
+        rect = Rectangle((pad + (x * stride), pad), stride, stride, linewidth=1, facecolor=color_win, edgecolor='black',
+                         fill=True)
+        ax.add_patch(rect)
+
+    # Add the patch to the Axes
+    ax.add_patch(rect_fill)
+    fig.savefig('im_padding.pdf', dpi=dpi)

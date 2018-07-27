@@ -42,7 +42,7 @@ def scorer_roc_probas_df(clf_df, x, y=None):
     conf = clf_df.predict(x)
     conf[conf == np.infty] = np.max(conf[conf != np.infty])
     conf[conf == -np.infty] = np.min(conf[conf != -np.infty])
-    #conf[np.isnan(conf)] = 0
+    conf[np.isnan(conf)] = 0
     auroc = metrics.roc_auc_score(y, -conf)
     return auroc
 
