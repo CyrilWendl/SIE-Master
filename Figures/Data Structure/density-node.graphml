@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
-  <!--Created by yEd 3.17-->
+  <!--Created by yEd 3.18.0.2-->
   <key attr.name="Beschreibung" attr.type="string" for="graph" id="d0"/>
   <key for="port" id="d1" yfiles.type="portgraphics"/>
   <key for="port" id="d2" yfiles.type="portgeometry"/>
@@ -38,7 +38,7 @@ self.dataset<y:LabelModel>
     <node id="n1">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="41.708945895977365" width="77.9955442575706" x="474.00445574242934" y="187.42822617125407"/>
+          <y:Geometry height="41.708945895977365" width="77.9955442575706" x="474.00445574242934" y="176.7846180316245"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="38.007999420166016" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="108.87998962402344" x="-21.681866223832003" y="6.102166890970068">self.split_dimension
@@ -77,10 +77,10 @@ self.__format__()<y:LabelModel>
     <node id="n3">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="111.14441311640388" width="150.0" x="571.8560819660884" y="245.00000000000003"/>
+          <y:Geometry height="156.7444131164039" width="150.0" x="571.8560819660884" y="199.4"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="73.0" y="53.57220655820194">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="73.0" y="76.37220655820195">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -88,11 +88,14 @@ self.__format__()<y:LabelModel>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.01999855041504" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="99.15999603271484" x="25.420001983642578" y="11.062207282994422">self.right
-self.right_dataset
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="140.03199768066406" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="122.51200103759766" x="13.743999481201172" y="8.356207717869921">self.right
 self.right_entropy
 self.right_mean
-self.right_cov<y:LabelModel>
+self.right_cov
+self.right_cov_inv
+self.right_cov_det
+self.right_dataset_pct
+self.right_pdf_mean<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -106,10 +109,10 @@ self.right_cov<y:LabelModel>
     <node id="n4">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="111.14441311640388" width="150.0" x="289.0" y="245.00000000000003"/>
+          <y:Geometry height="156.7444131164039" width="150.0" x="289.0" y="199.4"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="73.0" y="53.57220655820194">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="73.0" y="76.37220655820195">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -117,11 +120,14 @@ self.right_cov<y:LabelModel>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="89.01999855041504" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.78399658203125" x="29.608001708984375" y="11.062207282994422">self.left
-self.left_dataset
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Latin Modern Roman" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="140.03199768066406" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="114.13600158691406" x="17.93199920654297" y="8.356207717869921">self.left
 self.left_entropy
 self.left_mean
-self.left_cov<y:LabelModel>
+self.left_cov
+self.left_cov_inv
+self.left_cov_det
+self.left_dataset_pct
+self.left_pdf_mean<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>

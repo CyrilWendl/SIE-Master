@@ -1,9 +1,13 @@
 # Density Forest 
 Code Repository of the EPFL SIE Master Project, Spring Semester 2018.
-
 The goal of this project is to perform error detection and novelty detection in Convolutional Neural Networks (CNNs) using Density Forests. Applications to the MNIST dataset and a dataset for semantic segmentation of land cover classes in Zurich are visualized in  `Code/` and `Zurich/`.
 
-## 📈 Visualization
+## Installation
+The package can be simply installed from pip:
+
+```pip install density_forest```
+
+## 📈 Results
 Density trees maximize Gaussianity at each split level. In 2D this might look as follows:
 
 ![Simple 2D visualization](Figures/density_tree/gif/splits_visu.gif) 
@@ -21,7 +25,6 @@ Confidence of each data point in the test set, the probability is calculated as 
 ![Probas](Figures/Zurich/GIF/probas.png)
 
 Darker points represent regions of lower certainty and crosses represent activations of unseen classes.
- 
  
 
 ## 📖 Usage of the `DensityForest` class:
@@ -61,7 +64,7 @@ Check the docstrings for more detailed documentation af the `ParameterSearch` cl
 
 ### 👾 Code
 All libraries for density forests, helper libraries for semantic segmentation and for baselines. 
-#### `Code/density_forest/`
+#### `density_forest/density_forest/`
 Package for implementation of Decision Trees, Random Forests, Density Trees and Density Forests
 - `create_data.py`: functions for generating labelled and unlabelled data
 - `decision_tree.py`: data structure for decision tree nodes
@@ -74,7 +77,7 @@ Package for implementation of Decision Trees, Random Forests, Density Trees and 
 - `helper.py`: various helper functions
 - `random_forests.py`: functions for creating random forests
 
-#### `Code/helpers`: 
+#### `density_forest/helpers`: 
 General helpers library for semantic segmentation
 - `data_augment.py`: custom data augmentation methods applied to both the image and the ground truth
 - `data_loader.py`: PyTorch data loader for Zurich dataset
@@ -82,7 +85,7 @@ General helpers library for semantic segmentation
 - `parameter_search.py`: functions for finding optimal hyperparameters for Density Forest, OC-SVM and GMM (explained above)
 - `plots.py`:  Generic plotter functions for labelled and unlabelled 2D and 3D plots, used for t-SNE and PCA plots
 
-#### `Code/baselines`:
+#### `density_forest/baselines`:
 Helper functions for confidence estimation baselines MSR, margin, entropy and MC-Dropout
 
 #### `Zurich Land Cover/keras_helpers`
@@ -91,10 +94,8 @@ Helper functions for Keras
 - `callbacks.py`: callbacks to be evaluated after each epoch
 - `unet.py`: UNET model for training of network on Zurich dataset
 
-#### `Zurich Land Cover/baselines`
-
 ### 🗾 Visualizations
-#### `Code/`: 
+#### `density_forest/`: 
 Visualizations of basic decision tree and density tree
 - `Decision Forest.ipynb`: Decision Trees and Random Forest on randomly generated labelled data
 - `Density Forest.ipynb`: Density Trees on randomly generated unlabelled data

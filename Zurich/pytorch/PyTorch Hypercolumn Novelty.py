@@ -22,7 +22,7 @@ from helpers_pytorch import *
 
 # custom libraries
 base_dir = '/raid/home/cwendl'  # for guanabana
-sys.path.append(base_dir + '/SIE-Master/Code')  # Path to density Tree package
+sys.path.append(base_dir + '/SIE-Master/density_forest')  # Path to density Tree package
 from helpers.data_loader import ZurichLoader
 from helpers.helpers import *
 from helpers.plots import *

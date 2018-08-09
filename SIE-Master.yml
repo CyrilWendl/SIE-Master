@@ -1,0 +1,20 @@
+name: SIE-Master
+dependencies:
+  - python=3.7
+  - numpy
+  - matplotlib
+  - scipy
+  - tqdm
+  - Cython
+  - scikit-image
+  - pandas
+  - torchvision
+  - pytorch
+  - tensorflow
+  - keras
+  - joblib
+  - pip
+  - pip:
+    - nbviewer
+    - density_forest
+    - sklearn

@@ -1,0 +1,103 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{List of Figures}{ii}{section*.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{List of Tables}{iv}{section*.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Literature Review}{3}{section.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Methods Based on Network Output}{4}{subsection.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.1}Single-Pass Methods}{4}{subsubsection.2.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.2}Invariance to Image Transformations}{5}{subsubsection.2.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.3}MC-Dropout}{6}{subsubsection.2.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Methods Based on Network Activations}{6}{subsection.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3}Network Architectures for Confidence Estimation}{7}{subsection.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4}Comparison to Novelty Detection Methods}{7}{subsection.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5}Summary}{8}{subsection.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Methodology}{8}{section.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Overview: Density Forests}{8}{subsection.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Decision Trees}{10}{subsection.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3}Random Forests}{10}{subsection.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4}Density Forests}{11}{subsection.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Datasets}{12}{section.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Synthetic Datasets}{12}{subsection.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}MNIST Dataset}{13}{subsection.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}Zurich Dataset}{14}{subsection.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Experimental Setup}{15}{section.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}Network Architectures}{15}{subsection.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{MNIST dataset}{15}{section*.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Zurich dataset}{16}{section*.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Dimensionality Reduction and Data Separability}{18}{subsection.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3}Evaluation}{19}{subsection.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4}Hyperparameter Search}{20}{subsection.5.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Results}{21}{section.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}Experiments}{21}{subsection.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2}Synthetic Data}{21}{subsection.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3}MNIST}{23}{subsection.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.4}Zurich Dataset}{27}{subsection.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.5}Overall Results}{27}{subsection.6.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.6}Visual interpretation}{31}{subsection.6.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.7}Particular Objects}{38}{subsection.6.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Discussion}{41}{section.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{MNIST dataset}{41}{section*.44}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Zurich dataset}{41}{section*.45}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Conclusion}{42}{section.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.1}Main Contributions}{43}{subsection.8.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.2}Future Research}{43}{subsection.8.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}Appendices}{49}{section.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A}Code Documentation}{49}{subsection.9.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B}Random Forest}{49}{subsection.9.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {C}Data Structure}{51}{subsection.9.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D}MNIST Evaluation Metrics}{52}{subsection.9.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {E}Zurich Network Architecture}{53}{subsection.9.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {F}MNIST Dataset Figures}{54}{subsection.9.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {G}Zurich Dataset Figures}{55}{subsection.9.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {H}Hyperparameter Search Results}{67}{subsection.9.8}
