@@ -1,31 +1,31 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {1}{\ignorespaces Summary of reviewed confidence measures for neural networks. Implemented baselines are indicated in bold.\relax }}{8}{table.caption.7}
+\contentsline {table}{\numberline {1}{\ignorespaces Summary of reviewed confidence measures for neural networks. Implemented baselines are indicated in bold.\relax }}{8}{table.caption.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {2}{\ignorespaces Density Forest parameters and suggested parameter ranges\relax }}{12}{table.caption.9}
+\contentsline {table}{\numberline {2}{\ignorespaces \acrlong {DF} parameters and suggested parameter ranges\relax }}{13}{table.caption.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {3}{\ignorespaces Architecture of the \gls {CNN} used for MNIST digit classification. $|b|$ = batch size, $p$ = dropout probability.\relax }}{16}{table.caption.15}
+\contentsline {table}{\numberline {3}{\ignorespaces Architecture of the \gls {CNN} used for \gls {MNIST} digit classification. $|b|$ = batch size, $p$ = dropout probability.\relax }}{17}{table.caption.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4}{\ignorespaces \acrlong {CM}: UA = User's Accuracy = Precision, PA = Producer's Accuracy = Recall, OA = Overall Accuracy, $1,2,\mathinner {\ldotp \ldotp \ldotp },r$=classes. $n_{ij}$ counts the number of labels predicted as class $i$ and belonging to the true class $j$. Bullet indexes signify either the sum of the row (e.g., $n_{O\bullet }$), the sum of the column (e.g., $n_{\bullet O}$) or the sum of all elements of the \acrlong {CM} ($n_{\bullet \bullet }$).\relax }}{19}{table.caption.20}
+\contentsline {table}{\numberline {4}{\ignorespaces \acrlong {CM}: UA = User's Accuracy = Precision, PA = Producer's Accuracy = Recall, OA = Overall Accuracy, $1,2,\mathinner {\ldotp \ldotp \ldotp },r$=classes. $n_{ij}$ counts the number of labels predicted as class $i$ and belonging to the true class $j$. Bullet indexes signify either the sum of the row (e.g., $n_{O\bullet }$), the sum of the column (e.g., $n_{\bullet O}$) or the sum of all elements of the \acrlong {CM} ($n_{\bullet \bullet }$).\relax }}{22}{table.caption.27}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5}{\ignorespaces Density Forest parameters for each dataset\relax }}{20}{table.caption.21}
+\contentsline {table}{\numberline {5}{\ignorespaces \acrlong {DF} parameters for each dataset\relax }}{22}{table.caption.28}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6}{\ignorespaces Mean Overall Accuracy in \% for the \gls {CNN} models trained on $N-1$ classes\relax }}{24}{table.caption.26}
+\contentsline {table}{\numberline {6}{\ignorespaces Mean Overall Accuracy in \% for the \gls {CNN} models trained on $N-1$ classes\relax }}{27}{table.caption.33}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7}{\ignorespaces Mean \gls {AUROC} for each left-out class in the MNIST dataset\relax }}{26}{table.caption.30}
+\contentsline {table}{\numberline {7}{\ignorespaces Mean \gls {AUROC} for each left-out class in the \gls {MNIST} dataset\relax }}{30}{table.caption.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {8}{\ignorespaces Test set accuracy for the UNET \gls {CNN} trained on all classes (Overall Accuracy: 77.59 \%)\relax }}{27}{table.caption.31}
+\contentsline {table}{\numberline {8}{\ignorespaces Test set accuracy for the UNET \gls {CNN} trained on all classes (Overall Accuracy: 77.59 \%)\relax }}{31}{table.caption.38}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {9}{\ignorespaces Accuracy measures for the UNET \gls {CNN} trained on $N-1$ classes.\relax }}{27}{table.caption.32}
+\contentsline {table}{\numberline {9}{\ignorespaces Accuracy measures for the UNET \gls {CNN} trained on $N-1$ classes.\relax }}{31}{table.caption.39}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {10}{\ignorespaces \gls {AUROC} for each left-out class\relax }}{31}{table.caption.37}
+\contentsline {table}{\numberline {10}{\ignorespaces \gls {AUROC} for each left-out class\relax }}{35}{table.caption.44}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {D.1}{\ignorespaces Accuracy metrics in \% for the \gls {CNN} trained on $N-1$ classes for the MNIST dataset\relax }}{52}{table.caption.53}
+\contentsline {table}{\numberline {D.1}{\ignorespaces Accuracy metrics in \% for the \gls {CNN} trained on $N-1$ classes for the \gls {MNIST} dataset\relax }}{57}{table.caption.70}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {D.2}{\ignorespaces \gls {AUROC} for each left-out class in the MNIST dataset\relax }}{52}{table.caption.54}
+\contentsline {table}{\numberline {D.2}{\ignorespaces \gls {AUROC} for each left-out class in the \gls {MNIST} dataset\relax }}{57}{table.caption.71}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {E.1}{\ignorespaces U-Net Architecture of the \gls {CNN} used for Zurich Dataset, according to \textcite {ronneberger2015u}. Conv. = convolution, filt = filters, str = stride, $p$ = dropout probability, dim = dimensions, Input dimensions $|b|, w, h, n_c$ = batch size, width, height, number of channels. A convolution or transpose convolution always takes the previous layer in the network as input.\relax }}{53}{table.caption.55}
+\contentsline {table}{\numberline {E.1}{\ignorespaces U-Net Architecture of the \gls {CNN} used for Zurich Dataset, according to \textcite {ronneberger2015u}. Conv. = convolution, filt = filters, str = stride, $p$ = dropout probability, dim = dimensions, Input dimensions $|b|, w, h, n_c$ = batch size, width, height, number of channels. A convolution or transpose convolution always takes the previous layer in the network as input.\relax }}{58}{table.caption.72}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {H.1}{\ignorespaces Best hyperparameters for the MNIST Dataset\relax }}{67}{table.caption.69}
+\contentsline {table}{\numberline {H.1}{\ignorespaces Best hyperparameters for the \gls {MNIST} Dataset\relax }}{73}{table.caption.87}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {H.2}{\ignorespaces Best hyperparameters for the Zurich Dataset\relax }}{68}{table.caption.70}
+\contentsline {table}{\numberline {H.2}{\ignorespaces Best hyperparameters for the Zurich Dataset\relax }}{74}{table.caption.88}

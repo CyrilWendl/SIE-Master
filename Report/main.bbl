@@ -336,6 +336,13 @@
       \verb https://www.microsoft.com/en-us/research/publication/decision-forests-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/
       \endverb
     \endentry
+    \entry{Gonzlez2012DigitalIP}{inproceedings}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labeltitlesource}{title}
+      \field{title}{Digital Image Processing Third Editionà-p E. Woods}
+      \field{year}{2012}
+    \endentry
     \entry{Dong2017AutomaticBT}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=e16b03661fdfbcf39546885a68509604}{%
@@ -466,32 +473,6 @@
       \field{pages}{1050\bibrangedash 1059}
       \range{pages}{10}
     \endentry
-    \entry{Gonzlez2012DigitalIP}{inproceedings}{}
-      \name{author}{2}{}{%
-        {{hash=bb9b5ff9cd11d93ba1498d52bffb47f9}{%
-           family={Gonz{á}lez},
-           familyi={G\bibinitperiod},
-           given={Rafael\bibnamedelima C.},
-           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-        {{hash=44357e9cebb9c9be192d9438170d83cb}{%
-           family={Woods},
-           familyi={W\bibinitperiod},
-           given={Richard\bibnamedelima E.},
-           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-      }
-      \strng{namehash}{3d6f4dff8592d8ed8ea88220ed948fe9}
-      \strng{fullhash}{3d6f4dff8592d8ed8ea88220ed948fe9}
-      \strng{bibnamehash}{3d6f4dff8592d8ed8ea88220ed948fe9}
-      \strng{authorbibnamehash}{3d6f4dff8592d8ed8ea88220ed948fe9}
-      \strng{authornamehash}{3d6f4dff8592d8ed8ea88220ed948fe9}
-      \strng{authorfullhash}{3d6f4dff8592d8ed8ea88220ed948fe9}
-      \field{sortinit}{G}
-      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Digital Image Processing Third Edition}
-      \field{year}{2012}
-    \endentry
     \entry{Goodfellow2014}{article}{}
       \name{author}{3}{}{%
         {{hash=b8309a3e80e90bd0b1aa74558c5e9741}{%
@@ -589,6 +570,65 @@
       \verb{url}
       \verb http://arxiv.org/abs/1610.02136
       \endverb
+    \endentry
+    \entry{Hinneburg2000WhatIT}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=498e97a23d4417319e95a6af6af725b6}{%
+           family={Hinneburg},
+           familyi={H\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ce0c7c24c7ae8ed18897504a91be3503}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C.},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=b0093d5ef2130a6bc601ff6d9b75f116}{%
+           family={Keim},
+           familyi={K\bibinitperiod},
+           given={Daniel\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{2a25f40827a622b8f0a4bd86c33f964e}
+      \strng{fullhash}{f572978105242f1796dbdb867b64fe55}
+      \strng{bibnamehash}{f572978105242f1796dbdb867b64fe55}
+      \strng{authorbibnamehash}{f572978105242f1796dbdb867b64fe55}
+      \strng{authornamehash}{2a25f40827a622b8f0a4bd86c33f964e}
+      \strng{authorfullhash}{f572978105242f1796dbdb867b64fe55}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{VLDB}
+      \field{title}{What Is the Nearest Neighbor in High Dimensional Spaces?}
+      \field{year}{2000}
+    \endentry
+    \entry{Hinneburg1999OptimalGT}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=498e97a23d4417319e95a6af6af725b6}{%
+           family={Hinneburg},
+           familyi={H\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b0093d5ef2130a6bc601ff6d9b75f116}{%
+           family={Keim},
+           familyi={K\bibinitperiod},
+           given={Daniel\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7c6b6b947acbf2f7a1471a356e0c40f0}
+      \strng{fullhash}{7c6b6b947acbf2f7a1471a356e0c40f0}
+      \strng{bibnamehash}{7c6b6b947acbf2f7a1471a356e0c40f0}
+      \strng{authorbibnamehash}{7c6b6b947acbf2f7a1471a356e0c40f0}
+      \strng{authornamehash}{7c6b6b947acbf2f7a1471a356e0c40f0}
+      \strng{authorfullhash}{7c6b6b947acbf2f7a1471a356e0c40f0}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{VLDB}
+      \field{title}{Optimal Grid-Clustering: Towards Breaking the Curse of Dimensionality in High-Dimensional Clustering}
+      \field{year}{1999}
     \endentry
     \entry{kampffmeyer}{inproceedings}{}
       \name{author}{3}{}{%
@@ -940,30 +980,6 @@
       \field{year}{2008}
       \field{pages}{413\bibrangedash 422}
       \range{pages}{10}
-    \endentry
-    \entry{Maaten2009LearningAP}{inproceedings}{}
-      \name{author}{1}{}{%
-        {{hash=184aa20aa5ca3192a62bf066e384c5ab}{%
-           family={Maaten},
-           familyi={M\bibinitperiod},
-           given={Laurens},
-           giveni={L\bibinitperiod},
-           prefix={van\bibnamedelima der},
-           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
-      }
-      \strng{namehash}{184aa20aa5ca3192a62bf066e384c5ab}
-      \strng{fullhash}{184aa20aa5ca3192a62bf066e384c5ab}
-      \strng{bibnamehash}{184aa20aa5ca3192a62bf066e384c5ab}
-      \strng{authorbibnamehash}{184aa20aa5ca3192a62bf066e384c5ab}
-      \strng{authornamehash}{184aa20aa5ca3192a62bf066e384c5ab}
-      \strng{authorfullhash}{184aa20aa5ca3192a62bf066e384c5ab}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{AISTATS}
-      \field{title}{Learning a Parametric Embedding by Preserving Local Structure}
-      \field{year}{2009}
     \endentry
     \entry{Maaten2008VisualizingDU}{inproceedings}{}
       \name{author}{3}{}{%

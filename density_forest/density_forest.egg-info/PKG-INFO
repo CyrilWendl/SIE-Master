@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: density-forest
-Version: 0.4.1
+Version: 0.4.2
 Summary: Density Forest library for confidence estimation and novelty detection
 Home-page: https://github.com/CyrilWendl/SIE-Master
 Author: Cyril Wendl

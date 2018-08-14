@@ -1,95 +1,101 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Invariance To Image Transformation: Schema for MNIST digit example \cite {Bahat_2018}.\relax }}{5}{figure.caption.6}
+\contentsline {figure}{\numberline {1}{\ignorespaces Invariance To Image Transformation: Schema for \gls {MNIST} digit example \cite {Bahat_2018}.\relax }}{5}{figure.caption.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2}{\ignorespaces Workflow Diagram\relax }}{9}{figure.caption.8}
+\contentsline {figure}{\numberline {2}{\ignorespaces Workflow Diagram\relax }}{9}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3}{\ignorespaces Synthetic datasets\relax }}{13}{figure.caption.10}
+\contentsline {figure}{\numberline {3}{\ignorespaces Illustration of tree growth for a fictive dataset. Covariance ellipses are indicated in red lines and splitting lines in red dotted lines, indicating the dimension and value along which a node is split. Nodes are considered leaf nodes when no further split is necessary or possible, either because the Information Gain of a new split would be too low or because the maximum depth is reached. In a \acrlong {DF}, every tree would gets to see a subset of all points and fit slightly different leaf nodes.\relax }}{12}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4}{\ignorespaces Sample images of the MNIST dataset for true y labels 0 to 9\relax }}{13}{figure.caption.11}
+\contentsline {figure}{\numberline {4}{\ignorespaces Synthetic datasets\relax }}{14}{figure.caption.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5}{\ignorespaces Sample pair of images and ground truth for the Zurich dataset \cite {Volpi2015SemanticSO}\relax }}{14}{figure.caption.12}
+\contentsline {figure}{\numberline {5}{\ignorespaces Sample images of the \gls {MNIST} dataset for true y labels 0 to 9 \cite {mnist}\relax }}{14}{figure.caption.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6}{\ignorespaces Label distribution in the Zurich dataset\relax }}{15}{figure.caption.13}
+\contentsline {figure}{\numberline {6}{\ignorespaces Sample pair of images and ground truth for the Zurich dataset \cite {Volpi2015SemanticSO}\relax }}{15}{figure.caption.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces U-Net architecture, according to \textcite {ronneberger2015u}\relax }}{16}{figure.caption.17}
+\contentsline {figure}{\numberline {7}{\ignorespaces Label distribution in the Zurich dataset\relax }}{16}{figure.caption.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8}{\ignorespaces Padded image and patches for a given patch size and stride. The big blue rectangle delimits the image area outside of which the original image is padded using mirroring. The rainbow-colored rectangles show patches with an overlap between pairs of patches defined by the stride. The central $stride \times stride$ solid-filled rectangles within each patch show the patch areas which are kept after prediction. The red dotted line shows the size of the image that is obtained after merging all predictions within the central areas of the patches. Finally, the thus obtained prediction image is cropped to the big blue box, denoting the original image size. Final predictions are obtained using several strides and averaging the results.\relax }}{17}{figure.caption.18}
+\contentsline {figure}{\numberline {8}{\ignorespaces U-Net architecture, according to \textcite {ronneberger2015u}\relax }}{17}{figure.caption.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {9}{\ignorespaces Explained variance as a function of the number of components\relax }}{18}{figure.caption.19}
+\contentsline {figure}{\numberline {9}{\ignorespaces Padded image and patches for a given patch size and stride. The big blue rectangle delimits the image area outside of which the original image is padded using mirroring. The rainbow-colored rectangles show patches with an overlap between pairs of patches defined by the stride. The central $stride \times stride$ solid-filled rectangles within each patch show the patch areas which are kept after prediction. The red dotted line shows the size of the image that is obtained after merging all predictions within the central areas of the patches. Finally, the thus obtained prediction image is cropped to the big blue box, denoting the original image size. Final predictions are obtained using several strides and averaging the results.\relax }}{18}{figure.caption.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {10}{\ignorespaces Parameter Search: Gray boxes show activations belonging to data points of seen classes, red boxes activations belonging to data points of the unseen class. For each hyperparameter combination, the classifier is trained \texttt {n} times on a subset of the training set activations belonging only to seen classes (blue arrow) and evaluated on a subset of the seen and unseen points of the validation set (green arrows). The best hyperparameter combination found that way is applied to the entire test set (gray arrows).\relax }}{20}{figure.caption.22}
+\contentsline {figure}{\numberline {10}{\ignorespaces Explained variance as a function of the number of components\relax }}{20}{figure.caption.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {11}{\ignorespaces Covariance ellipses of individual Density Tree (subset of all points shown)\relax }}{21}{figure.caption.23}
+\contentsline {figure}{\numberline {11}{\ignorespaces \gls {t-SNE} schema with toy data. \gls {t-SNE} finds a mapping between the original, high-dimensional data (left) and the data in a lower dimensionality (right). Classes of data points are shown in blue, red and green. Assuming that data points of the same class are more similar to each other, they will be closer to each other in the \gls {t-SNE} visualization.\relax }}{21}{figure.caption.26}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {12}{\ignorespaces Splitting steps of a single node, showing the data, covariance ellipses and information gain of the parent node for dataset 2\relax }}{22}{figure.caption.24}
+\contentsline {figure}{\numberline {12}{\ignorespaces Parameter Search: Gray boxes show activations belonging to data points of seen classes, red boxes activations belonging to data points of the unseen class. In principle, the true class label is unknown for the test set. For each hyperparameter combination, the classifier is trained \texttt {n} times on a subset of the training set activations belonging only to seen classes (blue arrow) and evaluated on a subset of the seen and unseen points of the validation set (green arrows). The best hyperparameter combination found that way is applied to the entire test set (gray arrows), predicting for every point whether it belongs to a seen or unseen class.\relax }}{23}{figure.caption.29}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {13}{\ignorespaces Gaussian \gls {PDF} distribution according to single tree, and according to a Density Forest consisting of 20 trees\relax }}{23}{figure.caption.25}
+\contentsline {figure}{\numberline {13}{\ignorespaces Covariance ellipses of individual Density Tree (subset of all points shown)\relax }}{24}{figure.caption.30}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {14}{\ignorespaces Predicted labels for networks with left-out classes 4 and 8. While digits showing a 4 are mostly mislabeled as a 9, the digit 8 is mislabeled less homogeneously.\relax }}{24}{figure.caption.27}
+\contentsline {figure}{\numberline {14}{\ignorespaces Splitting steps of a single node, showing the data, covariance ellipses and information gain of the parent node for dataset 2\relax }}{25}{figure.caption.31}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {15}{\ignorespaces \gls {t-SNE} of MNIST activations, model with left-out class 7. Both before and after \gls {PCA}, activations of different classes seem well separable, including the unseen class.\relax }}{25}{figure.caption.28}
+\contentsline {figure}{\numberline {15}{\ignorespaces Gaussian \gls {PDF} distribution according to single tree, and according to a \acrlong {DF} consisting of 20 trees\relax }}{26}{figure.caption.32}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {16}{\ignorespaces t-SNE of MNIST activations, after \gls {PCA} transformations.\relax }}{26}{figure.caption.29}
+\contentsline {figure}{\numberline {16}{\ignorespaces Predicted labels for networks with left-out classes 4 and 8 (top) and 1 and 7 (bottom). While digits showing a 4 are mostly mislabeled as a 9, the digit 8 is mislabeled less homogeneously. While one could suppose that digits 1 and 7 look similar and might be confused, digits 7 are mostly classified as digit 9, and digit 1 mostly as digits 4 and 8.\relax }}{28}{figure.caption.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {17}{\ignorespaces Prediction and ground truth for the model trained without the roads class\relax }}{28}{figure.caption.33}
+\contentsline {figure}{\numberline {17}{\ignorespaces \gls {t-SNE} of \gls {MNIST} activations, model with left-out class 7. Both before and after \gls {PCA}, activations of different classes seem well separable, including the unseen class. \relax }}{29}{figure.caption.35}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {18}{\ignorespaces Predictions for network with left-out class ``roads'' and ``trees''. While roads are mostly mislabelled as buildings, trees are mislabelled less homogeneously.\relax }}{28}{figure.caption.34}
+\contentsline {figure}{\numberline {18}{\ignorespaces t-SNE of \gls {MNIST} activations, after \gls {PCA} transformations.\relax }}{30}{figure.caption.36}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {19}{\ignorespaces \gls {t-SNE} of Zurich dataset activations, model with left-out class buildings. The same number of points are shown by class, although the real class distribution is imbalanced (cf. table \ref {table:zurich-cnn-acc-all}).\relax }}{29}{figure.caption.35}
+\contentsline {figure}{\numberline {19}{\ignorespaces Prediction and ground truth for the model trained without the roads class\relax }}{32}{figure.caption.40}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {20}{\ignorespaces \gls {t-SNE} of Zurich dataset activations after \gls {PCA}.\relax }}{30}{figure.caption.36}
+\contentsline {figure}{\numberline {20}{\ignorespaces Predictions for network with left-out class ``roads'' and ``trees''. While roads are mostly mislabelled as buildings, trees are mislabelled less homogeneously.\relax }}{32}{figure.caption.41}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {21}{\ignorespaces Original and equalized confidence distributions for \gls {DF}, using the left-out class ``Roads''. While outliers are visible in the original figure, smaller confidence differences between classes are better visible after histogram equalization.\relax }}{32}{figure.caption.38}
+\contentsline {figure}{\numberline {21}{\ignorespaces \gls {t-SNE} of Zurich dataset activations, model with left-out class buildings. The same number of points are shown by class, although the real class distribution is imbalanced (cf. table \ref {table:zurich-cnn-acc-all}).\relax }}{33}{figure.caption.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {22}{\ignorespaces Visual uncertainty results for selected methods on left-out class ``Roads'' and corresponding ground truth. Contrast stretching and histogram equalization have been applied to \gls {OC-SVM} and \gls {DF} images for better visibility. Variance per \gls {PCA} component and \gls {ROC} curves are shown below the confidence images.\relax }}{33}{figure.caption.39}
+\contentsline {figure}{\numberline {22}{\ignorespaces \gls {t-SNE} of Zurich dataset activations after \gls {PCA}.\relax }}{34}{figure.caption.43}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {23}{\ignorespaces Visual uncertainty results for selected methods on left-out class ``Trees'' and corresponding ground truth. Contrast stretching and histogram equalization have been applied to \gls {OC-SVM} and \gls {DF} images for better visibility. Variance per \gls {PCA} component and \gls {ROC} curves are shown below the confidence images.\relax }}{35}{figure.caption.40}
+\contentsline {figure}{\numberline {23}{\ignorespaces Original and equalized confidence distributions for \gls {DF}, using the left-out class ``Roads''. While outliers are visible in the original figure, smaller confidence differences between classes are better visible after histogram equalization.\relax }}{36}{figure.caption.45}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {24}{\ignorespaces Confidence for the left-out class ``Trees'' according to different methods plotted onto \gls {t-SNE}, showing the $n$ points with the lowest confidence where $n$ is the number of points per class shown in the \gls {t-SNE} plot. Points of the unseen classes are indicated with a solid-edge circle. Ideally, all solid-edge circles should be red, and all other points green. The original \gls {t-SNE} plot and the \gls {ROC} curves for each method are shown for comparison.\relax }}{37}{figure.caption.41}
+\contentsline {figure}{\numberline {24}{\ignorespaces Visual uncertainty results for selected methods on left-out class ``Roads'' and corresponding ground truth. Contrast stretching and histogram equalization have been applied to \gls {OC-SVM} and \gls {DF} images for better visibility. Variance per \gls {PCA} component and \gls {ROC} curves are shown below the confidence images.\relax }}{37}{figure.caption.46}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {25}{\ignorespaces Swimming pool object with MSR and \gls {DF} confidence images\relax }}{39}{figure.caption.42}
+\contentsline {figure}{\numberline {25}{\ignorespaces Visual uncertainty results for selected methods on left-out class ``Trees'' and corresponding ground truth. Contrast stretching and histogram equalization have been applied to \gls {OC-SVM} and \gls {DF} images for better visibility. Variance per \gls {PCA} component and \gls {ROC} curves are shown below the confidence images.\relax }}{39}{figure.caption.47}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {26}{\ignorespaces Soccer pitch object with MSR and \gls {DF} confidence scores\relax }}{40}{figure.caption.43}
+\contentsline {figure}{\numberline {26}{\ignorespaces Confidence for the left-out class ``Trees'' according to different methods plotted onto \gls {t-SNE}, showing the $n$ points with the lowest confidence where $n$ is the number of points per class shown in the \gls {t-SNE} plot. Points of the unseen classes are indicated with a solid-edge circle. Ideally, all solid-edge circles should be red, and all other points green. The original \gls {t-SNE} plot and the \gls {ROC} curves for each method are shown for comparison.\relax }}{41}{figure.caption.48}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {27}{\ignorespaces Alternative confidence measure scheme: red parts are to be retrieved and multiplied to measure the degree of agreement of the softmax inputs.\relax }}{44}{figure.caption.46}
+\contentsline {figure}{\numberline {27}{\ignorespaces Swimming pool object with MSR and \gls {DF} confidence images\relax }}{43}{figure.caption.49}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Decision boundaries of a single Decision Tree on 2-dimensional synthetic data, splitting the data until every leaf node only contains data of one cluster. Left: decision boundaries with Data, right: decision boundaries only. The Decision Tree clearly overfits the data.\relax }}{49}{figure.caption.48}
+\contentsline {figure}{\numberline {28}{\ignorespaces Soccer pitch object with MSR and \gls {DF} confidence scores\relax }}{44}{figure.caption.50}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Decision tree with unlimited depth on the training data for shown for illustrative purposes, with the split dimension and value at every non-leaf node and the class label at every leaf node. The tree clearly overfits the data and produces edgy decision boundaries\relax }}{50}{figure.caption.49}
+\contentsline {figure}{\numberline {29}{\ignorespaces Alternative confidence measure scheme: red parts are to be retrieved and multiplied to measure the degree of agreement of the softmax inputs.\relax }}{49}{figure.caption.61}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Decision boundaries of a Random Forest on 2-dimensional synthetic data. 1000 Decision Trees have been trained on a 30\% bootstrap sample of the original data. Left: decision boundaries with Data, right: decision boundaries only. The Random Forest manages to smooth out the class decision boundaries.\relax }}{50}{figure.caption.50}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Decision boundaries of a single Decision Tree on 2-dimensional synthetic data, splitting the data until every leaf node only contains data of one cluster. Left: decision boundaries with Data, right: decision boundaries only. The Decision Tree clearly overfits the data.\relax }}{54}{figure.caption.65}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Implemented data structure for Decision Tree nodes. Every node saves a pointer to its parent, the unique labels contained at its split level, the split dimension and value, methods for tree descending and formatting as well information about its child nodes.\relax }}{51}{figure.caption.51}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Decision tree with unlimited depth on the training data for shown for illustrative purposes, with the split dimension and value at every non-leaf node and the class label at every leaf node. The tree clearly overfits the data and produces edgy decision boundaries\relax }}{55}{figure.caption.66}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Implemented data structure for Density Tree nodes. Every node saves a pointer to its parent, the unique labels contained at its split level, the split dimension and value, methods for tree descending and formatting as well information about its child nodes. In addition, every root node pre-stores the inverse and determinant of the covariance matrix of both clusters situated to the right and left of the node for faster calculation of the Gaussian \gls {PDF}.\relax }}{51}{figure.caption.52}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Decision boundaries of a Random Forest on 2-dimensional synthetic data. 1000 Decision Trees have been trained on a 30\% bootstrap sample of the original data. Left: decision boundaries with Data, right: decision boundaries only. The Random Forest manages to smooth out the class decision boundaries.\relax }}{55}{figure.caption.67}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {F.1}{\ignorespaces \gls {t-SNE} of MNIST dataset activations after \gls {PCA} transformations for each left-out class\relax }}{54}{figure.caption.56}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Implemented data structure for Decision Tree nodes. Every node saves a pointer to its parent, the unique labels contained at its split level, the split dimension and value, methods for tree descending and formatting as well information about its child nodes.\relax }}{56}{figure.caption.68}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.1}{\ignorespaces Explained variance by first \gls {PCA} components, for activations of each left-out class and for activations of the model trained on all classes. The number of \gls {PCA} components was chosen such as to explain more than 95\% of the variance.\relax }}{55}{figure.caption.57}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Implemented data structure for Density Tree nodes. Every node saves a pointer to its parent, the unique labels contained at its split level, the split dimension and value, methods for tree descending and formatting as well information about its child nodes. In addition, every root node pre-stores the inverse and determinant of the covariance matrix of both clusters situated to the right and left of the node for faster calculation of the Gaussian \gls {PDF}.\relax }}{56}{figure.caption.69}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.2}{\ignorespaces \gls {t-SNE} of Zurich dataset activations after \gls {PCA} transformations for each left-out class and for the activations of the network trained on all classes. The same number of points are shown by class to show class separability, although the real class distribution is imbalanced (cf. table \ref {table:zurich-cnn-acc-all}).\relax }}{56}{figure.caption.58}
+\contentsline {figure}{\numberline {F.1}{\ignorespaces Count of predictions for each left-out class\relax }}{59}{figure.caption.73}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.3}{\ignorespaces Image and ground truth for visualized novelty detection methods\relax }}{57}{figure.caption.59}
+\contentsline {figure}{\numberline {F.2}{\ignorespaces \gls {t-SNE} of \gls {MNIST} dataset activations after \gls {PCA} transformations for each left-out class\relax }}{60}{figure.caption.74}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.4}{\ignorespaces Ground truth and visual results for left-out class ``roads''.\relax }}{58}{figure.caption.60}
+\contentsline {figure}{\numberline {G.1}{\ignorespaces Explained variance by first \gls {PCA} components, for activations of each left-out class and for activations of the model trained on all classes. The number of \gls {PCA} components was chosen such as to explain more than 95\% of the variance.\relax }}{61}{figure.caption.75}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.5}{\ignorespaces Ground truth and visual results for left-out class ``buildings''.\relax }}{59}{figure.caption.61}
+\contentsline {figure}{\numberline {G.2}{\ignorespaces \gls {t-SNE} of Zurich dataset activations after \gls {PCA} transformations for each left-out class and for the activations of the network trained on all classes. The same number of points are shown by class to show class separability, although the real class distribution is imbalanced (cf. table \ref {table:zurich-cnn-acc-all}).\relax }}{62}{figure.caption.76}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.6}{\ignorespaces Ground truth and visual results for left-out class ``trees''.\relax }}{60}{figure.caption.62}
+\contentsline {figure}{\numberline {G.3}{\ignorespaces Image and ground truth for visualized novelty detection methods\relax }}{63}{figure.caption.77}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.7}{\ignorespaces Ground truth and visual results for left-out class ``grass''.\relax }}{61}{figure.caption.63}
+\contentsline {figure}{\numberline {G.4}{\ignorespaces Ground truth and visual results for left-out class ``roads''.\relax }}{64}{figure.caption.78}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.8}{\ignorespaces Ground truth and visual results for left-out class ``bare soil''.\relax }}{62}{figure.caption.64}
+\contentsline {figure}{\numberline {G.5}{\ignorespaces Ground truth and visual results for left-out class ``buildings''.\relax }}{65}{figure.caption.79}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.9}{\ignorespaces Ground truth and visual results for left-out class ``water''.\relax }}{63}{figure.caption.65}
+\contentsline {figure}{\numberline {G.6}{\ignorespaces Ground truth and visual results for left-out class ``trees''.\relax }}{66}{figure.caption.80}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.10}{\ignorespaces Ground truth and visual results for left-out class ``railways''.\relax }}{64}{figure.caption.66}
+\contentsline {figure}{\numberline {G.7}{\ignorespaces Ground truth and visual results for left-out class ``grass''.\relax }}{67}{figure.caption.81}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.11}{\ignorespaces Ground truth and visual results for left-out class ``swimming pools''.\relax }}{65}{figure.caption.67}
+\contentsline {figure}{\numberline {G.8}{\ignorespaces Ground truth and visual results for left-out class ``bare soil''.\relax }}{68}{figure.caption.82}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {G.12}{\ignorespaces \gls {ROC} curves of confidence measures for novelty detection and for error detection\relax }}{66}{figure.caption.68}
+\contentsline {figure}{\numberline {G.9}{\ignorespaces Ground truth and visual results for left-out class ``water''.\relax }}{69}{figure.caption.83}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {H.1}{\ignorespaces RBF Kernel visualizations for One-Class SVM in Zurich dataset. Kernels were applied to a class-balanced subsample of training activations belonging to the seen classes. Best kernels found using hyperparameter search are labelled in bold.\relax }}{68}{figure.caption.71}
+\contentsline {figure}{\numberline {G.10}{\ignorespaces Ground truth and visual results for left-out class ``railways''.\relax }}{70}{figure.caption.84}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {H.2}{\ignorespaces Polynomial kernel visualizations for One-Class SVM in Zurich dataset with best degree $r$. Kernels were applied to a class-balanced subsample of training activations belonging to the seen classes. Contrast stretching has been applied to the images of the polynomial kernels to highlight more local variation. Best kernels found using hyperparameter search are labelled in bold.\relax }}{69}{figure.caption.72}
+\contentsline {figure}{\numberline {G.11}{\ignorespaces Ground truth and visual results for left-out class ``swimming pools''.\relax }}{71}{figure.caption.85}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {G.12}{\ignorespaces \gls {ROC} curves of confidence measures for novelty detection and for error detection\relax }}{72}{figure.caption.86}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {H.1}{\ignorespaces RBF Kernel visualizations for One-Class SVM in Zurich dataset. Kernels were applied to a class-balanced subsample of training activations belonging to the seen classes. Best kernels found using hyperparameter search are labelled in bold.\relax }}{74}{figure.caption.89}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {H.2}{\ignorespaces Polynomial kernel visualizations for One-Class SVM in Zurich dataset with best degree $r$. Kernels were applied to a class-balanced subsample of training activations belonging to the seen classes. Contrast stretching has been applied to the images of the polynomial kernels to highlight more local variation. Best kernels found using hyperparameter search are labelled in bold.\relax }}{75}{figure.caption.90}

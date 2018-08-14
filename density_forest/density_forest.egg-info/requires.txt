@@ -5,8 +5,8 @@ tqdm
 Cython
 scikit-image
 pandas
+torch
 torchvision
-pytorch
 keras
 tensorflow
 keras

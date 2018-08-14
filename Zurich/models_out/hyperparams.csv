@@ -1,9 +1,9 @@
 ,gmm_n_components,oc-svm_k,oc-svm_deg,oc_svm_nu,df_depth,df_min_ig
-Swimming Pools,3,rbf,1,0.5,3,0.7
 Roads,3,poly,2,0.001,1,-inf
 Buildings,5,poly,3,0.01,3,0.4
-Trees,4,poly,3,0.1,2,0.4
 Grass,3,poly,1,0.001,3,0.0
 Bare Soil,9,poly,1,0.5,3,0.7
 Water,3,poly,1,0.001,1,0.0
 Railways,5,poly,3,0.5,3,0.4
+Swimming Pools,3,rbf,1,0.5,3,0.7
+Trees,4,poly,3,0.5,2,0.4
