@@ -336,6 +336,37 @@
       \verb https://www.microsoft.com/en-us/research/publication/decision-forests-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/
       \endverb
     \endentry
+    \entry{Dempster1977MaximumLF}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=6a986d579abddfa0abf0fcbb5e7063f0}{%
+           family={Dempster},
+           familyi={D\bibinitperiod},
+           given={Arthur\bibnamedelima P.},
+           giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=1d6098870a5757a78bf14785fcd7eae4}{%
+           family={Laird},
+           familyi={L\bibinitperiod},
+           given={Nan\bibnamedelima M.},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=37fe180f849ae0085cba2b45692be375}{%
+           family={Rubin},
+           familyi={R\bibinitperiod},
+           given={Donald\bibnamedelima B.},
+           giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{af19adbc7ecd44cee8733e3c39bb628d}
+      \strng{fullhash}{4be3c205af67c450e3036841acc9b758}
+      \strng{bibnamehash}{4be3c205af67c450e3036841acc9b758}
+      \strng{authorbibnamehash}{4be3c205af67c450e3036841acc9b758}
+      \strng{authornamehash}{af19adbc7ecd44cee8733e3c39bb628d}
+      \strng{authorfullhash}{4be3c205af67c450e3036841acc9b758}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Maximum Likelihood from Incomplete Data via the EM Algorithm}
+      \field{year}{1977}
+    \endentry
     \entry{Gonzlez2012DigitalIP}{inproceedings}{}
       \field{sortinit}{D}
       \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}

@@ -1,7 +1,7 @@
 from density_forest.random_forest import get_grid_labels
-from density_forest.create_data import data_to_clusters
 from density_forest.helpers import get_values_preorder, draw_subsamples
 from helpers.helpers import get_padded_im, get_n_patches
+from helpers.create_data import data_to_clusters
 from matplotlib.pyplot import cm
 from matplotlib.patches import Ellipse, Rectangle
 import matplotlib.pylab as plt
