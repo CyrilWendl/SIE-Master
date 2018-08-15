@@ -34,9 +34,10 @@ Suppose you have your training data `X_train` and test data `X_test`, in `[N, D]
 ```python
 from density_forest.density_forest import DensityForest
 
-clf_df = DensityForest(**params)  # create new class instance, put hyperparameters here
-clf_df.fit(X_train)               # fit to a training set
-conf = clf_df.predict(X_test)     # get confidence values for test set
+clf_df = DensityForest(**params)         # create new class instance, put hyperparameters here
+clf_df.fit(X_train)                      # fit to a training set
+conf = clf_df.decision_function(X_test)  # get confidence values for test set
+outliers = clf_df.predict(X_test)        # predict whether a point is an outlier (-1 for outliers, 1 for inliers)
 ```
 Hyperparameters are documented in the docstring. To find the optimal hyperparameters, consider the section below.
 

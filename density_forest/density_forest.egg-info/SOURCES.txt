@@ -4,7 +4,6 @@ baselines/__init__.py
 baselines/helpers.py
 baselines/plots.py
 density_forest/__init__.py
-density_forest/create_data.py
 density_forest/decision_tree.py
 density_forest/decision_tree_create.py
 density_forest/decision_tree_traverse.py
@@ -21,11 +20,11 @@ density_forest.egg-info/not-zip-safe
 density_forest.egg-info/requires.txt
 density_forest.egg-info/top_level.txt
 helpers/__init__.py
+helpers/create_data.py
 helpers/data_augment.py
 helpers/data_loader.py
 helpers/helpers.py
 helpers/parameter_search.py
 helpers/plots.py
 keras_helpers/__init__.py
-keras_helpers/callbacks.py
 keras_helpers/unet.py

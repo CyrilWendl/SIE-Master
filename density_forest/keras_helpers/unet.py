@@ -5,6 +5,38 @@ from __future__ import print_function
 from keras.models import Model
 from keras.layers import *
 from keras import optimizers
+from keras import backend as k_b
+
+
+def get_activations_batch(model, layer_idx, x, batch_size=20, verbose=False):
+    """
+    get activations for a set of patches, used for semantic segmentation
+    :param model: model for which to extract activations
+    :param layer_idx: layer index for which to extract activations
+    :param x: data set for which to extract activations
+    :param batch_size: batch size
+    :param verbose: whether to output status bar
+    """
+    # generic function
+    get_activations_keras = k_b.function([model.layers[0].input,
+                                          k_b.learning_phase()], [model.layers[layer_idx].output, ])
+
+    # number of iterations
+    steps = np.arange(0, len(x), batch_size)
+    if steps[-1] != len(x):
+        steps = np.concatenate((steps, [len(x)]))
+
+    act_batches = []
+    it = range(len(steps) - 1)
+    for i in tqdm(it) if verbose else it:
+        idx_begin = steps[i]
+        idx_end = steps[i + 1]
+        act_batch = get_activations_keras([x[idx_begin:idx_end], 0])[0]
+        act_batches.append(act_batch)
+
+    act_batches = np.concatenate(act_batches)
+
+    return act_batches
 
 
 def ignore_background_class_accuracy(background_class_id):

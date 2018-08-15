@@ -4,7 +4,7 @@ from .density_tree import DensityNode
 from .helpers import entropy_gaussian, get_best_split, my_normal
 
 
-def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, side_label=None,
+def create_density_tree(dataset, max_depth, min_subset=0, parent_node=None, side_label=None,
                         verbose=False, n_max_dim=0, ig_improvement=0, n_grid=50):
     """
     create decision tree, using as a stopping criterion a maximum tree depth criterion
@@ -31,7 +31,11 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
         dataset_node = parent_node.get_dataset(side_label, dataset)
 
     # split dataset
-    dim_max, val_dim_max, ig = get_best_split(dataset_node, labelled=False, n_max_dim=n_max_dim, n_grid=n_grid)
+
+    # minimum number of points contained in split: (max(dimensions, min subset on either side))
+    min_n_pts = np.max([dim, int(len(dataset) * min_subset)])
+    dim_max, val_dim_max, ig = get_best_split(dataset_node, labelled=False, n_max_dim=n_max_dim, n_grid=n_grid,
+                                              min_n_pts=min_n_pts)
     left = dataset_node[dataset_node[..., dim_max] < val_dim_max]
     right = dataset_node[dataset_node[..., dim_max] >= val_dim_max]
 
@@ -40,7 +44,6 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
     e_left = entropy_gaussian(left)
     e_right = entropy_gaussian(right)
 
-    # TODO check semipositive definite
     # check positive semi-definite covariance matrices to both sides
     left_cov_det = np.linalg.det(np.cov(left.T))
     right_cov_det = np.linalg.det(np.cov(right.T))
@@ -88,13 +91,13 @@ def create_density_tree(dataset, max_depth, min_subset=.01, parent_node=None, si
         # check current node depth
         if treenode.get_depth() < max_depth:
             # check minimum number of points l
-            if (len(left) > (min_subset * len(dataset))) and (len(left) > (dim * 2)):
+            if (len(left) > (min_subset * len(dataset) * 2)) and (len(left) > (dim * 2)):
                 # recursively split
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parent_node=treenode,
                                     side_label='l', n_max_dim=n_max_dim, verbose=verbose,
                                     ig_improvement=ig_improvement)
             # check minimum number of points r
-            if (len(right) > (min_subset * len(dataset))) and (len(right) > (dim * 2)):
+            if (len(right) > (min_subset * len(dataset) * 2)) and (len(right) > (dim * 2)):
                 # recursively split
                 create_density_tree(dataset, max_depth, min_subset=min_subset, parent_node=treenode,
                                     side_label='r', n_max_dim=n_max_dim, verbose=verbose,

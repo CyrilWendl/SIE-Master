@@ -1,6 +1,5 @@
 import numpy as np
-from keras import backend as k_b
-from tqdm import tqdm
+
 
 def my_normal(x, mu, cov_det, cov_inv):
     """
@@ -114,17 +113,19 @@ def print_decision_tree_latex(node, tree_string):
     return tree_string
 
 
-def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
+def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50, min_n_pts=2):
     """
     for a given dimension, get best split based on information gain for labelled and unlabelled data.
     :param dataset: dataset for which to find the best split
     :param labelled: indicator whether dataset contains labels or not
     :param n_max_dim: maximum number of dimensions within which to search for best split
+    :param n_grid: grid resolution for parameter search in each dimension
+    :param min_n_pts: minimum number of points at either side of split
     :return dim_max: best split dimension
     :return val_dim_max: value at best split dimensions
     :return ig_dims: information gains for all split values in all possible split dimensions
     :return split_dims: split values corresponding to ig_dims
-    :param n_grid: grid resolution for parameter search in each dimension
+
     """
     # get information gains on dimensions
     ig_dims, split_dims = [], []
@@ -143,7 +144,7 @@ def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
         dimensions = np.random.choice(dimensions, n_max_dim, replace=False)
 
     for dim in dimensions:  # loop all dimensions
-        ig_dim, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f, n_grid=n_grid)
+        ig_dim, split_vals = get_ig_dim(dataset, dim, entropy_f=entropy_f, n_grid=n_grid, min_n_pts=min_n_pts)
         ig_dims_len = np.append(ig_dims_len, len(ig_dim))
         ig_dims = np.append(ig_dims, ig_dim)
         split_dims = np.append(split_dims, split_vals)
@@ -159,26 +160,24 @@ def get_best_split(dataset, labelled=False, n_max_dim=0, n_grid=50):
     return dimensions[idx_dim_max], split_dims[max_ind], np.max(ig_dims)
 
 
-def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50):
+def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50, min_n_pts=2):
     """
     Get information gain for one dimension, works for labelled and unlabelled data (according to entropy function)
     :param dataset: dataset without labels (X)
     :param dim_cut: dimension for which all cut values are to be calculated
     :param entropy_f: entropy function to be used (unlabelled: entropy_gaussian, unlabelled: other)
     :param n_grid: resolution at which to search for optimal split value
+    :param min_n_pts: minimum number of points at either side of split
     :return ig_dim, split_vals
     """
     ig_dim, split_vals = [], []
-    dims = np.shape(dataset)[-1]
 
-    # for labelled data, we effectively have one less dimension
-    if entropy_f != entropy_gaussian:
-        dims = dims - 1
-
-    # min split has to > dim-smallest element of array (to have at least dims points to either side)
+    # min split has to > dim-smallest element of array (to have at least dims points to either side) at minimum.
+    # if min_subset is defined, split has to have at least min_subset points on either side
     if entropy_f == entropy_gaussian:  # labelled case
-        dataset_dim_min = np.partition(dataset[:, dim_cut], dims)[dims]
-        dataset_dim_max = np.partition(dataset[:, dim_cut], -dims)[-dims]
+        dataset_dim_min = np.partition(dataset[:, dim_cut], min_n_pts)[min_n_pts]
+        dataset_dim_max = np.partition(dataset[:, dim_cut], -min_n_pts)[-min_n_pts]
+
     else:
         dataset_dim_min = np.min(dataset[:, dim_cut])
         dataset_dim_max = np.max(dataset[:, dim_cut])
@@ -192,7 +191,7 @@ def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50):
         right = dataset[dataset[:, dim_cut] >= split_val]
 
         # check that there are more values on each side than dimensions in the dataset
-        if (len(left) >= dims) and (len(right) >= dims) or (
+        if (len(left) >= min_n_pts) and (len(right) >= min_n_pts) or (
                 (entropy_f != entropy_gaussian) and len(right) and len(left)):
             # entropy
             entropy_l = entropy_f(left)
@@ -207,37 +206,6 @@ def get_ig_dim(dataset, dim_cut, entropy_f=entropy_gaussian, n_grid=50):
             split_vals = np.append(split_vals, split_val)
 
     return ig_dim, split_vals
-
-
-def get_activations_batch(model, layer_idx, x, batch_size=20, verbose=False):
-    """
-    get activations for a set of patches, used for semantic segmentation
-    :param model: model for which to extract activations
-    :param layer_idx: layer index for which to extract activations
-    :param x: data set for which to extract activations
-    :param batch_size: batch size
-    :param verbose: whether to output status bar
-    """
-    # generic function
-    get_activations_keras = k_b.function([model.layers[0].input,
-                                          k_b.learning_phase()], [model.layers[layer_idx].output, ])
-
-    # number of iterations
-    steps = np.arange(0, len(x), batch_size)
-    if steps[-1] != len(x):
-        steps = np.concatenate((steps, [len(x)]))
-
-    act_batches = []
-    it = range(len(steps) - 1)
-    for i in tqdm(it) if verbose else it:
-        idx_begin = steps[i]
-        idx_end = steps[i + 1]
-        act_batch = get_activations_keras([x[idx_begin:idx_end], 0])[0]
-        act_batches.append(act_batch)
-
-    act_batches = np.concatenate(act_batches)
-
-    return act_batches
 
 
 def get_balanced_subset_indices(gt, classes, pts_per_class=100):

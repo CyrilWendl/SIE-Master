@@ -4,6 +4,7 @@ from skimage.io import imread
 from skimage import exposure
 from scipy.stats import entropy as e
 
+
 def im_load(path, offset=2):
     """
     load a TIF image

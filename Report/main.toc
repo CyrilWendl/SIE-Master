@@ -6,13 +6,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{Acronyms}{vi}{section*.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Literature Review}{3}{section.2}
+\contentsline {section}{\numberline {2}Literature Review}{4}{section.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Methods Based on Network Output}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.1}Methods Based on Network Output}{5}{subsection.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.1.1}Single-Pass Methods}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Single-Pass Methods}{5}{subsubsection.2.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.1.2}Invariance to Image Transformations}{5}{subsubsection.2.1.2}
 \defcounter {refsection}{0}\relax 
@@ -22,105 +22,103 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Network Architectures for Confidence Estimation}{7}{subsection.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Comparison to Novelty Detection Methods}{7}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.4}Comparison to Novelty Detection Methods}{8}{subsection.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5}Summary}{7}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.5}Summary}{8}{subsection.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Methodology}{8}{section.3}
+\contentsline {section}{\numberline {3}Methodology}{9}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Overview: \acrlongpl {DF}}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.1}Overview: Density Forests}{9}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Decision Trees}{9}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Decision Trees}{10}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Random Forests}{10}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Random Forests}{11}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}\acrlongpl {DF}}{10}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Density Forests}{11}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Datasets}{13}{section.4}
+\contentsline {section}{\numberline {4}Datasets}{14}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Synthetic Datasets}{13}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Synthetic Datasets}{14}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}\gls {MNIST} Dataset}{14}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}MNIST Dataset}{15}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Zurich Dataset}{15}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.3}Zurich Dataset}{16}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Experimental Setup}{16}{section.5}
+\contentsline {section}{\numberline {5}Experimental Setup}{17}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Network Architectures}{16}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.1}Network Architectures}{17}{subsection.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\gls {MNIST} dataset}{16}{section*.17}
+\contentsline {subsubsection}{\numberline {5.1.1}MNIST dataset}{17}{subsubsection.5.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Zurich dataset}{17}{section*.19}
+\contentsline {subsubsection}{\numberline {5.1.2}Zurich dataset}{18}{subsubsection.5.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Image Tiling}{18}{section*.21}
+\contentsline {paragraph}{Image Tiling}{19}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Data Augmentation}{18}{section*.22}
+\contentsline {paragraph}{Data Augmentation}{20}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Novelty Detection Baselines}{18}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.2}Novelty Detection Baselines}{20}{subsection.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{MSR, Margin, Entropy}{18}{section*.23}
+\contentsline {subsubsection}{\numberline {5.2.1}MSR, Margin, Entropy}{20}{subsubsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{MC-Dropout}{18}{section*.24}
+\contentsline {subsubsection}{\numberline {5.2.2}MC-Dropout}{20}{subsubsection.5.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Pre-softmax methods}{19}{section*.25}
+\contentsline {subsubsection}{\numberline {5.2.3}Pre-softmax methods}{20}{subsubsection.5.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Dimensionality Reduction and Data Separability}{19}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.3}Dimensionality Reduction and Data Separability}{21}{subsection.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Evaluation}{21}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.4}Evaluation}{22}{subsection.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.5}Hyperparameter Search}{21}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.5}Hyperparameter Search}{23}{subsection.5.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Results}{23}{section.6}
+\contentsline {section}{\numberline {6}Results}{24}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Experiments}{23}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.1}Experiments}{24}{subsection.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Synthetic Data}{23}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Synthetic Data}{24}{subsection.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}\gls {MNIST}}{25}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.3}MNIST}{26}{subsection.6.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.4}Zurich Dataset}{30}{subsection.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5}Overall Results}{30}{subsection.6.5}
+\contentsline {subsubsection}{\numberline {6.4.1}Overall Results}{30}{subsubsection.6.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6}Visual interpretation}{34}{subsection.6.6}
+\contentsline {subsubsection}{\numberline {6.4.2}Visual Interpretation}{34}{subsubsection.6.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.7}Particular Objects}{41}{subsection.6.7}
+\contentsline {subsubsection}{\numberline {6.4.3}Particular Objects}{40}{subsubsection.6.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Discussion}{44}{section.7}
+\contentsline {section}{\numberline {7}Discussion}{43}{section.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}\gls {MNIST} dataset}{44}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.1}Softmax-based Methods}{43}{subsection.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Dimensionality reduction}{44}{section*.52}
+\contentsline {subsection}{\numberline {7.2}Pre-softmax-based Methods}{43}{subsection.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Network accuracy}{44}{section*.53}
+\contentsline {paragraph}{Dimensionality Reduction}{43}{section*.46}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Zurich dataset}{44}{subsection.7.2}
+\contentsline {paragraph}{Gaussianity in high dimensions}{44}{section*.47}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Class confusion}{45}{section*.54}
+\contentsline {paragraph}{Class confusion}{44}{section*.48}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Gaussianity in high dimensions}{45}{section*.55}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Data separability}{45}{section*.56}
+\contentsline {paragraph}{Method Aspects}{44}{section*.49}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {8}Conclusion}{45}{section.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}Main Contributions}{46}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.1}Main Contributions}{45}{subsection.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.2}Future Research}{47}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.2}Future Research}{46}{subsection.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Influence of network architectures}{47}{section*.57}
+\contentsline {paragraph}{Datasets and Architectures}{46}{section*.50}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Datasets}{47}{section*.58}
+\contentsline {paragraph}{Dimensionality Reduction}{46}{section*.51}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Meta-Loss to increase class separability}{47}{section*.59}
+\contentsline {paragraph}{Meta-Loss to Increase Class Separability}{46}{section*.52}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Parameter sensitivity}{47}{section*.60}
+\contentsline {paragraph}{Parameter sensitivity}{46}{section*.53}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Further research ideas}{47}{section*.61}
+\contentsline {paragraph}{Further research ideas}{47}{section*.54}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Evaluation}{48}{section*.63}
+\contentsline {paragraph}{Evaluation}{47}{section*.56}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Conclusion}{48}{section*.64}
+\contentsline {paragraph}{Conclusion}{47}{section*.57}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {9}Appendices}{53}{section.9}
 \defcounter {refsection}{0}\relax 
@@ -130,12 +128,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {C}Data Structure}{55}{subsection.9.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {D}\gls {MNIST} Evaluation Metrics}{56}{subsection.9.4}
+\contentsline {subsection}{\numberline {D}MNIST Evaluation Metrics}{56}{subsection.9.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {E}Zurich Network Architecture}{57}{subsection.9.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {F}\gls {MNIST} Dataset Figures}{58}{subsection.9.6}
+\contentsline {subsection}{\numberline {F}MNIST Dataset Figures}{58}{subsection.9.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {G}Zurich Dataset Figures}{60}{subsection.9.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {H}Hyperparameter Search Results}{72}{subsection.9.8}
+\contentsline {subsection}{\numberline {H}Hyperparameter Search Results}{73}{subsection.9.8}

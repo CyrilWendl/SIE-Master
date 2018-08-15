@@ -1,4 +1,5 @@
 \documentclass[10pt]{article}
+\pdfsuppresswarningpagegroup=1
 
 % page and paragraph settings
 \usepackage{geometry} 
@@ -58,7 +59,7 @@
 \newacronym{PDF}{PDF}{Probability Density Function}
 \newacronym{MNIST}{MNIST}{Modified National Institute of Standards and Technology}
 \newacronym{IF}{IF}{Isolation Forest}
-
+\newacronym{ROI}{ROI}{Region of Interest}
 \newacronym[firstplural={Convolutional Neural Networks}]{CNN}{CNN}{Convolutional Neural Network}
 \newacronym{GMM}{GMM}{Gaussian Mixture Models}
 \newacronym{EM}{EM}{Expectation-Maximization}
@@ -187,7 +188,9 @@ sorting=nyt
 \newcommand{\maxPool}[1]{MaxPooling & #1 $\times$ #1 pool size \\}
 \newcommand{\convT}[4]{Concat(Conv. T., \texttt{#1}) & #2 #3 $\times$ #3 filt., #4 str\\}
 
-
+\author{Cyril Wendl}
+\title{Novelty Detection in \acrlongpl{CNN} Using \acrlongpl{DF}
+}
 
 \newcommand{\maketitlepage}{
     \begin{titlepage}
@@ -205,7 +208,7 @@ sorting=nyt
     		\newcommand{\HRule}{\rule{\linewidth}{0.2mm}}
     		\HRule \\[0.5cm]
     		{\large SIE Master Project}\\[0.2cm]
-    		{\huge Novelty Detection in \acrlong{CNN} Using \acrlong{DF}
+    		{\huge Novelty Detection in \acrlongpl{CNN} Using \acrlongpl{DF}
     		}\\[0.5cm]
     		\HRule \\[0.5cm]
     		
@@ -228,7 +231,7 @@ sorting=nyt
     		\end{minipage}
     		\vfill
     		
-    		{\large Wageningen, \today}
+    		{\large Lausanne, \today}
     	\end{center}
     \end{titlepage}
 }
@@ -241,16 +244,20 @@ sorting=nyt
 
 \thispagestyle{empty}
 \section*{Acknowledgements}
-% TODO acknowledgements
-
 % Devis, Diego
-I would first and foremost like to thank my supervisors Devis Tuia and Diego Marcos who, with their helpful guidance, critical questions and regular feed-back greatly helped me make a hopefully meaningful scientific contribution. I would like to thank Devis Tuia in particular for his financial and administrative support in allowing me to spend a semester at the University of Wageningen. The regular exchange with PhD students and researchers of the GRS lab was a strongly motivating factor throughout my thesis. I would like to thank Diego Marcos in particular for his regular availability, assistance and critical-feedback to my numerous questions.
+I would first and foremost like to thank my supervisors Devis Tuia and Diego Marcos who, with their helpful guidance, critical questions and regular feedback greatly helped me make a hopefully meaningful scientific contribution. I would like to thank Devis Tuia in particular for his financial and administrative support in allowing me to spend a semester at the University of Wageningen, in the Netherlands. The periodic exchange with PhD students and researchers of the GRS lab was a strongly motivating factor throughout my thesis. I would like to thank Diego Marcos in particular for his regular availability, assistance and critical feedback to my numerous questions. The friendly supervision within the lab of Devis Tuia not only helped me advance my Master's thesis, but also feel welcome and spend a wonderful semester in the Netherlands.
 
 % François Golay
 Secondly, I would like to address special thanks to my secondary supervisor Prof. François Golay at EPFL (École Polytechnique Fédérale de Lausanne), who supported my Master thesis greatly and allowed me to spend the last week of my thesis at EPFL.
 
+% Swiss Study Foundation
+I would like to express my gratitude to the Swiss Studies Foundation for providing me scholarships of the Binding foundation and of the Bärbel and Paul Geissbühler foundation, allowing me to focus on my studies, while leaving me with enough time to participate in various extracurricular activities.
+
 % Family
-I would first and foremost like to thank my family for having supported me both morally and financially during my Master and Bachelor studies at EPFL and at the University of Fribourg respectively.
+I would also like to thank my family for having supported me both morally and financially during my Master and Bachelor studies at EPFL and at the University of Fribourg respectively. I would like to thank my mother Christine Suter in particular for her support and for having always shown great interest in my studies. I would also like to thank my grandmother Paula Geiser-Suter for her financial support as well as her continued interests in my studies, often leading to interesting discussions about engineering, research and global issues.
+
+% Friends
+Last but not least, I would like to address my warmest thanks to my girlfriend Muriel Blum, who often listened to my preoccupations during my Master's thesis and gave me precious advice. 
 
 \newpage
 \pagenumbering{roman}
@@ -266,11 +273,13 @@ I would first and foremost like to thank my family for having supported me both 
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+\maketitle
 \begin{abstract}
-    Uncertainty in deep learning has recently received a lot of attention in research. While state-of-the-art neural networks have managed to break many benchmarks in terms of accuracy, it has been shown that they are susceptible to fooling, yielding unreasonably high confidence scores while being wrong by applying minor perturbations to the input. While some research has gone into the design of new architectures that are probabilistic in nature, such as Bayesian Neural Networks, other researchers have tried to model uncertainty of standard architectures heuristically. This work presents a novel method to assess uncertainty in \acrlongpl{CNN}, based on fitting a forests of randomized Decision Trees to the network activations before the final classification layer. Experiments are provided for patch classification on the \acrshort{MNIST} dataset and for semantic segmentation on satellite imagery used for land cover classification. The land cover dataset consists of overhead imagery of the city of Zurich in Switzerland taken in 2002, with corresponding manually annotated ground truth. The \acrlong{DF} confidence estimation method is compared to a number of baselines based on softmax activations and pre-softmax activations. All methods are evaluated with respect to novelty detection. Confidence methods based on pre-softmax activations show better overall performance in the Zurich dataset than softmax measures, while for the \acrshort{MNIST} dataset softmax measures outperform pre-softmax based novelty detection measures. Main reasons for the varying performance are related to the curse of dimensionality when working with high-dimensional activation vectors and class separability issues with partially trained networks. \\
+    Uncertainty in deep learning has recently received a lot of attention in research. While state-of-the-art neural networks have managed to break many benchmarks in terms of accuracy, it has been shown that by applying minor perturbations to the input data, they are susceptible to fooling, yielding unreasonably high confidence scores while being wrong. While some research has gone into the design of new architectures that are probabilistic in nature, such as Bayesian Neural Networks, other researchers have tried to model uncertainty of standard architectures heuristically. This work presents a novel method to assess uncertainty in \acrlongpl{CNN}, based on fitting a forests of randomized Decision Trees to the network activations before the final classification layer. Experimental results are provided for patch classification on the \acrshort{MNIST} dataset and for semantic segmentation on satellite imagery used for land cover classification. The land cover dataset consists of overhead imagery of the city of Zurich in Switzerland taken in 2002, with corresponding manually annotated ground truth. The \acrlong{DF} confidence estimation method is compared to a number of baselines based on softmax activations and pre-softmax activations. All methods are evaluated with respect to novelty detection. The study overall shows that using pre-softmax activations of the \acrlong{FC} layer provide a better confidence estimate than just using the softmax activations. For the \acrshort{MNIST} dataset softmax measures outperform pre-softmax based novelty detection measures, in the Zurich dataset, pre-softmax based methods not only show better performance in detecting left-out classes, but they also manage to identify particular objects for which no class exists in the ground truth. Among the main explanations to be studied further regarding the varying performance of pre-softmax measures, we find the curse of dimensionality when working with high-dimensional activation vectors and class separability issues with partially trained networks. Future research should go into studying the reasons for the varying performance of the pre-softmax-based novelty detection measures, applying it to more diverse datasets, and evaluating different novelty detection measures in practical applications, such as Active Learning.\\
     
-    \textbf{Keywords}: Uncertainty, neural networks, Decision Trees, \acrlong{DF}, novelty detection, patch classification, semantic segmentation, remote sensing, land cover classification
+    \textbf{Keywords}: Uncertainty, \acrlongpl{CNN}, Decision Trees, \acrlong{DF}, pre-softmax, novelty detection, patch classification, semantic segmentation, remote sensing, land cover classification
 \end{abstract}
+\newpage
 
 \section{Introduction}
 % Advantages of CNNs and ML in many domains
@@ -280,7 +289,7 @@ The recent breakthroughs in \gls{ML}, \gls{AI} and in computing power have set n
 Model uncertainty accounts for incomplete information, such as our inability to distinguish a mug from a cup on an image if the handle is invisible \cite{Rupprecht2017LearningIA}. Model uncertainty is also crucial for detecting objects belonging to a new class which was never seen in the training set. A typical application of \gls{ML} methods in medical imaging is disease detection, in which \gls{ML} methods can perform some of the tasks usually done by human experts \cite{leibig2017}. In such applications, it is not only crucial to determine the diseases with high accuracy, but also to provide a measure of certainty. This is where current \gls{ML} methods typically fall short of human experts, who can accurately assess their certainty and consult more colleagues if needed \cite{leibig2017}.
 
 % Relevance: remote sensing
-In remote sensing, relevant applications of uncertainty measures include tasks related to land cover classification and change detection after natural disasters. In Active Learning, model performance can be improved by asking the user to provide labels for the most uncertain pixels of an image \cite{menderes_automatic_2015, womble_automated_2007, postadjian_investigating_2017, tuiaAL2011, Tuia2011ASO}. For change detection, it would be desirable to have a reliable confidence measure providing high confidence values for correctly predicted changes in order to avoid false alarms.
+In remote sensing, relevant applications of uncertainty measures include tasks related to land cover classification and change detection after natural disasters. In Active Learning, model performance can be improved by asking the user to provide labels for the most uncertain pixels of an image \cite{menderes_automatic_2015, womble_automated_2007, postadjian_investigating_2017, tuiaAL2011, Tuia2011ASO}. For change detection, reliable confidence measures could help reduce the number of false alarms.
 
 % Uncertainty Types and sources
 Uncertainty estimation has become a crucial and open field of research and many different approaches to account for uncertainty have been put forward \cite{Gal2016Uncertainty, Choi2017UncertaintyAwareLF, KendallG17, subramanya, leibig2017, Sun2018KSconfA}. The sources of uncertainty have traditionally been classified in two parts: epistemic uncertainty, accounting for model uncertainty which can be reduced by adding more training samples, and aleatoric uncertainty, representing intrinsic noise in the data, which cannot be reduced by additional training samples \cite{KendallG17}.  Sources of uncertainty have been attributed to noise, outliers and errors in the input data and model uncertainty. Model uncertainty can be split into uncertainty in model parameters that explain best the observed data, and structural uncertainty, accounting for the decision which model structure should be used \cite{Hammer2007HowTP, Gal2016Uncertainty}.
@@ -292,7 +301,7 @@ Contrary to probabilistic classification models, many current \gls{ML} models do
 Rather than changing the network architecture completely, some authors have proposed approaches to measure confidence by applying minor changes to existing networks, such as adding a special meta-loss function to maximize class distances between activations \cite{mandelbaum17} or training a confidence detector on top of a network \cite{Bahat_2018}. A different set of methods model uncertainty by working with the direct outputs of the network, which can either be network activations of intermediate network layers or of the final network layer. 
 
 % Softmax fallacy
-In classification, a common pitfall is to interpret the network's output activation as probabilities. Some shortcoming of using the softmax activations as a confidence measure are explained in section \ref{sec:lit}. Yet, these methods have the advantage that they don't require a change in the network architecture and are applicable to many different standard network types.
+In classification, a common pitfall is to interpret the network's output activation as probabilities. Some shortcoming of using the softmax activations as a confidence measure are explained in section \ref{sec:lit}. Yet, these methods have the advantage that they do not require a change in the network architecture and are applicable to many different standard network types.
 
 % Evaluation
 Most of these confidence methods are either evaluated with respect to error detection, which can be seen as a binary classification of identifying each class prediction as correct of incorrect, or to novelty detection, where the confidence score is used to assess whether a point from the test set belongs to a class not yet seen in the training set \cite{mandelbaum17, deMorsier2014thesis}. Typically, a confidence measure should give a low value to a false prediction in error detection, and a low value to unseen classes in novelty detection.
@@ -443,7 +452,7 @@ A summary of the reviewed literature and methods for confidence estimation in ne
 
 \section{Methodology}
 
-\subsection{Overview: \acrlongpl{DF}}
+\subsection{Overview: Density Forests}
 % Introduction
 Similar to the activations-based methods presented in section \ref{subsec:pre-softmax}, the confidence measure developed below tries to distinguish activations of the training set from new, unseen activations in the test set. Similar to the way Decision Trees and \acrlongpl{RF} are used in the case of labelled data, Density Trees and \acrlongpl{DF} are used for unlabelled data to distinguish ``normal'', seen data from unseen, new data points.
 
@@ -485,7 +494,7 @@ Stopping criteria for growing individual tree branches have been implemented acc
 % Random Forests
 Smoother and more generalized boundaries can be obtained by using \acrlongpl{RF}, which combine a set of individually trained trees on bootstrapped subsamples of the initial data \cite{decisionForests-MSR, Breiman2001}. Bootstrapping is a technique of sampling a smaller subset of data from a larger subset with replacement \cite{Zoubir2007BootstrapMA}. The aggregation of multiple predictors based on bootstrapped samples is usually referred to as bagging \cite{Breiman1996BaggingP}. A simple visualization of \acrlongpl{RF} on generated synthetic data is provided in appendix \ref{app:rf}. Aside of the parameters and stopping criteria mentioned for individual trees, important factors for Random Forests are the number of trees, the subsample size of the initial data on which each tree is trained and the number of dimensions each node may consider as a candidate dimension for splitting.
 
-\subsection{\acrlongpl{DF}}
+\subsection{Density Forests}
 
 % Information Gain, Entropy
 A Density Tree can be seen as similar to Decision Trees, but with the aim of clustering \textit{unlabelled} data into regions that maximize the Gaussianity of each cluster \cite{CW2017}. Same as with Decision Trees, a generic information gain function is maximized (eq. \ref{eq:ig}). An unsupervised entropy function is designed based on the assumption of a multivariate Gaussian distribution at each tree node \cite{decisionForests-MSR}:
@@ -546,14 +555,14 @@ At every step of the Density Tree creation, splits are created such as to maximi
     \begin{tabular}{p{3cm}p{9cm}p{2.5cm}}
     \toprule
     Parameter & Description & Parameter Range \\ \midrule
-    \texttt{n\_trees} & Number of trees to create. A higher number of trees increases training and prediction time by a linear amount. & 20 - 50 \\
-    \texttt{subsample\_pct} & Size of each random data subset sampled from the original dataset used as input for a Density Tree, in percentage of the size of the original dataset &  (0, 1) \\
+    \texttt{n\_trees} & Number of trees to create. A higher number of trees increases training and prediction time by a linear amount. & 10 - 50 \\
     \texttt{max\_depth} & Maximum depth allowed for each tree. Improves generalization ability of individual trees. & 1 - 5 \\
-    \texttt{min\_subset} & Minimum subset of each data to be contained in each cluster, as percentage of the subsample dataset size. & 2 - 3 $\times$ \texttt{dim} \\
+    \texttt{subsample\_pct} & Size of each random data subset sampled from the original dataset used as input for a Density Tree, in percentage of the size of the original dataset &  (0, 1) \\
+    \texttt{min\_subset} & Minimum dataset size of each cluster, indicated as percentage of the original dataset size. & 0 - \texttt{subsample\_pct} / 2 \\
     \texttt{n\_max\_dim} & Number of dimensions to consider for splitting at each node. If \texttt{dim} $\leq 0$, all dimensions are considered. If \texttt{dim} $> 0$, a random number of dimensions between 1 and dim is considered for splitting at each node. Increases speed and further adds randomization to trees. & ${[}$0, \texttt{dim}) \\
     \texttt{ig\_improvement} & The Information Gain improvement that has to be made at each node in order to create a new split. Avoids unnecessary splits in already Gaussian-like clusters & (0, 0.9) \\\bottomrule
     \end{tabular}
-    \caption{\acrlong{DF} parameters and suggested parameter ranges}
+    \caption{\acrlong{DF} parameters and suggested parameter ranges.}
     \label{table:df-parameters}
 \end{table}
 
@@ -607,7 +616,7 @@ Datasets generated according to these three data generators are shown in figure 
 \end{figure}
 
 % \gls{MNIST}
-\subsection{\gls{MNIST} Dataset}
+\subsection{MNIST Dataset}
 Confidence Measures have been first applied to the \gls{MNIST} dataset, containing 24 $\times$ 24 gray level images of handwritten digits from 0 to 9 and corresponding labels \cite{mnist}. The training set and test set consist of 60'000 and 10'000 samples respectively, with roughly the same amount of images for each class. Some examples of handwritten digits are shown in figure \ref{fig:MNIST-Im}.
 
 % MNIST images
@@ -652,13 +661,13 @@ In addition to confidence estimation on synthetic data and the \gls{MNIST} datas
 \end{figure}
 
 % Class imbalance
-Classes are imbalanced, with only very few samples for some classes, such as swimming pools or railways (fig. \ref{fig:label-dist-zurich}).
+Classes are imbalanced, with only very few samples for some classes, such as swimming pools or railways (fig. \ref{fig:zurich-label-dist}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.7\textwidth]{ZH_dist}
     \caption{Label distribution in the Zurich dataset}
-    \label{fig:label-dist-zurich}
+    \label{fig:zurich-label-dist}
 \end{figure}
 
 
@@ -668,7 +677,8 @@ Classes are imbalanced, with only very few samples for some classes, such as swi
 \label{sec:network-architectures}
 % MNIST dataset
 % Training / Testing split, leave-one-out
-\paragraph{\gls{MNIST} dataset} The \gls{MNIST} dataset consists of a training set of 60'000 images and a test set of 10'000 images, both containing a roughly equal amount of images belonging to the labels 0-9 \cite{mnist}. 10 \gls{CNN} models were each trained on about 54'000 training images, removing images of the left-out class, and validated on 10'000 test images, including images of the left-out class.
+\subsubsection{MNIST dataset} 
+The \gls{MNIST} dataset consists of a training set of 60'000 images and a test set of 10'000 images, both containing a roughly equal amount of images belonging to the labels 0-9 \cite{mnist}. 10 \gls{CNN} models were each trained on about 54'000 training images, removing images of the left-out class, and validated on 10'000 test images, including images of the left-out class.
 
 % Network architecture
 \glspl{CNN} were trained both for novelty detection using the network architecture described in table \ref{table:CNN_MNIST}. For novelty detection, \glspl{CNN} have been trained leaving out each time one class. Dropout was added after each MaxPooling layer to increase the redundancy of the network and avoid overfitting \cite{Srivastava2014DropoutAS}. The \gls{ReLU} activation function ($f(x) = \max(0, x)$) was used after each convolution layer of the network.  The \gls{FC} layer denotes the pre-classification layer in the network, in which every input is connected to every output by a weight and followed by a \gls{ReLU} activation.
@@ -696,7 +706,7 @@ Classes are imbalanced, with only very few samples for some classes, such as swi
     \end{center}
 \end{table}
 
-\paragraph{Zurich dataset} Similar as for the \gls{MNIST} dataset, \gls{CNN} models were trained for each left-out class. The U-Net network architecture shown in figure \ref{fig:u-net} was applied to perform semantic segmentation on the Zurich dataset. It consists of a sequence of down-sampling and up-sampling layers, yielding a ``U''-shaped layer architecture \cite{ronneberger2015u}. This architecture has shown good performance in various semantic segmentation tasks, and has been especially applied in medical imaging \cite{ronneberger2015u, Alom2018RecurrentRC, Dong2017AutomaticBT}. A full overview of the layers is given in appendix table  \ref{table:CNN_Zurich}.
+\subsubsection{Zurich dataset} Similar as for the \gls{MNIST} dataset, \gls{CNN} models were trained for each left-out class. The U-Net network architecture shown in figure \ref{fig:u-net} was applied to perform semantic segmentation on the Zurich dataset. It consists of a sequence of down-sampling and up-sampling layers, yielding a ``U''-shaped layer architecture \cite{ronneberger2015u}. This architecture has shown good performance in various semantic segmentation tasks, and has been especially applied in medical imaging \cite{ronneberger2015u, Alom2018RecurrentRC, Dong2017AutomaticBT}. A full overview of the layers is given in appendix table  \ref{table:CNN_Zurich}.
 
 \begin{figure}[H]
     \centering
@@ -720,13 +730,16 @@ Classes are imbalanced, with only very few samples for some classes, such as swi
 Some implementation details are discussed below for other novelty detection baselines to which \acrlongpl{DF} are compared. 
 
 % Network methods
-\paragraph{MSR, Margin, Entropy} The confidence measures relying on the softmax output of a network which were implemented using the equations of section \ref{sec:lit} (eq. \ref{eq:net_msr}, \ref{eq:net_margin} and \ref{eq:net_entropy}).
+\subsubsection{MSR, Margin, Entropy} 
+The confidence measures relying on the softmax output of a network which were implemented using the equations of section \ref{sec:lit} (eq. \ref{eq:net_msr}, \ref{eq:net_margin} and \ref{eq:net_entropy}).
 
 % Implemented MC-Dropout method
-\paragraph{MC-Dropout} In this study, a slightly simplified version of the \gls{MC-Dropout} algorithm was implemented, performing dropout during test time only in the \gls{FC} pre-softmax layer and calculating the entropy (eq. \ref{eq:net_entropy}) on the mean of the softmax activations. This has the advantage of speeding up calculations by having to repeat only the pass through the last layers of the network instead of the entire pass.
+\subsubsection{MC-Dropout} 
+In this study, a slightly simplified version of the \gls{MC-Dropout} algorithm was implemented, performing dropout during test time only in the \gls{FC} pre-softmax layer and calculating the entropy (eq. \ref{eq:net_entropy}) on the mean of the softmax activations. This has the advantage of speeding up calculations by having to repeat only the pass through the last layers of the network instead of the entire pass.
 
 % GMM, OC-SVM
-\paragraph{Pre-softmax methods} In addition to the implemented baselines indicated in bold in table \ref{table:summary_literature}, Novelty Detection methods \gls{GMM} and \gls{OC-SVM} have been implemented to detect novelties using the network's pre-softmax activations. In this work, the \gls{GMM} and \gls{OC-SVM} approaches have been applied to novelty detection using the same activations as the \acrlong{DF}. Both \gls{GMM} and \gls{OC-SVM} model the ``normal'' data, consisting of activations of seen classes. As confidence values, \gls{GMM} calculates the log-likelihood for a given a data point and \gls{OC-SVM} calculates the signed distance from the separating hyperplane, being positive for inliers and negative for outliers. For both \gls{GMM} and \gls{OC-SVM}, the Scikit-learn implementations were used \cite{scikit-learn}.  
+\subsubsection{Pre-softmax methods} 
+In addition to the implemented baselines indicated in bold in table \ref{table:summary_literature}, Novelty Detection methods \gls{GMM} and \gls{OC-SVM} have been implemented to detect novelties using the network's pre-softmax activations. In this work, the \gls{GMM} and \gls{OC-SVM} approaches have been applied to novelty detection using the same activations as the \acrlong{DF}. Both \gls{GMM} and \gls{OC-SVM} model the ``normal'' data, consisting of activations of seen classes. As confidence values, \gls{GMM} calculates the log-likelihood for a given a data point and \gls{OC-SVM} calculates the signed distance from the separating hyperplane, being positive for inliers and negative for outliers. For both \gls{GMM} and \gls{OC-SVM}, the Scikit-learn implementations were used \cite{scikit-learn}.  
 
 \subsection{Dimensionality Reduction and Data Separability}
 \label{subsec:methodology-dim-reduction}
@@ -769,8 +782,8 @@ For predictions from trained \gls{CNN} models, accuracy metrics are indicated us
 \begin{table}[H]
 	\centering
 	\begin{tabular}{cc|c|c|c|c|cl}
-		& & \multicolumn{4}{c|}{True labels y}&\multirow{2}{*}{PA}\\
-		\multirow{5}{*}{Predicted labels y} &  & 1& 2& $\hdots$ &r  &\\ \cline{1-7} 
+		& & \multicolumn{4}{c|}{True labels y}&PA\\
+		\multirow{4}{*}{Predicted labels y} &  & 1& 2& $\hdots$ &r  &\\ \cline{1-7} 
 		& 1 &  $n_{11}$ & $n_{12}$ & $\hdots$ & $n_{1r}$& $n_{11}/n_{1\bullet}$ \\ \cline{2-7} 
 		& 2 & $n_{21}$ & $n_{22}$ &$\hdots$  &$n_{2r}$ &$n_{22}/n_{2\bullet}$\\ \cline{2-7} 
 		& $\vdots$ & $\vdots$ & $\vdots$ &$\ddots$  &$\vdots$&$\vdots$\\ \cline{2-7} 
@@ -782,7 +795,7 @@ For predictions from trained \gls{CNN} models, accuracy metrics are indicated us
 \end{table}
 
 % Novelty detection
-Evaluation of the confidence measures is made according to the target of novelty detection: We are interested in a binary outcome, predicting whether a new point will belong to one of the seen classes or to an unseen class. All data points belonging to a seen class are attributed a value 0 and all data points belonging to an unseen class a value 1, meaning that they should be detected as different from the other data. In a binary classification setting, true positives are points correctly predicted as positive and true negatives are points correctly predicted as negative. Performance of the uncertainty measures is evaluated using \gls{ROC} curves, which plot the true positives (TP) rate against the true negatives (TN) rate for varying confidence thresholds.  The \gls{AUC} is used to summarize the \gls{ROC} curve (\gls{AUROC}).
+Evaluation of the confidence measures is made according to the target of novelty detection: We are interested in a binary outcome, predicting whether a new point will belong to one of the seen classes or to an unseen class. In a binary classification setting, true positives are points correctly predicted as positive and true negatives are points correctly predicted as negative. Performance of the uncertainty measures is evaluated using \gls{ROC} curves, which plot the true positives (TP) rate against the true negatives (TN) rate for varying confidence thresholds.  The \gls{AUC} is used to summarize the \gls{ROC} curve (\gls{AUROC}).
 
 
 \subsection{Hyperparameter Search}
@@ -796,10 +809,10 @@ For the synthetic datasets, no hyperparameter search was performed since their o
     \begin{tabular}{ll}
         \toprule
         Parameter & Value \\ \midrule
-        \texttt{n\_trees} & 20  \\
-        \texttt{subsample\_pct} & .02  \\
         \texttt{max\_depth} & 5 \\
-        \texttt{min\_subset} & .02 \\
+        \texttt{n\_trees} & 20  \\
+        \texttt{subsample\_pct} & .01  \\
+        \texttt{min\_subset} & .0001 \\
         \texttt{n\_max\_dim} & -1 \\
         \texttt{ig\_improvement} & .5 \\\bottomrule
     \end{tabular}
@@ -808,17 +821,7 @@ For the synthetic datasets, no hyperparameter search was performed since their o
 \end{table}
 
 % MNIST, Zurich datasets
-For the \gls{MNIST} dataset and the Zurich dataset, best hyperparameters were searched for the novelty detection methods \acrlong{DF}, \gls{OC-SVM} as well as \gls{GMM}. The range of tried parameter combinations are listed in appendix \ref{app:hyperparameters}. For each candidate parameter combination, models were trained in parallel several times on a subset of the training set activations belonging to points of the seen classes being correctly classified and evaluated on a subset of all validation data (fig. \ref{fig:hyperparameter-search})\footnote{For the class ``swimming pools'' of the Zurich dataset, hyperparameters were both trained and evaluated on the training set, since the there are no samples of the ``swimming pools'' class in the validation set.}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Schema/schema_parameter_search}
-    \caption{Parameter Search: Gray boxes show activations belonging to data points of seen classes, red boxes activations belonging to data points of the unseen class. In principle, the true class label is unknown for the test set. For each hyperparameter combination, the classifier is trained \texttt{n} times on a subset of the training set activations belonging only to seen classes (blue arrow) and evaluated on a subset of the seen and unseen points of the validation set (green arrows). The best hyperparameter combination found that way is applied to the entire test set (gray arrows), predicting for every point whether it belongs to a seen or unseen class.}
-    \label{fig:hyperparameter-search}
-\end{figure}
-
-% Model selection
-Finally, the parameter set with the highest \gls{AUROC} is applied to the test set. In addition to finding best hyperparameters, kernel spaces have been visualized for \gls{OC-SVM}  (fig. \ref{fig:oc-svm-vis-rbf} and \ref{fig:oc-svm-vis-poly}). Hyperparameter results and visualizations are shown in appendix \ref{app:hyperparameters}.
+For the \gls{MNIST} dataset and the Zurich dataset, best hyperparameters were searched for the novelty detection methods \acrlong{DF}, \gls{OC-SVM} as well as \gls{GMM}. The range of tried parameter combinations are listed in appendix \ref{app:hyperparameters}. For each candidate parameter combination, models were trained in parallel several times on a subset of the training set activations belonging to points of the seen classes being correctly classified and evaluated on a subset of all validation data\footnote{For the class ``swimming pools'' of the Zurich dataset, hyperparameters were both trained and evaluated on the training set, since the there are no samples of the ``swimming pools'' class in the validation set.}. Finally, the parameter set with the highest \gls{AUROC} was applied to the test set. The final AUROC indicated in the results is calculated on the test set, using the best parameters found as described before. In addition to finding best hyperparameters, kernel spaces have been visualized for \gls{OC-SVM}  (fig. \ref{fig:oc-svm-vis-rbf} and \ref{fig:oc-svm-vis-poly}). Hyperparameter results and visualizations are shown in appendix \ref{app:hyperparameters}.
 
 
 \section{Results}
@@ -860,7 +863,7 @@ Figure \ref{fig:D2-covs-steps} shows the covariance ellipses of the splits found
     \centering
     \foreach \depth in {0,...,5}
     {
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{D2_data_covs_depth_\depth}
         \caption{Depth = \depth}
@@ -893,10 +896,10 @@ Figure \ref{fig:gen-data-heatmap} shows the Gaussian \gls{PDF} distribution of t
 
 While the single tree in figure \ref{fig:gen-data-heatmap} still clearly reflects the ellipsoids visible in figure \ref{fig:gen-data}, the \acrlong{DF} shows a smoother probability distribution. In particularly densely concentrated regions, such as near the central parts of the spiral arms in dataset 2, the density is higher, due to smaller Gaussians being fitted to theses regions.
 
-\subsection{\gls{MNIST}}
+\subsection{MNIST}
 \label{subsec:results-MNIST}
 % Network accuracies table
-Using the \gls{CNN} architecture listed in table \ref{table:CNN_MNIST}, $N=10$ models were trained on all training data except for images belonging to the left-out class. The accuracy of each network was evaluated on training and test points belonging to the seen classes (table \ref{table:mnist-nd-accuracy-mean}). Since classes are balanced in the \gls{MNIST} dataset, only the Overall Accuracy, which is almost identical to Average Accuracy in this case, is indicated. Detailed accuracy measures for each left-out class are shown in appendix \ref{subsec:app-eval-mnist}.
+Using the \gls{CNN} architecture listed in table \ref{table:CNN_MNIST}, 10 models were trained on all training data except for images belonging to the left-out class. The accuracy of each network was evaluated on training and test points belonging to the seen classes (table \ref{table:mnist-nd-accuracy-mean}). Since classes are balanced in the \gls{MNIST} dataset, only the Overall Accuracy, which is almost identical to Average Accuracy in this case, is indicated. Detailed accuracy measures for each left-out class are shown in appendix \ref{subsec:app-eval-mnist}.
 
 \begin{table}[H]
 \centering
@@ -913,32 +916,20 @@ Using the \gls{CNN} architecture listed in table \ref{table:CNN_MNIST}, $N=10$ m
 First, predictions were made for the unseen class to inspect the outcome distribution (fig. \ref{fig:pred-count-mnist}). Some left-out classes are mispredicted more homogeneously than others and have a higher mean \gls{MSR}. A possible explanation could be the different visual similarity between certain digits, such as 4 and 9 which may look similar, whereas no digit clearly resembles the digit 8. It is important to notice that higher intrinsic similarity between classes can make the task of novelty detection harder. Prediction counts for all left-out classes are shown in appendix \ref{fig:MNIST_pred_count_all}.
 
 \begin{figure}[H]
-    \begin{subfigure}{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{pred-count_wo_cl4}
-        \caption{Left-out class 4}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{pred-count_wo_cl8}
-        \caption{Left-out class 8}
-    \end{subfigure}
-   \begin{subfigure}{.49\textwidth}
 	\centering
-	\includegraphics[width=\textwidth]{pred-count_wo_cl1}
-	\caption{Left-out class 1}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{pred-count_wo_cl7}
-		\caption{Left-out class 7}
-	\end{subfigure}
+	\foreach \leftout in {4,8,1,7}{
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pred-count_wo_cl\leftout}
+        \caption{Left-out class \leftout}
+    \end{subfigure}
+	}
     \caption{Predicted labels for networks with left-out classes 4 and 8 (top) and 1 and 7 (bottom). While digits showing a 4 are mostly mislabeled as a 9, the digit 8 is mislabeled less homogeneously. While one could suppose that digits 1 and 7 look similar and might be confused, digits 7 are mostly classified as digit 9, and digit 1 mostly as digits 4 and 8.}
     \label{fig:pred-count-mnist}
 \end{figure} 
 
 % Activations, PCA, t-SNE
-Second, ReLu activations of the Fully Connected layer were extracted as described in section \ref{subsec:methodology-dim-reduction}. For each image, a vector of 128 activations was retrieved. \gls{PCA} was applied to this vector in order to reduce the redundancy of the filters. For the activations before and after \gls{PCA}, data separability was checked using \gls{t-SNE} visualizations (fig. \ref{fig:tsne-mnist}). The \gls{t-SNE} visualizations in all cases looked similar before and after \gls{PCA}, and are therefore only presented for one of the 10 trained models. \gls{t-SNE} visualizations for activations of each left-out class after \gls{PCA} are shown in appendix \ref{app:mnist-figures}. 
+Second, ReLu activations of the \acrlong{FC} layer were extracted as described in section \ref{subsec:methodology-dim-reduction}. For each image, a vector of 128 activations was retrieved. \gls{PCA} was applied to this vector in order to reduce the redundancy of the filters. For the activations before and after \gls{PCA}, data separability was checked using \gls{t-SNE} visualizations (fig. \ref{fig:tsne-mnist}). The \gls{t-SNE} visualizations in all cases looked similar before and after \gls{PCA}, and are therefore only presented for one of the 10 trained models. \gls{t-SNE} visualizations for activations of each left-out class after \gls{PCA} are shown in appendix \ref{app:mnist-figures}. 
 
 % Class 7 before and after PCA
 \begin{figure}[H]
@@ -959,11 +950,9 @@ Second, ReLu activations of the Fully Connected layer were extracted as describe
     \label{fig:tsne-mnist}
 \end{figure}
 
-Figure \ref{fig:tsne-mnist} shows that the \gls{t-SNE} visualizations of the network activations before and after \gls{PCA} look almost identical. Note that the rotation of the plot before and after applying \gls{PCA} is irrelevant, since the lower-dimensional data representation yielded by \gls{t-SNE} only models the pairwise proximities between data points and not their absolute position in space. 
+Figure \ref{fig:tsne-mnist} shows that the \gls{t-SNE} visualizations of the network activations before and after \gls{PCA} look almost identical. Note that the rotation of the plot before and after applying \gls{PCA} is irrelevant, since the lower-dimensional data representation yielded by \gls{t-SNE} only models the pairwise proximities between data points and not their absolute position in space. For novelty detection methods to work well, the unseen class should be well-separated from the other, seen classes. The t-SNE visualization indicates that all classes are well-separated, including the unseen class.
 
-For novelty detection methods to work well, the unseen class should be well-separated from the other, seen classes. The t-SNE visualization also indicates that all classes are well-separated, including the unseen class. 
-
-The same tendencies with respect to the class confusion shown in figure \ref{fig:pred-count-mnist} can also be observed in the \gls{t-SNE} visualizations (figure \ref{fig:tsne-mnist-miscl}): while class 4 tends to be confused mainly with class 9, class 8 is confused with several clusters.  Unseen class 8 seems to be slightly better separable than unseen class 4, which is very close to class 9.
+The tendencies with respect to the class confusion shown in figure \ref{fig:pred-count-mnist} can also be observed in the \gls{t-SNE} visualizations (figure \ref{fig:tsne-mnist-miscl}): while class 4 tends to be confused mainly with class 9, class 8 is confused with several clusters.  Unseen class 8 seems to be slightly better separable than unseen class 4, which is very close to the activations of class 9.
 
 \begin{figure}[H]
     \centering
@@ -1007,7 +996,7 @@ In the \gls{MNIST} dataset, \gls{GMM}, \gls{OC-SVM} and \gls{DF} perform worse c
 \label{subsec:results-zurich}
 
 % CNN accuracy
-\subsection{Overall Results}
+\subsubsection{Overall Results}
 Since class imbalance is greater than in the \gls{MNIST} dataset, model performance is indicated for each left-out class separately in table \ref{table:zurich-cnn-acc-nd}. For comparison, accuracy metrics for a \gls{CNN} trained on all classes is given in table \ref{table:zurich-cnn-acc-all}. In this section, illustrations are shown for the model trained on all classes but ``roads'' and the equivalent figures for the other models are shown in appendix \ref{app:zurich-figures}.
 
 % CNN accuracy for full network
@@ -1029,6 +1018,7 @@ Since class imbalance is greater than in the \gls{MNIST} dataset, model performa
     \caption{Test set accuracy for the UNET \gls{CNN} trained on all classes (Overall Accuracy:  77.59 \%)}
     \label{table:zurich-cnn-acc-all}
 \end{table}
+The low accuracy for the class ``railways'' could be due to the low number of class samples (fig. \ref{fig:zurich-label-dist}), to the visual similarity with the ``roads'' class or to suboptimal network parameters and architecture. 
 
 % CNN accuracy for ND models
 \begin{table}[H]
@@ -1070,7 +1060,7 @@ A sample visualization of a prediction from a model with the left-out class ``ro
 \end{figure}
 
 % Misclassification distributions
-As for the \gls{MNIST} dataset, misclassification distributions were checked for all models (fig. \ref{fig:pred-count-zurich}). Again, more homogeneously misclassified class samples are correlated with higher mean MSR. 
+As for the \gls{MNIST} dataset, misclassification distributions were checked for all models (fig. \ref{fig:pred-count-zurich}). Again, more homogeneously misclassified class samples are correlated with higher mean MSR. Prediction counts for each left-out class are shown in appendix \ref{fig:pred-count-zurich-all-cl}
 
 \begin{figure}[H]
     \begin{subfigure}{.49\textwidth}
@@ -1108,13 +1098,11 @@ Similar to the \gls{MNIST} dataset, it was checked by \gls{t-SNE} visualization 
     \end{subfigure}
     \\[.2cm]
     \legendBullet
-    \caption{\gls{t-SNE} of Zurich dataset activations, model with left-out class buildings. The same number of points are shown by class, although the real class distribution is imbalanced (cf. table \ref{table:zurich-cnn-acc-all}).}
+    \caption{\gls{t-SNE} of Zurich dataset activations, model with left-out class buildings. The same number of points are shown by class, although the real class distribution is imbalanced (cf. figure \ref{fig:zurich-label-dist}).}
     \label{fig:tsne-zurich}
 \end{figure}
 
-Fig \ref{fig:tsne-zurich} shows that \gls{t-SNE} visualizations before and after \gls{PCA} look almost the same. The unseen class ``buildings'' is confused most strongly with the class ``roads'', and partly with the classes ```tree'' and ``grass''. 
-
-\gls{t-SNE} visualizations of the classes ``roads'' and ``trees''  are shown in figure \ref{fig:tsne-zurich-miscl}.
+Fig \ref{fig:tsne-zurich} shows that \gls{t-SNE} visualizations before and after \gls{PCA} look almost the same. The unseen class ``buildings'' is confused most strongly with the class ``roads'' and partly with other classes. \gls{t-SNE} visualizations of the classes ``roads'' and ``trees''  are shown in figure \ref{fig:tsne-zurich-miscl}.
 
 % t-SNE for roads and trees
 \begin{figure}[H]
@@ -1131,14 +1119,15 @@ Fig \ref{fig:tsne-zurich} shows that \gls{t-SNE} visualizations before and after
     \end{subfigure}
     \\[.2cm]
     \legendBullet
-    \caption{\gls{t-SNE} of Zurich dataset activations after \gls{PCA}.}
+    \caption{\gls{t-SNE} of Zurich dataset activations after \gls{PCA} for left-out classes ``Roads'' and ``Trees''.}
     \label{fig:tsne-zurich-miscl}
 \end{figure}
-Although there seems to be a confusion between the classes ``roads'' and ``railways'' which suggests difficulties to separate both classes, the class ``railways'' is very rare (fig. \ref{fig:label-dist-zurich}). It is expected that Density Trees first fit ellipses in high-density regions. Therefore, it is likely that a \acrlong{DF} with limited depth will never fits any Gaussians onto the ``railways'' class. Figure \ref{fig:tsne-zurich-all-cl} in appendix shows \gls{t-SNE} of the activations after \gls{PCA} for all left-out classes and for the model trained on all classes. While some classes are always clearly separable from each other, such as bare soil, water and swimming pools, some classes are more mixed together, such as buildings and roads, or grass and trees. It is also noteworthy that some classes are only separable from others when seen during training, such as the class ``water'', while some also remain separable when unseen, such as the class ``swimming pools''.
+Although there seems to be a confusion between the classes ``roads'' and ``railways'' which suggests difficulties to separate both classes, the class ``railways'' is very rare (fig. \ref{fig:zurich-label-dist}). It is expected that Density Trees first fit ellipses in high-density regions containing many points. Therefore, it is likely that a \acrlong{DF} with limited depth will never fit few root nodes to the ``railways'' class. Figure \ref{fig:tsne-zurich-all-cl} in appendix shows \gls{t-SNE} of the activations after \gls{PCA} for all left-out classes and for the model trained on all classes. While some classes are always clearly separable from each other, such as bare soil, water and swimming pools, some classes are more mixed together, such as buildings and roads, or grass and trees. It is also noteworthy that some classes are only separable from others when seen during training, such as the class ``water'', while some also remain separable when unseen, such as the class ``swimming pools''.
 
 % Metrics
 Best parameters for each left-out class model and novelty detection method are shown in appendix table \ref{table:hyperparameters-results-zurich}. \gls{AUROC} for each left-out class and novelty detection method is shown in table \ref{table:zurich-auroc-nd}.
 
+% TODO reexport
 \begin{table}[H]
     \centering
     \begin{tabular}{@{}lllllllll@{}}
@@ -1159,12 +1148,12 @@ Best parameters for each left-out class model and novelty detection method are s
 \end{table}
 
 % AUROC numbers
-Table \ref{table:zurich-auroc-nd} indicate that the \gls{DF} outperforms other novelty detection methods in 3 of 8 classes and pre-softmax-based methods \gls{GMM}, \gls{OC-SVM} and \gls{DF} together outperform the softmax-based methods in 6 out of 8 classes. \gls{DF} clearly outperforms other methods on the Roads and Water classes. Pre-softmax based methods clearly outperform softmax-based methods on the Swimming Pools class. Visual results of the different methods are shown in appendix figures \ref{fig:zurich-im-uncert-1} - \ref{fig:zurich-im-uncert-2}. \gls{ROC} curves used to produce the \gls{AUROC} metrics of table \ref{table:zurich-auroc-nd} are shown in appendix figure \ref{fig:zurich-nd-roc}.
+Table \ref{table:zurich-auroc-nd} indicate that the \gls{DF} outperforms other novelty detection methods in 3 of 8 classes and pre-softmax-based methods \gls{GMM}, \gls{OC-SVM} and \gls{DF} together outperform the softmax-based methods in 6 out of 8 classes. \gls{DF} clearly outperforms other methods on the Roads and Water classes. Pre-softmax-based methods clearly outperform softmax-based methods on the Swimming Pools class. Visual results of the different methods are shown in appendices \ref{fig:zurich-im-uncert-1} - \ref{fig:zurich-im-uncert-2}. \gls{ROC} curves used to produce the \gls{AUROC} metrics of table \ref{table:zurich-auroc-nd} are shown in appendix \ref{fig:zurich-nd-roc}.
 
-\subsection{Visual interpretation}
+\subsubsection{Visual Interpretation}
 
 % Visual results
-To illustrate the performance of the novelty detection methods, confidence images for individual left-out classes can be analyzed and visualized. In this section, results are compared according to the classes on which the \acrlong{DF} performs better or worse than baseline methods. Visual examples are provided for MSR and \acrlongpl{DF}. Figures for all methods and left-out classes are shown in appendix figures \ref{fig:zurich-im-uncert-1} - \ref{fig:zurich-im-uncert-8}.
+To illustrate the performance of the novelty detection methods, confidence images for individual left-out classes can be analyzed and visualized. In this section, results are compared according to the classes on which the \acrlong{DF} performs better or worse than baseline methods. Visual examples are provided for MSR and \acrlongpl{DF}. Figures for all methods and left-out classes are shown in appendices \ref{fig:zurich-im-uncert-1} - \ref{fig:zurich-im-uncert-8}.
 
 % Histogram equalization, distribution
 A property of novelty detection methods is that they attribute extreme values to outliers, leading to skewed distributions of the confidence values. This can be observed in the results of the methods \gls{GMM}, \gls{OC-SVM} and \gls{DF}. In the case of novelty detection, some particular objects of the image may be recognized as very uncertain, leading to lesser visibility of confidence differences in the rest of the image. Therefore, histogram equalization was applied to the confidence images of \gls{GMM}, \gls{OC-SVM} and \gls{DF} to enhance the overall image contrast and show more local differences between classes \cite{Gonzlez2012DigitalIP}. Individual objects with very high uncertainty are shown using the original image (fig.  \ref{fig:hist-eq}).
@@ -1200,7 +1189,7 @@ A property of novelty detection methods is that they attribute extreme values to
     \label{fig:hist-eq}
 \end{figure}
 
-Figure \ref{fig:im_cert_1} shows visual results for the class ``roads''. \acrlong{DF} here outperforms the other methods, confirming visually that it has the highest \gls{AUROC} values of all confidence estimation methods (table \ref{table:zurich-auroc-nd}). The unseen class ``Roads'' clearly appears to be the least certain, while for MSR, the roads seem as uncertain as other classes. MSR just like margin and entropy, the other baseline methods based on the softmax output, mainly show low certainty along class changes (figure \ref{fig:zurich-im-uncert-1}.
+Figure \ref{fig:im_cert_1} shows visual results for the class ``roads''. \acrlong{DF} here outperforms the other methods, confirming visually that it has the highest \gls{AUROC} values of all confidence estimation methods (table \ref{table:zurich-auroc-nd}). The unseen class ``Roads'' clearly appears to be the least certain, while for \gls{MSR}, the roads seem as uncertain as other classes. \gls{MSR} just like margin and entropy, the other baseline methods based on the softmax output, mainly show low certainty along class changes (figure \ref{fig:zurich-im-uncert-1}). While \gls{OC-SVM} highlights the roads as uncertain, it also recognizes many other objects as uncertain, belonging to the seen classes buildings, grass and water.
 
 % Acc MSR, OC-SVM, DF
 \newcommand{\imcert}[3]{ % arguments: classname, classremoved, im
@@ -1236,18 +1225,20 @@ Figure \ref{fig:im_cert_1} shows visual results for the class ``roads''. \acrlon
     \label{fig:im_cert_#2}
 \end{figure}
 }
-\imcert{Roads}{1}{3}
+
+\imcert{roads}{1}{3}
 
 % Comparison roads, trees
-Figure \ref{fig:im_cert_3} shows a class for which the \acrlong{DF} underperforms. In this case, \gls{OC-SVM} shows the best performance in detecting the unseen class ``trees'' (along the river and on the top-right side of the field). While both the winning method \gls{OC-SVM} and \gls{DF} show low confidence in the regions containing trees, the \acrlong{DF} in addition shows very low confidence along the river and along some parts of the roads.
-
-\imcert{Trees}{3}{3}
+Figure \ref{fig:im_cert_3} shows a class for which the \acrlong{DF} underperforms. In this case, \gls{OC-SVM} shows the best performance in detecting the unseen class ``trees'' (along the river and on the top-right side of the field). While both the winning method \gls{OC-SVM} and \gls{DF} show low confidence in the regions containing trees, the \acrlong{DF} in addition shows very low confidence along the river belonging to the water class and along some parts of the roads.
 
 % PCA, ROC
 For both left-out classes roads and trees, a low number of \gls{PCA} components are needed to explain the initial variance of activations. Visual results, explained variance by \gls{PCA} components and \gls{ROC} curves are provided for all left-out classes in appendix \ref{app:zurich-figures}.
 
 % t-SNE for all classes
 Figure \ref{fig:t-SNE-probas_3} shows the confidence values of the different methods for the left-out class ``trees'' on a subset of all points used to produce the \gls{t-SNE} visualizations. All points with a solid border belong to the unseen class. Ideally, those points should be colored red (uncertain) while points of other classes should be yellow or green. Figure \ref{fig:t-SNE-probas_3} also shows different behavior in the seen classes between novelty detection methods. Softmax-based methods \gls{MSR}, margin, entropy and \gls{MC-Dropout} all behave similarly and identify the regions of lowest confidence at the borders of clusters and within the unseen class. The pre-softmax based confidence measures \gls{GMM}, \gls{OC-SVM} and \gls{DF} behave similarly and generally attribute a higher confidence to the cluster centers and unseen class, while \gls{GMM} and \gls{DF} also attribute lower certainty to points of the class ``bare soil' and identify the class ``swimming pool'' as particularly uncertain, which could indicate their ability better identify heterogeneous classes, such as ``bare soil'', and classes with few samples, such as ``swimming pools''.
+
+\imcert{trees}{3}{3}
+
 
 % t-SNE for all classes
 \newgeometry{left=1cm,right=1cm,top=2cm,bottom=2cm}
@@ -1301,32 +1292,32 @@ Figure \ref{fig:t-SNE-probas_3} shows the confidence values of the different met
 
 \restoregeometry
 
-\subsection{Particular Objects}
+\subsubsection{Particular Objects}
 % Introduction
-In addition to analyzing the performance of \acrlong{DF} and baseline methods in novelty detection, a few particular objects can be distinguished on the test images for which the pre-softmax activations-based methods \gls{GMM}, \gls{OC-SVM} and \acrlong{DF} all show particularly low confidence. In the following, confidence maps of the \acrlong{DF} and \gls{MSR} methods of are shown for particular objects for which \acrlong{DF} indicates low confidence. \gls{GMM} or \gls{OC-SVM} mostly yield confidence values similarly low as those of \acrlong{DF} for these objects and are shown in appendix \ref{app:zurich-figures}.
+In addition to analyzing the performance of \acrlong{DF} and baseline methods in novelty detection, a few particular objects can be distinguished on the test images for which the pre-softmax activations-based methods \gls{GMM}, \gls{OC-SVM} and \acrlong{DF} all show particularly low confidence. In the following, confidence maps of the \acrlong{DF} and \gls{MSR} methods are shown for particular objects within which \acrlong{DF} indicates low confidence. \gls{GMM} or \gls{OC-SVM} mostly yield confidence values similar to those of \acrlong{DF} for these objects and are shown in appendix \ref{app:zurich-figures}.
 
 % Swimming Pool
-Figure \ref{fig:obj-im1} shows a particular object annotated as a swimming pool, containing visible swimming lanes. While \gls{MSR} attributes a fairly high confidence to this region, again just highlighting the borders of the object, \gls{DF} yields a very low confidence within the object.
+Figure \ref{fig:obj-im1} shows a particular \gls{ROI} annotated as a swimming pool, containing visible swimming lanes. While \gls{MSR} attributes a fairly high confidence to this region, again just highlighting the borders of the object, \gls{DF} yields a very low confidence within the object.
 
 \newcommand{\imObject}[4]{  % args: im, obj, cl, caption name
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.49\textwidth}
+    \begin{subfigure}{.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{im_#1_obj_#2_overlay}
-        \caption{Image with ROI overlay}
+        \caption{Image with \gls{ROI} overlay}
     \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{im_#1_obj_#2_gt.jpg}
         \caption{Ground Truth}
     \end{subfigure}
-    \begin{subfigure}{.49\textwidth}
+    \begin{subfigure}{.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{im_#1_obj_#2_msr_wo_cl_#3}
         \caption{MSR}
     \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{im_#1_obj_1_df_wo_cl_#3}
         \caption{\acrlong{DF} (non-equalized)}
@@ -1338,48 +1329,52 @@ Figure \ref{fig:obj-im1} shows a particular object annotated as a swimming pool,
 \end{figure}}
 \imObject{1}{1}{4}{Swimming pool object with MSR and \gls{DF} confidence images}
 
-Figure \ref{fig:obj-im1} shows another region around a soccer pitch for which \gls{DF} yields low confidence, seemingly a race track.
+Figure \ref{fig:obj-im4} shows another region around a soccer pitch for which \gls{DF} yields low confidence, seemingly a race track.
 
 \imObject{4}{1}{8}{Soccer pitch object with \gls{MSR} and \gls{DF} confidence scores}
 
 % Comparison images
-For the swimming pool in figure \ref{fig:obj-im1}, the reason for the varying confidence between MSR and \acrlong{DF} could be the number of training samples for the swimming pool class (fig. \ref{fig:label-dist-zurich}). For the race track in figure \ref{fig:obj-im4}, there is no corresponding land cover class, explaining the lower confidence of the \acrlong{DF}. 
+For the swimming pool in figure \ref{fig:obj-im1}, the reason for the varying confidence between MSR and \acrlong{DF} could be the number of training samples for the swimming pool class (fig. \ref{fig:zurich-label-dist}). For the race track in figure \ref{fig:obj-im4}, there is no corresponding land cover class, explaining the lower confidence of the \acrlong{DF}. 
 
 % Outlier detection
 Generally, \gls{GMM}, \gls{OC-SVM} and \gls{DF} attribute very low values to particular objects which seem very different. For the class ``swimming pools'', all three methods strongly outperform softmax-based confidence estimators (table \ref{table:zurich-auroc-nd}). Since the class ``swimming pool'' is very rare, this might indicate that these methods work best for outlier detection, where the novelties are very few and different from the ``normal'' distribution.
 
 \section{Discussion}
 \label{sec:discussion}
+% TODO restructure by method
 
-% MNIST Dataset
-\subsection{\gls{MNIST} dataset}
-
-For the \gls{MNIST} dataset, \acrlongpl{DF} and other pre-softmax based confidence estimation methods showed worse performance in detecting novel classes than all other baselines, despite \gls{t-SNE} visualizations which indicate that data should be separable (fig. \ref{fig:tsne-mnist}). A reason for this could be the low variance explained by the first \gls{PCA} components, requiring to keep a high number of \gls{PCA} components (fig. \ref{fig:pca_components}). 
-
-% PCA
-\paragraph{Dimensionality reduction} A reason for this under-performance of pre-softmax novelty detection methods in the \gls{MNIST} dataset could lie in the variance explained by the first \gls{PCA} components of the activations. While for the Zurich dataset, a lower number of components is needed to explain the initial data variance, \gls{MNIST} requires a much higher amount of components to explain the initial data variance (fig. \ref{fig:pca_components}). A possible explanation for this could be the number of components used in the \gls{FC} layer of the network: the \gls{MNIST} \gls{CNN} (table \ref{table:CNN_MNIST}) has 128 filters in the \gls{FC} layer, while the U-Net used for the Zurich dataset has only 32 layers before the final softmax activation layer.  For the \gls{MNIST} and Zurich datasets, \gls{PCA} can reduce the initial high-dimensional data from 128 to around 30-40 dimensions and from 32 to 5-10 dimensions respectively, preserving more than 95\% of the variance (tables \ref{table:CNN_MNIST} and \ref{table:CNN_Zurich}). A different dimensionality reduction method than \gls{PCA} would be desirable in order to reduce the data to a lower number of dimensions while preserving the structure of the  high-dimensional data. The influence of other dimensionality reduction method on the performance of \acrlongpl{DF} should be studied more deeply.
-
-% Network accuracy
-\paragraph{Network accuracy}  Also, the networks have been trained to a very high test accuracy of around 99\% and the softmax-based indicators \gls{MSR}, margin, entropy show high performance. Investigating the influence of the network accuracy on the performance of softmax-based confidence estimation methods should be studied more deeply. A high network accuracy should correlate with linearly separable data at the end of the network, thus the pre-softmax activations should be very clearly separable. This seems to be confirmed in the t-SNE visualizations of the pre-softmax activations, showing clustering of activations by class. 
+% Softmax
+\subsection{Softmax-based Methods}
+% MNIST
+Both for the \gls{MNIST} and the Zurich datasets, the softmax-based confidence measures \gls{MSR}, margin, entropy and \gls{MC-Dropout} all show very similar results. In the MNIST dataset, softmax-based measures consistently provide high AUROC values and outperform  \acrlongpl{DF} and other pre-softmax based confidence estimation methods in detecting novel classes , despite \gls{t-SNE} visualizations which indicate that data should be separable (fig. \ref{fig:tsne-mnist}). The MNIST networks have been trained to a very high test accuracy of around 99\% and the softmax-based indicators \gls{MSR}, margin, entropy all show high performance for this dataset. Investigating the influence of the network accuracy on the performance of softmax-based confidence estimation methods should be studied more deeply. A high network accuracy should correlate with linearly separable data at the end of the network, thus the pre-softmax activations should actually be very clearly separable and thus perform better. This seems to be confirmed in the t-SNE visualizations of the pre-softmax activations, showing clustering of activations by class.
 
 % Zurich dataset
-\subsection{Zurich dataset}
-Regarding the Zurich dataset, \acrlongpl{DF} and other pre-softmax-based confidence estimation methods show on average a significant improvement in terms of novelty detection over softmax-based methods. While the performance of the classifiers \gls{GMM}, \gls{OC-SVM} and \gls{DF} is partly inconsistent, this shows at least that taking into account the pre-softmax network activations yields more information than just estimating the confidence based on the softmax output. Yet, the performance of various novelty detection methods differ strongly between classes. Some of the reasons for this varying performance are discussed below.
+In the Zurich dataset, the performance of softmax-based confidence measures is less consistent. Confidence values are mostly low along class changes, thus providing fairly little information on uncertain objects. Overall, the results of \gls{MSR}, margin, entropy and \gls{MC-Dropout} are very similar for the \gls{MNIST} dataset as well as for the Zurich dataset. 
 
-% Activations distribution, class separability
-\paragraph{Class confusion} Regarding the pre-softmax methods, part of the inconsistency might be due to the distribution of the activations used as input for training the confidence estimators. The \gls{t-SNE} visualizations show different clustering behaviour for the activations of the Zurich dataset than for activations of the \gls{MNIST} dataset, with some classes in the Zurich dataset being further away from other classes and some being regularly confused (fig. \ref{fig:tsne-zurich}). Pre-softmax based methods seem to work better on class activations which are well-separated from other classes. All pre-softmax-based confidence methods clearly outperform other baselines in the class ``swimming pools'' (fig. \ref{fig:zurich-im-uncert-8}). This might be in part due to the fact that these activations are very well separable from others, even for the model trained without the class ``swimming pools'' (fig. \ref{subfig:tsne-8}). While the \gls{t-SNE} also indicates good separation of the class water for models trained with the class, it seems that the class is less well-separated when not seen during training, making it thus more difficult to detect for activation-based methods (fig. \ref{subfig:tsne-6}). Therefore, a possible reason for the varying performance between classes could be how well they are separated even if they haven't been seen during training .
+% MC-Dropout
+With respect to \gls{MC-Dropout}, part of this similarity with other softmax-based methods could be due to the simplified version which was used in this study, using only dropout in activation after the \gls{FC} layer, with a dropout probability of 0.1, and applying the entropy function to the mean of several predictions. A higher dropout probability should be studied in the future and be compared to standard \gls{MC-Dropout}.
+
+\subsection{Pre-softmax-based Methods}
+% Datasets
+Regarding the \gls{MNIST} dataset, pre-softmax based methods are consistently outperformed by softmax-based methods. Regarding the Zurich dataset, \acrlongpl{DF} and other pre-softmax-based confidence estimation methods show on average a significant improvement in terms of novelty detection over softmax-based methods. While the performance of the classifiers \gls{GMM}, \gls{OC-SVM} and \gls{DF} is partly inconsistent, this shows at least that taking into account the pre-softmax network activations yields more information than just estimating the confidence based on the softmax output. Yet, the performance of various novelty detection methods differ strongly between classes. Some of the reasons for this varying performance are discussed below.
+
+% PCA
+\paragraph{Dimensionality  Reduction} A reason for the under-performance of pre-softmax novelty detection methods in the \gls{MNIST} dataset could be the low variance explained by the first \gls{PCA} components of the activations. While for the Zurich dataset, a lower number of components is needed to explain the initial data variance, \gls{MNIST} requires a much higher amount of components to explain the initial data variance (fig. \ref{fig:pca_components}). A possible explanation for this could be the number of components used in the \gls{FC} layer of the network: the \gls{MNIST} \gls{CNN} (table \ref{table:CNN_MNIST}) has 128 filters in the \gls{FC} layer, while the U-Net used for the Zurich dataset has only 32 layers before the final softmax activation layer. For the \gls{MNIST} and Zurich datasets, \gls{PCA} can reduce the initial high-dimensional data from 128 to around 30-40 dimensions and from 32 to 5-10 dimensions respectively, preserving more than 95\% of the variance (tables \ref{table:CNN_MNIST} and \ref{table:CNN_Zurich}). A different dimensionality reduction method than \gls{PCA} would be desirable in order to reduce the data to a lower number of dimensions while preserving the structure of the  high-dimensional data. The influence of other dimensionality reduction method on the performance of \acrlongpl{DF} should be studied more deeply.
 
 % Assumptions for uncertainty estimations: Gaussianity
-\paragraph{Gaussianity in high dimensions} The partly inconsistent performance of \acrlongpl{DF} as well as \gls{GMM} could be due to their underlying assumption of a Gaussian data distribution. Both methods rely on finding the support of the ``normal'' data through fitting a certain number of Gaussian distributions to the data. In high-dimensional, noisy data, this might be especially difficult due to the curse of dimensionality, making the notion of distance less meaningful \cite{Hinneburg2000WhatIT}.
+\paragraph{Gaussianity in high dimensions} Linked to the issue of dimensionality reduction, the partly inconsistent performance of \acrlongpl{DF} as well as \gls{GMM} could be due to their underlying assumption of a Gaussian distribution in high dimensions. Both methods rely on finding the support of the ``normal'' data through fitting a certain number of Gaussian distributions to the data. In high-dimensional, noisy data, this might be especially difficult due to the curse of dimensionality, making the notion of distance less meaningful in clustering problems \cite{Hinneburg2000WhatIT}.
+
+% Activations distribution, class separability
+\paragraph{Class confusion} Part of the inconsistency of pre-softmax methods might be due to the distribution of the activations used as input for training the confidence estimators. The \gls{t-SNE} visualizations show different clustering behavior for the activations of the Zurich dataset than for activations of the \gls{MNIST} dataset, with some classes in the Zurich dataset being further away from other classes than others and some classes being separated only if seen during training (fig. \ref{fig:tsne-zurich}). Pre-softmax based methods seem to work better on class activations which are well-separated from other, frequent classes. In the case of the \gls{MNIST} dataset, the high training accuracy might help the network better separate the unseen class from the seen classes, which it recognizes very precisely. Regarding the Zurich dataset, the network is trained less well, however some classes are only confused with infrequent other classes, which should be less of a problem, as Density Forests first model frequent classes. For instance, all pre-softmax-based confidence methods clearly outperform other baselines in the class ``swimming pools'' (fig. \ref{fig:zurich-im-uncert-8}). This might be in part due to the fact that these activations are very well separable from others, even for the model trained without the class ``swimming pools'' (fig. \ref{subfig:tsne-8}). While the \gls{t-SNE} also indicates good separation of the class water for models trained with the class, it seems that the class is less well-separated when not seen during training (fig. \ref{subfig:tsne-6}). It is thus to very likely that part of the varying performance between the unseen classes of the Zurich dataset is due to how well the unseen class is separated even if it has not been seen during training.
 
 % Data separability, kernel trick
-\paragraph{Data separability} Although the task of a neural network is to make data linearly separable, optimal hyperparameters for \gls{OC-SVM} included non-linear kernels in some cases (table \ref{table:hyperparameters-results-zurich}). This could be due either to an inability of the network to separate the classes due to the number of filters and other aspects related to the network architecture, or too few training iterations. A possible advantage of algorithms such as \gls{OC-SVM} could be their ability to increase data separability by explicitly reorganizing non-linearities from non-optimally trained networks, using the kernel trick. Although \acrlongpl{DF} do not explicitly apply any kind of feature augmentation, forest-based methods can model non-linear data distributions through bagging of many weak learners. The relation between the network accuracy, best \gls{OC-SVM} kernel for novelty detection and novelty detection performance should be further studied.
+\paragraph{Method Aspects} Similarly, although the task of a neural network is to make data linearly separable, a suboptimal network will still have non-linearly separable activations in the \gls{FC} layer. Optimal hyperparameters for \gls{OC-SVM} included non-linear kernels in some cases (table \ref{table:hyperparameters-results-zurich}). This could be due either to an inability of the network to separate the classes due to the number of filters and other aspects related to the network architecture, or too few training iterations. A possible advantage of algorithms such as \gls{OC-SVM} could be their ability to increase data separability by explicitly reorganizing non-linearities from non-optimally trained networks, using the kernel trick. Although \acrlongpl{DF} do not explicitly apply any kind of feature augmentation, forest-based methods can model non-linear data distributions through bagging of many weak learners. Which of both methods is better able to model non-linearities can not be seen from the presented results and the relation between the network accuracy, best \gls{OC-SVM} kernel for novelty detection and novelty detection performance should be further studied.
 
 \section{Conclusion}
-\acrlongpl{DF} follow the idea to harness the information that a network produces in order to make data separable in order to detect new, unseen data in the test set. This study has shown that the developed method works in a majority of cases, within certain limitations, and that softmax-based confidence measures are unsuitable for novelty detection in almost in all cases. While pre-softmax based confidence measures have outperformed softmax-based measures most times, there are some critical limitations.
+\acrlongpl{DF} try to model the density of a complex, potentially non-linear distribution through bagging of weak learners. In the case of neural network, \acrlongpl{DF} have been used to model the support of activations belonging to seen classes, to detect new, unseen data in the test set. This study has shown that the developed method works in many cases, within certain limitations, and that softmax-based confidence measures are unsuitable for novelty detection in almost all cases. While pre-softmax based confidence measures have outperformed softmax-based methods most times, there are some critical limitations.
 
-% Limitations
-First, the implemented pre-softmax-based confidence measures require a certain number of hyperparameters to be tuned in order to work. This task may be time-consuming and the correct range of parameters difficult to identify, while in some cases being not even possible due to a too small dataset, making it difficult to split it into a training, validation and test set of sufficient sizes to perform such hyperparameter search. If the unseen class is very rare, it may not be present in a validation set used to find optimal parameters. Second, the network structure may play an important role for the performance of both softmax-based and pre-softmax-based confidence measures. A network with many filters in the fully-connected layer may produce redundant and noisy information spread over many filters, resulting in a long activations vector even after \gls{PCA}. This not only deteriorates the training and prediction time of each model but may also lead to greater difficulties in separating high-dimensional activations. In addition, the influence of the network accuracy on the performance of each confidence measure is to be discussed. Third, \acrlongpl{DF}, \gls{GMM} and \gls{OC-SVM} work better for very different activations, such as those of the class ``swimming pools''. Thus, in order to effectively identify unseen points, a special meta-loss would need to be introduced in the network to maximize the distance between pairs of activations of different classes.
+% Hyperparameters
+First, the implemented pre-softmax-based confidence measures require a certain number of hyperparameters to be tuned in order to work. This task may be time-consuming and the correct range of parameters difficult to identify, while in some cases being not even possible due to a too small dataset, making it difficult to split it into a training, validation and test set of sufficient sizes to perform such hyperparameter search. If the unseen class is very rare, it may not be present in a validation set used to find optimal parameters. Second, the network structure may play an important role for the performance of both softmax-based and pre-softmax-based confidence measures. A network with many filters in the fully-connected layer may produce redundant and noisy information spread over many filters, resulting in a long activations vector even after \gls{PCA}. This not only deteriorates the training and prediction time of each model but may also lead to greater difficulties in separating high-dimensional activations. In addition, the influence of the network accuracy on the performance of each confidence measure is to be discussed. Third, \acrlongpl{DF}, \gls{GMM} and \gls{OC-SVM} work better for very different activations, such as those of the class ``swimming pools''. Thus, in order to effectively identify unseen points, a special meta-loss would need to be introduced in the network to maximize the distance between activations of different classes.
 
 \subsection{Main Contributions}
 
@@ -1391,7 +1386,6 @@ First, the implemented pre-softmax-based confidence measures require a certain n
 	\begin{enumerate}
 		\item Perform hyperparameter search to find the best parameter set for training a \acrlong{DF} as described in section \ref{subsec:hyperparameter-search}.
 		\item Generate synthetic datasets as described in section \ref{subsec:data-synthetic}.
-		\item Data augmentation functions on to transform an image and a corresponding ground truth at the same time for semantic segmentation, as described in section \ref{sec:network-architectures}.
 		\item Generic plotting functions to produce all the visualizations of this report.
 	\end{enumerate}
 	The syntax for fitting \acrlongpl{DF}, predicting confidence values, performing hyperparameter search and using auxiliary functions is described in the \texttt{README.md} of the GitHub repository.
@@ -1403,29 +1397,29 @@ First, the implemented pre-softmax-based confidence measures require a certain n
 \subsection{Future Research}
 Further research should go into understanding the reasons for the inconsistent behaviour of \acrlongpl{DF}. 
 
-% Influence of network architecture
-\paragraph{Influence of network architectures} Regarding \acrlongpl{DF}, the influence of the dimensionality on the performance of \acrlongpl{DF} should be evaluated more thoroughly. For instance, different network architectures with a varying number of pre-softmax activations could be trained and compared with respect to the \acrlong{DF} performance. Such a comparison has not been implemented because of the explicit assumption that \acrlongpl{DF} should not be applicable to many different standard network architectures without modifying them. Yet, there are good reasons to assume that \acrlongpl{DF} will deal better with lower-dimensional activations.
-
 % More datasets, network architectures
-\paragraph{Datasets} Similarly, to further study the performance of \acrlongpl{DF}, the method should be applied to further dataset, and using different network architectures than the ones tested \cite{ronneberger2015u,Berkeley2015HypercolumnsFO}.
+\paragraph{Datasets and Architectures} To further study the performance of \acrlongpl{DF}, the method should be applied to further dataset, and using different network architectures than the ones tested \cite{ronneberger2015u,Berkeley2015HypercolumnsFO}.
+
+% Influence of network architecture
+\paragraph{Dimensionality Reduction} Regarding \acrlongpl{DF}, the influence of the dimensionality on the performance of \acrlongpl{DF} should be evaluated more thoroughly. For instance, different network architectures with a varying number of pre-softmax activations could be trained and compared with respect to the \acrlong{DF} performance. Such a comparison has not been implemented because of the explicit assumption that \acrlongpl{DF} should not be applicable to many different standard network architectures without modifying them. Yet, there are good reasons to assume that \acrlongpl{DF} will deal better with lower-dimensional activations.
 
 % Meta-Loss
-\paragraph{Meta-Loss to increase class separability} For similar reasons, contrary to the method proposed by  \textcite{mandelbaum17}, no special meta-loss has been implemented to maximize the distance between activations belonging to different classes, again because of the assumption that the proposed confidence measure should not require any changes in the network architecture. It would however be interesting to see if there are significant performance gains for any of the pre-softmax-based methods if such a meta-loss was implemented. 
+\paragraph{Meta-Loss to Increase Class Separability} For similar reasons, contrary to the method proposed by \textcite{mandelbaum17}, no special meta-loss has been implemented to maximize the distance between activations belonging to different classes, again because of the assumption that the proposed confidence measure should not require any changes in the network architecture. It would however be interesting to see if there are significant performance gains for any of the pre-softmax-based methods if such a meta-loss was implemented. 
 
 % Parameter sensitivity
 \paragraph{Parameter sensitivity} In addition to finding the best parameter set, the sensitivity of each parameter should be assessed. This could potentially reduce the number of hyperparameters and thus accelerate parameter search.
 
 % Other ideas
-\paragraph{Further research ideas} To avoid having to model the distribution of high-dimensional activations, a different idea for a confidence measure would be to work directly with the network activations and weights: In addition to retrieving the activations $\text{x}^{(L)}_i, i \in 1...n$, one could also retrieve the weights $\text{w}^{(L)}_{i, j}$ for a class $j$ just before they are passed to the final softmax activation (fig. \ref{fig:nn_scheme}). By looking at their sign (negative / positive contribution to a class) or measuring their entropy, the degree of agreement between activations could be measured and used as a confidence indicator.
+\paragraph{Further research ideas} To avoid having to model the distribution of high-dimensional activations, a different idea for a confidence measure would be to work directly with the network activations and weights: In addition to retrieving the activations $\mathbf{x}^{(L)}_i, i \in 1, ..., n$, one could also retrieve the weights $\text{w}^{(L)}_{i, j}$ for a class $j$ just before they are passed to the final softmax activation (fig. \ref{fig:nn_scheme}). By looking at their sign (negative / positive contribution to a class) or measuring their entropy, the degree of agreement between activations could be measured and used as a confidence indicator.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.7\textwidth]{nn_scheme}
-	\caption{Alternative confidence measure scheme: red parts are to be retrieved and multiplied to measure the degree of agreement of the softmax inputs.}
+	\includegraphics[width=.7\textwidth]{Schema/nn_scheme}
+	\caption{Alternative confidence measure scheme: red parts are to be retrieved and their entropy calculated to measure the degree of agreement of the input to the softmax activation function.}
 	\label{fig:nn_scheme}
 \end{figure}
 
 % Separating planes meta-loss
-Further, similar ideas to estimate the confidence using activations include maximizing differences between the separating planes produced by each softmax input, via a special meta-loss. This way, the network would learn to find as many distinct separations between classes as possible, and thus map class distributions. However, this again contradicts the basic idea of the proposed methodology, which is to build on an existing network architecture.
+Further, similar ideas to estimate the confidence using activations include maximizing differences between the separating planes produced by each softmax input, via a special meta-loss. This way, the network would learn to find as many distinct separations between classes as possible, and thus map class distributions implicitly. However, this again contradicts the basic idea of the proposed methodology, which is to build on an existing network architecture.
 
 % Evaluatation
 \paragraph{Evaluation} Any of the analyzed confidence methods are heuristic in nature and are evaluated according to an application-specific goal. The notion of confidence in many cases remains related to particular applications such as error detection, anomaly detection or novelty detection. A formal proof of the equivalence between some optimal, pre-softmax activations-based confidence measure and probabilistic uncertainty measures yet has to be provided. Due to their heuristic nature, confidence measures should also be evaluated in applied contexts, such as active learning.
@@ -1433,7 +1427,8 @@ Further, similar ideas to estimate the confidence using activations include maxi
 % Conclusion
 \paragraph{Conclusion} Ultimately, this study has shown a high potential of \acrlongpl{DF} and pre-softmax confidence measures to improve novelty detection performance without changing the structure of the network. Although less successful in error detection, the network activations-based methods \gls{GMM}, \gls{OC-SVM} and \gls{DF} in most cases show better performance than the baselines relying purely on the softmax output. Further research possibilities in this direction should show whether the information contained in the network activations can be used to determine the uncertainty of a network, without changing its architecture.
 
-% TODO take a step back
+% Applications of ND and confidence measures
+In terms of practical applications, it would be of great help if the confidence standard CNNs could be assessed more accurately. Active Learning is an example of where novelty detection using confidence values would be very helpful to save the time spent by users to manually annotate ground truth and at the same time improve the accuracy of CNNs. It would be helpful ask the user to provide labels for those parts of an image that are the least certain and thus improve the network accuracy maximally at each iteration. Such applications could ultimately lead to better land cover maps globally, helping to recognize spatial developments such as urbanization, illegal logging, littoralization or other socially and environmentally relevant developments with higher accuracy and less effort. Further applications of better confidence measures are countless, including medical diagnosis, autonomous driving and weather forecasting. Ultimately, a good model will fail in many applications if it cannot provide a reliable measure of confidence. While this study has aimed at making a contribution to understanding model uncertainty in \gls{ML}, there are still major questions to be answered by future research.
 
 \newpage
 \printbibliography
@@ -1500,7 +1495,7 @@ The classification using \acrlong{RF} is shown in figure \ref{fig:rf}.
     \label{fig:density-node}
 \end{figure}
 
-\subsection{\gls{MNIST} Evaluation Metrics}
+\subsection{MNIST Evaluation Metrics}
 \label{subsec:app-eval-mnist}
 
 \begin{table}[H]
@@ -1616,7 +1611,7 @@ The classification using \acrlong{RF} is shown in figure \ref{fig:rf}.
 \end{table}
 
 \newgeometry{left=1cm,right=1cm,top=2cm,bottom=2cm}
-\subsection{\gls{MNIST} Dataset Figures}
+\subsection{MNIST Dataset Figures}
 \label{app:mnist-figures}
 % prediction count for all left-out classes
 % t-SNE for all classes
@@ -1652,6 +1647,35 @@ The classification using \acrlong{RF} is shown in figure \ref{fig:rf}.
 
 \subsection{Zurich Dataset Figures}
 \label{app:zurich-figures}
+% Prediction counts for each class
+\begin{figure}[H]
+	\centering
+	\foreach \class/\classname in {
+		1/Roads,
+		2/Buildings,
+		3/Tress,
+		4/Grass,
+		5/Bare Soil,
+		6/Water,
+		7/Railways,
+		8/Swimming Pools
+	}{
+		\begin{subfigure}{.32\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{ZH_pred-count_wo_cl\class}
+			\caption{\classname{}}
+		\end{subfigure}
+	}
+    \begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{pred-count_ED}
+		\caption{All classes}
+	\end{subfigure}
+	\caption{Count of label predictions for each left-out class and for the \gls{CNN} trained on all classes}
+	\label{fig:pred-count-zurich-all-cl} 
+\end{figure}
+
+
 % PCA components for all classes
 \begin{figure}[H]
     \centering
@@ -1826,7 +1850,7 @@ Hyperparameters were searched in the following ranges:
 
 The minimum \acrlong{IG} parameter is rather difficult to tune, since it is usually smaller for higher-dimensional data. It can however still have an important effect by avoiding unnecessary splits (table \ref{table:df-parameters}).
 
-Hyperparameter search results for the \gls{MNIST} dataset and for the Zurich dataset using the hyperparameter search scheme shown in fig. \ref{fig:hyperparameter-search} are represented in tables \ref{table:hyperparameters-results-mnist} and \ref{table:hyperparameters-results-zurich}.
+Hyperparameter search results for the \gls{MNIST} dataset and for the Zurich dataset using the hyperparameter search scheme discussed in section \ref{subsec:hyperparameter-search} are represented in tables \ref{table:hyperparameters-results-mnist} and \ref{table:hyperparameters-results-zurich}.
 
 \begin{table}[H]
     \centering

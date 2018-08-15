@@ -12,40 +12,45 @@
 \BOOKMARK [2][-]{subsection.2.4}{Comparison to Novelty Detection Methods}{section.2}% 12
 \BOOKMARK [2][-]{subsection.2.5}{Summary}{section.2}% 13
 \BOOKMARK [1][-]{section.3}{Methodology}{}% 14
-\BOOKMARK [2][-]{subsection.3.1}{Overview: DF}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.1}{Overview: Density Forests}{section.3}% 15
 \BOOKMARK [2][-]{subsection.3.2}{Decision Trees}{section.3}% 16
 \BOOKMARK [2][-]{subsection.3.3}{Random Forests}{section.3}% 17
-\BOOKMARK [2][-]{subsection.3.4}{DF}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.4}{Density Forests}{section.3}% 18
 \BOOKMARK [1][-]{section.4}{Datasets}{}% 19
 \BOOKMARK [2][-]{subsection.4.1}{Synthetic Datasets}{section.4}% 20
 \BOOKMARK [2][-]{subsection.4.2}{MNIST Dataset}{section.4}% 21
 \BOOKMARK [2][-]{subsection.4.3}{Zurich Dataset}{section.4}% 22
 \BOOKMARK [1][-]{section.5}{Experimental Setup}{}% 23
 \BOOKMARK [2][-]{subsection.5.1}{Network Architectures}{section.5}% 24
-\BOOKMARK [2][-]{subsection.5.2}{Novelty Detection Baselines}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.3}{Dimensionality Reduction and Data Separability}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.4}{Evaluation}{section.5}% 27
-\BOOKMARK [2][-]{subsection.5.5}{Hyperparameter Search}{section.5}% 28
-\BOOKMARK [1][-]{section.6}{Results}{}% 29
-\BOOKMARK [2][-]{subsection.6.1}{Experiments}{section.6}% 30
-\BOOKMARK [2][-]{subsection.6.2}{Synthetic Data}{section.6}% 31
-\BOOKMARK [2][-]{subsection.6.3}{MNIST}{section.6}% 32
-\BOOKMARK [2][-]{subsection.6.4}{Zurich Dataset}{section.6}% 33
-\BOOKMARK [2][-]{subsection.6.5}{Overall Results}{section.6}% 34
-\BOOKMARK [2][-]{subsection.6.6}{Visual interpretation}{section.6}% 35
-\BOOKMARK [2][-]{subsection.6.7}{Particular Objects}{section.6}% 36
-\BOOKMARK [1][-]{section.7}{Discussion}{}% 37
-\BOOKMARK [2][-]{subsection.7.1}{MNIST dataset}{section.7}% 38
-\BOOKMARK [2][-]{subsection.7.2}{Zurich dataset}{section.7}% 39
-\BOOKMARK [1][-]{section.8}{Conclusion}{}% 40
-\BOOKMARK [2][-]{subsection.8.1}{Main Contributions}{section.8}% 41
-\BOOKMARK [2][-]{subsection.8.2}{Future Research}{section.8}% 42
-\BOOKMARK [1][-]{section.9}{Appendices}{}% 43
-\BOOKMARK [2][-]{subsection.9.1}{Code Documentation}{section.9}% 44
-\BOOKMARK [2][-]{subsection.9.2}{Random Forest}{section.9}% 45
-\BOOKMARK [2][-]{subsection.9.3}{Data Structure}{section.9}% 46
-\BOOKMARK [2][-]{subsection.9.4}{MNIST Evaluation Metrics}{section.9}% 47
-\BOOKMARK [2][-]{subsection.9.5}{Zurich Network Architecture}{section.9}% 48
-\BOOKMARK [2][-]{subsection.9.6}{MNIST Dataset Figures}{section.9}% 49
-\BOOKMARK [2][-]{subsection.9.7}{Zurich Dataset Figures}{section.9}% 50
-\BOOKMARK [2][-]{subsection.9.8}{Hyperparameter Search Results}{section.9}% 51
+\BOOKMARK [3][-]{subsubsection.5.1.1}{MNIST dataset}{subsection.5.1}% 25
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Zurich dataset}{subsection.5.1}% 26
+\BOOKMARK [2][-]{subsection.5.2}{Novelty Detection Baselines}{section.5}% 27
+\BOOKMARK [3][-]{subsubsection.5.2.1}{MSR, Margin, Entropy}{subsection.5.2}% 28
+\BOOKMARK [3][-]{subsubsection.5.2.2}{MC-Dropout}{subsection.5.2}% 29
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Pre-softmax methods}{subsection.5.2}% 30
+\BOOKMARK [2][-]{subsection.5.3}{Dimensionality Reduction and Data Separability}{section.5}% 31
+\BOOKMARK [2][-]{subsection.5.4}{Evaluation}{section.5}% 32
+\BOOKMARK [2][-]{subsection.5.5}{Hyperparameter Search}{section.5}% 33
+\BOOKMARK [1][-]{section.6}{Results}{}% 34
+\BOOKMARK [2][-]{subsection.6.1}{Experiments}{section.6}% 35
+\BOOKMARK [2][-]{subsection.6.2}{Synthetic Data}{section.6}% 36
+\BOOKMARK [2][-]{subsection.6.3}{MNIST}{section.6}% 37
+\BOOKMARK [2][-]{subsection.6.4}{Zurich Dataset}{section.6}% 38
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Overall Results}{subsection.6.4}% 39
+\BOOKMARK [3][-]{subsubsection.6.4.2}{Visual Interpretation}{subsection.6.4}% 40
+\BOOKMARK [3][-]{subsubsection.6.4.3}{Particular Objects}{subsection.6.4}% 41
+\BOOKMARK [1][-]{section.7}{Discussion}{}% 42
+\BOOKMARK [2][-]{subsection.7.1}{Softmax-based Methods}{section.7}% 43
+\BOOKMARK [2][-]{subsection.7.2}{Pre-softmax-based Methods}{section.7}% 44
+\BOOKMARK [1][-]{section.8}{Conclusion}{}% 45
+\BOOKMARK [2][-]{subsection.8.1}{Main Contributions}{section.8}% 46
+\BOOKMARK [2][-]{subsection.8.2}{Future Research}{section.8}% 47
+\BOOKMARK [1][-]{section.9}{Appendices}{}% 48
+\BOOKMARK [2][-]{subsection.9.1}{Code Documentation}{section.9}% 49
+\BOOKMARK [2][-]{subsection.9.2}{Random Forest}{section.9}% 50
+\BOOKMARK [2][-]{subsection.9.3}{Data Structure}{section.9}% 51
+\BOOKMARK [2][-]{subsection.9.4}{MNIST Evaluation Metrics}{section.9}% 52
+\BOOKMARK [2][-]{subsection.9.5}{Zurich Network Architecture}{section.9}% 53
+\BOOKMARK [2][-]{subsection.9.6}{MNIST Dataset Figures}{section.9}% 54
+\BOOKMARK [2][-]{subsection.9.7}{Zurich Dataset Figures}{section.9}% 55
+\BOOKMARK [2][-]{subsection.9.8}{Hyperparameter Search Results}{section.9}% 56

@@ -3,7 +3,7 @@ import multiprocessing
 from joblib import Parallel, delayed
 from tqdm import tqdm_notebook
 
-from density_forest.helpers import draw_subsamples
+from .helpers import draw_subsamples
 from .decision_tree_create import create_decision_tree
 from .decision_tree_traverse import descend_decision_tree_aux, descend_decision_tree
 

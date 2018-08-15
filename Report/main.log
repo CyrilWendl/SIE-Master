@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.9)  14 AUG 2018 16:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.9)  15 AUG 2018 10:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -698,7 +698,7 @@ Package: glossary-tree 2018/07/23 v4.41 (NLCT)
 \glo@acronym@file=\write4
 \openout4 = `main.acn'.
 
-Package glossaries Info: Writing glossary file main.acn on input line 33.
+Package glossaries Info: Writing glossary file main.acn on input line 34.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2018/03/04 v3.11 programmable bibliographies (PK/MW)
 
@@ -932,20 +932,20 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 237.
-LaTeX Font Info:    ... okay on input line 237.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 237.
-LaTeX Font Info:    ... okay on input line 237.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 237.
-LaTeX Font Info:    ... okay on input line 237.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 237.
-LaTeX Font Info:    ... okay on input line 237.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 237.
-LaTeX Font Info:    ... okay on input line 237.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 237.
-LaTeX Font Info:    ... okay on input line 237.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 237.
-LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 240.
+LaTeX Font Info:    ... okay on input line 240.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 240.
+LaTeX Font Info:    ... okay on input line 240.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 240.
+LaTeX Font Info:    ... okay on input line 240.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 240.
+LaTeX Font Info:    ... okay on input line 240.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 240.
+LaTeX Font Info:    ... okay on input line 240.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 240.
+LaTeX Font Info:    ... okay on input line 240.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 240.
+LaTeX Font Info:    ... okay on input line 240.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -982,7 +982,7 @@ LaTeX Font Info:    ... okay on input line 237.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 237.
+LaTeX Info: Redefining \selectfont on input line 240.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1015,7 +1015,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box66
-Package hyperref Info: Link coloring OFF on input line 237.
+Package hyperref Info: Link coloring OFF on input line 240.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1025,9 +1025,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count368
 )
-LaTeX Info: Redefining \ref on input line 237.
-LaTeX Info: Redefining \pageref on input line 237.
-LaTeX Info: Redefining \nameref on input line 237.
+LaTeX Info: Redefining \ref on input line 240.
+LaTeX Info: Redefining \pageref on input line 240.
+LaTeX Info: Redefining \nameref on input line 240.
 
 (./main.out) (./main.out)
 \@outlinefile=\write7
@@ -1054,18 +1054,18 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 237.
-Package biblatex Info: Reference segment=0 on input line 237.
-<logo.pdf, id=209, 142.5325pt x 68.255pt>
+Package biblatex Info: Reference section=0 on input line 240.
+Package biblatex Info: Reference segment=0 on input line 240.
+<logo.pdf, id=229, 142.5325pt x 68.255pt>
 File: logo.pdf Graphic file (type pdf)
 <use logo.pdf>
-Package pdftex.def Info: logo.pdf  used on input line 239.
+Package pdftex.def Info: logo.pdf  used on input line 242.
 (pdftex.def)             Requested size: 80.81155pt x 38.69884pt.
-<Figures/logo_wur_quality_of_life.pdf, id=210, 181.04839pt x 29.39914pt>
+<Figures/logo_wur_quality_of_life.pdf, id=230, 181.04839pt x 29.39914pt>
 File: Figures/logo_wur_quality_of_life.pdf Graphic file (type pdf)
 <use Figures/logo_wur_quality_of_life.pdf>
 Package pdftex.def Info: Figures/logo_wur_quality_of_life.pdf  used on input li
-ne 239.
+ne 242.
 (pdftex.def)             Requested size: 185.38794pt x 30.10347pt.
  [1
 
@@ -1077,7 +1077,7 @@ n with the same identifier (name{page.1}) has been already used, duplicate igno
 red
 <to be read again> 
                    \relax 
-l.255 \newpage
+l.262 \newpage
                [1] (./main.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 13.
 
@@ -1093,12 +1093,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout8 = `main.toc'.
 
 
-(./main.lof
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 23.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-[2] [3] [4])
+(./main.lof [2] [3] [4])
 \tf@lof=\write9
 \openout9 = `main.lof'.
 
@@ -1109,7 +1104,7 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
  [5] (./main.acr) [6
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
  []
 
@@ -1117,753 +1112,642 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.284 
-       [1
+l.282 \newpage
+               [1
 
-] [2] [3] [4]
-<Schema/schema_baseline_1.pdf, id=842, 657.25848pt x 327.20645pt>
+] [2] [3] [4] [5]
+<Schema/schema_baseline_1.pdf, id=869, 657.25848pt x 327.20645pt>
 File: Schema/schema_baseline_1.pdf Graphic file (type pdf)
 <use Schema/schema_baseline_1.pdf>
-Package pdftex.def Info: Schema/schema_baseline_1.pdf  used on input line 378.
+Package pdftex.def Info: Schema/schema_baseline_1.pdf  used on input line 387.
 (pdftex.def)             Requested size: 430.00462pt x 214.06966pt.
- [5 <./Schema/schema_baseline_1.pdf>] [6]
-Overfull \hbox (21.16112pt too wide) in paragraph at lines 426--440
+ [6 <./Schema/schema_baseline_1.pdf>]
+[7]
+Overfull \hbox (21.16112pt too wide) in paragraph at lines 435--449
  [][] 
  []
 
-[7]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlongpl' on input line 446.
-
-<Schema/schema_df.pdf, id=1078, 557.67447pt x 566.20935pt>
+[8]
+<Schema/schema_df.pdf, id=1103, 557.67447pt x 566.20935pt>
 File: Schema/schema_df.pdf Graphic file (type pdf)
 <use Schema/schema_df.pdf>
-Package pdftex.def Info: Schema/schema_df.pdf  used on input line 458.
+Package pdftex.def Info: Schema/schema_df.pdf  used on input line 467.
 (pdftex.def)             Requested size: 430.00462pt x 436.59596pt.
-[8] [9 <./Schema/schema_df.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlongpl' on input line 488.
-
-[10]
-<Schema/df-step1.pdf, id=1299, 546.89218pt x 401.56322pt>
+ [9] [10 <./Schema/schema_df.pdf>] [11]
+<Schema/df-step1.pdf, id=1323, 546.89218pt x 401.56322pt>
 File: Schema/df-step1.pdf Graphic file (type pdf)
 <use Schema/df-step1.pdf>
-Package pdftex.def Info: Schema/df-step1.pdf  used on input line 527.
+Package pdftex.def Info: Schema/df-step1.pdf  used on input line 536.
 (pdftex.def)             Requested size: 129.00269pt x 94.71663pt.
-<Schema/df-step1-tree.pdf, id=1300, 312.4182pt x 215.78616pt>
+<Schema/df-step1-tree.pdf, id=1324, 312.4182pt x 215.78616pt>
 File: Schema/df-step1-tree.pdf Graphic file (type pdf)
 <use Schema/df-step1-tree.pdf>
-Package pdftex.def Info: Schema/df-step1-tree.pdf  used on input line 527.
+Package pdftex.def Info: Schema/df-step1-tree.pdf  used on input line 536.
 (pdftex.def)             Requested size: 129.00269pt x 89.10178pt.
-<Schema/df-step2.pdf, id=1301, 546.89218pt x 401.56322pt>
+<Schema/df-step2.pdf, id=1325, 546.89218pt x 401.56322pt>
 File: Schema/df-step2.pdf Graphic file (type pdf)
 <use Schema/df-step2.pdf>
-Package pdftex.def Info: Schema/df-step2.pdf  used on input line 527.
+Package pdftex.def Info: Schema/df-step2.pdf  used on input line 536.
 (pdftex.def)             Requested size: 129.00269pt x 94.71663pt.
-<Schema/df-step2-tree.pdf, id=1302, 312.4182pt x 215.78616pt>
+<Schema/df-step2-tree.pdf, id=1326, 312.4182pt x 215.78616pt>
 File: Schema/df-step2-tree.pdf Graphic file (type pdf)
 <use Schema/df-step2-tree.pdf>
-Package pdftex.def Info: Schema/df-step2-tree.pdf  used on input line 527.
+Package pdftex.def Info: Schema/df-step2-tree.pdf  used on input line 536.
 (pdftex.def)             Requested size: 129.00269pt x 89.10178pt.
-<Schema/df-step3.pdf, id=1303, 546.89218pt x 401.56322pt>
+<Schema/df-step3.pdf, id=1327, 546.89218pt x 401.56322pt>
 File: Schema/df-step3.pdf Graphic file (type pdf)
 <use Schema/df-step3.pdf>
-Package pdftex.def Info: Schema/df-step3.pdf  used on input line 527.
+Package pdftex.def Info: Schema/df-step3.pdf  used on input line 536.
 (pdftex.def)             Requested size: 129.00269pt x 94.71663pt.
-<Schema/df-step3-tree.pdf, id=1304, 312.4182pt x 215.78616pt>
+<Schema/df-step3-tree.pdf, id=1328, 312.4182pt x 215.78616pt>
 File: Schema/df-step3-tree.pdf Graphic file (type pdf)
 <use Schema/df-step3-tree.pdf>
-Package pdftex.def Info: Schema/df-step3-tree.pdf  used on input line 527.
+Package pdftex.def Info: Schema/df-step3-tree.pdf  used on input line 536.
 (pdftex.def)             Requested size: 129.00269pt x 89.10178pt.
-<Schema/df-step4.pdf, id=1305, 546.89218pt x 401.56322pt>
+<Schema/df-step4.pdf, id=1329, 546.89218pt x 401.56322pt>
 File: Schema/df-step4.pdf Graphic file (type pdf)
 <use Schema/df-step4.pdf>
-Package pdftex.def Info: Schema/df-step4.pdf  used on input line 536.
+Package pdftex.def Info: Schema/df-step4.pdf  used on input line 545.
 (pdftex.def)             Requested size: 129.00269pt x 94.71663pt.
-<Schema/df-step4-tree.pdf, id=1306, 311.41444pt x 355.93677pt>
+<Schema/df-step4-tree.pdf, id=1330, 311.41444pt x 355.93677pt>
 File: Schema/df-step4-tree.pdf Graphic file (type pdf)
 <use Schema/df-step4-tree.pdf>
-Package pdftex.def Info: Schema/df-step4-tree.pdf  used on input line 536.
+Package pdftex.def Info: Schema/df-step4-tree.pdf  used on input line 545.
 (pdftex.def)             Requested size: 129.00269pt x 147.44487pt.
-<Schema/df-step5.pdf, id=1307, 546.89218pt x 401.56322pt>
+<Schema/df-step5.pdf, id=1331, 546.89218pt x 401.56322pt>
 File: Schema/df-step5.pdf Graphic file (type pdf)
 <use Schema/df-step5.pdf>
-Package pdftex.def Info: Schema/df-step5.pdf  used on input line 536.
+Package pdftex.def Info: Schema/df-step5.pdf  used on input line 545.
 (pdftex.def)             Requested size: 129.00269pt x 94.71663pt.
-<Schema/df-step5-tree.pdf, id=1308, 311.41444pt x 355.93677pt>
+<Schema/df-step5-tree.pdf, id=1332, 311.41444pt x 355.93677pt>
 File: Schema/df-step5-tree.pdf Graphic file (type pdf)
 <use Schema/df-step5-tree.pdf>
-Package pdftex.def Info: Schema/df-step5-tree.pdf  used on input line 536.
+Package pdftex.def Info: Schema/df-step5-tree.pdf  used on input line 545.
 (pdftex.def)             Requested size: 129.00269pt x 147.44487pt.
- [11]
+ [12]
 Overfull \vbox (0.50334pt too high) has occurred while \output is active []
 
 
-[12 <./Schema/df-step1.pdf> <./Schema/df-step1-tree.pdf> <./Schema/df-step2.pdf
+[13 <./Schema/df-step1.pdf> <./Schema/df-step1-tree.pdf> <./Schema/df-step2.pdf
 > <./Schema/df-step2-tree.pdf> <./Schema/df-step3.pdf> <./Schema/df-step3-tree.
 pdf> <./Schema/df-step4.pdf> <./Schema/df-step4-tree.pdf> <./Schema/df-step5.pd
 f> <./Schema/df-step5-tree.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 548--548
+Underfull \hbox (badness 10000) in paragraph at lines 557--557
 []\T1/cmr/m/n/10 Parameter
  []
 
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 558.
 
-Overfull \hbox (18.56032pt too wide) in paragraph at lines 546--556
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
+[]\T1/cmr/m/n/10 0 -
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
+\T1/cmtt/m/n/10 subsample_pct
+ []
+
+
+Overfull \hbox (18.56032pt too wide) in paragraph at lines 555--565
  [][] 
  []
 
-[13]
-<Figures/D1_data.pdf, id=1554, 473.6134pt x 346.81137pt>
+[14]
+<Figures/D1_data.pdf, id=1577, 473.6134pt x 346.81137pt>
 File: Figures/D1_data.pdf Graphic file (type pdf)
 <use Figures/D1_data.pdf>
-Package pdftex.def Info: Figures/D1_data.pdf  used on input line 592.
+Package pdftex.def Info: Figures/D1_data.pdf  used on input line 601.
 (pdftex.def)             Requested size: 163.40385pt x 119.65533pt.
-<Figures/D2_data.pdf, id=1555, 482.98567pt x 511.32216pt>
+<Figures/D2_data.pdf, id=1578, 482.98567pt x 511.32216pt>
 File: Figures/D2_data.pdf Graphic file (type pdf)
 <use Figures/D2_data.pdf>
-Package pdftex.def Info: Figures/D2_data.pdf  used on input line 597.
+Package pdftex.def Info: Figures/D2_data.pdf  used on input line 606.
 (pdftex.def)             Requested size: 129.00269pt x 136.56862pt.
-<Figures/D3_data.pdf, id=1556, 311.14124pt x 292.2475pt>
+<Figures/D3_data.pdf, id=1579, 311.14124pt x 292.2475pt>
 File: Figures/D3_data.pdf Graphic file (type pdf)
 <use Figures/D3_data.pdf>
-Package pdftex.def Info: Figures/D3_data.pdf  used on input line 602.
+Package pdftex.def Info: Figures/D3_data.pdf  used on input line 611.
 (pdftex.def)             Requested size: 129.00269pt x 121.17342pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 610.
-
-<Figures/MNIST_cl_0_0.png, id=1561, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_0_0.png, id=1583, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_0_0.png Graphic file (type png)
 <use Figures/MNIST_cl_0_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_0_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_0_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_1_0.png, id=1563, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_1_0.png, id=1585, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_1_0.png Graphic file (type png)
 <use Figures/MNIST_cl_1_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_1_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_1_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_2_0.png, id=1564, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_2_0.png, id=1586, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_2_0.png Graphic file (type png)
 <use Figures/MNIST_cl_2_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_2_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_2_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_3_0.png, id=1565, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_3_0.png, id=1587, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_3_0.png Graphic file (type png)
 <use Figures/MNIST_cl_3_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_3_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_3_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_4_0.png, id=1566, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_4_0.png, id=1588, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_4_0.png Graphic file (type png)
 <use Figures/MNIST_cl_4_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_4_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_4_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_5_0.png, id=1567, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_5_0.png, id=1589, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_5_0.png Graphic file (type png)
 <use Figures/MNIST_cl_5_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_5_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_5_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_6_0.png, id=1568, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_6_0.png, id=1590, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_6_0.png Graphic file (type png)
 <use Figures/MNIST_cl_6_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_6_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_6_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_7_0.png, id=1569, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_7_0.png, id=1591, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_7_0.png Graphic file (type png)
 <use Figures/MNIST_cl_7_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_7_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_7_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_8_0.png, id=1570, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_8_0.png, id=1592, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_8_0.png Graphic file (type png)
 <use Figures/MNIST_cl_8_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_8_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_8_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_9_0.png, id=1571, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_9_0.png, id=1593, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_9_0.png Graphic file (type png)
 <use Figures/MNIST_cl_9_0.png>
-Package pdftex.def Info: Figures/MNIST_cl_9_0.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_9_0.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_0_1.png, id=1572, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_0_1.png, id=1594, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_0_1.png Graphic file (type png)
 <use Figures/MNIST_cl_0_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_0_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_0_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_1_1.png, id=1573, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_1_1.png, id=1595, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_1_1.png Graphic file (type png)
 <use Figures/MNIST_cl_1_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_1_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_1_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_2_1.png, id=1574, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_2_1.png, id=1596, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_2_1.png Graphic file (type png)
 <use Figures/MNIST_cl_2_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_2_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_2_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_3_1.png, id=1575, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_3_1.png, id=1597, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_3_1.png Graphic file (type png)
 <use Figures/MNIST_cl_3_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_3_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_3_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_4_1.png, id=1576, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_4_1.png, id=1598, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_4_1.png Graphic file (type png)
 <use Figures/MNIST_cl_4_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_4_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_4_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_5_1.png, id=1577, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_5_1.png, id=1599, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_5_1.png Graphic file (type png)
 <use Figures/MNIST_cl_5_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_5_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_5_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_6_1.png, id=1578, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_6_1.png, id=1600, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_6_1.png Graphic file (type png)
 <use Figures/MNIST_cl_6_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_6_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_6_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_7_1.png, id=1579, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_7_1.png, id=1601, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_7_1.png Graphic file (type png)
 <use Figures/MNIST_cl_7_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_7_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_7_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_8_1.png, id=1580, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_8_1.png, id=1602, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_8_1.png Graphic file (type png)
 <use Figures/MNIST_cl_8_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_8_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_8_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_9_1.png, id=1581, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_9_1.png, id=1603, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_9_1.png Graphic file (type png)
 <use Figures/MNIST_cl_9_1.png>
-Package pdftex.def Info: Figures/MNIST_cl_9_1.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_9_1.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_0_2.png, id=1582, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_0_2.png, id=1604, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_0_2.png Graphic file (type png)
 <use Figures/MNIST_cl_0_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_0_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_0_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_1_2.png, id=1583, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_1_2.png, id=1605, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_1_2.png Graphic file (type png)
 <use Figures/MNIST_cl_1_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_1_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_1_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_2_2.png, id=1584, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_2_2.png, id=1606, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_2_2.png Graphic file (type png)
 <use Figures/MNIST_cl_2_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_2_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_2_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_3_2.png, id=1585, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_3_2.png, id=1607, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_3_2.png Graphic file (type png)
 <use Figures/MNIST_cl_3_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_3_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_3_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_4_2.png, id=1586, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_4_2.png, id=1608, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_4_2.png Graphic file (type png)
 <use Figures/MNIST_cl_4_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_4_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_4_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_5_2.png, id=1587, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_5_2.png, id=1609, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_5_2.png Graphic file (type png)
 <use Figures/MNIST_cl_5_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_5_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_5_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_6_2.png, id=1588, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_6_2.png, id=1610, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_6_2.png Graphic file (type png)
 <use Figures/MNIST_cl_6_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_6_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_6_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_7_2.png, id=1589, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_7_2.png, id=1611, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_7_2.png Graphic file (type png)
 <use Figures/MNIST_cl_7_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_7_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_7_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_8_2.png, id=1590, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_8_2.png, id=1612, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_8_2.png Graphic file (type png)
 <use Figures/MNIST_cl_8_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_8_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_8_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-<Figures/MNIST_cl_9_2.png, id=1591, 7.93553pt x 7.93553pt>
+<Figures/MNIST_cl_9_2.png, id=1613, 7.93553pt x 7.93553pt>
 File: Figures/MNIST_cl_9_2.png Graphic file (type png)
 <use Figures/MNIST_cl_9_2.png>
-Package pdftex.def Info: Figures/MNIST_cl_9_2.png  used on input line 628.
+Package pdftex.def Info: Figures/MNIST_cl_9_2.png  used on input line 637.
 (pdftex.def)             Requested size: 34.40115pt x 34.40933pt.
-[14 <./Figures/D1_data.pdf> <./Figures/D2_data.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_data.pdf): PDF 
-inclusion: multiple pdfs with page group included in a single page
-> <./Figures/D3_data.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D3_data.pdf): PDF 
-inclusion: multiple pdfs with page group included in a single page
-> <./Figures/MNIST_cl_0_0.png> <./Figures/MNIST_cl_1_0.png> <./Figures/MNIST_cl
-_2_0.png> <./Figures/MNIST_cl_3_0.png> <./Figures/MNIST_cl_4_0.png> <./Figures/
-MNIST_cl_5_0.png> <./Figures/MNIST_cl_6_0.png> <./Figures/MNIST_cl_7_0.png> <./
-Figures/MNIST_cl_8_0.png> <./Figures/MNIST_cl_9_0.png> <./Figures/MNIST_cl_0_1.
-png> <./Figures/MNIST_cl_1_1.png> <./Figures/MNIST_cl_2_1.png> <./Figures/MNIST
-_cl_3_1.png> <./Figures/MNIST_cl_4_1.png> <./Figures/MNIST_cl_5_1.png> <./Figur
-es/MNIST_cl_6_1.png> <./Figures/MNIST_cl_7_1.png> <./Figures/MNIST_cl_8_1.png> 
-<./Figures/MNIST_cl_9_1.png> <./Figures/MNIST_cl_0_2.png> <./Figures/MNIST_cl_1
-_2.png> <./Figures/MNIST_cl_2_2.png> <./Figures/MNIST_cl_3_2.png> <./Figures/MN
-IST_cl_4_2.png> <./Figures/MNIST_cl_5_2.png> <./Figures/MNIST_cl_6_2.png> <./Fi
-gures/MNIST_cl_7_2.png> <./Figures/MNIST_cl_8_2.png> <./Figures/MNIST_cl_9_2.pn
-g>]
-<Figures/Im_16.jpg, id=1643, 314.58705pt x 289.93024pt>
+ [15 <./Figures/D1_data.pdf> <./Figures/D2_data.pdf> <./Figures/D3_data.pdf>]
+<Figures/Im_16.jpg, id=1636, 314.58705pt x 289.93024pt>
 File: Figures/Im_16.jpg Graphic file (type jpg)
 <use Figures/Im_16.jpg>
-Package pdftex.def Info: Figures/Im_16.jpg  used on input line 641.
+Package pdftex.def Info: Figures/Im_16.jpg  used on input line 650.
 (pdftex.def)             Requested size: 176.30347pt x 162.48811pt.
-<Figures/GT_16.jpg, id=1644, 314.58705pt x 289.93024pt>
+<Figures/GT_16.jpg, id=1637, 314.58705pt x 289.93024pt>
 File: Figures/GT_16.jpg Graphic file (type jpg)
 <use Figures/GT_16.jpg>
-Package pdftex.def Info: Figures/GT_16.jpg  used on input line 645.
+Package pdftex.def Info: Figures/GT_16.jpg  used on input line 654.
 (pdftex.def)             Requested size: 176.30347pt x 162.48811pt.
-<Figures/ZH_dist.pdf, id=1648, 492.99004pt x 364.6041pt>
+ [16 <./Figures/MNIST_cl_0_0.png> <./Figures/MNIST_cl_1_0.png> <./Figures/MNIST
+_cl_2_0.png> <./Figures/MNIST_cl_3_0.png> <./Figures/MNIST_cl_4_0.png> <./Figur
+es/MNIST_cl_5_0.png> <./Figures/MNIST_cl_6_0.png> <./Figures/MNIST_cl_7_0.png> 
+<./Figures/MNIST_cl_8_0.png> <./Figures/MNIST_cl_9_0.png> <./Figures/MNIST_cl_0
+_1.png> <./Figures/MNIST_cl_1_1.png> <./Figures/MNIST_cl_2_1.png> <./Figures/MN
+IST_cl_3_1.png> <./Figures/MNIST_cl_4_1.png> <./Figures/MNIST_cl_5_1.png> <./Fi
+gures/MNIST_cl_6_1.png> <./Figures/MNIST_cl_7_1.png> <./Figures/MNIST_cl_8_1.pn
+g> <./Figures/MNIST_cl_9_1.png> <./Figures/MNIST_cl_0_2.png> <./Figures/MNIST_c
+l_1_2.png> <./Figures/MNIST_cl_2_2.png> <./Figures/MNIST_cl_3_2.png> <./Figures
+/MNIST_cl_4_2.png> <./Figures/MNIST_cl_5_2.png> <./Figures/MNIST_cl_6_2.png> <.
+/Figures/MNIST_cl_7_2.png> <./Figures/MNIST_cl_8_2.png> <./Figures/MNIST_cl_9_2
+.png> <./Figures/Im_16.jpg> <./Figures/GT_16.jpg>]
+<Figures/ZH_dist.pdf, id=1676, 492.99004pt x 364.6041pt>
 File: Figures/ZH_dist.pdf Graphic file (type pdf)
 <use Figures/ZH_dist.pdf>
-Package pdftex.def Info: Figures/ZH_dist.pdf  used on input line 659.
+Package pdftex.def Info: Figures/ZH_dist.pdf  used on input line 668.
 (pdftex.def)             Requested size: 301.00192pt x 222.61957pt.
- [15 <./Figures/Im_16.jpg> <./Figures/GT_16.jpg>] [16 <./Figures/ZH_dist.pdf>]
-<Schema/unet.pdf, id=1694, 631.65086pt x 349.96849pt>
+ [17 <./Figures/ZH_dist.pdf>]
+<Schema/unet.pdf, id=1716, 631.65086pt x 349.96849pt>
 File: Schema/unet.pdf Graphic file (type pdf)
 <use Schema/unet.pdf>
-Package pdftex.def Info: Schema/unet.pdf  used on input line 703.
+Package pdftex.def Info: Schema/unet.pdf  used on input line 713.
 (pdftex.def)             Requested size: 430.00462pt x 238.2531pt.
- [17 <./Schema/unet.pdf>] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 733--734
+ [18] [19 <./Schema/unet.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 746--747
 
  []
 
-<Figures/MNIST_pca_components_wo_cl_8.pdf, id=1814, 432.29317pt x 307.02307pt>
+[20]
+<Figures/MNIST_pca_components_wo_cl_8.pdf, id=1837, 432.29317pt x 307.02307pt>
 File: Figures/MNIST_pca_components_wo_cl_8.pdf Graphic file (type pdf)
 <use Figures/MNIST_pca_components_wo_cl_8.pdf>
 Package pdftex.def Info: Figures/MNIST_pca_components_wo_cl_8.pdf  used on inpu
-t line 739.
+t line 752.
 (pdftex.def)             Requested size: 193.50076pt x 137.42827pt.
-<Figures/ZH_pca_components_wo_cl_1.pdf, id=1817, 376.2839pt x 252.22606pt>
+<Figures/ZH_pca_components_wo_cl_1.pdf, id=1840, 376.2839pt x 252.22606pt>
 File: Figures/ZH_pca_components_wo_cl_1.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_1.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_1.pdf  used on input l
-ine 745.
+ine 758.
 (pdftex.def)             Requested size: 193.50076pt x 129.7035pt.
-[19 <./Figures/MNIST_pca_components_wo_cl_8.pdf> <./Figures/ZH_pca_components_w
-o_cl_1.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pca_components_
-wo_cl_1.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
->]
-<Schema/t-SNE-schema.pdf, id=1914, 412.56532pt x 170.7168pt>
+<Schema/t-SNE-schema.pdf, id=1852, 412.56532pt x 170.7168pt>
 File: Schema/t-SNE-schema.pdf Graphic file (type pdf)
 <use Schema/t-SNE-schema.pdf>
-Package pdftex.def Info: Schema/t-SNE-schema.pdf  used on input line 757.
+Package pdftex.def Info: Schema/t-SNE-schema.pdf  used on input line 770.
 (pdftex.def)             Requested size: 387.00153pt x 160.13776pt.
- [20 <./Schema/t-SNE-schema.pdf>] [21]
-<Schema/schema_parameter_search.pdf, id=2005, 469.47095pt x 196.32446pt>
-File: Schema/schema_parameter_search.pdf Graphic file (type pdf)
-<use Schema/schema_parameter_search.pdf>
-Package pdftex.def Info: Schema/schema_parameter_search.pdf  used on input line
- 815.
-(pdftex.def)             Requested size: 430.00462pt x 179.81784pt.
- [22 <./Schema/schema_parameter_search.pdf>]
-<Figures/D1_data-covs.pdf, id=2077, 473.6134pt x 455.93907pt>
+ [21 <./Figures/MNIST_pca_components_wo_cl_8.pdf> <./Figures/ZH_pca_components_
+wo_cl_1.pdf>] [22 <./Schema/t-SNE-schema.pdf>] [23]
+<Figures/D1_data-covs.pdf, id=2043, 473.6134pt x 455.93907pt>
 File: Figures/D1_data-covs.pdf Graphic file (type pdf)
 <use Figures/D1_data-covs.pdf>
-Package pdftex.def Info: Figures/D1_data-covs.pdf  used on input line 839.
+Package pdftex.def Info: Figures/D1_data-covs.pdf  used on input line 842.
 (pdftex.def)             Requested size: 137.60461pt x 132.46939pt.
-<Figures/D2_data-covs.pdf, id=2078, 482.98567pt x 456.75833pt>
+<Figures/D2_data-covs.pdf, id=2044, 482.98567pt x 456.75833pt>
 File: Figures/D2_data-covs.pdf Graphic file (type pdf)
 <use Figures/D2_data-covs.pdf>
-Package pdftex.def Info: Figures/D2_data-covs.pdf  used on input line 844.
+Package pdftex.def Info: Figures/D2_data-covs.pdf  used on input line 847.
 (pdftex.def)             Requested size: 141.9023pt x 134.19194pt.
-<Figures/D3_data-covs.pdf, id=2079, 479.16899pt x 455.93907pt>
+<Figures/D3_data-covs.pdf, id=2045, 479.16899pt x 455.93907pt>
 File: Figures/D3_data-covs.pdf Graphic file (type pdf)
 <use Figures/D3_data-covs.pdf>
-Package pdftex.def Info: Figures/D3_data-covs.pdf  used on input line 849.
+Package pdftex.def Info: Figures/D3_data-covs.pdf  used on input line 852.
 (pdftex.def)             Requested size: 141.9023pt x 135.02263pt.
-<Figures/D2_data_covs_depth_0.pdf, id=2081, 426.97644pt x 402.19446pt>
+ [24 <./Figures/D1_data-covs.pdf> <./Figures/D2_data-covs.pdf> <./Figures/D3_da
+ta-covs.pdf>]
+<Figures/D2_data_covs_depth_0.pdf, id=2061, 426.97644pt x 402.19446pt>
 File: Figures/D2_data_covs_depth_0.pdf Graphic file (type pdf)
 <use Figures/D2_data_covs_depth_0.pdf>
 Package pdftex.def Info: Figures/D2_data_covs_depth_0.pdf  used on input line 8
-68.
-(pdftex.def)             Requested size: 137.60461pt x 129.61926pt.
-<Figures/D2_data_covs_depth_1.pdf, id=2082, 426.97644pt x 402.19446pt>
+71.
+(pdftex.def)             Requested size: 129.00269pt x 121.5123pt.
+<Figures/D2_data_covs_depth_1.pdf, id=2062, 426.97644pt x 402.19446pt>
 File: Figures/D2_data_covs_depth_1.pdf Graphic file (type pdf)
 <use Figures/D2_data_covs_depth_1.pdf>
 Package pdftex.def Info: Figures/D2_data_covs_depth_1.pdf  used on input line 8
-68.
-(pdftex.def)             Requested size: 137.60461pt x 129.61926pt.
-<Figures/D2_data_covs_depth_2.pdf, id=2083, 426.97644pt x 402.19446pt>
+71.
+(pdftex.def)             Requested size: 129.00269pt x 121.5123pt.
+<Figures/D2_data_covs_depth_2.pdf, id=2063, 426.97644pt x 402.19446pt>
 File: Figures/D2_data_covs_depth_2.pdf Graphic file (type pdf)
 <use Figures/D2_data_covs_depth_2.pdf>
 Package pdftex.def Info: Figures/D2_data_covs_depth_2.pdf  used on input line 8
-68.
-(pdftex.def)             Requested size: 137.60461pt x 129.61926pt.
-<Figures/D2_data_covs_depth_3.pdf, id=2084, 426.97644pt x 402.19446pt>
+71.
+(pdftex.def)             Requested size: 129.00269pt x 121.5123pt.
+<Figures/D2_data_covs_depth_3.pdf, id=2064, 426.97644pt x 402.19446pt>
 File: Figures/D2_data_covs_depth_3.pdf Graphic file (type pdf)
 <use Figures/D2_data_covs_depth_3.pdf>
 Package pdftex.def Info: Figures/D2_data_covs_depth_3.pdf  used on input line 8
-68.
-(pdftex.def)             Requested size: 137.60461pt x 129.61926pt.
-<Figures/D2_data_covs_depth_4.pdf, id=2085, 426.97644pt x 402.19446pt>
+71.
+(pdftex.def)             Requested size: 129.00269pt x 121.5123pt.
+<Figures/D2_data_covs_depth_4.pdf, id=2065, 426.97644pt x 402.19446pt>
 File: Figures/D2_data_covs_depth_4.pdf Graphic file (type pdf)
 <use Figures/D2_data_covs_depth_4.pdf>
 Package pdftex.def Info: Figures/D2_data_covs_depth_4.pdf  used on input line 8
-68.
-(pdftex.def)             Requested size: 137.60461pt x 129.61926pt.
-<Figures/D2_data_covs_depth_5.pdf, id=2086, 426.97644pt x 402.19446pt>
+71.
+(pdftex.def)             Requested size: 129.00269pt x 121.5123pt.
+<Figures/D2_data_covs_depth_5.pdf, id=2066, 426.97644pt x 402.19446pt>
 File: Figures/D2_data_covs_depth_5.pdf Graphic file (type pdf)
 <use Figures/D2_data_covs_depth_5.pdf>
 Package pdftex.def Info: Figures/D2_data_covs_depth_5.pdf  used on input line 8
-68.
-(pdftex.def)             Requested size: 137.60461pt x 129.61926pt.
- [23 <./Figures/D1_data-covs.pdf> <./Figures/D2_data-covs.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_data-covs.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/D3_data-covs.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D3_data-covs.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
->]
-<Figures/D1_one_tree.pdf, id=2103, 407.48639pt x 401.3752pt>
+71.
+(pdftex.def)             Requested size: 129.00269pt x 121.5123pt.
+<Figures/D1_one_tree.pdf, id=2070, 407.48639pt x 401.3752pt>
 File: Figures/D1_one_tree.pdf Graphic file (type pdf)
 <use Figures/D1_one_tree.pdf>
-Package pdftex.def Info: Figures/D1_one_tree.pdf  used on input line 889.
+Package pdftex.def Info: Figures/D1_one_tree.pdf  used on input line 892.
 (pdftex.def)             Requested size: 137.60461pt x 135.54095pt.
-<Figures/D2_one_tree.pdf, id=2104, 407.48639pt x 401.3752pt>
+<Figures/D2_one_tree.pdf, id=2071, 407.48639pt x 401.3752pt>
 File: Figures/D2_one_tree.pdf Graphic file (type pdf)
 <use Figures/D2_one_tree.pdf>
-Package pdftex.def Info: Figures/D2_one_tree.pdf  used on input line 889.
+Package pdftex.def Info: Figures/D2_one_tree.pdf  used on input line 892.
 (pdftex.def)             Requested size: 137.60461pt x 135.54095pt.
-<Figures/D3_one_tree.pdf, id=2105, 407.48639pt x 401.3752pt>
+<Figures/D3_one_tree.pdf, id=2072, 407.48639pt x 401.3752pt>
 File: Figures/D3_one_tree.pdf Graphic file (type pdf)
 <use Figures/D3_one_tree.pdf>
-Package pdftex.def Info: Figures/D3_one_tree.pdf  used on input line 889.
+Package pdftex.def Info: Figures/D3_one_tree.pdf  used on input line 892.
 (pdftex.def)             Requested size: 137.60461pt x 135.54095pt.
-<Figures/D1_DF_forest.pdf, id=2106, 407.48639pt x 401.3752pt>
+<Figures/D1_DF_forest.pdf, id=2073, 407.48639pt x 401.3752pt>
 File: Figures/D1_DF_forest.pdf Graphic file (type pdf)
 <use Figures/D1_DF_forest.pdf>
-Package pdftex.def Info: Figures/D1_DF_forest.pdf  used on input line 889.
+Package pdftex.def Info: Figures/D1_DF_forest.pdf  used on input line 892.
 (pdftex.def)             Requested size: 137.60461pt x 135.54095pt.
-<Figures/D2_DF_forest.pdf, id=2109, 407.48639pt x 401.3752pt>
+<Figures/D2_DF_forest.pdf, id=2076, 407.48639pt x 401.3752pt>
 File: Figures/D2_DF_forest.pdf Graphic file (type pdf)
 <use Figures/D2_DF_forest.pdf>
-Package pdftex.def Info: Figures/D2_DF_forest.pdf  used on input line 889.
+Package pdftex.def Info: Figures/D2_DF_forest.pdf  used on input line 892.
 (pdftex.def)             Requested size: 137.60461pt x 135.54095pt.
-<Figures/D3_DF_forest.pdf, id=2112, 407.48639pt x 401.3752pt>
+<Figures/D3_DF_forest.pdf, id=2079, 407.48639pt x 401.3752pt>
 File: Figures/D3_DF_forest.pdf Graphic file (type pdf)
 <use Figures/D3_DF_forest.pdf>
-Package pdftex.def Info: Figures/D3_DF_forest.pdf  used on input line 889.
+Package pdftex.def Info: Figures/D3_DF_forest.pdf  used on input line 892.
 (pdftex.def)             Requested size: 137.60461pt x 135.54095pt.
- [24 <./Figures/D2_data_covs_depth_0.pdf> <./Figures/D2_data_covs_depth_1.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_data_covs_depth
-_1.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
-> <./Figures/D2_data_covs_depth_2.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_data_covs_depth
-_2.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
-> <./Figures/D2_data_covs_depth_3.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_data_covs_depth
-_3.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
-> <./Figures/D2_data_covs_depth_4.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_data_covs_depth
-_4.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
-> <./Figures/D2_data_covs_depth_5.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_data_covs_depth
-_5.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
->]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 896.
-
-[25 <./Figures/D1_one_tree.pdf> <./Figures/D2_one_tree.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_one_tree.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/D3_one_tree.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D3_one_tree.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/D1_DF_forest.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D1_DF_forest.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/D2_DF_forest.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D2_DF_forest.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/D3_DF_forest.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/D3_DF_forest.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
->]
-<Figures/pred-count_wo_cl4.pdf, id=2241, 435.47694pt x 323.87877pt>
+ [25 <./Figures/D2_data_covs_depth_0.pdf> <./Figures/D2_data_covs_depth_1.pdf> 
+<./Figures/D2_data_covs_depth_2.pdf> <./Figures/D2_data_covs_depth_3.pdf> <./Fi
+gures/D2_data_covs_depth_4.pdf> <./Figures/D2_data_covs_depth_5.pdf>] [26 <./Fi
+gures/D1_one_tree.pdf> <./Figures/D2_one_tree.pdf> <./Figures/D3_one_tree.pdf> 
+<./Figures/D1_DF_forest.pdf> <./Figures/D2_DF_forest.pdf> <./Figures/D3_DF_fore
+st.pdf>]
+<Figures/pred-count_wo_cl4.pdf, id=2208, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl4.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl4.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl4.pdf  used on input line 918.
+Package pdftex.def Info: Figures/pred-count_wo_cl4.pdf  used on input line 926.
 
-(pdftex.def)             Requested size: 210.70462pt x 156.71036pt.
-<Figures/pred-count_wo_cl8.pdf, id=2242, 435.47694pt x 323.87877pt>
+(pdftex.def)             Requested size: 193.50076pt x 143.91061pt.
+<Figures/pred-count_wo_cl8.pdf, id=2209, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl8.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl8.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl8.pdf  used on input line 923.
+Package pdftex.def Info: Figures/pred-count_wo_cl8.pdf  used on input line 926.
 
-(pdftex.def)             Requested size: 215.0023pt x 159.90288pt.
-<Figures/pred-count_wo_cl1.pdf, id=2243, 435.47694pt x 323.87877pt>
+(pdftex.def)             Requested size: 193.50076pt x 143.91061pt.
+<Figures/pred-count_wo_cl1.pdf, id=2210, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl1.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl1.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl1.pdf  used on input line 928.
+Package pdftex.def Info: Figures/pred-count_wo_cl1.pdf  used on input line 926.
 
-(pdftex.def)             Requested size: 210.70462pt x 156.71036pt.
-<Figures/pred-count_wo_cl7.pdf, id=2244, 435.47694pt x 323.87877pt>
+(pdftex.def)             Requested size: 193.50076pt x 143.91061pt.
+<Figures/pred-count_wo_cl7.pdf, id=2211, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl7.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl7.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl7.pdf  used on input line 933.
+Package pdftex.def Info: Figures/pred-count_wo_cl7.pdf  used on input line 926.
 
-(pdftex.def)             Requested size: 215.0023pt x 159.90288pt.
- [26]
-<Figures/MNIST_t-SNE_wo_cl_7_before.pdf, id=2259, 479.78622pt x 465.43071pt>
+(pdftex.def)             Requested size: 193.50076pt x 143.91061pt.
+
+[27 <./Figures/pred-count_wo_cl4.pdf> <./Figures/pred-count_wo_cl8.pdf> <./Figu
+res/pred-count_wo_cl1.pdf> <./Figures/pred-count_wo_cl7.pdf>]
+<Figures/MNIST_t-SNE_wo_cl_7_before.pdf, id=2392, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_7_before.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_7_before.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_7_before.pdf  used on input 
-line 948.
+line 939.
 (pdftex.def)             Requested size: 210.70462pt x 204.39954pt.
-<Figures/MNIST_t-SNE_wo_cl_7_after.pdf, id=2264, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_7_after.pdf, id=2397, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_7_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_7_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_7_after.pdf  used on input l
-ine 953.
+ine 944.
 (pdftex.def)             Requested size: 215.0023pt x 208.56834pt.
- [27 <./Figures/pred-count_wo_cl4.pdf> <./Figures/pred-count_wo_cl8.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl8.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/pred-count_wo_cl1.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl1.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/pred-count_wo_cl7.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl7.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-<Figures/MNIST_t-SNE_wo_cl_4_after.pdf, id=2453, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_4_after.pdf, id=2416, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_4_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_4_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_4_after.pdf  used on input l
-ine 972.
+ine 961.
 (pdftex.def)             Requested size: 210.70462pt x 204.39954pt.
-<Figures/MNIST_t-SNE_wo_cl_8_after.pdf, id=2454, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_8_after.pdf, id=2417, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_8_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_8_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_8_after.pdf  used on input l
-ine 977.
+ine 966.
 (pdftex.def)             Requested size: 215.0023pt x 208.56834pt.
  [28 <./Figures/MNIST_t-SNE_wo_cl_7_before.pdf> <./Figures/MNIST_t-SNE_wo_cl_7_
-after.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-7_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
->] [29 <./Figures/MNIST_t-SNE_wo_cl_4_after.pdf> <./Figures/MNIST_t-SNE_wo_cl_8
-_after.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-8_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
->]
-<Figures/GT_18.jpg, id=2549, 346.04576pt x 206.04036pt>
+after.pdf>]
+[29 <./Figures/MNIST_t-SNE_wo_cl_4_after.pdf> <./Figures/MNIST_t-SNE_wo_cl_8_af
+ter.pdf>]
+<Figures/GT_18.jpg, id=2514, 346.04576pt x 206.04036pt>
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1059.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1049.
 (pdftex.def)             Requested size: 210.70462pt x 125.46121pt.
-<Figures/Im_18_wo_cl_1.jpg, id=2550, 344.62871pt x 199.52188pt>
+<Figures/Im_18_wo_cl_1.jpg, id=2515, 344.62871pt x 199.52188pt>
 File: Figures/Im_18_wo_cl_1.jpg Graphic file (type jpg)
 <use Figures/Im_18_wo_cl_1.jpg>
-Package pdftex.def Info: Figures/Im_18_wo_cl_1.jpg  used on input line 1063.
+Package pdftex.def Info: Figures/Im_18_wo_cl_1.jpg  used on input line 1053.
 (pdftex.def)             Requested size: 210.70462pt x 121.98521pt.
  [30]
-<Figures/ZH_pred-count_wo_cl1.pdf, id=2558, 435.47694pt x 345.93802pt>
+<Figures/ZH_pred-count_wo_cl1.pdf, id=2523, 435.47694pt x 351.35829pt>
 File: Figures/ZH_pred-count_wo_cl1.pdf Graphic file (type pdf)
 <use Figures/ZH_pred-count_wo_cl1.pdf>
 Package pdftex.def Info: Figures/ZH_pred-count_wo_cl1.pdf  used on input line 1
-078.
-(pdftex.def)             Requested size: 210.70462pt x 167.38383pt.
-<Figures/ZH_pred-count_wo_cl3.pdf, id=2559, 435.47694pt x 351.35829pt>
+068.
+(pdftex.def)             Requested size: 210.70462pt x 170.00647pt.
+<Figures/ZH_pred-count_wo_cl3.pdf, id=2524, 435.47694pt x 345.93802pt>
 File: Figures/ZH_pred-count_wo_cl3.pdf Graphic file (type pdf)
 <use Figures/ZH_pred-count_wo_cl3.pdf>
 Package pdftex.def Info: Figures/ZH_pred-count_wo_cl3.pdf  used on input line 1
-083.
-(pdftex.def)             Requested size: 215.0023pt x 173.46986pt.
+073.
+(pdftex.def)             Requested size: 215.0023pt x 170.7938pt.
  [31 <./Figures/GT_18.jpg> <./Figures/Im_18_wo_cl_1.jpg> <./Figures/ZH_pred-cou
-nt_wo_cl1.pdf> <./Figures/ZH_pred-count_wo_cl3.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pred-count_wo_c
-l3.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
->]
-<Figures/t-SNE_wo_cl2_before_PCA.pdf, id=2670, 591.80473pt x 576.72655pt>
+nt_wo_cl1.pdf> <./Figures/ZH_pred-count_wo_cl3.pdf>]
+<Figures/t-SNE_wo_cl2_before_PCA.pdf, id=2635, 481.85027pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl2_before_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl2_before_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl2_before_PCA.pdf  used on input lin
-e 1101.
-(pdftex.def)             Requested size: 210.70462pt x 205.33336pt.
-<Figures/t-SNE_wo_cl2_after_PCA.pdf, id=2675, 591.80473pt x 576.72655pt>
+e 1091.
+(pdftex.def)             Requested size: 210.70462pt x 203.526pt.
+<Figures/t-SNE_wo_cl2_after_PCA.pdf, id=2640, 479.78622pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl2_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl2_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl2_after_PCA.pdf  used on input line
- 1106.
-(pdftex.def)             Requested size: 215.0023pt x 209.52222pt.
-<Figures/t-SNE_wo_cl1_after_PCA.pdf, id=2689, 591.80473pt x 576.72655pt>
+ 1096.
+(pdftex.def)             Requested size: 215.0023pt x 208.56834pt.
+<Figures/t-SNE_wo_cl1_after_PCA.pdf, id=2654, 479.78622pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl1_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl1_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl1_after_PCA.pdf  used on input line
- 1124.
-(pdftex.def)             Requested size: 210.70462pt x 205.33336pt.
-<Figures/t-SNE_wo_cl3_after_PCA.pdf, id=2690, 591.80473pt x 576.72655pt>
+ 1112.
+(pdftex.def)             Requested size: 210.70462pt x 204.39954pt.
+<Figures/t-SNE_wo_cl3_after_PCA.pdf, id=2655, 480.25868pt x 456.75833pt>
 File: Figures/t-SNE_wo_cl3_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl3_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl3_after_PCA.pdf  used on input line
- 1129.
-(pdftex.def)             Requested size: 215.0023pt x 209.52222pt.
+ 1117.
+(pdftex.def)             Requested size: 215.0023pt x 204.47998pt.
  [32 <./Figures/t-SNE_wo_cl2_before_PCA.pdf> <./Figures/t-SNE_wo_cl2_after_PCA.
-pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl2_after
-_PCA.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
->] [33 <./Figures/t-SNE_wo_cl1_after_PCA.pdf> <./Figures/t-SNE_wo_cl3_after_PCA
-.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl3_after
-_PCA.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
->]
-<Figures/Skew_GMM_wo_cl1.pdf, id=2779, 454.62662pt x 323.87877pt>
+pdf>]
+[33 <./Figures/t-SNE_wo_cl1_after_PCA.pdf> <./Figures/t-SNE_wo_cl3_after_PCA.pd
+f>]
+<Figures/Skew_GMM_wo_cl1.pdf, id=2745, 454.62662pt x 323.87877pt>
 File: Figures/Skew_GMM_wo_cl1.pdf Graphic file (type pdf)
 <use Figures/Skew_GMM_wo_cl1.pdf>
-Package pdftex.def Info: Figures/Skew_GMM_wo_cl1.pdf  used on input line 1177.
+Package pdftex.def Info: Figures/Skew_GMM_wo_cl1.pdf  used on input line 1166.
 (pdftex.def)             Requested size: 210.70462pt x 150.10292pt.
-<Figures/Skew_GMM_wo_cl1_eq.pdf, id=2780, 454.62662pt x 323.87877pt>
+<Figures/Skew_GMM_wo_cl1_eq.pdf, id=2746, 454.62662pt x 323.87877pt>
 File: Figures/Skew_GMM_wo_cl1_eq.pdf Graphic file (type pdf)
 <use Figures/Skew_GMM_wo_cl1_eq.pdf>
-Package pdftex.def Info: Figures/Skew_GMM_wo_cl1_eq.pdf  used on input line 118
-2.
+Package pdftex.def Info: Figures/Skew_GMM_wo_cl1_eq.pdf  used on input line 117
+1.
 (pdftex.def)             Requested size: 210.70462pt x 150.10292pt.
-<Figures/ZH_wo_cl_1_df_im_1.jpg, id=2781, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_1_df_im_1.jpg, id=2747, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_1_df_im_1.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_df_im_1.jpg>
-Package pdftex.def Info: Figures/ZH_wo_cl_1_df_im_1.jpg  used on input line 118
-7.
+Package pdftex.def Info: Figures/ZH_wo_cl_1_df_im_1.jpg  used on input line 117
+6.
 (pdftex.def)             Requested size: 193.50076pt x 178.33478pt.
-<Figures/ZH_wo_cl_1_df_im_1_eq.jpg, id=2782, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_1_df_im_1_eq.jpg, id=2748, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_1_df_im_1_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_df_im_1_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_df_im_1_eq.jpg  used on input line 
-1193.
+1182.
 (pdftex.def)             Requested size: 193.50076pt x 178.33478pt.
-<Figures/colorbar.pdf, id=2783, 267.19826pt x 61.22874pt>
+<Figures/colorbar.pdf, id=2749, 267.19826pt x 61.22874pt>
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1198.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1187.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
  [34]
-<Figures/ZH_wo_cl_1_net_msr_im_3.jpg, id=2796, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_1_net_msr_im_3.jpg, id=2765, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_1_net_msr_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_net_msr_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_net_msr_im_3.jpg  used on input lin
-e 1239.
+e 1229.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
-<Figures/ZH_wo_cl_1_svm_im_3_eq.jpg, id=2797, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_1_svm_im_3_eq.jpg, id=2766, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_1_svm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_svm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_svm_im_3_eq.jpg  used on input line
- 1239.
+ 1229.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
-<Figures/ZH_wo_cl_1_df_im_3_eq.jpg, id=2800, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_1_df_im_3_eq.jpg, id=2769, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_1_df_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_df_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_df_im_3_eq.jpg  used on input line 
-1239.
+1229.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1239.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1229.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
 File: Figures/ZH_pca_components_wo_cl_1.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_1.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_1.pdf  used on input l
-ine 1239.
+ine 1229.
 (pdftex.def)             Requested size: 206.40038pt x 138.35143pt.
-<Figures/ROC_pred_wo_cl_1.pdf, id=2805, 380.75372pt x 367.85808pt>
+<Figures/ROC_pred_wo_cl_1.pdf, id=2774, 380.75372pt x 367.85808pt>
 File: Figures/ROC_pred_wo_cl_1.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_1.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_1.pdf  used on input line 1239.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_1.pdf  used on input line 1229.
 
 (pdftex.def)             Requested size: 163.40385pt x 157.86716pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1239.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1229.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [35 <./Figures/Skew_GMM_wo_cl1.pdf> <./Figures/Skew_GMM_wo_cl1_eq.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/Skew_GMM_wo_cl1_eq
-.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/ZH_wo_cl_1_df_im_1.jpg> <./Figures/ZH_wo_cl_1_df_im_1_eq.jpg> <./F
-igures/colorbar.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/colorbar.pdf): PDF
- inclusion: multiple pdfs with page group included in a single page
->]
+ [35 <./Figures/Skew_GMM_wo_cl1.pdf> <./Figures/Skew_GMM_wo_cl1_eq.pdf> <./Figu
+res/ZH_wo_cl_1_df_im_1.jpg> <./Figures/ZH_wo_cl_1_df_im_1_eq.jpg> <./Figures/co
+lorbar.pdf>]
 Overfull \vbox (4.1461pt too high) has occurred while \output is active []
 
 
 [36 <./Figures/ZH_wo_cl_1_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_1_svm_im_3_eq.j
 pg> <./Figures/ZH_wo_cl_1_df_im_3_eq.jpg> <./Figures/ROC_pred_wo_cl_1.pdf>]
-<Figures/ZH_wo_cl_3_net_msr_im_3.jpg, id=2939, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_3_net_msr_im_3.jpg, id=2922, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_3_net_msr_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_net_msr_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_net_msr_im_3.jpg  used on input lin
-e 1244.
+e 1240.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
-<Figures/ZH_wo_cl_3_svm_im_3_eq.jpg, id=2940, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_3_svm_im_3_eq.jpg, id=2923, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_3_svm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_svm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_svm_im_3_eq.jpg  used on input line
- 1244.
+ 1240.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
-<Figures/ZH_wo_cl_3_df_im_3_eq.jpg, id=2943, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_3_df_im_3_eq.jpg, id=2926, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_3_df_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_df_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_df_im_3_eq.jpg  used on input line 
-1244.
+1240.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1244.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1240.
 (pdftex.def)             Requested size: 206.40038pt x 122.89577pt.
-<Figures/ZH_pca_components_wo_cl_3.pdf, id=2946, 382.66713pt x 252.22606pt>
+<Figures/ZH_pca_components_wo_cl_3.pdf, id=2929, 382.66713pt x 252.22606pt>
 File: Figures/ZH_pca_components_wo_cl_3.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_3.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_3.pdf  used on input l
-ine 1244.
+ine 1240.
 (pdftex.def)             Requested size: 206.40038pt x 136.04608pt.
-<Figures/ROC_pred_wo_cl_3.pdf, id=2949, 380.75372pt x 361.35378pt>
+<Figures/ROC_pred_wo_cl_3.pdf, id=2932, 380.75372pt x 361.35378pt>
 File: Figures/ROC_pred_wo_cl_3.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_3.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_3.pdf  used on input line 1244.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_3.pdf  used on input line 1240.
 
 (pdftex.def)             Requested size: 163.40385pt x 155.07584pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1244.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1240.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
 
 [37]
@@ -1872,11 +1756,7 @@ Overfull \vbox (1.35478pt too high) has occurred while \output is active []
 
 [38 <./Figures/ZH_wo_cl_3_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_3_svm_im_3_eq.j
 pg> <./Figures/ZH_wo_cl_3_df_im_3_eq.jpg> <./Figures/ZH_pca_components_wo_cl_3.
-pdf> <./Figures/ROC_pred_wo_cl_3.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ROC_pred_wo_cl_3.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
->] [39]
+pdf> <./Figures/ROC_pred_wo_cl_3.pdf>]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: <default>
@@ -1912,210 +1792,183 @@ df): PDF inclusion: multiple pdfs with page group included in a single page
 File: Figures/t-SNE_wo_cl3_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl3_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl3_after_PCA.pdf  used on input line
- 1299.
-(pdftex.def)             Requested size: 167.21855pt x 162.95195pt.
-<Figures/t-SNE_wo_cl_3_net_msr.pdf, id=3070, 567.11874pt x 552.66472pt>
+ 1290.
+(pdftex.def)             Requested size: 167.21855pt x 159.03842pt.
+<Figures/t-SNE_wo_cl_3_net_msr.pdf, id=3035, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_wo_cl_3_net_msr.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl_3_net_msr.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl_3_net_msr.pdf  used on input line 
-1299.
+1290.
 (pdftex.def)             Requested size: 167.21855pt x 162.95879pt.
-<Figures/t-SNE_wo_cl_3_net_margin.pdf, id=3073, 567.11874pt x 552.66472pt>
+<Figures/t-SNE_wo_cl_3_net_margin.pdf, id=3038, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_wo_cl_3_net_margin.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl_3_net_margin.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl_3_net_margin.pdf  used on input li
-ne 1299.
+ne 1290.
 (pdftex.def)             Requested size: 167.21855pt x 162.95879pt.
-<Figures/t-SNE_wo_cl_3_net_entropy.pdf, id=3074, 567.11874pt x 552.66472pt>
+<Figures/t-SNE_wo_cl_3_net_entropy.pdf, id=3039, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_wo_cl_3_net_entropy.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl_3_net_entropy.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl_3_net_entropy.pdf  used on input l
-ine 1299.
+ine 1290.
 (pdftex.def)             Requested size: 167.21855pt x 162.95879pt.
-<Figures/t-SNE_wo_cl_3_dropout.pdf, id=3075, 567.11874pt x 552.66472pt>
+<Figures/t-SNE_wo_cl_3_dropout.pdf, id=3040, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_wo_cl_3_dropout.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl_3_dropout.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl_3_dropout.pdf  used on input line 
-1299.
+1290.
 (pdftex.def)             Requested size: 167.21855pt x 162.95879pt.
-<Figures/t-SNE_wo_cl_3_gmm.pdf, id=3078, 567.11874pt x 552.66472pt>
+<Figures/t-SNE_wo_cl_3_gmm.pdf, id=3043, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_wo_cl_3_gmm.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl_3_gmm.pdf>
-Package pdftex.def Info: Figures/t-SNE_wo_cl_3_gmm.pdf  used on input line 1299
+Package pdftex.def Info: Figures/t-SNE_wo_cl_3_gmm.pdf  used on input line 1290
 .
 (pdftex.def)             Requested size: 167.21855pt x 162.95879pt.
-<Figures/t-SNE_wo_cl_3_svm.pdf, id=3081, 567.11874pt x 552.66472pt>
+<Figures/t-SNE_wo_cl_3_svm.pdf, id=3046, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_wo_cl_3_svm.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl_3_svm.pdf>
-Package pdftex.def Info: Figures/t-SNE_wo_cl_3_svm.pdf  used on input line 1299
+Package pdftex.def Info: Figures/t-SNE_wo_cl_3_svm.pdf  used on input line 1290
 .
 (pdftex.def)             Requested size: 167.21855pt x 162.95879pt.
-<Figures/t-SNE_wo_cl_3_df.pdf, id=3084, 567.11874pt x 552.66472pt>
+<Figures/t-SNE_wo_cl_3_df.pdf, id=3049, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_wo_cl_3_df.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl_3_df.pdf>
-Package pdftex.def Info: Figures/t-SNE_wo_cl_3_df.pdf  used on input line 1299.
+Package pdftex.def Info: Figures/t-SNE_wo_cl_3_df.pdf  used on input line 1290.
 
 (pdftex.def)             Requested size: 167.21855pt x 162.95879pt.
 File: Figures/ROC_pred_wo_cl_3.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_3.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_3.pdf  used on input line 1299.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_3.pdf  used on input line 1290.
 
 (pdftex.def)             Requested size: 178.36871pt x 169.2794pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1299.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1290.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [40
+ [39
 
- <./Figures/t-SNE_wo_cl_3_net_msr.pdf> <./Figures/t-SNE_wo_cl_3_net_margin.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl_3_net_
-margin.pdf): PDF inclusion: multiple pdfs with page group included in a single 
-page
-> <./Figures/t-SNE_wo_cl_3_net_entropy.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl_3_net_
-entropy.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/t-SNE_wo_cl_3_dropout.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl_3_drop
-out.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
-e
-> <./Figures/t-SNE_wo_cl_3_gmm.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl_3_gmm.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/t-SNE_wo_cl_3_svm.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl_3_svm.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/t-SNE_wo_cl_3_df.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl_3_df.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
->]
-<Figures/im_1_obj_1_overlay.png, id=3139, 614.295pt x 560.0925pt>
+ <./Figures/t-SNE_wo_cl_3_net_msr.pdf> <./Figures/t-SNE_wo_cl_3_net_margin.pdf>
+ <./Figures/t-SNE_wo_cl_3_net_entropy.pdf> <./Figures/t-SNE_wo_cl_3_dropout.pdf
+> <./Figures/t-SNE_wo_cl_3_gmm.pdf> <./Figures/t-SNE_wo_cl_3_svm.pdf> <./Figure
+s/t-SNE_wo_cl_3_df.pdf>]
+<Figures/im_1_obj_1_overlay.png, id=3104, 614.295pt x 560.0925pt>
 File: Figures/im_1_obj_1_overlay.png Graphic file (type png)
 <use Figures/im_1_obj_1_overlay.png>
 Package pdftex.def Info: Figures/im_1_obj_1_overlay.png  used on input line 133
-9.
-(pdftex.def)             Requested size: 210.70462pt x 192.11255pt.
-<Figures/im_1_obj_1_gt.jpg, id=3140, 614.295pt x 560.0925pt>
+0.
+(pdftex.def)             Requested size: 171.99922pt x 156.82483pt.
+<Figures/im_1_obj_1_gt.jpg, id=3107, 614.295pt x 560.0925pt>
 File: Figures/im_1_obj_1_gt.jpg Graphic file (type jpg)
 <use Figures/im_1_obj_1_gt.jpg>
-Package pdftex.def Info: Figures/im_1_obj_1_gt.jpg  used on input line 1339.
-(pdftex.def)             Requested size: 215.0023pt x 196.03531pt.
-<Figures/im_1_obj_1_msr_wo_cl_4.jpg, id=3141, 314.58705pt x 289.93024pt>
+Package pdftex.def Info: Figures/im_1_obj_1_gt.jpg  used on input line 1330.
+(pdftex.def)             Requested size: 171.99922pt x 156.82483pt.
+<Figures/im_1_obj_1_msr_wo_cl_4.jpg, id=3108, 314.58705pt x 289.93024pt>
 File: Figures/im_1_obj_1_msr_wo_cl_4.jpg Graphic file (type jpg)
 <use Figures/im_1_obj_1_msr_wo_cl_4.jpg>
 Package pdftex.def Info: Figures/im_1_obj_1_msr_wo_cl_4.jpg  used on input line
- 1339.
-(pdftex.def)             Requested size: 210.70462pt x 194.19473pt.
-<Figures/im_1_obj_1_df_wo_cl_4.jpg, id=3142, 314.58705pt x 289.93024pt>
+ 1330.
+(pdftex.def)             Requested size: 171.99922pt x 158.5198pt.
+<Figures/im_1_obj_1_df_wo_cl_4.jpg, id=3109, 314.58705pt x 289.93024pt>
 File: Figures/im_1_obj_1_df_wo_cl_4.jpg Graphic file (type jpg)
 <use Figures/im_1_obj_1_df_wo_cl_4.jpg>
 Package pdftex.def Info: Figures/im_1_obj_1_df_wo_cl_4.jpg  used on input line 
-1339.
-(pdftex.def)             Requested size: 215.0023pt x 198.15419pt.
+1330.
+(pdftex.def)             Requested size: 171.99922pt x 158.5198pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1339.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1330.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [41
+ [40
 
 ]
-<Figures/im_4_obj_1_overlay.png, id=3154, 831.105pt x 596.79211pt>
+<Figures/im_4_obj_1_overlay.png, id=3120, 831.105pt x 596.79211pt>
 File: Figures/im_4_obj_1_overlay.png Graphic file (type png)
 <use Figures/im_4_obj_1_overlay.png>
-Package pdftex.def Info: Figures/im_4_obj_1_overlay.png  used on input line 134
-3.
-(pdftex.def)             Requested size: 210.70462pt x 151.30121pt.
-<Figures/im_4_obj_1_gt.jpg, id=3155, 831.105pt x 596.2275pt>
+Package pdftex.def Info: Figures/im_4_obj_1_overlay.png  used on input line 133
+4.
+(pdftex.def)             Requested size: 171.99922pt x 123.50877pt.
+<Figures/im_4_obj_1_gt.jpg, id=3123, 831.105pt x 596.2275pt>
 File: Figures/im_4_obj_1_gt.jpg Graphic file (type jpg)
 <use Figures/im_4_obj_1_gt.jpg>
-Package pdftex.def Info: Figures/im_4_obj_1_gt.jpg  used on input line 1343.
-(pdftex.def)             Requested size: 215.0023pt x 154.24219pt.
-<Figures/im_4_obj_1_msr_wo_cl_8.jpg, id=3156, 422.00012pt x 301.55013pt>
+Package pdftex.def Info: Figures/im_4_obj_1_gt.jpg  used on input line 1334.
+(pdftex.def)             Requested size: 171.99922pt x 123.39192pt.
+<Figures/im_4_obj_1_msr_wo_cl_8.jpg, id=3124, 422.00012pt x 301.55013pt>
 File: Figures/im_4_obj_1_msr_wo_cl_8.jpg Graphic file (type jpg)
 <use Figures/im_4_obj_1_msr_wo_cl_8.jpg>
 Package pdftex.def Info: Figures/im_4_obj_1_msr_wo_cl_8.jpg  used on input line
- 1343.
-(pdftex.def)             Requested size: 210.70462pt x 150.56763pt.
-<Figures/im_4_obj_1_df_wo_cl_8.jpg, id=3157, 422.00012pt x 301.55013pt>
+ 1334.
+(pdftex.def)             Requested size: 171.99922pt x 122.90933pt.
+<Figures/im_4_obj_1_df_wo_cl_8.jpg, id=3125, 422.00012pt x 301.55013pt>
 File: Figures/im_4_obj_1_df_wo_cl_8.jpg Graphic file (type jpg)
 <use Figures/im_4_obj_1_df_wo_cl_8.jpg>
 Package pdftex.def Info: Figures/im_4_obj_1_df_wo_cl_8.jpg  used on input line 
-1343.
-(pdftex.def)             Requested size: 215.0023pt x 153.63667pt.
+1334.
+(pdftex.def)             Requested size: 171.99922pt x 122.90933pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1343.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1334.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [42 <./Figures/im_1_obj_1_overlay.png> <./Figures/im_1_obj_1_gt.jpg> <./Figure
-s/im_1_obj_1_msr_wo_cl_4.jpg> <./Figures/im_1_obj_1_df_wo_cl_4.jpg>]
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 1355.
+[41 <./Figures/im_1_obj_1_overlay.png> <./Figures/im_1_obj_1_gt.jpg> <./Figures
+/im_1_obj_1_msr_wo_cl_4.jpg> <./Figures/im_1_obj_1_df_wo_cl_4.jpg>] [42 <./Figu
+res/im_4_obj_1_overlay.png> <./Figures/im_4_obj_1_gt.jpg> <./Figures/im_4_obj_1
+_msr_wo_cl_8.jpg> <./Figures/im_4_obj_1_df_wo_cl_8.jpg>]
+Overfull \hbox (5.77675pt too wide) in paragraph at lines 1359--1360
+\T1/cmr/m/n/10 Regarding the [][]MNIST[] dataset, pre-softmax based meth-ods ar
+e con-sis-tently out-per-formed by softmax-
+ []
 
-[43 <./Figures/im_4_obj_1_overlay.png> <./Figures/im_4_obj_1_gt.jpg> <./Figures
-/im_4_obj_1_msr_wo_cl_8.jpg> <./Figures/im_4_obj_1_df_wo_cl_8.jpg>] [44]
-[45]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1388
+[43] [44]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1383
 .
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1388.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1383.
 
 
-Overfull \hbox (12.61565pt too wide) in paragraph at lines 1390--1391
+Overfull \hbox (12.61565pt too wide) in paragraph at lines 1385--1386
 \T1/cmr/m/n/10 doc-u-men-ta-tion, which can be eas-ily in-stalled us-ing the co
 m-mand \T1/cmtt/m/n/10 pip install density_forest\T1/cmr/m/n/10 .
  []
 
-[46]
-<Figures/nn_scheme.pdf, id=3277, 364.49876pt x 144.90536pt>
-File: Figures/nn_scheme.pdf Graphic file (type pdf)
-<use Figures/nn_scheme.pdf>
-Package pdftex.def Info: Figures/nn_scheme.pdf  used on input line 1422.
+[45]
+<Schema/nn_scheme.pdf, id=3250, 364.49876pt x 144.90536pt>
+File: Schema/nn_scheme.pdf Graphic file (type pdf)
+<use Schema/nn_scheme.pdf>
+Package pdftex.def Info: Schema/nn_scheme.pdf  used on input line 1416.
 (pdftex.def)             Requested size: 301.00192pt x 119.67pt.
- [47] [48 <./Figures/nn_scheme.pdf>] [49] [50] [51] [52]
-<Figures/decision_boundaries.pdf, id=3428, 875.8895pt x 359.29921pt>
+ [46] [47 <./Schema/nn_scheme.pdf>] [48] [49] [50] [51] [52]
+<Figures/decision_boundaries.pdf, id=3407, 875.8895pt x 359.29921pt>
 File: Figures/decision_boundaries.pdf Graphic file (type pdf)
 <use Figures/decision_boundaries.pdf>
 Package pdftex.def Info: Figures/decision_boundaries.pdf  used on input line 14
-67.
+62.
 (pdftex.def)             Requested size: 430.00462pt x 176.39258pt.
-<Figures/decision_tree.pdf, id=3430, 991.5805pt x 434.25136pt>
+<Figures/decision_tree.pdf, id=3409, 991.5805pt x 434.25136pt>
 File: Figures/decision_tree.pdf Graphic file (type pdf)
 <use Figures/decision_tree.pdf>
-Package pdftex.def Info: Figures/decision_tree.pdf  used on input line 1475.
+Package pdftex.def Info: Figures/decision_tree.pdf  used on input line 1470.
 (pdftex.def)             Requested size: 430.00462pt x 188.31471pt.
  [53 <./Figures/decision_boundaries.pdf>]
-<Figures/rf.pdf, id=3476, 875.8895pt x 359.29921pt>
+<Figures/rf.pdf, id=3456, 875.8895pt x 359.29921pt>
 File: Figures/rf.pdf Graphic file (type pdf)
 <use Figures/rf.pdf>
-Package pdftex.def Info: Figures/rf.pdf  used on input line 1483.
+Package pdftex.def Info: Figures/rf.pdf  used on input line 1478.
 (pdftex.def)             Requested size: 430.00462pt x 176.39258pt.
-<Figures/decision-node.pdf, id=3477, 366.36874pt x 253.94875pt>
+<Figures/decision-node.pdf, id=3457, 366.36874pt x 253.94875pt>
 File: Figures/decision-node.pdf Graphic file (type pdf)
 <use Figures/decision-node.pdf>
-Package pdftex.def Info: Figures/decision-node.pdf  used on input line 1491.
+Package pdftex.def Info: Figures/decision-node.pdf  used on input line 1486.
 (pdftex.def)             Requested size: 258.00539pt x 178.84789pt.
  [54 <./Figures/decision_tree.pdf> <./Figures/rf.pdf>]
-<Figures/density-node.pdf, id=3523, 464.73625pt x 360.34625pt>
+<Figures/density-node.pdf, id=3503, 464.73625pt x 360.34625pt>
 File: Figures/density-node.pdf Graphic file (type pdf)
 <use Figures/density-node.pdf>
-Package pdftex.def Info: Figures/density-node.pdf  used on input line 1498.
+Package pdftex.def Info: Figures/density-node.pdf  used on input line 1493.
 (pdftex.def)             Requested size: 258.00539pt x 200.05501pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 1503.
-
-[55 <./Figures/decision-node.pdf> <./Figures/density-node.pdf>] [56] [57]
+ [55 <./Figures/decision-node.pdf> <./Figures/density-node.pdf>] [56] [57]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: <default>
@@ -2148,1004 +2001,938 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 1619.
-
-<Figures/pred-count_wo_cl0.pdf, id=3563, 435.47694pt x 323.87877pt>
+<Figures/pred-count_wo_cl0.pdf, id=3541, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl0.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl0.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl0.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl0.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
 File: Figures/pred-count_wo_cl1.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl1.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl1.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl1.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
-<Figures/pred-count_wo_cl2.pdf, id=3564, 435.47694pt x 323.87877pt>
+<Figures/pred-count_wo_cl2.pdf, id=3542, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl2.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl2.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl2.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl2.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
-<Figures/pred-count_wo_cl3.pdf, id=3565, 435.47694pt x 323.87877pt>
+<Figures/pred-count_wo_cl3.pdf, id=3543, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl3.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl3.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl3.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl3.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
 File: Figures/pred-count_wo_cl4.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl4.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl4.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl4.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
-<Figures/pred-count_wo_cl5.pdf, id=3566, 435.47694pt x 323.87877pt>
+<Figures/pred-count_wo_cl5.pdf, id=3544, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl5.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl5.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl5.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl5.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
-<Figures/pred-count_wo_cl6.pdf, id=3567, 435.47694pt x 323.87877pt>
+<Figures/pred-count_wo_cl6.pdf, id=3545, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl6.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl6.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl6.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl6.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
 File: Figures/pred-count_wo_cl7.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl7.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl7.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl7.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
 File: Figures/pred-count_wo_cl8.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl8.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl8.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl8.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
-<Figures/pred-count_wo_cl9.pdf, id=3568, 435.47694pt x 323.87877pt>
+<Figures/pred-count_wo_cl9.pdf, id=3546, 435.47694pt x 323.87877pt>
 File: Figures/pred-count_wo_cl9.pdf Graphic file (type pdf)
 <use Figures/pred-count_wo_cl9.pdf>
-Package pdftex.def Info: Figures/pred-count_wo_cl9.pdf  used on input line 1632
+Package pdftex.def Info: Figures/pred-count_wo_cl9.pdf  used on input line 1627
 .
 (pdftex.def)             Requested size: 178.36871pt x 132.65771pt.
-<Figures/MNIST_t-SNE_wo_cl_0_after.pdf, id=3569, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_0_after.pdf, id=3547, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_0_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_0_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_0_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
-<Figures/MNIST_t-SNE_wo_cl_1_after.pdf, id=3570, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_1_after.pdf, id=3548, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_1_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_1_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_1_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
-<Figures/MNIST_t-SNE_wo_cl_2_after.pdf, id=3571, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_2_after.pdf, id=3549, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_2_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_2_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_2_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
-<Figures/MNIST_t-SNE_wo_cl_3_after.pdf, id=3572, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_3_after.pdf, id=3550, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_3_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_3_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_3_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
 File: Figures/MNIST_t-SNE_wo_cl_4_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_4_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_4_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
-<Figures/MNIST_t-SNE_wo_cl_5_after.pdf, id=3573, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_5_after.pdf, id=3551, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_5_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_5_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_5_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
-<Figures/MNIST_t-SNE_wo_cl_6_after.pdf, id=3574, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_6_after.pdf, id=3552, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_6_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_6_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_6_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
 File: Figures/MNIST_t-SNE_wo_cl_7_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_7_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_7_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
 File: Figures/MNIST_t-SNE_wo_cl_8_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_8_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_8_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
-<Figures/MNIST_t-SNE_wo_cl_9_after.pdf, id=3575, 479.78622pt x 465.43071pt>
+<Figures/MNIST_t-SNE_wo_cl_9_after.pdf, id=3553, 479.78622pt x 465.43071pt>
 File: Figures/MNIST_t-SNE_wo_cl_9_after.pdf Graphic file (type pdf)
 <use Figures/MNIST_t-SNE_wo_cl_9_after.pdf>
 Package pdftex.def Info: Figures/MNIST_t-SNE_wo_cl_9_after.pdf  used on input l
-ine 1647.
+ine 1642.
 (pdftex.def)             Requested size: 150.49754pt x 145.99358pt.
+
 [58
 
- <./Figures/pred-count_wo_cl0.pdf> <./Figures/pred-count_wo_cl2.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl2.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/pred-count_wo_cl3.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl3.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/pred-count_wo_cl5.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl5.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/pred-count_wo_cl6.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl6.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/pred-count_wo_cl9.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/pred-count_wo_cl9.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
+ <./Figures/pred-count_wo_cl0.pdf> <./Figures/pred-count_wo_cl2.pdf> <./Figures
+/pred-count_wo_cl3.pdf> <./Figures/pred-count_wo_cl5.pdf> <./Figures/pred-count
+_wo_cl6.pdf> <./Figures/pred-count_wo_cl9.pdf>]
+File: Figures/ZH_pred-count_wo_cl1.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl1.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl1.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 143.91307pt.
+<Figures/ZH_pred-count_wo_cl2.pdf, id=3811, 435.47694pt x 351.35829pt>
+File: Figures/ZH_pred-count_wo_cl2.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl2.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl2.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 143.91307pt.
+File: Figures/ZH_pred-count_wo_cl3.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl3.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl3.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 141.69298pt.
+<Figures/ZH_pred-count_wo_cl4.pdf, id=3812, 435.47694pt x 351.35829pt>
+File: Figures/ZH_pred-count_wo_cl4.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl4.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl4.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 143.91307pt.
+<Figures/ZH_pred-count_wo_cl5.pdf, id=3813, 435.47694pt x 351.35829pt>
+File: Figures/ZH_pred-count_wo_cl5.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl5.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl5.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 143.91307pt.
+<Figures/ZH_pred-count_wo_cl6.pdf, id=3814, 435.47694pt x 351.35829pt>
+File: Figures/ZH_pred-count_wo_cl6.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl6.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl6.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 143.91307pt.
+<Figures/ZH_pred-count_wo_cl7.pdf, id=3815, 435.47694pt x 351.35829pt>
+File: Figures/ZH_pred-count_wo_cl7.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl7.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl7.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 143.91307pt.
+<Figures/ZH_pred-count_wo_cl8.pdf, id=3816, 435.47694pt x 351.35829pt>
+File: Figures/ZH_pred-count_wo_cl8.pdf Graphic file (type pdf)
+<use Figures/ZH_pred-count_wo_cl8.pdf>
+Package pdftex.def Info: Figures/ZH_pred-count_wo_cl8.pdf  used on input line 1
+668.
+(pdftex.def)             Requested size: 178.36871pt x 143.91307pt.
+<Figures/pred-count_ED.pdf, id=3817, 454.62662pt x 345.93802pt>
+File: Figures/pred-count_ED.pdf Graphic file (type pdf)
+<use Figures/pred-count_ED.pdf>
+Package pdftex.def Info: Figures/pred-count_ED.pdf  used on input line 1671.
+(pdftex.def)             Requested size: 178.36871pt x 135.7229pt.
+ [59 <./Figures/MNIST_t-SNE_wo_cl_0_after.pdf> <./Figures/MNIST_t-SNE_wo_cl_1_a
+fter.pdf> <./Figures/MNIST_t-SNE_wo_cl_2_after.pdf> <./Figures/MNIST_t-SNE_wo_c
+l_3_after.pdf> <./Figures/MNIST_t-SNE_wo_cl_5_after.pdf> <./Figures/MNIST_t-SNE
+_wo_cl_6_after.pdf> <./Figures/MNIST_t-SNE_wo_cl_9_after.pdf>]
 File: Figures/ZH_pca_components_wo_cl_1.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_1.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_1.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 119.5623pt.
-<Figures/ZH_pca_components_wo_cl_2.pdf, id=3834, 398.6876pt x 301.08058pt>
+<Figures/ZH_pca_components_wo_cl_2.pdf, id=3904, 398.6876pt x 301.08058pt>
 File: Figures/ZH_pca_components_wo_cl_2.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_2.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_2.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 134.704pt.
 File: Figures/ZH_pca_components_wo_cl_3.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_3.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_3.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 117.5687pt.
-<Figures/ZH_pca_components_wo_cl_4.pdf, id=3835, 398.6876pt x 301.08058pt>
+<Figures/ZH_pca_components_wo_cl_4.pdf, id=3905, 398.6876pt x 301.08058pt>
 File: Figures/ZH_pca_components_wo_cl_4.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_4.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_4.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 134.704pt.
-<Figures/ZH_pca_components_wo_cl_5.pdf, id=3836, 398.6876pt x 301.08058pt>
+<Figures/ZH_pca_components_wo_cl_5.pdf, id=3906, 398.6876pt x 301.08058pt>
 File: Figures/ZH_pca_components_wo_cl_5.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_5.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_5.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 134.704pt.
-<Figures/ZH_pca_components_wo_cl_6.pdf, id=3837, 398.6876pt x 301.08058pt>
+<Figures/ZH_pca_components_wo_cl_6.pdf, id=3907, 398.6876pt x 301.08058pt>
 File: Figures/ZH_pca_components_wo_cl_6.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_6.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_6.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 134.704pt.
-<Figures/ZH_pca_components_wo_cl_7.pdf, id=3838, 398.6876pt x 301.08058pt>
+<Figures/ZH_pca_components_wo_cl_7.pdf, id=3908, 398.6876pt x 301.08058pt>
 File: Figures/ZH_pca_components_wo_cl_7.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_7.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_7.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 134.704pt.
-<Figures/ZH_pca_components_wo_cl_8.pdf, id=3839, 405.07083pt x 301.08058pt>
+<Figures/ZH_pca_components_wo_cl_8.pdf, id=3909, 405.07083pt x 301.08058pt>
 File: Figures/ZH_pca_components_wo_cl_8.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_wo_cl_8.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_wo_cl_8.pdf  used on input l
-ine 1673.
+ine 1697.
 (pdftex.def)             Requested size: 178.36871pt x 132.57692pt.
-<Figures/ZH_pca_components_ED.pdf, id=3840, 376.2839pt x 252.22606pt>
+<Figures/ZH_pca_components_ED.pdf, id=3910, 376.2839pt x 252.22606pt>
 File: Figures/ZH_pca_components_ED.pdf Graphic file (type pdf)
 <use Figures/ZH_pca_components_ED.pdf>
 Package pdftex.def Info: Figures/ZH_pca_components_ED.pdf  used on input line 1
-676.
+700.
 (pdftex.def)             Requested size: 178.36871pt x 119.5623pt.
- [59 <./Figures/MNIST_t-SNE_wo_cl_0_after.pdf> <./Figures/MNIST_t-SNE_wo_cl_1_a
-fter.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-1_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/MNIST_t-SNE_wo_cl_2_after.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-2_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/MNIST_t-SNE_wo_cl_3_after.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-3_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/MNIST_t-SNE_wo_cl_5_after.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-5_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/MNIST_t-SNE_wo_cl_6_after.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-6_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/MNIST_t-SNE_wo_cl_9_after.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/MNIST_t-SNE_wo_cl_
-9_after.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
->]
+ [60 <./Figures/ZH_pred-count_wo_cl2.pdf> <./Figures/ZH_pred-count_wo_cl4.pdf> 
+<./Figures/ZH_pred-count_wo_cl5.pdf> <./Figures/ZH_pred-count_wo_cl6.pdf> <./Fi
+gures/ZH_pred-count_wo_cl7.pdf> <./Figures/ZH_pred-count_wo_cl8.pdf> <./Figures
+/pred-count_ED.pdf>]
 File: Figures/t-SNE_wo_cl1_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl1_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl1_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.8201pt.
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 173.03047pt.
 File: Figures/t-SNE_wo_cl2_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl2_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl2_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.8201pt.
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 173.03047pt.
 File: Figures/t-SNE_wo_cl3_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl3_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl3_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.8201pt.
-<Figures/t-SNE_wo_cl4_after_PCA.pdf, id=3928, 591.80473pt x 576.72655pt>
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 169.63913pt.
+<Figures/t-SNE_wo_cl4_after_PCA.pdf, id=4254, 479.78622pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl4_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl4_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl4_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.8201pt.
-<Figures/t-SNE_wo_cl5_after_PCA.pdf, id=3929, 591.80473pt x 576.72655pt>
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 173.03047pt.
+<Figures/t-SNE_wo_cl5_after_PCA.pdf, id=4255, 479.78622pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl5_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl5_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl5_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.8201pt.
-<Figures/t-SNE_wo_cl6_after_PCA.pdf, id=3930, 591.80473pt x 576.72655pt>
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 173.03047pt.
+<Figures/t-SNE_wo_cl6_after_PCA.pdf, id=4256, 479.78622pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl6_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl6_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl6_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.8201pt.
-<Figures/t-SNE_wo_cl7_after_PCA.pdf, id=3931, 591.80473pt x 576.72655pt>
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 173.03047pt.
+<Figures/t-SNE_wo_cl7_after_PCA.pdf, id=4257, 481.76239pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl7_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl7_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl7_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.8201pt.
-<Figures/t-SNE_wo_cl8_after_PCA.pdf, id=3932, 594.60774pt x 576.72655pt>
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 172.32028pt.
+<Figures/t-SNE_wo_cl8_after_PCA.pdf, id=4258, 479.78622pt x 465.43071pt>
 File: Figures/t-SNE_wo_cl8_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_wo_cl8_after_PCA.pdf>
 Package pdftex.def Info: Figures/t-SNE_wo_cl8_after_PCA.pdf  used on input line
- 1702.
-(pdftex.def)             Requested size: 178.36871pt x 173.0017pt.
-<Figures/t-SNE_ED_after_PCA.pdf, id=3933, 567.11874pt x 552.66472pt>
+ 1726.
+(pdftex.def)             Requested size: 178.36871pt x 173.03047pt.
+<Figures/t-SNE_ED_after_PCA.pdf, id=4259, 567.11874pt x 552.66472pt>
 File: Figures/t-SNE_ED_after_PCA.pdf Graphic file (type pdf)
 <use Figures/t-SNE_ED_after_PCA.pdf>
-Package pdftex.def Info: Figures/t-SNE_ED_after_PCA.pdf  used on input line 170
-5.
+Package pdftex.def Info: Figures/t-SNE_ED_after_PCA.pdf  used on input line 172
+9.
 (pdftex.def)             Requested size: 178.36871pt x 173.82045pt.
- [60 <./Figures/ZH_pca_components_wo_cl_2.pdf> <./Figures/ZH_pca_components_wo_
-cl_4.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pca_components_
-wo_cl_4.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/ZH_pca_components_wo_cl_5.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pca_components_
-wo_cl_5.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/ZH_pca_components_wo_cl_6.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pca_components_
-wo_cl_6.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/ZH_pca_components_wo_cl_7.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pca_components_
-wo_cl_7.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/ZH_pca_components_wo_cl_8.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pca_components_
-wo_cl_8.pdf): PDF inclusion: multiple pdfs with page group included in a single
- page
-> <./Figures/ZH_pca_components_ED.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ZH_pca_components_
-ED.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
->]
-<Figures/Im_18.jpg, id=4212, 346.04576pt x 206.04036pt>
+ [61 <./Figures/ZH_pca_components_wo_cl_2.pdf> <./Figures/ZH_pca_components_wo_
+cl_4.pdf> <./Figures/ZH_pca_components_wo_cl_5.pdf> <./Figures/ZH_pca_component
+s_wo_cl_6.pdf> <./Figures/ZH_pca_components_wo_cl_7.pdf> <./Figures/ZH_pca_comp
+onents_wo_cl_8.pdf> <./Figures/ZH_pca_components_ED.pdf>]
+<Figures/Im_18.jpg, id=4538, 346.04576pt x 206.04036pt>
 File: Figures/Im_18.jpg Graphic file (type jpg)
 <use Figures/Im_18.jpg>
-Package pdftex.def Info: Figures/Im_18.jpg  used on input line 1720.
+Package pdftex.def Info: Figures/Im_18.jpg  used on input line 1744.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1724.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1748.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
- [61 <./Figures/t-SNE_wo_cl4_after_PCA.pdf> <./Figures/t-SNE_wo_cl5_after_PCA.p
-df
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl5_after
-_PCA.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
-> <./Figures/t-SNE_wo_cl6_after_PCA.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl6_after
-_PCA.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
-> <./Figures/t-SNE_wo_cl7_after_PCA.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl7_after
-_PCA.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
-> <./Figures/t-SNE_wo_cl8_after_PCA.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_wo_cl8_after
-_PCA.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
-> <./Figures/t-SNE_ED_after_PCA.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/t-SNE_ED_after_PCA
-.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
+ [62 <./Figures/t-SNE_wo_cl4_after_PCA.pdf> <./Figures/t-SNE_wo_cl5_after_PCA.p
+df> <./Figures/t-SNE_wo_cl6_after_PCA.pdf> <./Figures/t-SNE_wo_cl7_after_PCA.pd
+f> <./Figures/t-SNE_wo_cl8_after_PCA.pdf> <./Figures/t-SNE_ED_after_PCA.pdf>]
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/ZH_wo_cl_1_net_msr_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_net_msr_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_net_msr_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_1_net_margin_im_3.jpg, id=4273, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_1_net_margin_im_3.jpg, id=4600, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_1_net_margin_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_net_margin_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_net_margin_im_3.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_1_net_entropy_im_3.jpg, id=4274, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_1_net_entropy_im_3.jpg, id=4601, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_1_net_entropy_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_net_entropy_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_net_entropy_im_3.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_1_dropout_im_3.jpg, id=4275, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_1_dropout_im_3.jpg, id=4602, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_1_dropout_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_dropout_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_dropout_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_1_gmm_im_3_eq.jpg, id=4278, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_1_gmm_im_3_eq.jpg, id=4605, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_1_gmm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_gmm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_gmm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/ZH_wo_cl_1_svm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_svm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_svm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/ZH_wo_cl_1_df_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_1_df_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_1_df_im_3_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_2_net_msr_im_3.jpg, id=4285, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_2_net_msr_im_3.jpg, id=4612, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_2_net_msr_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_2_net_msr_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_2_net_msr_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_2_net_margin_im_3.jpg, id=4288, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_2_net_margin_im_3.jpg, id=4615, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_2_net_margin_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_2_net_margin_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_2_net_margin_im_3.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_2_net_entropy_im_3.jpg, id=4289, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_2_net_entropy_im_3.jpg, id=4616, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_2_net_entropy_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_2_net_entropy_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_2_net_entropy_im_3.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_2_dropout_im_3.jpg, id=4290, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_2_dropout_im_3.jpg, id=4617, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_2_dropout_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_2_dropout_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_2_dropout_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_2_gmm_im_3_eq.jpg, id=4293, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_2_gmm_im_3_eq.jpg, id=4620, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_2_gmm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_2_gmm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_2_gmm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_2_svm_im_3_eq.jpg, id=4296, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_2_svm_im_3_eq.jpg, id=4623, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_2_svm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_2_svm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_2_svm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_2_df_im_3_eq.jpg, id=4299, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_2_df_im_3_eq.jpg, id=4626, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_2_df_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_2_df_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_2_df_im_3_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [62 <./Figures/Im_18.jpg>]
+ [63 <./Figures/Im_18.jpg>]
 Overfull \vbox (9.68222pt too high) has occurred while \output is active []
 
 
-[63 <./Figures/ZH_wo_cl_1_net_margin_im_3.jpg> <./Figures/ZH_wo_cl_1_net_entrop
+[64 <./Figures/ZH_wo_cl_1_net_margin_im_3.jpg> <./Figures/ZH_wo_cl_1_net_entrop
 y_im_3.jpg> <./Figures/ZH_wo_cl_1_dropout_im_3.jpg> <./Figures/ZH_wo_cl_1_gmm_i
 m_3_eq.jpg>]
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/ZH_wo_cl_3_net_msr_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_net_msr_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_net_msr_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_3_net_margin_im_3.jpg, id=4314, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_3_net_margin_im_3.jpg, id=4640, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_3_net_margin_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_net_margin_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_net_margin_im_3.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_3_net_entropy_im_3.jpg, id=4315, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_3_net_entropy_im_3.jpg, id=4641, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_3_net_entropy_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_net_entropy_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_net_entropy_im_3.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_3_dropout_im_3.jpg, id=4316, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_3_dropout_im_3.jpg, id=4642, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_3_dropout_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_dropout_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_dropout_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_3_gmm_im_3_eq.jpg, id=4319, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_3_gmm_im_3_eq.jpg, id=4645, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_3_gmm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_gmm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_gmm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/ZH_wo_cl_3_svm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_svm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_svm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/ZH_wo_cl_3_df_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_3_df_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_3_df_im_3_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
 
 Overfull \vbox (9.68222pt too high) has occurred while \output is active []
 
 
-[64 <./Figures/ZH_wo_cl_2_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_2_net_margin_im
+[65 <./Figures/ZH_wo_cl_2_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_2_net_margin_im
 _3.jpg> <./Figures/ZH_wo_cl_2_net_entropy_im_3.jpg> <./Figures/ZH_wo_cl_2_dropo
 ut_im_3.jpg> <./Figures/ZH_wo_cl_2_gmm_im_3_eq.jpg> <./Figures/ZH_wo_cl_2_svm_i
 m_3_eq.jpg> <./Figures/ZH_wo_cl_2_df_im_3_eq.jpg>]
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_4_net_msr_im_3.jpg, id=4330, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_4_net_msr_im_3.jpg, id=4657, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_4_net_msr_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_4_net_msr_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_4_net_msr_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_4_net_margin_im_3.jpg, id=4333, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_4_net_margin_im_3.jpg, id=4660, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_4_net_margin_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_4_net_margin_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_4_net_margin_im_3.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_4_net_entropy_im_3.jpg, id=4334, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_4_net_entropy_im_3.jpg, id=4661, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_4_net_entropy_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_4_net_entropy_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_4_net_entropy_im_3.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_4_dropout_im_3.jpg, id=4335, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_4_dropout_im_3.jpg, id=4662, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_4_dropout_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_4_dropout_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_4_dropout_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_4_gmm_im_3_eq.jpg, id=4338, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_4_gmm_im_3_eq.jpg, id=4665, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_4_gmm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_4_gmm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_4_gmm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_4_svm_im_3_eq.jpg, id=4341, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_4_svm_im_3_eq.jpg, id=4668, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_4_svm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_4_svm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_4_svm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_4_df_im_3_eq.jpg, id=4344, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_4_df_im_3_eq.jpg, id=4671, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_4_df_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_4_df_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_4_df_im_3_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
 
 Overfull \vbox (9.68222pt too high) has occurred while \output is active []
 
 
-[65 <./Figures/ZH_wo_cl_3_net_margin_im_3.jpg> <./Figures/ZH_wo_cl_3_net_entrop
+[66 <./Figures/ZH_wo_cl_3_net_margin_im_3.jpg> <./Figures/ZH_wo_cl_3_net_entrop
 y_im_3.jpg> <./Figures/ZH_wo_cl_3_dropout_im_3.jpg> <./Figures/ZH_wo_cl_3_gmm_i
 m_3_eq.jpg>]
-<Figures/GT_19.jpg, id=4352, 422.00012pt x 301.55013pt>
+<Figures/GT_19.jpg, id=4678, 422.00012pt x 301.55013pt>
 File: Figures/GT_19.jpg Graphic file (type jpg)
 <use Figures/GT_19.jpg>
-Package pdftex.def Info: Figures/GT_19.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_19.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_5_net_msr_im_4.jpg, id=4353, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_5_net_msr_im_4.jpg, id=4679, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_5_net_msr_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_5_net_msr_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_5_net_msr_im_4.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_5_net_margin_im_4.jpg, id=4356, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_5_net_margin_im_4.jpg, id=4682, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_5_net_margin_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_5_net_margin_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_5_net_margin_im_4.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_5_net_entropy_im_4.jpg, id=4357, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_5_net_entropy_im_4.jpg, id=4683, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_5_net_entropy_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_5_net_entropy_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_5_net_entropy_im_4.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_5_dropout_im_4.jpg, id=4358, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_5_dropout_im_4.jpg, id=4684, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_5_dropout_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_5_dropout_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_5_dropout_im_4.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_5_gmm_im_4_eq.jpg, id=4361, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_5_gmm_im_4_eq.jpg, id=4687, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_5_gmm_im_4_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_5_gmm_im_4_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_5_gmm_im_4_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_5_svm_im_4_eq.jpg, id=4364, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_5_svm_im_4_eq.jpg, id=4690, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_5_svm_im_4_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_5_svm_im_4_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_5_svm_im_4_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_5_df_im_4_eq.jpg, id=4367, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_5_df_im_4_eq.jpg, id=4693, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_5_df_im_4_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_5_df_im_4_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_5_df_im_4_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
 
 Overfull \vbox (9.68222pt too high) has occurred while \output is active []
 
 
-[66 <./Figures/ZH_wo_cl_4_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_4_net_margin_im
+[67 <./Figures/ZH_wo_cl_4_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_4_net_margin_im
 _3.jpg> <./Figures/ZH_wo_cl_4_net_entropy_im_3.jpg> <./Figures/ZH_wo_cl_4_dropo
 ut_im_3.jpg> <./Figures/ZH_wo_cl_4_gmm_im_3_eq.jpg> <./Figures/ZH_wo_cl_4_svm_i
 m_3_eq.jpg> <./Figures/ZH_wo_cl_4_df_im_3_eq.jpg>]
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_6_net_msr_im_3.jpg, id=4374, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_6_net_msr_im_3.jpg, id=4700, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_6_net_msr_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_6_net_msr_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_6_net_msr_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_6_net_margin_im_3.jpg, id=4377, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_6_net_margin_im_3.jpg, id=4703, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_6_net_margin_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_6_net_margin_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_6_net_margin_im_3.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_6_net_entropy_im_3.jpg, id=4378, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_6_net_entropy_im_3.jpg, id=4704, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_6_net_entropy_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_6_net_entropy_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_6_net_entropy_im_3.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_6_dropout_im_3.jpg, id=4379, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_6_dropout_im_3.jpg, id=4705, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_6_dropout_im_3.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_6_dropout_im_3.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_6_dropout_im_3.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_6_gmm_im_3_eq.jpg, id=4382, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_6_gmm_im_3_eq.jpg, id=4708, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_6_gmm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_6_gmm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_6_gmm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_6_svm_im_3_eq.jpg, id=4385, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_6_svm_im_3_eq.jpg, id=4711, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_6_svm_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_6_svm_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_6_svm_im_3_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
-<Figures/ZH_wo_cl_6_df_im_3_eq.jpg, id=4388, 346.04576pt x 206.04036pt>
+<Figures/ZH_wo_cl_6_df_im_3_eq.jpg, id=4714, 346.04576pt x 206.04036pt>
 File: Figures/ZH_wo_cl_6_df_im_3_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_6_df_im_3_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_6_df_im_3_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 234.10257pt x 139.39192pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
 File: Figures/GT_18.jpg Graphic file (type jpg)
 <use Figures/GT_18.jpg>
-Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_18.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 106.20471pt.
-<Figures/ZH_wo_cl_7_net_msr_im_4.jpg, id=4391, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_7_net_msr_im_4.jpg, id=4717, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_7_net_msr_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_7_net_msr_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_7_net_msr_im_4.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_7_net_margin_im_4.jpg, id=4394, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_7_net_margin_im_4.jpg, id=4720, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_7_net_margin_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_7_net_margin_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_7_net_margin_im_4.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_7_net_entropy_im_4.jpg, id=4395, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_7_net_entropy_im_4.jpg, id=4721, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_7_net_entropy_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_7_net_entropy_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_7_net_entropy_im_4.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_7_dropout_im_4.jpg, id=4396, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_7_dropout_im_4.jpg, id=4722, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_7_dropout_im_4.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_7_dropout_im_4.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_7_dropout_im_4.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_7_gmm_im_4_eq.jpg, id=4399, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_7_gmm_im_4_eq.jpg, id=4725, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_7_gmm_im_4_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_7_gmm_im_4_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_7_gmm_im_4_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_7_svm_im_4_eq.jpg, id=4402, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_7_svm_im_4_eq.jpg, id=4728, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_7_svm_im_4_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_7_svm_im_4_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_7_svm_im_4_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
-<Figures/ZH_wo_cl_7_df_im_4_eq.jpg, id=4405, 422.00012pt x 301.55013pt>
+<Figures/ZH_wo_cl_7_df_im_4_eq.jpg, id=4731, 422.00012pt x 301.55013pt>
 File: Figures/ZH_wo_cl_7_df_im_4_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_7_df_im_4_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_7_df_im_4_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 178.36871pt x 127.46pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [67 <./Figures/GT_19.jpg> <./Figures/ZH_wo_cl_5_net_msr_im_4.jpg> <./Figures/Z
+ [68 <./Figures/GT_19.jpg> <./Figures/ZH_wo_cl_5_net_msr_im_4.jpg> <./Figures/Z
 H_wo_cl_5_net_margin_im_4.jpg> <./Figures/ZH_wo_cl_5_net_entropy_im_4.jpg> <./F
 igures/ZH_wo_cl_5_dropout_im_4.jpg> <./Figures/ZH_wo_cl_5_gmm_im_4_eq.jpg> <./F
 igures/ZH_wo_cl_5_svm_im_4_eq.jpg> <./Figures/ZH_wo_cl_5_df_im_4_eq.jpg>]
 Overfull \vbox (9.68222pt too high) has occurred while \output is active []
 
 
-[68 <./Figures/ZH_wo_cl_6_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_6_net_margin_im
+[69 <./Figures/ZH_wo_cl_6_net_msr_im_3.jpg> <./Figures/ZH_wo_cl_6_net_margin_im
 _3.jpg> <./Figures/ZH_wo_cl_6_net_entropy_im_3.jpg> <./Figures/ZH_wo_cl_6_dropo
 ut_im_3.jpg> <./Figures/ZH_wo_cl_6_gmm_im_3_eq.jpg> <./Figures/ZH_wo_cl_6_svm_i
 m_3_eq.jpg> <./Figures/ZH_wo_cl_6_df_im_3_eq.jpg>]
 File: Figures/GT_16.jpg Graphic file (type jpg)
 <use Figures/GT_16.jpg>
-Package pdftex.def Info: Figures/GT_16.jpg  used on input line 1775.
+Package pdftex.def Info: Figures/GT_16.jpg  used on input line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
-<Figures/ZH_wo_cl_8_net_msr_im_1.jpg, id=4416, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_8_net_msr_im_1.jpg, id=4742, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_8_net_msr_im_1.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_8_net_msr_im_1.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_8_net_msr_im_1.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
-<Figures/ZH_wo_cl_8_net_margin_im_1.jpg, id=4419, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_8_net_margin_im_1.jpg, id=4745, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_8_net_margin_im_1.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_8_net_margin_im_1.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_8_net_margin_im_1.jpg  used on input 
-line 1775.
+line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
-<Figures/ZH_wo_cl_8_net_entropy_im_1.jpg, id=4420, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_8_net_entropy_im_1.jpg, id=4746, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_8_net_entropy_im_1.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_8_net_entropy_im_1.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_8_net_entropy_im_1.jpg  used on input
- line 1775.
+ line 1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
-<Figures/ZH_wo_cl_8_dropout_im_1.jpg, id=4421, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_8_dropout_im_1.jpg, id=4747, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_8_dropout_im_1.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_8_dropout_im_1.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_8_dropout_im_1.jpg  used on input lin
-e 1775.
+e 1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
-<Figures/ZH_wo_cl_8_gmm_im_1_eq.jpg, id=4424, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_8_gmm_im_1_eq.jpg, id=4750, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_8_gmm_im_1_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_8_gmm_im_1_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_8_gmm_im_1_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
-<Figures/ZH_wo_cl_8_svm_im_1_eq.jpg, id=4427, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_8_svm_im_1_eq.jpg, id=4753, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_8_svm_im_1_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_8_svm_im_1_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_8_svm_im_1_eq.jpg  used on input line
- 1775.
+ 1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
-<Figures/ZH_wo_cl_8_df_im_1_eq.jpg, id=4430, 314.58705pt x 289.93024pt>
+<Figures/ZH_wo_cl_8_df_im_1_eq.jpg, id=4756, 314.58705pt x 289.93024pt>
 File: Figures/ZH_wo_cl_8_df_im_1_eq.jpg Graphic file (type jpg)
 <use Figures/ZH_wo_cl_8_df_im_1_eq.jpg>
 Package pdftex.def Info: Figures/ZH_wo_cl_8_df_im_1_eq.jpg  used on input line 
-1775.
+1799.
 (pdftex.def)             Requested size: 178.36871pt x 164.39043pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1775.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1799.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [69 <./Figures/ZH_wo_cl_7_net_msr_im_4.jpg> <./Figures/ZH_wo_cl_7_net_margin_i
+ [70 <./Figures/ZH_wo_cl_7_net_msr_im_4.jpg> <./Figures/ZH_wo_cl_7_net_margin_i
 m_4.jpg> <./Figures/ZH_wo_cl_7_net_entropy_im_4.jpg> <./Figures/ZH_wo_cl_7_drop
 out_im_4.jpg> <./Figures/ZH_wo_cl_7_gmm_im_4_eq.jpg> <./Figures/ZH_wo_cl_7_svm_
 im_4_eq.jpg> <./Figures/ZH_wo_cl_7_df_im_4_eq.jpg>]
 File: Figures/ROC_pred_wo_cl_1.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_1.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_1.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_1.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 172.32639pt.
-<Figures/ROC_pred_wo_cl_2.pdf, id=4437, 380.75372pt x 367.85808pt>
+<Figures/ROC_pred_wo_cl_2.pdf, id=4763, 380.75372pt x 367.85808pt>
 File: Figures/ROC_pred_wo_cl_2.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_2.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_2.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_2.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 172.32639pt.
 File: Figures/ROC_pred_wo_cl_3.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_3.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_3.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_3.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 169.2794pt.
-<Figures/ROC_pred_wo_cl_4.pdf, id=4438, 380.75372pt x 367.85808pt>
+<Figures/ROC_pred_wo_cl_4.pdf, id=4764, 380.75372pt x 367.85808pt>
 File: Figures/ROC_pred_wo_cl_4.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_4.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_4.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_4.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 172.32639pt.
-<Figures/ROC_pred_wo_cl_5.pdf, id=4439, 380.75372pt x 367.85808pt>
+<Figures/ROC_pred_wo_cl_5.pdf, id=4765, 380.75372pt x 367.85808pt>
 File: Figures/ROC_pred_wo_cl_5.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_5.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_5.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_5.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 172.32639pt.
-<Figures/ROC_pred_wo_cl_6.pdf, id=4440, 380.75372pt x 367.85808pt>
+<Figures/ROC_pred_wo_cl_6.pdf, id=4766, 380.75372pt x 367.85808pt>
 File: Figures/ROC_pred_wo_cl_6.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_6.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_6.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_6.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 172.32639pt.
-<Figures/ROC_pred_wo_cl_7.pdf, id=4441, 380.75372pt x 367.85808pt>
+<Figures/ROC_pred_wo_cl_7.pdf, id=4767, 380.75372pt x 367.85808pt>
 File: Figures/ROC_pred_wo_cl_7.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_7.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_7.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_7.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 172.32639pt.
-<Figures/ROC_pred_wo_cl_8.pdf, id=4442, 380.75372pt x 367.85808pt>
+<Figures/ROC_pred_wo_cl_8.pdf, id=4768, 380.75372pt x 367.85808pt>
 File: Figures/ROC_pred_wo_cl_8.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_wo_cl_8.pdf>
-Package pdftex.def Info: Figures/ROC_pred_wo_cl_8.pdf  used on input line 1794.
+Package pdftex.def Info: Figures/ROC_pred_wo_cl_8.pdf  used on input line 1818.
 
 (pdftex.def)             Requested size: 178.36871pt x 172.32639pt.
-<Figures/ROC_pred_ED.pdf, id=4443, 380.75372pt x 361.35378pt>
+<Figures/ROC_pred_ED.pdf, id=4769, 380.75372pt x 361.35378pt>
 File: Figures/ROC_pred_ED.pdf Graphic file (type pdf)
 <use Figures/ROC_pred_ED.pdf>
-Package pdftex.def Info: Figures/ROC_pred_ED.pdf  used on input line 1796.
+Package pdftex.def Info: Figures/ROC_pred_ED.pdf  used on input line 1820.
 (pdftex.def)             Requested size: 178.36871pt x 169.2794pt.
- [70 <./Figures/ZH_wo_cl_8_net_msr_im_1.jpg> <./Figures/ZH_wo_cl_8_net_margin_i
+ [71 <./Figures/ZH_wo_cl_8_net_msr_im_1.jpg> <./Figures/ZH_wo_cl_8_net_margin_i
 m_1.jpg> <./Figures/ZH_wo_cl_8_net_entropy_im_1.jpg> <./Figures/ZH_wo_cl_8_drop
 out_im_1.jpg> <./Figures/ZH_wo_cl_8_gmm_im_1_eq.jpg> <./Figures/ZH_wo_cl_8_svm_
 im_1_eq.jpg> <./Figures/ZH_wo_cl_8_df_im_1_eq.jpg>]
-[71 <./Figures/ROC_pred_wo_cl_2.pdf> <./Figures/ROC_pred_wo_cl_4.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ROC_pred_wo_cl_4.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/ROC_pred_wo_cl_5.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ROC_pred_wo_cl_5.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/ROC_pred_wo_cl_6.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ROC_pred_wo_cl_6.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/ROC_pred_wo_cl_7.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ROC_pred_wo_cl_7.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/ROC_pred_wo_cl_8.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ROC_pred_wo_cl_8.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/ROC_pred_ED.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Figures/ROC_pred_ED.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
->] [72
+[72 <./Figures/ROC_pred_wo_cl_2.pdf> <./Figures/ROC_pred_wo_cl_4.pdf> <./Figure
+s/ROC_pred_wo_cl_5.pdf> <./Figures/ROC_pred_wo_cl_6.pdf> <./Figures/ROC_pred_wo
+_cl_7.pdf> <./Figures/ROC_pred_wo_cl_8.pdf> <./Figures/ROC_pred_ED.pdf>]
+[73
 
 ]
-<Figures/Kernel_RBF_wo_cl_1.jpg, id=4801, 255.07059pt x 255.07059pt>
+<Figures/Kernel_RBF_wo_cl_1.jpg, id=5127, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_RBF_wo_cl_1.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_1.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_1.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_1.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_RBF_wo_cl_2.jpg, id=4802, 255.07059pt x 255.07059pt>
+<Figures/Kernel_RBF_wo_cl_2.jpg, id=5128, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_RBF_wo_cl_2.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_2.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_2.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_2.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_RBF_wo_cl_3.jpg, id=4803, 255.07059pt x 255.07059pt>
+<Figures/Kernel_RBF_wo_cl_3.jpg, id=5129, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_RBF_wo_cl_3.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_3.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_3.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_3.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_RBF_wo_cl_4.jpg, id=4804, 255.07059pt x 255.07059pt>
+<Figures/Kernel_RBF_wo_cl_4.jpg, id=5130, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_RBF_wo_cl_4.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_4.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_4.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_4.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_RBF_wo_cl_5.jpg, id=4805, 255.07059pt x 255.07059pt>
+<Figures/Kernel_RBF_wo_cl_5.jpg, id=5131, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_RBF_wo_cl_5.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_5.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_5.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_5.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_RBF_wo_cl_6.jpg, id=4806, 255.07059pt x 255.07059pt>
+<Figures/Kernel_RBF_wo_cl_6.jpg, id=5132, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_RBF_wo_cl_6.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_6.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_6.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_6.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_RBF_wo_cl_7.jpg, id=4807, 255.07059pt x 255.07059pt>
+<Figures/Kernel_RBF_wo_cl_7.jpg, id=5133, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_RBF_wo_cl_7.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_7.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_7.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_7.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_RBF_wo_cl_8.jpg, id=4808, 297.58235pt x 297.58235pt>
+<Figures/Kernel_RBF_wo_cl_8.jpg, id=5134, 297.58235pt x 297.58235pt>
 File: Figures/Kernel_RBF_wo_cl_8.jpg Graphic file (type jpg)
 <use Figures/Kernel_RBF_wo_cl_8.jpg>
-Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_8.jpg  used on input line 189
-0.
+Package pdftex.def Info: Figures/Kernel_RBF_wo_cl_8.jpg  used on input line 191
+4.
 (pdftex.def)             Requested size: 98.89922pt x 98.8972pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1893.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1917.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
-<Figures/Kernel_poly_wo_cl_1_deg_2.jpg, id=4813, 255.07059pt x 255.07059pt>
+<Figures/Kernel_poly_wo_cl_1_deg_2.jpg, id=5139, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_poly_wo_cl_1_deg_2.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_1_deg_2.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_1_deg_2.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_poly_wo_cl_2_deg_1.jpg, id=4814, 255.07059pt x 255.07059pt>
+<Figures/Kernel_poly_wo_cl_2_deg_1.jpg, id=5140, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_poly_wo_cl_2_deg_1.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_2_deg_1.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_2_deg_1.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_poly_wo_cl_3_deg_1.jpg, id=4815, 255.07059pt x 255.07059pt>
+<Figures/Kernel_poly_wo_cl_3_deg_1.jpg, id=5141, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_poly_wo_cl_3_deg_1.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_3_deg_1.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_3_deg_1.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_poly_wo_cl_4_deg_1.jpg, id=4816, 255.07059pt x 255.07059pt>
+<Figures/Kernel_poly_wo_cl_4_deg_1.jpg, id=5142, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_poly_wo_cl_4_deg_1.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_4_deg_1.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_4_deg_1.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_poly_wo_cl_5_deg_1.jpg, id=4817, 255.07059pt x 255.07059pt>
+<Figures/Kernel_poly_wo_cl_5_deg_1.jpg, id=5143, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_poly_wo_cl_5_deg_1.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_5_deg_1.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_5_deg_1.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_poly_wo_cl_6_deg_1.jpg, id=4818, 255.07059pt x 255.07059pt>
+<Figures/Kernel_poly_wo_cl_6_deg_1.jpg, id=5144, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_poly_wo_cl_6_deg_1.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_6_deg_1.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_6_deg_1.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_poly_wo_cl_7_deg_3.jpg, id=4819, 255.07059pt x 255.07059pt>
+<Figures/Kernel_poly_wo_cl_7_deg_3.jpg, id=5145, 255.07059pt x 255.07059pt>
 File: Figures/Kernel_poly_wo_cl_7_deg_3.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_7_deg_3.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_7_deg_3.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.9011pt.
-<Figures/Kernel_poly_wo_cl_8_deg_1.jpg, id=4820, 297.58235pt x 297.58235pt>
+<Figures/Kernel_poly_wo_cl_8_deg_1.jpg, id=5146, 297.58235pt x 297.58235pt>
 File: Figures/Kernel_poly_wo_cl_8_deg_1.jpg Graphic file (type jpg)
 <use Figures/Kernel_poly_wo_cl_8_deg_1.jpg>
 Package pdftex.def Info: Figures/Kernel_poly_wo_cl_8_deg_1.jpg  used on input l
-ine 1917.
+ine 1941.
 (pdftex.def)             Requested size: 98.89922pt x 98.8972pt.
 File: Figures/colorbar.pdf Graphic file (type pdf)
 <use Figures/colorbar.pdf>
-Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1920.
+Package pdftex.def Info: Figures/colorbar.pdf  used on input line 1944.
 (pdftex.def)             Requested size: 41.89232pt x 9.60004pt.
- [73 <./Figures/Kernel_RBF_wo_cl_1.jpg> <./Figures/Kernel_RBF_wo_cl_2.jpg> <./F
+ [74 <./Figures/Kernel_RBF_wo_cl_1.jpg> <./Figures/Kernel_RBF_wo_cl_2.jpg> <./F
 igures/Kernel_RBF_wo_cl_3.jpg> <./Figures/Kernel_RBF_wo_cl_4.jpg> <./Figures/Ke
 rnel_RBF_wo_cl_5.jpg> <./Figures/Kernel_RBF_wo_cl_6.jpg> <./Figures/Kernel_RBF_
-wo_cl_7.jpg> <./Figures/Kernel_RBF_wo_cl_8.jpg>] [74 <./Figures/Kernel_poly_wo_
+wo_cl_7.jpg> <./Figures/Kernel_RBF_wo_cl_8.jpg>] [75 <./Figures/Kernel_poly_wo_
 cl_1_deg_2.jpg> <./Figures/Kernel_poly_wo_cl_2_deg_1.jpg> <./Figures/Kernel_pol
 y_wo_cl_3_deg_1.jpg> <./Figures/Kernel_poly_wo_cl_4_deg_1.jpg> <./Figures/Kerne
 l_poly_wo_cl_5_deg_1.jpg> <./Figures/Kernel_poly_wo_cl_6_deg_1.jpg> <./Figures/
 Kernel_poly_wo_cl_7_deg_3.jpg> <./Figures/Kernel_poly_wo_cl_8_deg_1.jpg>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1931.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1931.
- (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1931.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1931.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1955.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1955.
+
+(./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1955.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1955.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8EFD60CC9933C4E2E9CEC8B89A380AEB;3308.
+(rerunfilecheck)             Checksum: 02E7DFAC0848E980B5FF66DE6A16DC0A;3759.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1931.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1955.
  ) 
 Here is how much of TeX's memory you used:
- 28036 strings out of 492642
- 498601 string characters out of 6129385
- 966212 words of memory out of 5000000
- 30927 multiletter control sequences out of 15000+600000
- 29407 words of font info for 79 fonts, out of 8000000 for 9000
+ 28112 strings out of 492642
+ 500448 string characters out of 6129385
+ 966050 words of memory out of 5000000
+ 30994 multiletter control sequences out of 15000+600000
+ 31720 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,14n,81p,1984b,1841s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,14n,81p,2370b,1841s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
 /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></u
@@ -3168,30 +2955,30 @@ dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-d
 ist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/
 type1/public/lm/lmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
 c/lm/lmri10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt1
-0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2
-018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2018/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2018/texm
-f-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2018/texmf-
-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2018/texmf-di
-st/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2018/texmf-dist
-/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2018/texmf-dist/f
-onts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf-dist/fon
-ts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2018/texmf-dist/fonts
-/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (82 pages, 83570247 bytes).
+0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbi1000.
+pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pf
+b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2018
+/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2018/t
+exmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2018/tex
+mf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on main.pdf (83 pages, 83631201 bytes).
 PDF statistics:
- 5026 PDF objects out of 5155 (max. 8388607)
- 2717 compressed objects within 28 object streams
+ 5354 PDF objects out of 6186 (max. 8388607)
+ 2742 compressed objects within 28 object streams
  346 named destinations out of 1000 (max. 500000)
- 1519 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1589 words of extra memory for PDF output out of 10000 (max. 10000000)
 
