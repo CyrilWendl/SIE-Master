@@ -6,7 +6,7 @@ from keras.models import Model
 from keras.layers import *
 from keras import optimizers
 from keras import backend as k_b
-
+from tqdm import tqdm
 
 def get_activations_batch(model, layer_idx, x, batch_size=20, verbose=False):
     """
