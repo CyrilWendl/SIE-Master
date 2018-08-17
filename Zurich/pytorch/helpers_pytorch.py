@@ -182,7 +182,7 @@ def train(model, dataloader_train, dataloader_val, epochs, verbosity=False, plot
     """
     opt = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-3)
     weights = torch.from_numpy(dataloader_train.dataset.weights).float().cuda()
-    f_loss = nn.CrossEntropyLoss(ignore_index=0, weight=weights)  # TODO test with weights
+    f_loss = nn.CrossEntropyLoss(ignore_index=0, weight=weights)
     model.train()
     acc_tr_hist, acc_val_hist = [], []
     loss_tr_hist, loss_val_hist = [], []
