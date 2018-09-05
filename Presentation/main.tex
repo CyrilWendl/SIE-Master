@@ -270,17 +270,8 @@ sorting=nyt
 % Section and subsections will appear in the presentation overview
 % and table of contents
 
-% TODO Structure
-% Intro, literature review
-% Methodology
-% Datasets
-% Evaluation, experimental setup
-% Results
-% Discussion
-% Conclusion
-% Acknowledgements
 
-\section{What is Uncertainty in Deep Learning?}
+\section{What is Uncertainty in Machine Learning?}
 \subsection{What is Uncertainty?}
 
 \begin{frame}{What is Uncertainty?}
@@ -311,7 +302,7 @@ sorting=nyt
 
 
 
-\begin{frame}{What is Uncertainty?}{What happens to these cases?}
+\begin{frame}{What happens to these cases?}
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{.32\textwidth}
@@ -337,7 +328,7 @@ sorting=nyt
 
 
 % Novelty Detection
-\begin{frame}{What is Uncertainty?}{What happens to this case?}
+\begin{frame}{What happens to this case?}
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.22\textwidth}
@@ -428,7 +419,7 @@ Evaluation heuristics
 		\centering
 		\includegraphics[width=\textwidth]{autonomous-driving-im}
 		\includegraphics[width=\textwidth]{autonomous-driving-sem}\\[.2cm]
-		\includegraphics[width=.3\textwidth]{Tesla_Motors}\\
+		\includegraphics[width=.2\textwidth]{Tesla_Motors}\\
 		\caption{Autonomous cars}
 	\end{subfigure}
 	\pause
@@ -443,8 +434,7 @@ Evaluation heuristics
 
 \subsection{How does Machine Learning work?}
 
-\begin{frame}{How does Machine Learning work?}{Goals}
-Terminology
+\begin{frame}{How does Machine Learning work?}{Terminology}
 \begin{itemize}
 	\item \textbf{Image classification}: For a given image attribute one class label, i.e.:
 	\begin{figure}[H]
@@ -479,6 +469,7 @@ Terminology
 
 
 \begin{frame}{How does Machine Learning work?}
+
 % MNIST images
 	\begin{figure}[H]
 		\begin{subfigure}{.7\textwidth}
@@ -486,7 +477,7 @@ Terminology
 			\textbf{Training}\\[.2cm]
 			% loop rows
 			Dataset:\\
-			\foreach \j in {0,...,2}
+			\foreach \j in {0,1}
 			{
 				% loop classes
 				\foreach \i in {0,...,9}
@@ -501,7 +492,7 @@ Terminology
 			$\vdots$\\[.2cm]
 			Labels: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\[.2cm]
 			$\Downarrow$\\[.2cm]
-			Training (+ Validation)\\[.2cm]
+			Training\\[.2cm]
 			$\Downarrow$\\[.2cm]
 			Model $M$
 		\end{subfigure}\pause
@@ -509,14 +500,14 @@ Terminology
 			\centering
 			\textbf{Prediction}\\[.2cm]
 			New image:\\[.2cm]
-			\includegraphics[width=.2\textwidth]{MNIST_cl_1_1}\\[.2cm]
+			\includegraphics[width=.2\textwidth]{MNIST_cl_1_2}\\[.2cm]
 			$\Downarrow$\\[.2cm]
 			Prediction using model $M$\\[.2cm]
 			$\Downarrow$\\[.2cm]
 			Label: 1
 		\end{subfigure}
-		\label{fig:MNIST-Im}
-	\end{figure}
+	\end{figure}\pause
+	\textbf{Classification or regression}
 \end{frame}
 
 \begin{frame}{How does Machine Learning work?}{\glspl{CNN}}
@@ -530,12 +521,6 @@ Terminology
 		}
 		\only<2>{
 			\begin{subfigure}{.65\textwidth}
-				\includegraphics[width=\textwidth]{mnist_pre_softmax}
-			\end{subfigure}
-			\hfill
-		}
-		\only<3>{
-			\begin{subfigure}{.65\textwidth}
 				\includegraphics[width=\textwidth]{mnist_softmax}
 			\end{subfigure}\hfill
 		\begin{subfigure}{.28\textwidth}
@@ -545,8 +530,16 @@ Terminology
 				p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-birchermueesli}})=& \textbf{.4}  \\
 				p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-apfelmango}})=& .3  \\ \midrule
 				Sum & 1  \\ \bottomrule
-			\end{tabular}\hfill
+			\end{tabular}\\
+			\color{red}
+			No real probability!		
 		\end{subfigure}
+		}
+		\only<3>{
+			\begin{subfigure}{.65\textwidth}
+				\includegraphics[width=\textwidth]{mnist_pre_softmax}
+			\end{subfigure}
+			\hfill
 		}
 	\end{figure}
 \end{frame}
@@ -673,7 +666,7 @@ $\Rightarrow$ Binary classification task!
 \begin{block}{\glspl{GMM}}
 \begin{itemize}
 	\item Fit $n$ Gaussians to training data using \gls{EM}
-	\item Predict log-likelihood of test data given the fitted distributions
+	\item Predict log-likelihood of test data given the fitted model
 \end{itemize}
 \end{block}
 \begin{block}{\glspl{OC-SVM}}
@@ -810,7 +803,11 @@ Just used to illustrate \acrlongpl{DF}.
 	}
 \end{figure}
 \vfill
-60'000 training images, 10'000 test images, classes balanced
+\begin{itemize}
+	\item 60'000 training images
+	\item 10'000 test images
+	\item classes balanced
+\end{itemize}
 \vfill
 \end{frame}
 
@@ -820,7 +817,7 @@ Just used to illustrate \acrlongpl{DF}.
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.49\textwidth}
-		\caption{RGB Image}
+		\caption{RGB (+ IR) Image}
 		\includegraphics[width=\textwidth]{Im_16}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
@@ -848,7 +845,7 @@ Just used to illustrate \acrlongpl{DF}.
 				\centering
 				\includegraphics[width=\textwidth]{MNIST_cl_\i_0}
 			\end{subfigure}
-		}\\
+		}\\\pause
 		% class 1
 		\begin{subfigure}{#1\textwidth}
 			\centering
@@ -864,7 +861,7 @@ Just used to illustrate \acrlongpl{DF}.
 				\centering
 				\includegraphics[width=\textwidth]{MNIST_cl_\i_0}
 			\end{subfigure}
-		}\\
+		}\\\pause
 		% class 2
 		\foreach \i in {0,1}
 		{
@@ -908,31 +905,27 @@ Just used to illustrate \acrlongpl{DF}.
 		\item Standard network architectures
 		\item Leaving one class out during training
 	\end{itemize}
-	\mnistleaveoneout{.06}
-\end{frame}
-\begin{frame}{Experimental Setup}{CNN}
-\glspl{CNN}
-	\begin{itemize}
-		\item Standard network architectures
-		\item Leaving one class out during training
-	\end{itemize}	
-		\begin{figure}[H]
+	\hfill
+	\only<1-3>{\mnistleaveoneout{.06}}
+	\only<4-6>{\begin{figure}[H]
 			\begin{subfigure}{.4\textwidth}
 				\centering
-				\includegraphics<1->[width=\textwidth]{GT_14.jpg}
+				\includegraphics<4->[width=\textwidth]{GT_14.jpg}
 			\end{subfigure}
 			$\Rightarrow$
 			\begin{subfigure}{.4\textwidth}
-				\centering\includegraphics<1>[width=\textwidth]{GT_14_wo_cl_1}\includegraphics<2>[width=\textwidth]{GT_14_wo_cl_2}\includegraphics<3>[width=\textwidth]{GT_14_wo_cl_3}
+				\centering\includegraphics<4>[width=\textwidth]{GT_14_wo_cl_1}\includegraphics<5>[width=\textwidth]{GT_14_wo_cl_2}\includegraphics<6>[width=\textwidth]{GT_14_wo_cl_3}
 			\end{subfigure}
 		\end{figure}
+	}
+	\hfill	
 \end{frame}
 
 \begin{frame}{Experimental Setup}{CNN}
 	Novelty Detection methods \gls{GMM}, \gls{OC-SVM}, \gls{DF}
 	\begin{itemize}
-		\item Model activations of the \textit{seen classes}
-		\item Predicting confidence for entire test set, including the \textit{unseen class}
+		\item Model training set activations of the \textit{seen classes} 
+		\item Predicting confidence for test set activations, including the \textit{unseen class}
 	\end{itemize}
 \end{frame}
 
@@ -943,7 +936,7 @@ Just used to illustrate \acrlongpl{DF}.
 			\item Redundancy, collinearity
 			\item High-dimensional data difficult to handle
 		\end{itemize}
-		\item \gls{PCA}: preserve data variance
+		\item \gls{PCA}
 		\item Visualization: \gls{t-SNE}
 	\end{itemize}
 	
@@ -958,7 +951,7 @@ Just used to illustrate \acrlongpl{DF}.
 \subsection{Evaluation}
 \begin{frame}{Evaluation}
 	\begin{itemize}
-		\item \textbf{U-Net \gls{CNN}} models with left-out class: \gls{OA}, \gls{AA}
+		\item \textbf{\gls{CNN}} models with left-out class: \gls{OA}, \gls{AA}
 		\item \textbf{Novelty Detection}:
 		\begin{itemize}
 			\item \gls{AUROC}
@@ -1039,6 +1032,7 @@ Just used to illustrate \acrlongpl{DF}.
 
 
 \begin{frame}{\gls{MNIST}}{\gls{t-SNE}}
+% TODO leave out t-SNE altogether?
 	% Class 7 before and after PCA
 	\begin{figure}[H]
 		\centering
@@ -1053,7 +1047,7 @@ Just used to illustrate \acrlongpl{DF}.
 			\caption{\acrshort{t-SNE} after \acrshort{PCA}}
 		\end{subfigure}
 		\\[.2cm]
-		\legendBulletMNIST (class 7)
+		\legendBulletMNIST 7
 		\label{fig:tsne-mnist}
 	\end{figure}
 \end{frame}
@@ -1087,14 +1081,26 @@ We'll come back to this...
 			\includegraphics<1->[clip, trim=0 523px 310px 0, width=\textwidth]{GT_16}
 		\end{subfigure}
 		\begin{subfigure}{0.49\textwidth}
-			\caption{\only<1>{Prediction (wo. Roads)}\only<2>{Prediction (wo. Buildings)}\only<3>{Prediction (wo. Trees)}}
-			\foreach \i in {1,...,3}{\pdfpxdimen=\dimexpr 1 in/255\relax
-				\includegraphics<\i>[clip, trim=0 523px 310px 0, width=\textwidth]{Im_16_wo_cl_\i}}
+			\caption{\only<1>{Prediction (wo. Roads)}\only<2>{Prediction (wo. Buildings)}\only<3->{Prediction (wo. Trees)}}
+				\pdfpxdimen=\dimexpr 1 in/255\relax
+				\includegraphics<1>[clip, trim=0 523px 310px 0, width=\textwidth]{Im_16_wo_cl_1}\includegraphics<2>[clip, trim=0 523px 310px 0, width=\textwidth]{Im_16_wo_cl_2}\includegraphics<3->[clip, trim=0 523px 310px 0, width=\textwidth]{Im_16_wo_cl_3}
 		\end{subfigure}
 		\\[.2cm]
 		\legendH
 	\end{figure}
+	\only<4>{
+	\begin{table}[H]
+		\centering
+		\footnotesize
+		\begin{tabular}{lllllll}
+			\toprule
+			& \multicolumn{2}{c}{Training set} & \multicolumn{2}{c}{Validation set} & \multicolumn{2}{c}{Test set}\\
+			& \gls{OA} [\%]  & \gls{AA}  [\%] & \gls{OA} [\%]  & \gls{AA}  [\%] & \gls{OA} [\%]  & \gls{AA}  [\%]\\\midrule
+			Mean  &  63.60 &  59.18 &  84.85 &  73.09 &  83.86 &  71.02 \\\bottomrule
+		\end{tabular}
+	\end{table}}
 \end{frame}
+% Average left-out model accuracies?
 
 \begin{frame}{Novelty Detection}{Are the activations separable?}
 % t-SNE, separable before and after t-SNE
@@ -1116,18 +1122,18 @@ We'll come back to this...
 \end{frame}
 
 
-\begin{frame}{Novelty Detection}{Unseen Class \textbf{Roads}}
+\begin{frame}{Novelty Detection}{Unseen Class \textbf{Water}}
 	\begin{figure}[H]
 		\centering
 		\begin{subfigure}{0.49\textwidth}
 			\caption{\acrlong{GT}}
 			\pdfpxdimen=\dimexpr 1 in/255\relax
-			\includegraphics<1->[clip, trim=0 523px 310px 0, width=\textwidth]{GT_16}
+			\includegraphics<1->[clip, trim=0 0 0 600px, width=\textwidth]{GT_15}
 		\end{subfigure}
 		\begin{subfigure}{0.49\textwidth}
 			\caption{\only<1>{\gls{MSR}}\only<2>{\gls{OC-SVM}}\only<3>{\gls{DF}}}
-			\foreach \i/\method in {1/net_msr_im_1,2/svm_im_1_eq,3/df_im_1_eq}{\pdfpxdimen=\dimexpr 1 in/255\relax
-				\includegraphics<\i>[clip, trim=0 523px 310px 0, width=\textwidth]{ZH_wo_cl_1_\method}}
+			\foreach \i/\method in {1/net_msr_im_0,2/svm_im_0_eq,3/df_im_0_eq}{\pdfpxdimen=\dimexpr 1 in/255\relax
+				\includegraphics<\i>[clip, trim=0 0 0 600px, width=\textwidth]{ZH_wo_cl_6_\method}}
 		\end{subfigure}
 		\\[.1cm]
 		\legendGTandCert
@@ -1136,41 +1142,34 @@ We'll come back to this...
 
 \newcommand{\ndResults}[5]{  % class, class name, image, gt, trim
 	\begin{frame}{Novelty Detection}{Unseen Class \textbf{#2}}
+	% TODO remove?
 		\begin{figure}[H]
 			\centering
-			\begin{subfigure}{0.32\textwidth}
-				\centering
-				\pdfpxdimen=\dimexpr 1 in/255\relax
-				\includegraphics[clip, trim=#5, width=\textwidth]{ZH_wo_cl_#1_net_msr_im_#3}
-				\caption{MSR}
-			\end{subfigure}
-			\begin{subfigure}{0.32\textwidth}
-				\centering
-				\pdfpxdimen=\dimexpr 1 in/255\relax
-				\includegraphics[clip, trim=#5, width=\textwidth]{ZH_wo_cl_#1_svm_im_#3_eq}
-				\caption{\gls{OC-SVM}}
-			\end{subfigure}
-			\begin{subfigure}{0.32\textwidth}
-				\centering
-				\pdfpxdimen=\dimexpr 1 in/255\relax
-				\includegraphics[clip, trim=#5, width=\textwidth]{ZH_wo_cl_#1_df_im_#3_eq}
-				\caption{\gls{DF}}
-			\end{subfigure}
-			\begin{subfigure}{0.5\textwidth}
-				\centering
-				\pdfpxdimen=\dimexpr 1 in/255\relax
-				\includegraphics[clip, trim=#5, width=\textwidth]{GT_#4}
-			\end{subfigure}
-			\begin{subfigure}{0.4\textwidth}
-				\centering
-				\includegraphics[width=\textwidth]{ROC_pred_wo_cl_#1}
-			\end{subfigure}
+			\begin{minipage}{.25\textwidth}
+				\foreach \method/\captionname in {net_msr_im_#3/\gls{MSR},svm_im_#3_eq/\gls{OC-SVM},df_im_#3_eq/\gls{DF}}{
+					\begin{subfigure}{\textwidth}
+						\centering
+						\pdfpxdimen=\dimexpr 1 in/255\relax
+						\includegraphics[clip, trim=#5, width=\textwidth]{ZH_wo_cl_#1_\method}
+						\caption{\captionname}
+					\end{subfigure}
+				}
+			\end{minipage}\hfill
+			\begin{minipage}{.6\textwidth}
+				\begin{subfigure}{\textwidth}
+					\centering
+					\includegraphics[width=\textwidth]{ROC_pred_wo_cl_#1}
+				\end{subfigure}
+			\end{minipage}
+
 		\end{figure}
 	\end{frame}
 }
+% TODO increase legend size of 
 
-\ndResults{1}{Roads}{1}{16}{0 523px 310px 0}
 \ndResults{6}{Water}{0}{15}{0 0 0 600px}
+\ndResults{1}{Roads}{1}{16}{0 523px 310px 0}
+
 
 % TODO add other class
 
@@ -1203,33 +1202,34 @@ We'll come back to this...
 % t-SNE, separable before and after t-SNE
 \begin{figure}[H]
 		\centering
-		
+		\only<1->{
 		\begin{subfigure}{.48\textwidth}
 			\centering
 			\includegraphics[width=.48\textwidth]{Skew_GMM_wo_cl1}
-		\end{subfigure}
-		\begin{subfigure}{.48\textwidth}
+		\end{subfigure}}
+		\only<2>{\begin{subfigure}{.48\textwidth}
 			\centering
 			\includegraphics[width=.48\textwidth]{Skew_GMM_wo_cl1_eq}
-		\end{subfigure}\\
-		\begin{subfigure}{.45\textwidth}
+		\end{subfigure}}\\
+		\only<1->{\begin{subfigure}{.45\textwidth}
 			\centering
 			\pdfpxdimen=\dimexpr 1 in/255\relax
 			\includegraphics[clip, trim=0 23px 310px 500px, width=\textwidth]{ZH_wo_cl_1_df_im_1}
 			\caption{Original}
 			\label{subfig:original-im}
-		\end{subfigure}
-		\begin{subfigure}{.45\textwidth}
+		\end{subfigure}}
+		\only<2>{\begin{subfigure}{.45\textwidth}
 			\centering
 			\pdfpxdimen=\dimexpr 1 in/255\relax
 			\includegraphics[clip, trim=0 23px 310px 500px, width=\textwidth]{ZH_wo_cl_1_df_im_1_eq}
 			\caption{Equalized}
 			\label{subfig:equalized-im}
-		\end{subfigure}
+		\end{subfigure}}\\
 		\textsc{Certainty (\acrshort{DF}, left-out class ``roads'')}\\[.2cm]
 		\legendCert
 	\end{figure}
 \end{frame}
+% TODO reveal l/r
 
 \newcommand{\imObject}[3]{  % args: im, obj, cl
 	\begin{frame}{Zurich Dataset}{Particular Objects}
@@ -1270,6 +1270,7 @@ We'll come back to this...
 }
 \imObject{1}{1}{4}
 \imObject{4}{1}{8}
+% TODO Soccer track
 
 \section{Discussion}
 \begin{frame}{Discussion}
@@ -1286,6 +1287,7 @@ Winning methods
 \begin{frame}{Varying Performance}{MNIST and Zurich dataset}
 Intuitions
 	% TODO add figures
+	% TODO reduce number of points
 	\begin{itemize}
 		\item Number of pre-softmax activations
 		\begin{itemize}
@@ -1294,17 +1296,15 @@ Intuitions
 		\end{itemize}
 		\item Data complexity
 		% Data further away from each other?
-	\end{itemize}
+	%\item Class imbalance and class separability
+	%\begin{itemize}
+		%\item Similar classes: Roads and buildings, trees and grass
+		%\item Distinctive classes: Bare soil, swimming pools
+	%\end{itemize}
+\end{itemize}
 \end{frame}
-\begin{frame}{Varying Performance}{Zurich Dataset}
-	\begin{itemize}
-		\item Class imbalance and class separability
-		\begin{itemize}
-			\item Similar classes: Roads and buildings, trees and grass
-			\item Distinctive classes: Bare soil, swimming pools
-		\end{itemize}
-	\end{itemize}
-\end{frame}
+
+
 
 
 
@@ -1315,7 +1315,7 @@ Intuitions
 Influence of...
 \begin{itemize}
 	\item dimensionality?
-	\item data complexity?
+	\item problem complexity?
 	\item class separability?
 	\item parameter sensitivity?
 \end{itemize}
@@ -1328,20 +1328,20 @@ Influence of...
 	\begin{itemize}
 		\item Installation:\\
 		\texttt{pip install density\_forest}\pause
+		\item Documentation:\\ \url{http://github.com/CyrilWendl/SIE-Master}\pause
 		\item Syntax:\\
-		 \texttt{model.fit(X\_train, **kwargs)}\\ \texttt{model.predict(X\_test)}\pause\item Documentation:\\ \url{http://github.com/CyrilWendl/SIE-Master}\pause
+		 \texttt{model.fit(X\_train, **kwargs)}\\ \texttt{model.predict(X\_test)}\pause
 	\end{itemize}
 	\item Comparison of standard novelty detection baselines
 	\begin{itemize}
 		\item Based on softmax scores: \gls{MSR}, margin, entropy, \gls{MC-Dropout}
 		\item Based on pre-softmax activations: \gls{GMM}, \gls{OC-SVM}, \gls{DF}
 	\end{itemize}
+	\item \textbf{Demonstration of novelty detection methods using pre-softmax activations in a complex, real-world dataset.} \\
 \end{enumerate}
 \end{frame}
 
 \begin{frame}{Conclusion}{Main contributions}
-	\textbf{Demonstration of novelty detection methods using pre-softmax activations in a complex, real-world dataset.} \\
-	
 	Further applications:
 	\begin{itemize}
 		\item Change Detection
