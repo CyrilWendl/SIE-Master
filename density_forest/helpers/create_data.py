@@ -30,8 +30,8 @@ def create_data(n_clusters, dimensions, covariance, npoints, minrange=1, maxrang
     :param dimensions: the number of dimensions in which to create clusters points
     :param covariance: the covariance of a default cluster
     :param npoints: the number of points per cluster
-    :param minrange: the minimum random cluster mean
-    :param maxrange: the maximum random cluster mean
+    :param minrange: the minimum random cluster mean for each dimension
+    :param maxrange: the maximum random cluster mean for each dimension
     :param labelled: whether to return the cluster labels or not
     :param random_flip: whether to randomly reverse the cluster covariance or not
     :param nonlinearities: whether to randomly transform clusters to nonlinear distributions
@@ -47,9 +47,10 @@ def create_data(n_clusters, dimensions, covariance, npoints, minrange=1, maxrang
 
         # cluster mean
         mean_c = []
-        data_range = maxrange - minrange  # add some margin of data_range / 10
+
         for d in range(dimensions):
-            mean_c.append(np.random.randint(int(minrange + data_range / 10), int(maxrange - data_range / 10)))
+            data_range = maxrange[d] - minrange[d]  # add some margin of data_range / 10
+            mean_c.append(np.random.randint(int(minrange[d] + data_range / 10), int(maxrange[d] - data_range / 10)))
 
         # reshape covariance
         cov_c = np.identity(dimensions) * covariance
@@ -82,18 +83,18 @@ def create_data(n_clusters, dimensions, covariance, npoints, minrange=1, maxrang
 
                 dy = (pts[1] - y_min) / (y_max - y_min)
                 if np.random.randint(0, 2):  # random if done or not
-                    pts[0] += gaussian(dy, .5, .25) * dy * 50
+                    pts[0] += gaussian(dy, .5, .25) * dy * 20
                 else:
-                    pts[0] -= gaussian(dy, .5, .25) * dy * 50
+                    pts[0] -= gaussian(dy, .5, .25) * dy * 20
             if distort_x == 0 or distort_y:  # random if done or noT
                 x_min = np.min(pts[0], axis=0)
                 x_max = np.max(pts[0], axis=0)
 
                 dx = (pts[0] - x_min) / (x_max - x_min)
                 if np.random.randint(0, 2):  # random if done or not
-                    pts[1] += gaussian(dx, .5, .25) * dx * 50
+                    pts[1] += gaussian(dx, .5, .25) * dx * 20
                 else:
-                    pts[1] -= gaussian(dx, .5, .25) * dx * 50
+                    pts[1] -= gaussian(dx, .5, .25) * dx * 20
 
         # last, check we want to add the labels or not
         labels.append(np.ones(len(pts[0])) * (idx_c + 1))

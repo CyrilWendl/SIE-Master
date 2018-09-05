@@ -1,0 +1,158 @@
+\mode<presentation>
+
+\definecolor{redEPFL}{RGB}{227,6,19}
+\definecolor{greenWUR}{RGB}{52,178,52}
+\definecolor{blackbox}{RGB}{0,0,0} %
+\definecolor{bluebox}{RGB}{0,73,109} %
+
+\setbeamercolor{palette primary}{fg=white,bg=greenWUR}
+\setbeamercolor{palette secondary}{fg=white,bg=bluebox}
+\setbeamercolor{palette tertiary}{fg=white,bg=blackbox}
+\setbeamercolor{palette quatre}{fg=greenWUR,bg=white}
+\setbeamercolor{palette cinq}{fg=blackbox,bg=white}
+
+%% Navigation
+\beamertemplatenavigationsymbolsempty
+
+%% Text
+\setbeamercolor{normal text}{fg=blackbox,bg=white}
+\setbeamercolor{title}{fg=blackbox, bg=white}
+
+%% Table of Content
+\setbeamercolor{section in toc}{parent = palette cinq}
+\setbeamercolor{subsection in toc}{parent = palette quatre}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+% \setbeamertemplate{section in toc}{%
+%     *  \inserttocsection \par}
+% 
+% \setbeamertemplate{subsection in toc}{
+%     -- \inserttocsubsection \par}
+
+\setbeamerfont{section number projected}{%
+  family=\rmfamily,series=\bfseries,size=\normalsize}
+\setbeamercolor{section number projected}{parent = palette tertiary}
+
+%% Itemize
+\setbeamertemplate{itemize items}{$\bullet$}%[ball]
+%\newcommand{\myitem}{\item[\color{greenWUR}{$\bullet$}
+
+%% Block
+\setbeamercolor{block title}{fg=white,bg=greenWUR}
+\setbeamercolor{block body}{fg =blackbox,bg=greenWUR!10 }
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+%%Caption
+%http://www.peteryu.ca/tutorials/publishing/latex_captions_old
+\usepackage{caption}
+\captionsetup[subfigure]{font=scriptsize,labelfont=scriptsize, labelformat=empty}
+%\captionsetup[figure]{labelformat=empty}
+
+
+%% Head/Foot
+\setbeamercolor*{author in head/foot}{parent=palette secondary}
+\setbeamercolor*{title in head/foot}{parent=palette primary}
+\setbeamercolor*{date in head/foot}{parent=palette tertiary}
+\setbeamercolor*{section in head/foot}{parent=palette secondary}
+\setbeamercolor*{subsection in head/foot}{parent=palette primary}
+
+\defbeamertemplate*{footline}{WUR theme}
+{
+  \leavevmode%
+  \hbox{%
+   \begin{beamercolorbox}[wd=.17\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{} \hspace*{0.5ex}
+    \insertframenumber{}/\inserttotalframenumber \hspace*{0.5ex}
+  \end{beamercolorbox}}%
+     \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor %\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.53\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+}
+
+\defbeamertemplate*{headline}{WUR theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.65ex,dp=1.5ex,right]{section in head/foot}%
+    \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.65ex,dp=1.5ex,left]{subsection in head/foot}%
+    \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+  \end{beamercolorbox}}%
+  %\vskip1pt%
+}
+
+%\newcommand{\RectanglesBeforeTitle}{%
+%\raisebox{0mm}[0pt][0pt]{%
+%\begin{pgfpicture}{0mm}{0mm}{0mm}{0mm}
+%\pgfsetlinewidth{5mm}
+%\color{greenWUR}
+%\pgfline{\pgfpoint{-2mm}{2.2mm}}{\pgfpoint{4mm}{2.2mm}}
+%\color{blackbox}
+%\pgfline{\pgfpoint{4mm}{2.2mm}}{\pgfpoint{10mm}{2.2mm}}
+%\color{brownbox}
+%\pgfline{\pgfpoint{10mm}{2.2mm}}{\pgfpoint{16mm}{2.2mm}}
+%\end{pgfpicture}}}
+%
+%\setbeamertemplate{frametitle}{
+%\begin{columns}[t]
+%\column{16mm}
+%\RectanglesBeforeTitle 
+%\column{10.7cm}
+%\strut\textbf{\insertframetitle}\strut
+%\end{columns}
+%}
+
+%% Frame title
+\defbeamertemplate*{frametitle}{WUR theme}
+{
+\vskip-2pt
+  \leavevmode
+%\begin{pspicture}(1,1)
+%\psgrid[griddots=5, subgriddiv=0, gridlabels=0pt](-1,-1)(5,5)
+% \psframe(0,0)(1,1)
+%\end{pspicture}
+  \hbox{%
+
+  \begin{beamercolorbox}[wd=\paperwidth,ht=4.8ex]{palette quatre}%
+  
+  \raggedright\hspace*{1em}\insertframetitle
+  \\\raggedright\hspace*{1em}\small\insertframesubtitle
+  \end{beamercolorbox}\vspace{-20pt}
+  }
+}
+
+\setbeamercolor*{title}{use=structure,fg=white,bg=greenWUR}
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=false]
+
+
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+% %%Bibliographie
+%\usepackage{natbib}
+%\newcommand{\newblock}{}
+%\bibliographystyle{plain}
+\bibliographystyle{apalike}
+% make bibliography entries smaller
+%\renewcommand\bibfont{\scriptsize}
+% If you have more than one page of references, you want to tell beamer
+% to put the continuation section label from the second slide onwards
+\setbeamertemplate{frametitle continuation}[from second]
+% Now get rid of all the colours
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+% and kill the abominable icon
+\setbeamertemplate{bibliography item}{$\color{greenWUR}{\blacksquare}$}
+
+
+
+
+\mode
+<all>
