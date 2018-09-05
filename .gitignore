@@ -8,7 +8,6 @@ __pycache__/
 Graph/
 density_forest.egg-info
 dist
-main.pdf
 
 # Core latex/pdflatex auxiliary files:
 *.aux
