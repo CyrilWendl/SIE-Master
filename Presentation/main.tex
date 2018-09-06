@@ -10,7 +10,7 @@
 % modify this file as you see fit and even to delete this copyright
 % notice. 
 
-\documentclass{beamer}
+\documentclass[xcolor={usenames,dvipsnames}]{beamer}
 \usepackage{parskip}
 % There are many different themes available for Beamer. A comprehensive
 % list with examples is given here:
@@ -49,6 +49,7 @@
 \definecolor{wur}{rgb}{0.203926, 0.69804, 0.2}
 \usecolortheme[named=wur]{structure}
 \useoutertheme{WUR}
+\usepackage{appendixnumberbeamer}
 % Table of Content
 
 % has to be after hyperref
@@ -123,6 +124,7 @@
 \definecolor{railways}{RGB}{255,255,0}
 \definecolor{swimmingpools}{RGB}{150,150,255}
 \definecolor{unseen}{RGB}{251,0,6}
+\definecolor{greenWUR}{RGB}{52,178,52}
 
 \newcommand{\cbox}[2]{{\scriptsize \raisebox{.4ex}{\fcolorbox{black}{#1}{\rule{0pt}{3pt}\rule{3pt}{0pt}}}\enskip#2}}
 
@@ -251,266 +253,222 @@ sorting=nyt
 
 % Let's get started
 \begin{document}
-	
-	\begin{frame}
-	\centering\includegraphics[height=.6cm]{logo_wur_quality_of_life}\hspace{.5cm}\includegraphics[height=.6cm]{logo}
-	\titlepage
-\end{frame}
-\begin{frame}{Outline}
-\begin{columns}[t]
-	\begin{column}{.5\textwidth}
-		\tableofcontents[sections={1-2}]
-	\end{column}
-	\begin{column}{.5\textwidth}
-		\tableofcontents[sections={3-5}]
-	\end{column}
-\end{columns}
-\end{frame}
-
+\begin{frame}
+		\centering\includegraphics[height=.6cm]{logo_wur_quality_of_life}\hspace{.5cm}\includegraphics[height=.6cm]{logo}
+		\titlepage
+	\end{frame}
+	\begin{frame}{Outline}
+		 \vspace*{-1.2cm}
+	\begin{figure}
+		\centering
+	    \hspace{2cm}\includegraphics[height=.95\textheight]{../Report/Schema/schema_df}
+	\end{figure}
+		%\begin{columns}[t]
+		%	\begin{column}{.5\textwidth}
+		%		\tableofcontents[sections={1-2}]
+		%	\end{column}
+		%	\begin{column}{.5\textwidth}
+		%		\tableofcontents[sections={3-5}]
+		%	\end{column}
+		%\end{columns}
+	\end{frame}
 % Section and subsections will appear in the presentation overview
 % and table of contents
 
 
-\section{What is Uncertainty in Machine Learning?}
-\subsection{What is Uncertainty?}
+\section{Introduction}
+\subsection{What is Uncertainty in Machine Learning?}
 
 \begin{frame}{What is Uncertainty?}
-	\begin{figure}[H]
+% Novelty Detection
+\only<1-4>{\begin{figure}[H]
 		\centering
-		\begin{subfigure}{0.17\textwidth}
+		\begin{subfigure}{0.22\textwidth}
 			\centering
 			Input image $I \in \mathbb{R}^{h, w, n_c}$\\[.5cm]
-			\includegraphics[height=2.5cm]{m-classic-joghurt-new}
+			\includegraphics[height=2.5cm]{m-classic-joghurt-birchermueesli}
 		\end{subfigure}$\Rightarrow$
 		\begin{subfigure}{0.14\textwidth}
 			\centering
 			Model $M$
 		\end{subfigure} $ \Rightarrow$
 		\pause
-		\begin{subfigure}{0.58\textwidth}
+		\begin{subfigure}{0.5\textwidth}
 			\centering
-			Set of classes: $\mathcal{L}=\{c_i\}_{1\leq i\leq n_c}$\\ [.5cm]
-				\begin{subfigure}{0.25\textwidth}
-							\includegraphics[height=2.5cm]{m-classic-joghurt-apfelmango} 
-				\end{subfigure}$c_1$
-				\begin{subfigure}{0.25\textwidth}
-						\includegraphics[height=2.5cm]{m-classic-joghurt-ahornsirup-stichfest} 
-			\end{subfigure}	$c_2 \hdots$
+			Set of classes:  $\mathcal{L}=\{c_1, c_2\}$\\ [.5cm]
+			\begin{subfigure}{0.4\textwidth}
+				\centering
+				\includegraphics[height=2.5cm]{m-classic-joghurt-apfelmango}
+				\only<2>{$p(c_1)=?$}
+				\color{red}
+				\only<3-4>{$p(c_1)=1$}
+			\end{subfigure}
+			\begin{subfigure}{0.4\textwidth}
+				\centering
+				\includegraphics[height=2.5cm]{m-classic-joghurt-ahornsirup-stichfest} 
+				\only<2>{$p(c_2)=?$}
+				\color{red}
+				\only<3-4>{$p(c_2)=0$}
+			\end{subfigure}
 		\end{subfigure}
 	\end{figure}
-\end{frame}
-
-
-
-\begin{frame}{What happens to these cases?}
-\begin{figure}[H]
 	\centering
-	\begin{subfigure}{.32\textwidth}
+	\color{red}
+	\only<4>{\textbf{This is not what we want :(}}}
+\only<5->{\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{m-classic-joghurt-ahornsirup-stichfest-zoom1}
-		\pause
-		:)
-	\end{subfigure}\pause
-	\begin{subfigure}{.32\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{m-classic-joghurt-ahornsirup-stichfest-zoom2}
-		\pause
-		:)
-	\end{subfigure}\pause
-	\begin{subfigure}{.32\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{m-classic-joghurt-ahornsirup-stichfest-zoom3}
-		\pause
-		:(
-	\end{subfigure}
-\end{figure}
-\end{frame}
-
-
-% Novelty Detection
-\begin{frame}{What happens to this case?}
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{0.22\textwidth}
-		\centering
-		Input image  of \textbf{unseen class} ``birchermüesli''\\[.5cm]
-		\includegraphics[height=2.5cm]{m-classic-joghurt-birchermueesli}
-	\end{subfigure}$\Rightarrow$
-	\begin{subfigure}{0.14\textwidth}
-		\centering
-		Model $M$
-	\end{subfigure} $ \Rightarrow$
-	\pause
-	\begin{subfigure}{0.5\textwidth}
-		\centering
-		Set of classes:  $\mathcal{L}=\{c_1, c_2\}$\\ [.5cm]
-		\begin{subfigure}{0.4\textwidth}
+		\begin{subfigure}{0.22\textwidth}
 			\centering
-			\includegraphics[height=2.5cm]{m-classic-joghurt-apfelmango}
-			$p(c_1)=1$
-		\end{subfigure}
-		\begin{subfigure}{0.4\textwidth}
+			Input image of \textbf{unseen class} ``birchermüesli''\\[.5cm]
+			\includegraphics[height=2.5cm]{m-classic-joghurt-birchermueesli}
+		\end{subfigure}$\Rightarrow$
+		\begin{subfigure}{0.14\textwidth}
 			\centering
-			\includegraphics[height=2.5cm]{m-classic-joghurt-ahornsirup-stichfest} 
-			$p(c_2)=0$
+			Model $M$
+		\end{subfigure} $ \Rightarrow$
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			Set of classes:  $\mathcal{L}=\{c_1, c_2\}$\\ [.5cm]
+			\begin{subfigure}{0.4\textwidth}
+				\centering
+				\includegraphics[height=2.5cm]{m-classic-joghurt-apfelmango}
+				\color{greenWUR}
+				$p(c_1)=0.5$
+			\end{subfigure}
+			\begin{subfigure}{0.4\textwidth}
+				\centering
+				\includegraphics[height=2.5cm]{m-classic-joghurt-ahornsirup-stichfest} 
+				\color{greenWUR}
+				$p(c_2)=0.5$
+			\end{subfigure}
 		\end{subfigure}
-	\end{subfigure}
-\end{figure}
-\pause
-\textbf{This is not what we want :(}
+	\end{figure}
+	\centering
+	\color{greenWUR}
+	\textbf{This would be better :)}
+}
 \end{frame}
-
-% Novelty Detection
-\begin{frame}{What is Uncertainty?}{What happens to this case?}
-\begin{figure}[H]
-\centering
-\begin{subfigure}{0.22\textwidth}
-	\centering
-	Input image of \textbf{unseen class} ``birchermüesli''\\[.5cm]
-	\includegraphics[height=2.5cm]{m-classic-joghurt-birchermueesli}
-\end{subfigure}$\Rightarrow$
-\begin{subfigure}{0.14\textwidth}
-	\centering
-	Model $M$
-\end{subfigure} $ \Rightarrow$
-\begin{subfigure}{0.5\textwidth}
-	\centering
-	Set of classes:  $\mathcal{L}=\{c_1, c_2\}$\\ [.5cm]
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[height=2.5cm]{m-classic-joghurt-apfelmango}
-		$p(c_1)=0.5$
-	\end{subfigure}
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[height=2.5cm]{m-classic-joghurt-ahornsirup-stichfest} 
-		$p(c_2)=0.5$
-	\end{subfigure}
-\end{subfigure}
-\end{figure}
-\textbf{This would be better :)}
-\end{frame}
-
 
 \begin{frame}{What is Uncertainty?}
 Uncertainty
-\begin{itemize}
-	\item Information on \textit{confidence} of the model
-	\item Ability to model incomplete information
-\end{itemize}
-Evaluation heuristics
-\begin{itemize}
-	\item Error detection: wrong prediction $\Rightarrow$ low confidence
-	\item Novelty detection: unseen class $\Rightarrow$ low confidence
-\end{itemize}
+	\begin{itemize}
+		\item Information on \textbf{{\color{greenWUR} confidence}} of the model
+		\item Ability to model incomplete information
+	\end{itemize}
+	\pause
+	Types of Uncertainty Measures
+	\begin{itemize}
+		\item Based on new network architectures
+		\item \textbf{\color{greenWUR} Using standard network architectures}
+	\end{itemize}
+	\pause
+	Evaluation heuristics
+	\begin{itemize}
+		\item Error detection: wrong prediction $\Rightarrow$ low confidence
+		\item {\color{greenWUR}\textbf{Novelty detection: unseen class $\Rightarrow$ low confidence}}
+	\end{itemize}
 \end{frame}
 
 % Applications of uncertainty
-\begin{frame}{Relevant applications of Uncertainty}{Other than yoghurt classification}
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{0.28\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{medical-imaging}	
-		\caption{Medical imaging}
-	\end{subfigure}
-	\pause
-	\begin{subfigure}{0.26\textwidth}	
-		\centering
-		\includegraphics[width=\textwidth]{autonomous-driving-im}
-		\includegraphics[width=\textwidth]{autonomous-driving-sem}\\[.2cm]
-		\includegraphics[width=.2\textwidth]{Tesla_Motors}\\
-		\caption{Autonomous cars}
-	\end{subfigure}
-	\pause
-	\begin{subfigure}{0.38\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Im_11_detail.jpg}
-		\includegraphics[width=\textwidth]{GT_11_detail.jpg}
-		\caption{Land Cover Classification}
-	\end{subfigure}
-\end{figure}
-\end{frame}
-
-\subsection{How does Machine Learning work?}
-
-\begin{frame}{How does Machine Learning work?}{Terminology}
-\begin{itemize}
-	\item \textbf{Image classification}: For a given image attribute one class label, i.e.:
+\begin{frame}{Relevant Applications of Uncertainty}
 	\begin{figure}[H]
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{cat} 
-		\end{subfigure} $\Rightarrow$ cat
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{dog}
-		\end{subfigure} $\Rightarrow$ dog
-	\end{figure}
-	\begin{figure}[H]
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{MNIST_cl_1_0} 
-		\end{subfigure} $\Rightarrow$ ``1''
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{MNIST_cl_7_0}
-		\end{subfigure} $\Rightarrow$ ``7''
-	\end{figure}\pause
-	\item \textbf{Semantic segmentation}: segmentation of an image into class labels
-	\begin{figure}[H]
-		\begin{subfigure}{0.38\textwidth}
+		\centering
+		\begin{subfigure}{0.28\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{medical-imaging}	
+			\caption{Medical imaging}
+		\end{subfigure}
+		\pause
+		\begin{subfigure}{0.24\textwidth}	
+			\centering
+			\includegraphics[width=\textwidth]{autonomous-driving-im}
+			\includegraphics[width=\textwidth]{autonomous-driving-sem}\\[.2cm]
+			\includegraphics[width=.2\textwidth]{Tesla_Motors}\\
+			\caption{Autonomous cars}
+		\end{subfigure}
+		\pause
+		\begin{subfigure}{0.4\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{Im_11_detail.jpg}
-		\end{subfigure} $\Rightarrow$
-		\begin{subfigure}{0.38\textwidth}
-			\centering
 			\includegraphics[width=\textwidth]{GT_11_detail.jpg}
+			\caption{Land Cover Classification}
 		\end{subfigure}
 	\end{figure}
+\end{frame}
+
+\subsection{Research Objectives}
+\begin{frame}{Research Objectives}
+\begin{itemize}
+	% Standard CNNs
+	\item Determine uncertainty of standard \gls{CNN} architectures using
+	\begin{itemize}
+		\item softmax-based methods
+		\item methods based on pre-softmax activations
+	\end{itemize}
+	\item Implement \acrlongpl{DF} and compare them to baseline methods
+	\item Evaluate these uncertainty measures with respect to their performance for \textbf{{\color{greenWUR} novelty detection}}
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{How does Machine Learning work?}
-
-% MNIST images
-	\begin{figure}[H]
-		\begin{subfigure}{.7\textwidth}
-			\centering
-			\textbf{Training}\\[.2cm]
-			% loop rows
-			Dataset:\\
-			\foreach \j in {0,1}
-			{
-				% loop classes
-				\foreach \i in {0,...,9}
-				{
-					\begin{subfigure}{.07\textwidth}
-						\centering
-						\includegraphics[width=\textwidth]{MNIST_cl_\i_\j}
-					\end{subfigure}
-				}
-				\\
-			}
-			$\vdots$\\[.2cm]
-			Labels: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\[.2cm]
-			$\Downarrow$\\[.2cm]
-			Training\\[.2cm]
-			$\Downarrow$\\[.2cm]
-			Model $M$
-		\end{subfigure}\pause
-		\begin{subfigure}{.28\textwidth}
-			\centering
-			\textbf{Prediction}\\[.2cm]
-			New image:\\[.2cm]
-			\includegraphics[width=.2\textwidth]{MNIST_cl_1_2}\\[.2cm]
-			$\Downarrow$\\[.2cm]
-			Prediction using model $M$\\[.2cm]
-			$\Downarrow$\\[.2cm]
-			Label: 1
-		\end{subfigure}
-	\end{figure}\pause
-	\textbf{Classification or regression}
+\subsection{Main Contributions}
+\begin{frame}{Main Contributions}
+	\begin{enumerate}
+		\item Implementation of a Python library for creating Density Forests
+		\begin{itemize}
+			\item Installation: \\\texttt{pip install density\_forest}\pause 
+			\item Documentation:\\ \url{http://github.com/CyrilWendl/SIE-Master} \pause
+			\item Syntax:\\ \texttt{model.fit(X\_train)}, \texttt{model.predict(X\_test)} 
+		\end{itemize}
+		\pause
+		\item Comparison of standard novelty detection baselines
+		\begin{itemize}
+			\item Based on softmax scores: MSR, margin, entropy, MC-Dropout
+			\item Based on pre-softmax activations: GMM, OC-SVM, DF
+		\end{itemize}
+		\pause
+		\item \textbf{\color{greenWUR} Demonstration of novelty detection methods using pre-softmax activations in a complex, real-world dataset}
+	\end{enumerate}
 \end{frame}
 
-\begin{frame}{How does Machine Learning work?}{\glspl{CNN}}
+
+\subsection{How does Machine Learning work?}
+
+\begin{frame}{Terminology}
+	\begin{itemize}
+		\item {\color{greenWUR}\textbf{Image classification}}: For a given image attribute one class label, i.e.:
+		\begin{figure}[H]
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{cat} 
+			\end{subfigure} $\Rightarrow$ cat
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{dog}
+			\end{subfigure} $\Rightarrow$ dog
+		\end{figure}
+		\begin{figure}[H]
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{MNIST_cl_1_0} 
+			\end{subfigure} $\Rightarrow$ ``1''
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{MNIST_cl_7_0}
+			\end{subfigure} $\Rightarrow$ ``7''
+		\end{figure}\pause
+		\item {\color{greenWUR}\textbf{Semantic segmentation}}: segmentation of an image into class labels
+		\begin{figure}[H]
+			\begin{subfigure}{0.38\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{Im_11_detail.jpg}
+			\end{subfigure} $\Rightarrow$
+			\begin{subfigure}{0.38\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{GT_11_detail.jpg}
+			\end{subfigure}
+		\end{figure}
+	\end{itemize}
+	\pause
+	\centering
+	\textbf{\color{greenWUR} Classification or regression}
+\end{frame}
+\begin{frame}{\glspl{CNN}}
 	\begin{figure}[H]
 		\centering
 		\only<1>{
@@ -521,266 +479,86 @@ Evaluation heuristics
 		}
 		\only<2>{
 			\begin{subfigure}{.65\textwidth}
-				\includegraphics[width=\textwidth]{mnist_softmax}
-			\end{subfigure}\hfill
-		\begin{subfigure}{.28\textwidth}
-			\begin{tabular}{cc}
-				\toprule
-				p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-ahornsirup-stichfest}})=& .3  \\ 
-				p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-birchermueesli}})=& \textbf{.4}  \\
-				p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-apfelmango}})=& .3  \\ \midrule
-				Sum & 1  \\ \bottomrule
-			\end{tabular}\\
-			\color{red}
-			No real probability!		
-		\end{subfigure}
-		}
-		\only<3>{
-			\begin{subfigure}{.65\textwidth}
 				\includegraphics[width=\textwidth]{mnist_pre_softmax}
 			\end{subfigure}
 			\hfill
 		}
+		\only<3->{
+			\begin{subfigure}{.65\textwidth}
+				\includegraphics[width=\textwidth]{mnist_softmax}
+			\end{subfigure}\hfill
+			\begin{subfigure}{.28\textwidth}
+				\begin{tabular}{cc}
+					\toprule
+					p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-ahornsirup-stichfest}})=& .3  \\ 
+					p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-birchermueesli}})=& \textbf{.4}  \\
+					p(\raisebox{-.35cm}{\includegraphics[width=.7cm]{m-classic-joghurt-apfelmango}})=& .3  \\ \midrule
+					Sum & 1  \\ \bottomrule
+				\end{tabular}\\[.2cm]
+				\color{red}
+				No real probability!		
+			\end{subfigure}
+		}
 	\end{figure}
 \end{frame}
 
-
-\begin{frame}{Research objectives}
+\begin{frame}{Problems with Softmax Activations}
+	
 	\begin{itemize}
-		\item Determine uncertainty of standard \glspl{CNN} using
-		\begin{itemize}
-			\item softmax-based methods
-			\item methods based on pre-softmax activations
-		\end{itemize}
-		\item In particular, implement \acrlongpl{DF} and compare them to baseline methods
-		\item Evaluate these uncertainty measures in terms of their performance for \textbf{novelty detection}
+		\item Can be easily fooled
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{cat} 
+			\end{subfigure} $\Rightarrow$ cat\hspace{.5cm}
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{cat_fooled}
+			\end{subfigure} $\Rightarrow$ dog
+		\end{figure}
+		\pause
+		\item Not robust to transformations
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{cat} 
+			\end{subfigure} $\Rightarrow$ cat \hspace{.5cm}
+			\begin{subfigure}{.1\textwidth}
+				\includegraphics[width=\textwidth]{cat_notrobust}
+			\end{subfigure} $\Rightarrow$ dog
+		\end{figure}
+		\pause
+		\item Can yield high scores despite being wrong
 	\end{itemize}
 \end{frame}
+
+
 
 \section{Methodology}
-\subsection{Literature Review}
-
-\begin{frame}{Types of Uncertainty Measures}
-	\begin{enumerate}
-	\item Based on new network architectures
-	\item \textit{Using standard network architectures}
-	\begin{itemize}
-		\item Based on network output (i.e., softmax activations)
-		\item Using network activations before the final classification layer
-	\end{itemize}
-	\end{enumerate}
-\end{frame}
-
-
-\begin{frame}{Uncertainty based on Network Output}{Problems}
-Problems with softmax output
-\begin{itemize}
-	\item Can be easily fooled
-	\begin{figure}[H]
-		\centering
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{cat} 
-		\end{subfigure} $\Rightarrow$ cat\hspace{1cm}
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{cat_fooled}
-		\end{subfigure} $\Rightarrow$ dog
-	\end{figure}
-	\item Not robust to minor transformations
-	\begin{figure}[H]
-		\centering
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{cat} 
-		\end{subfigure} $\Rightarrow$ cat \hspace{1cm}
-		\begin{subfigure}{.1\textwidth}
-			\includegraphics[width=\textwidth]{cat_notrobust}
-		\end{subfigure} $\Rightarrow$ dog
-	\end{figure}
-	\item Can yield high scores despite being wrong
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Uncertainty based on Network Activations}
-\begin{figure}[H]
-	\includegraphics[width=.7\textwidth]{mnist_2}
-\end{figure}
-\end{frame}
-
-%\begin{frame}{Uncertainty based on Network Output}
-%	\vspace{-20pt}
-%	\begin{block}{\textbf{\gls{MSR}}}   
-%	\begin{equation*}
-%	\label{eq:net_msr}
-%	C_1(\mathbf{x})=P^{(c_1)}(\mathbf{x})
-%	\end{equation*}
-%	where $\mathbf{x}$ is a data point and $c_1=\argmax_{c\in\mathcal{L}}P^{(c)}(\mathbf{x})$.
-%	\end{block}
-%	
-%	\begin{block}{\textbf{Margin}}   
-%	\begin{equation*}
-%	\label{eq:net_margin}
-%	C(\mathbf{x})=P^{(c_1)}(\mathbf{x})-P^{(c_2)}(\mathbf{x})
-%	\end{equation*}
-%	where $c_1=\argmax_{c\in\mathcal{L}}P^{(c)}(\mathbf{x})$ and $c_2=\argmax_{c\in\mathcal{L}\setminus c_1}P^{(c)}(\mathbf{x})$.
-%	\end{block}
-%	\begin{block}{\textbf{Entropy}}   
-%	\begin{equation*}
-%	\label{eq:net_entropy}
-%	C_2(\mathbf{x}) = -H(\mathbf{P(\mathbf{x})}) = -\sum_{c\in \mathcal{L}}^{}P^{(c)}(\mathbf{x})\log P^{(c)}(\mathbf{x})
-%	\end{equation*}
-%	\end{block}
-%\end{frame}
-
-
-\begin{frame}{Uncertainty based on Network Output}
-
-\begin{block}{Based on softmax activations}
-\begin{itemize}
-	\item \gls{MSR}
-	\item Margin
-	\item Entropy
-\end{itemize}	
-\end{block}
-
-\begin{block}{\textbf{\gls{MC-Dropout}}}
-	\begin{enumerate}
-		\item Perform prediction \textit{using dropout}
-		\item Repeat prediction $n$ times
-		\item Prediction = mean of outputs, Certainty = variance of outputs
-	\end{enumerate}
-	$\Rightarrow$ Simplified version used:
-	\begin{itemize}
-		\item Dropout only in last layer before softmax
-		\item Using entropy of mean output rather than variance
-	\end{itemize}
-\end{block}
-\end{frame}
-
-
-\begin{frame}{Novelty Detection Methods}
-Goal: find samples belonging to novel, unseen classes
-\begin{itemize}
-	\item Model distribution or support of ``normal class''
-	\item Attribute low confidence to samples of ``abnormal class''
-\end{itemize}
-$\Rightarrow$ Binary classification task!
-\begin{block}{\glspl{GMM}}
-\begin{itemize}
-	\item Fit $n$ Gaussians to training data using \gls{EM}
-	\item Predict log-likelihood of test data given the fitted model
-\end{itemize}
-\end{block}
-\begin{block}{\glspl{OC-SVM}}
-	\begin{itemize}
-		\item Find support of the ``normal data'' class
-		\item Use decision function to decide whether a data point is an inlier or outlier
-	\end{itemize}
-\end{block}
-\end{frame}
-
-
-
 \subsection{\acrlongpl{DF}}
-\begin{frame}{Random Forests}{Idea}
-Why should we need to model the ``normal class'' perfectly if we can do simpler?
-\begin{itemize}
-	\item Train many imperfect models (in parallel)
-	\item Average them
-\end{itemize}
-\end{frame}
-\begin{frame}{Random Forests}{A yoghurt example}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{labelled-data-migros}
-\end{figure}
-\end{frame}
 
-\begin{frame}{Random Forests}{A yoghurt example}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{labelled-data.pdf}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Random Forests}{A yoghurt example}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{decision_boundaries}
-		\caption{Single Decision Tree}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Random Forests}{A yoghurt example}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{decision_boundaries_nopoints}
-		\caption{Single Decision Tree}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Random Forests}{A yoghurt example}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{rf}
-		\caption{Random Forest}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Random Forests}{A yoghurt example}
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{rf_nopoints}
-		\caption{Random Forest}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\acrlongpl{DF}}{An non-yoghurt example}
-	\textbf{Question}: How to define subspaces of unlabelled data?
-	\begin{figure}
-		\centering
-		\includegraphics[width=\textwidth]{labelled-data-migros-new}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\acrlongpl{DF}}{An non-yoghurt example}
+\begin{frame}{Density Trees}
 			\begin{figure}
 				\centering
-				\foreach \i in {1,...,5}{
-					\includegraphics<\i>[width=.5\textwidth]{df-step\i}
-					\includegraphics<\i>[width=.48\textwidth]{df-step\i-tree-steps}
-				}
+				\foreach \i in {1,...,7}{\includegraphics<\i>[width=.6\textwidth]{df-step\i}\includegraphics<\i>[width=.39\textwidth]{df-step\i-tree-steps}}
 			\end{figure}
 \end{frame}
 
-\begin{frame}{\acrlongpl{DF}}{An non-yoghurt example}
+\begin{frame}{\acrlongpl{DF}}
 	\begin{itemize}
-		\item Finding best split by maximizing \textbf{Gaussianity} at each side
-		\item \textbf{Bagging} (\textbf{B}ootstrap \textbf{Agg}regat\textbf{ing}) of multiple weak learners
+		\item Finding best split by maximizing {\color{greenWUR}\textbf{Gaussianity}} on each side
+		\item Combination of multiple weak learners
 	\end{itemize}
-	$\Rightarrow$ Requires tuning \textbf{hyperparameters} to avoid under- and overfitting:
+	\vfill
+	$\Rightarrow$ Requires tuning {\color{greenWUR}\textbf{hyperparameters}} to avoid under- and overfitting:
 	\begin{itemize}	
 		\item Number of trees
+		\item Data subset
 		\item Tree depth
 		\item Number of dimensions to consider for splitting
 	\end{itemize}
 \end{frame}
 
 \subsection{Datasets}
-
-% Synthetic dataset
-\begin{frame}{Datasets}{Synthetic Datasets}
-\vspace{-20pt}
-\begin{figure}
-
-\centering
-\foreach \dataset in {1,2,3}{
-\includegraphics[width=.32\textwidth]{D\dataset_data.pdf}
-}
-\caption{Synthetic datasets}
-
-\end{figure}
-Just used to illustrate \acrlongpl{DF}.
-
-\end{frame}
 
 % MNIST dataset
 \begin{frame}{Datasets}{\gls{MNIST} \cite{mnist}}
@@ -806,7 +584,6 @@ Just used to illustrate \acrlongpl{DF}.
 \begin{itemize}
 	\item 60'000 training images
 	\item 10'000 test images
-	\item classes balanced
 \end{itemize}
 \vfill
 \end{frame}
@@ -816,11 +593,11 @@ Just used to illustrate \acrlongpl{DF}.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.48\textwidth}
 		\caption{RGB (+ IR) Image}
 		\includegraphics[width=\textwidth]{Im_16}
 	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.48\textwidth}
 		\caption{\acrlong{GT}}
 		\includegraphics[width=\textwidth]{GT_16}
 	\end{subfigure}
@@ -898,61 +675,39 @@ Just used to illustrate \acrlongpl{DF}.
 }
 
 
-\subsection{Experimental Setup}
-\begin{frame}{Experimental Setup}{CNN}
+\subsection{Training Setup}
+\begin{frame}{Training Setup}
 	\glspl{CNN}
 	\begin{itemize}
 		\item Standard network architectures
-		\item Leaving one class out during training
+		\item Leaving out one class during training
 	\end{itemize}
 	\hfill
 	\only<1-3>{\mnistleaveoneout{.06}}
-	\only<4-6>{\begin{figure}[H]
+	\only<4>{\begin{figure}[H]
 			\begin{subfigure}{.4\textwidth}
 				\centering
-				\includegraphics<4->[width=\textwidth]{GT_14.jpg}
+				\includegraphics[width=\textwidth]{GT_14.jpg}
 			\end{subfigure}
 			$\Rightarrow$
 			\begin{subfigure}{.4\textwidth}
-				\centering\includegraphics<4>[width=\textwidth]{GT_14_wo_cl_1}\includegraphics<5>[width=\textwidth]{GT_14_wo_cl_2}\includegraphics<6>[width=\textwidth]{GT_14_wo_cl_3}
+				\centering
+				\includegraphics[width=\textwidth]{GT_14_wo_cl_1}
 			\end{subfigure}
 		\end{figure}
 	}
 	\hfill	
 \end{frame}
 
-\begin{frame}{Experimental Setup}{CNN}
-	Novelty Detection methods \gls{GMM}, \gls{OC-SVM}, \gls{DF}
-	\begin{itemize}
-		\item Model training set activations of the \textit{seen classes} 
-		\item Predicting confidence for test set activations, including the \textit{unseen class}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Experimental Setup}{Dimensionality Reduction}
-	\begin{itemize}
-		\item Standard \gls{CNN} for \gls{MNIST} yields 128 activations\\
-		\begin{itemize}
-			\item Redundancy, collinearity
-			\item High-dimensional data difficult to handle
-		\end{itemize}
-		\item \gls{PCA}
-		\item Visualization: \gls{t-SNE}
-	\end{itemize}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.8\textwidth]{t-SNE-schema}
-	\end{figure}
-\end{frame}
-
-
-
 \subsection{Evaluation}
 \begin{frame}{Evaluation}
 	\begin{itemize}
-		\item \textbf{\gls{CNN}} models with left-out class: \gls{OA}, \gls{AA}
-		\item \textbf{Novelty Detection}:
+		\item {\color{greenWUR}\textbf{\gls{CNN}}} models with left-out class: \\
+		\begin{itemize}
+			\item \gls{OA}
+			\item \gls{AA}
+		\end{itemize}
+		\item {\color{greenWUR}\textbf{Novelty Detection}}:
 		\begin{itemize}
 			\item \gls{AUROC}
 			\item Visual quality of results
@@ -960,23 +715,12 @@ Just used to illustrate \acrlongpl{DF}.
 	\end{itemize}
 \end{frame}
 
-
-\begin{frame}
-\begin{figure}
-	\centering
-	\includegraphics[height=.95\textheight]{../Report/Schema/schema_df}
-\end{figure}
-\end{frame}
-
 \section{Results}
 
-\begin{frame}{Results}
-\centering
-\end{frame}
 
 
 \subsection{Dummy Dataset}
-\begin{frame}{Dummy Dataset: One Tree}
+\begin{frame}{Results}{One Tree}
 % Splitting steps
 	\vspace{-10pt}
 	\begin{figure}[H]
@@ -991,7 +735,7 @@ Just used to illustrate \acrlongpl{DF}.
 			\end{subfigure}
 	\end{figure}
 \end{frame}
-\begin{frame}{Dummy Datasets: Several Trees}
+\begin{frame}{Several Density Trees}
 \begin{figure}[H]
 	\foreach \name/\dataset/\captionname/\do in {
 		one_tree/1/Density Tree/,
@@ -1010,7 +754,7 @@ Just used to illustrate \acrlongpl{DF}.
 \end{frame}
 
 \subsection{MNIST Dataset}
-\begin{frame}{\gls{MNIST} Dataset}{\glspl{CNN}}
+\begin{frame}{\glspl{CNN}}
 	\glspl{CNN} trained leaving out one class
 	\pause
 	% MNIST images
@@ -1027,40 +771,17 @@ Just used to illustrate \acrlongpl{DF}.
 	
 		\label{table:mnist-nd-accuracy-mean}
 	\end{table}
-	High accuracy, but...
 \end{frame}
 
-
-\begin{frame}{\gls{MNIST}}{\gls{t-SNE}}
-% TODO leave out t-SNE altogether?
-	% Class 7 before and after PCA
-	\begin{figure}[H]
-		\centering
-		\begin{subfigure}{.49\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{MNIST_t-SNE_wo_cl_7_before}
-			\caption{\acrshort{t-SNE} before \acrshort{PCA}}
-		\end{subfigure}
-		\begin{subfigure}{.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{MNIST_t-SNE_wo_cl_7_after}
-			\caption{\acrshort{t-SNE} after \acrshort{PCA}}
-		\end{subfigure}
-		\\[.2cm]
-		\legendBulletMNIST 7
-		\label{fig:tsne-mnist}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{\gls{MNIST}}{Novelty Detection}
+\begin{frame}{Novelty Detection}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}llll|lll@{}}
 		\toprule
-		\gls{MSR}  & Margin & Entropy & \gls{MC-Dropout} & \gls{GMM} & \gls{OC-SVM}  & \gls{DF} \\ \midrule
-		\textbf{0.97} & \textbf{0.97} & \textbf{0.97} & 0.96 & 0.67 & 0.75 & 0.75 \\\bottomrule
+		\multicolumn{4}{c}{Softmax-based} & \multicolumn{3}{|c}{Pre-softmax-based} \\
+		\acrshort{MSR}  & Margin & Entropy & \acrshort{MC-Dropout} & \acrshort{GMM} & \acrshort{OC-SVM}  & \acrshort{DF} \\ \midrule
+		{\color{greenWUR}\textbf{0.97}} & {\color{greenWUR}\textbf{0.97}} & {\color{greenWUR}\textbf{0.97}} & 0.96 & 0.67 & 0.75 & 0.75 \\\bottomrule
 	\end{tabular}
-	\caption{Mean \gls{AUROC} for each left-out class in the \gls{MNIST} dataset}
 	\label{table:mnist-auroc-nd-mean}
 \end{table}
 \pause
@@ -1072,7 +793,7 @@ We'll come back to this...
 	
 
 \subsection{Zurich Dataset}
-	\begin{frame}{Zurich Dataset}{\glspl{CNN}}
+	\begin{frame}{\gls{CNN}}
 	\begin{figure}[H]
 		\centering
 		\begin{subfigure}{0.49\textwidth}
@@ -1081,78 +802,28 @@ We'll come back to this...
 			\includegraphics<1->[clip, trim=0 523px 310px 0, width=\textwidth]{GT_16}
 		\end{subfigure}
 		\begin{subfigure}{0.49\textwidth}
-			\caption{\only<1>{Prediction (wo. Roads)}\only<2>{Prediction (wo. Buildings)}\only<3->{Prediction (wo. Trees)}}
+			\caption{\only<1>{Prediction (unseen class Roads)}\only<2>{Prediction (unseen class Buildings)}\only<3->{Prediction (unseen class Trees)}}
 				\pdfpxdimen=\dimexpr 1 in/255\relax
 				\includegraphics<1>[clip, trim=0 523px 310px 0, width=\textwidth]{Im_16_wo_cl_1}\includegraphics<2>[clip, trim=0 523px 310px 0, width=\textwidth]{Im_16_wo_cl_2}\includegraphics<3->[clip, trim=0 523px 310px 0, width=\textwidth]{Im_16_wo_cl_3}
 		\end{subfigure}
 		\\[.2cm]
 		\legendH
 	\end{figure}
-	\only<4>{
-	\begin{table}[H]
-		\centering
-		\footnotesize
-		\begin{tabular}{lllllll}
-			\toprule
-			& \multicolumn{2}{c}{Training set} & \multicolumn{2}{c}{Validation set} & \multicolumn{2}{c}{Test set}\\
-			& \gls{OA} [\%]  & \gls{AA}  [\%] & \gls{OA} [\%]  & \gls{AA}  [\%] & \gls{OA} [\%]  & \gls{AA}  [\%]\\\midrule
-			Mean  &  63.60 &  59.18 &  84.85 &  73.09 &  83.86 &  71.02 \\\bottomrule
-		\end{tabular}
-	\end{table}}
-\end{frame}
-% Average left-out model accuracies?
-
-\begin{frame}{Novelty Detection}{Are the activations separable?}
-% t-SNE, separable before and after t-SNE
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.48\textwidth}
-		\centering
-		\caption{\gls{t-SNE} before \gls{PCA}}
-		\includegraphics[width=\textwidth]{t-SNE_wo_cl2_before_PCA}
-	\end{subfigure}
-	\begin{subfigure}{.48\textwidth}
-		\centering
-		\caption{\gls{t-SNE} after \gls{PCA}}
-		\includegraphics[width=\textwidth]{t-SNE_wo_cl2_after_PCA}
-	\end{subfigure}
-	\legendBullet
-	\label{fig:tsne-zurich}
-\end{figure}
 \end{frame}
 
-
-\begin{frame}{Novelty Detection}{Unseen Class \textbf{Water}}
-	\begin{figure}[H]
-		\centering
-		\begin{subfigure}{0.49\textwidth}
-			\caption{\acrlong{GT}}
-			\pdfpxdimen=\dimexpr 1 in/255\relax
-			\includegraphics<1->[clip, trim=0 0 0 600px, width=\textwidth]{GT_15}
-		\end{subfigure}
-		\begin{subfigure}{0.49\textwidth}
-			\caption{\only<1>{\gls{MSR}}\only<2>{\gls{OC-SVM}}\only<3>{\gls{DF}}}
-			\foreach \i/\method in {1/net_msr_im_0,2/svm_im_0_eq,3/df_im_0_eq}{\pdfpxdimen=\dimexpr 1 in/255\relax
-				\includegraphics<\i>[clip, trim=0 0 0 600px, width=\textwidth]{ZH_wo_cl_6_\method}}
-		\end{subfigure}
-		\\[.1cm]
-		\legendGTandCert
-	\end{figure}
-\end{frame}
-
-\newcommand{\ndResults}[5]{  % class, class name, image, gt, trim
-	\begin{frame}{Novelty Detection}{Unseen Class \textbf{#2}}
-	% TODO remove?
+\setlength\abovecaptionskip{-5pt}
+\newcommand{\ndResults}[4]{  % class, image, gt, trim
 		\begin{figure}[H]
 			\centering
 			\begin{minipage}{.25\textwidth}
-				\foreach \method/\captionname in {net_msr_im_#3/\gls{MSR},svm_im_#3_eq/\gls{OC-SVM},df_im_#3_eq/\gls{DF}}{
+				\foreach \method/\captionname in {net_msr_im_#2/\acrshort{MSR},svm_im_#2_eq/\acrshort{OC-SVM},df_im_#2_eq/\acrshort{DF}}{
 					\begin{subfigure}{\textwidth}
 						\centering
+						\footnotesize
+						\captionname\\[.1cm]
 						\pdfpxdimen=\dimexpr 1 in/255\relax
-						\includegraphics[clip, trim=#5, width=\textwidth]{ZH_wo_cl_#1_\method}
-						\caption{\captionname}
-					\end{subfigure}
+						\includegraphics[clip, trim=#4, width=\textwidth]{ZH_wo_cl_#1_\method}
+					\end{subfigure}\\[.2cm]
 				}
 			\end{minipage}\hfill
 			\begin{minipage}{.6\textwidth}
@@ -1161,17 +832,35 @@ We'll come back to this...
 					\includegraphics[width=\textwidth]{ROC_pred_wo_cl_#1}
 				\end{subfigure}
 			\end{minipage}
-
 		\end{figure}
-	\end{frame}
 }
-% TODO increase legend size of 
 
-\ndResults{6}{Water}{0}{15}{0 0 0 600px}
-\ndResults{1}{Roads}{1}{16}{0 523px 310px 0}
+\begin{frame}{Novelty Detection}{Unseen Class \textbf{Water}}
+		\only<1-3>{
+			\begin{figure}[H]
+				\centering	
+				\begin{subfigure}{0.49\textwidth}
+					\caption{\acrlong{GT}}
+					\pdfpxdimen=\dimexpr 1 in/255\relax
+					\includegraphics<1-3>[clip, trim=0 0 0 600px, width=\textwidth]{GT_15}
+				\end{subfigure}
+				\begin{subfigure}{0.49\textwidth}
+					\caption{\only<1>{\acrshort{MSR}}\only<2>{\acrshort{OC-SVM}}\only<3>{\acrshort{DF}} (Unseen Class Water)}
+					\foreach \i/\method in {1/net_msr_im_0,2/svm_im_0_eq,3/df_im_0_eq}{\pdfpxdimen=\dimexpr 1 in/255\relax
+						\includegraphics<\i>[clip, trim=0 0 0 600px, width=\textwidth]{ZH_wo_cl_6_\method}}
+				\end{subfigure}
+				\\[.1cm]
+				\legendGTandCert
+			\end{figure}
+		}
+	\only<4>{
+		\ndResults{6}{0}{15}{0 0 0 600px}
+	}
+\end{frame}
 
-
-% TODO add other class
+\begin{frame}{Novelty Detection}{Unseen Class \textbf{Roads}}
+	\ndResults{1}{1}{16}{0 523px 310px 0}
+\end{frame}
 
 \newcommand{\tick}{${\color[rgb]{0, .5, 0}\mathbf{\checkmark}}$}
 
@@ -1181,7 +870,8 @@ We'll come back to this...
 		\footnotesize
 		\begin{tabular}{@{}l|llll|lll@{}}
 			\toprule
-			Left-Out Class & MSR  & Margin     & Entropy & \gls{MC-Dropout} & \gls{GMM}     & \gls{OC-SVM}  & \gls{DF}                \\ \midrule
+			&\multicolumn{4}{c}{Softmax-based} &  \multicolumn{3}{|c}{Pre-softmax-based} \\
+			Left-Out Class & MSR  & Margin     & Entropy & \acrshort{MC-Dropout} & \acrshort{GMM}     & \acrshort{OC-SVM}  & \acrshort{DF}                \\ \midrule
 			Roads          &   &    &     &   &  &  &  \tick \\
 			Buildings    & \tick  &    &     &   &  &  &   \\
 			Trees          &   &    &     &   &  &   \tick &\\ 
@@ -1195,11 +885,10 @@ We'll come back to this...
 	\end{table}
 	\pause
 	\centering
-	:)
+	{\color{greenWUR}\textbf{:)}}
 \end{frame}
 
 \begin{frame}{Particular Objects}{Histogram Stretching}
-% t-SNE, separable before and after t-SNE
 \begin{figure}[H]
 		\centering
 		\only<1->{
@@ -1225,52 +914,52 @@ We'll come back to this...
 			\caption{Equalized}
 			\label{subfig:equalized-im}
 		\end{subfigure}}\\
-		\textsc{Certainty (\acrshort{DF}, left-out class ``roads'')}\\[.2cm]
+		\textsc{Certainty (\acrshort{DF}, left-out class Roads)}\\[.2cm]
 		\legendCert
 	\end{figure}
 \end{frame}
-% TODO reveal l/r
 
 \newcommand{\imObject}[3]{  % args: im, obj, cl
 	\begin{frame}{Zurich Dataset}{Particular Objects}
+		\only<1>{
 		\begin{figure}[H]
 			\centering
 			\begin{subfigure}{.45\textwidth}
 				\centering
-				\includegraphics[width=\textwidth]{im_#1_obj_#2_overlay}
 				\caption{Image with \gls{ROI}}
+				\includegraphics[width=\textwidth]{im_#1_obj_#2_overlay}
 			\end{subfigure}
 			\begin{subfigure}{.45\textwidth}
 				\centering
-				\includegraphics[width=\textwidth]{im_#1_obj_#2_gt.jpg}
 				\caption{\acrlong{GT}}
+				\includegraphics[width=\textwidth]{im_#1_obj_#2_gt.jpg}
 			\end{subfigure}
 			\\[.2cm]
 			\legendH
 		\end{figure}
-	\end{frame}
-	\begin{frame}{Zurich Dataset}{Particular Objects}
+		}
+		\only<2>{
 		\begin{figure}[H]
 			\centering
 			\begin{subfigure}{.49\textwidth}
 				\centering
-				\includegraphics[width=\textwidth]{im_#1_obj_#2_msr_wo_cl_#3}
 				\caption{MSR}
+				\includegraphics[width=\textwidth]{im_#1_obj_#2_msr_wo_cl_#3}
 			\end{subfigure}
 			\begin{subfigure}{.49\textwidth}
 				\centering
-				\includegraphics[width=\textwidth]{im_#1_obj_1_df_wo_cl_#3}
 				\caption{\acrlong{DF} (non-equalized)}
+				\includegraphics[width=\textwidth]{im_#1_obj_1_df_wo_cl_#3}
 			\end{subfigure}
 			\\[.2cm]
 			\footnotesize{\textsc{Confidence}}\\[.2cm]
 			\legendCert
 		\end{figure}
+		}	 
 	\end{frame}
 }
 \imObject{1}{1}{4}
 \imObject{4}{1}{8}
-% TODO Soccer track
 
 \section{Discussion}
 \begin{frame}{Discussion}
@@ -1281,13 +970,8 @@ Winning methods
 		\begin{itemize}
 			\item \gls{OC-SVM} and \acrlong{DF} work particularly well
 		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Varying Performance}{MNIST and Zurich dataset}
-Intuitions
-	% TODO add figures
-	% TODO reduce number of points
+	\end{itemize}\pause
+	Varying performance
 	\begin{itemize}
 		\item Number of pre-softmax activations
 		\begin{itemize}
@@ -1296,13 +980,14 @@ Intuitions
 		\end{itemize}
 		\item Data complexity
 		% Data further away from each other?
-	%\item Class imbalance and class separability
-	%\begin{itemize}
+		%\item Class imbalance and class separability
+		%\begin{itemize}
 		%\item Similar classes: Roads and buildings, trees and grass
 		%\item Distinctive classes: Bare soil, swimming pools
-	%\end{itemize}
-\end{itemize}
+		%\end{itemize}
+	\end{itemize}
 \end{frame}
+
 
 
 
@@ -1311,37 +996,13 @@ Intuitions
 \section{Conclusion and Outlook}
 
 \begin{frame}{Conclusion}{Open Questions}
-
-Influence of...
-\begin{itemize}
-	\item dimensionality?
-	\item problem complexity?
-	\item class separability?
-	\item parameter sensitivity?
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Conclusion}{Main contributions}
-\begin{enumerate}
-	\item Implementation of a Python library for creating Density Forests
+	Influence of...
 	\begin{itemize}
-		\item Installation:\\
-		\texttt{pip install density\_forest}\pause
-		\item Documentation:\\ \url{http://github.com/CyrilWendl/SIE-Master}\pause
-		\item Syntax:\\
-		 \texttt{model.fit(X\_train, **kwargs)}\\ \texttt{model.predict(X\_test)}\pause
-	\end{itemize}
-	\item Comparison of standard novelty detection baselines
-	\begin{itemize}
-		\item Based on softmax scores: \gls{MSR}, margin, entropy, \gls{MC-Dropout}
-		\item Based on pre-softmax activations: \gls{GMM}, \gls{OC-SVM}, \gls{DF}
-	\end{itemize}
-	\item \textbf{Demonstration of novelty detection methods using pre-softmax activations in a complex, real-world dataset.} \\
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{Conclusion}{Main contributions}
+		\item dimensionality?
+		\item problem complexity?
+		\item class separability?
+		\item parameter sensitivity?
+	\end{itemize}\pause
 	Further applications:
 	\begin{itemize}
 		\item Change Detection
@@ -1350,10 +1011,11 @@ Influence of...
 	\end{itemize}
 \end{frame}
 
-% TODO add cartoon
 
 
-\begin{frame}{Acknowledgements}
+
+\appendix
+\begin{frame}{Acknowledgments}
 \centering\includegraphics[width=.4\textwidth]{logo_wur_quality_of_life}\\[.2cm]
 Devis Tuia, WUR\\[.2cm]
 Diego Marcos, WUR\\[.2cm]
@@ -1376,8 +1038,234 @@ Questions?
 \printbibliography
 \end{frame}
 
+
+
 \section*{Appendix}
 
+\frame{\centering Appendix}
+
+\begin{frame}{How Does Machine Learning Work?}
+% MNIST images
+	\begin{figure}[H]
+		\begin{subfigure}{.7\textwidth}
+			\centering
+			\textbf{Training}\\[.2cm]
+			% loop rows
+			Dataset:\\
+			\foreach \j in {0,1}
+			{
+				% loop classes
+				\foreach \i in {0,...,9}
+				{
+					\begin{subfigure}{.07\textwidth}
+						\centering
+						\includegraphics[width=\textwidth]{MNIST_cl_\i_\j}
+					\end{subfigure}
+				}
+				\\
+			}
+			$\vdots$\\[.2cm]
+			Labels: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\[.2cm]
+			$\Downarrow$\\[.2cm]
+			Training\\[.2cm]
+			$\Downarrow$\\[.2cm]
+			Model $M$
+		\end{subfigure}\pause
+		\begin{subfigure}{.28\textwidth}
+			\centering
+			\textbf{Prediction}\\[.2cm]
+			New image:\\[.2cm]
+			\includegraphics[width=.2\textwidth]{MNIST_cl_1_2}\\[.2cm]
+			$\Downarrow$\\[.2cm]
+			Prediction using model $M$\\[.2cm]
+			$\Downarrow$\\[.2cm]
+			Label: 1
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Uncertainty Based on Network Output}
+	\vspace{-20pt}
+	\begin{block}{\textbf{\gls{MSR}}}   
+	\begin{equation*}
+	\label{eq:net_msr}
+	C_1(\mathbf{x})=P^{(c_1)}(\mathbf{x})
+	\end{equation*}
+	where $\mathbf{x}$ is a data point and $c_1=\argmax_{c\in\mathcal{L}}P^{(c)}(\mathbf{x})$.
+	\end{block}
+	
+	\begin{block}{\textbf{Margin}}   
+	\begin{equation*}
+	\label{eq:net_margin}
+	C(\mathbf{x})=P^{(c_1)}(\mathbf{x})-P^{(c_2)}(\mathbf{x})
+	\end{equation*}
+	where $c_1=\argmax_{c\in\mathcal{L}}P^{(c)}(\mathbf{x})$ and $c_2=\argmax_{c\in\mathcal{L}\setminus c_1}P^{(c)}(\mathbf{x})$.
+	\end{block}
+	\begin{block}{\textbf{Entropy}}   
+	\begin{equation*}
+	\label{eq:net_entropy}
+	C_2(\mathbf{x}) = -H(\mathbf{P(\mathbf{x})}) = -\sum_{c\in \mathcal{L}}^{}P^{(c)}(\mathbf{x})\log P^{(c)}(\mathbf{x})
+	\end{equation*}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Uncertainty Based on Network Output}
+\begin{block}{Based on softmax activations}
+	\begin{itemize}
+		\item \gls{MSR}
+		\item Margin
+		\item Entropy
+	\end{itemize}	
+\end{block}
+
+\begin{block}{\textbf{\gls{MC-Dropout}}}
+	\begin{enumerate}
+		\item Perform prediction \textit{using dropout}
+		\item Repeat prediction $n$ times
+		\item Prediction = mean of outputs, Certainty = variance of outputs
+	\end{enumerate}
+	$\Rightarrow$ Simplified version used:
+	\begin{itemize}
+		\item Dropout only in last layer before softmax
+		\item Using entropy of mean output rather than variance
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Novelty Detection Methods}
+	Goal: find samples belonging to novel, unseen classes
+	\begin{itemize}
+	\item Model distribution or support of ``normal class''
+	\item Attribute low confidence to samples of ``abnormal class''
+	\end{itemize}
+	$\Rightarrow$ Binary classification task!
+	\begin{block}{\glspl{GMM}}
+	\begin{itemize}
+		\item Fit $n$ Gaussians to training data using \gls{EM}
+		\item Predict log-likelihood of test data given the fitted model
+	\end{itemize}
+	\end{block}
+	\begin{block}{\glspl{OC-SVM}}
+	\begin{itemize}
+		\item Find support of the ``normal data'' class
+		\item Use decision function to decide whether a data point is an inlier or outlier
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Random Forests}{Idea}
+Why should we need to model the ``normal class'' perfectly if we can do simpler?
+\begin{itemize}
+	\item Train many imperfect models (in parallel)
+	\item Average them
+\end{itemize}
+\end{frame}
+\begin{frame}{Random Forests}{A yoghurt example}
+\only<1>{
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{labelled-data-migros}
+\end{figure}
+}
+\only<2>{
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{labelled-data.pdf}
+\end{figure}
+}
+
+\only<3>{
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{decision_boundaries}
+	\caption{Single Decision Tree}
+\end{figure}
+}
+
+\only<4>{
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{decision_boundaries_nopoints}
+	\caption{Single Decision Tree}
+\end{figure}
+}
+\only<5>{
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{rf}
+	\caption{Random Forest}
+\end{figure}
+}
+\only<6>{
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{rf_nopoints}
+	\caption{Random Forest}
+\end{figure}
+}
+\end{frame}
+
+\begin{frame}{\acrlongpl{DF}}
+\textbf{Question}: How to define subspaces of unlabelled data?
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{labelled-data-migros-new}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Experimental Setup}{CNN}
+Novelty Detection methods \gls{GMM}, \gls{OC-SVM}, \gls{DF}
+\begin{itemize}
+	\item Model training set activations of the \textit{seen classes}
+	\item Predicting confidence for test set activations, including the \textit{unseen class}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Experimental Setup}{Dimensionality Reduction}
+	\begin{itemize}
+		\item Standard \gls{CNN} for \gls{MNIST} yields 128 activations\\
+		\begin{itemize}
+			\item Redundancy, collinearity
+			\item High-dimensional data difficult to handle
+		\end{itemize}
+		\item \gls{PCA}
+		\item Visualization: \gls{t-SNE}
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.8\textwidth]{t-SNE-schema}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\gls{t-SNE}}
+% Class 7 before and after PCA
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\textwidth]{MNIST_t-SNE_wo_cl_7_after}
+	\\[.2cm]
+	\legendBulletMNIST 7
+\end{figure}
+\end{frame}
+
+\begin{frame}{Novelty Detection}{Are the Activations Separable?}
+% t-SNE, separable before and after t-SNE
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.48\textwidth}
+		\centering
+		\caption{\gls{t-SNE} before \gls{PCA}}
+		\includegraphics[width=\textwidth]{t-SNE_wo_cl2_before_PCA}
+	\end{subfigure}
+	\begin{subfigure}{.48\textwidth}
+		\centering
+		\caption{\gls{t-SNE} after \gls{PCA}}
+		\includegraphics[width=\textwidth]{t-SNE_wo_cl2_after_PCA}
+	\end{subfigure}
+	\legendBullet
+	\label{fig:tsne-zurich}
+\end{figure}
+\end{frame}
 
 \end{document}
 
